@@ -1,0 +1,290 @@
+\documentclass[a4paper,ngerman,12pt]{scrartcl}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsthm,amsmath,amssymb,amsfonts}
+\usepackage{mathabx}
+\usepackage{mathtools}
+
+\usepackage{color}
+\usepackage{framed}
+\definecolor{shadecolor}{rgb}{0.9,0.9,0.9}
+
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\usepackage{geometry}
+\geometry{tmargin=2cm,bmargin=4cm,lmargin=2cm,rmargin=2cm}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\leer}{\underline{\;\;\;\;}}
+
+\newcommand{\datum}[1]{\hfill {#1}\\}
+
+\theoremstyle{definition}
+
+\newtheorem{defn}{Definition}
+\newtheorem{satz}{Behauptung}
+\newtheorem*{aufg}{Aufgabe}
+\newtheorem*{frage}{Frage}
+\newtheorem*{antw}{Antwort}
+\newtheorem*{nota}{Notation}
+\newtheorem*{bsp}{Beispiel}
+\newtheorem*{exk}{Exkurs}
+\newtheorem*{acht}{Achtung}
+
+\newenvironment{exkurs}{\begin{shaded}\begin{exk}}{\end{exk}\end{shaded}}
+\newenvironment{satzliste}{\begin{enumerate}[(i)]}{\end{enumerate}}
+\newenvironment{beweisliste}{\begin{enumerate}[Zu (i):]}{\end{enumerate}}
+
+
+\begin{document}
+
+\title{Matheschülerzirkel Klasse 7/8}
+\author{Tim Baumann}
+\date{}
+\maketitle
+
+\begin{center}
+  \includegraphics[scale=0.15]{gregor}
+\end{center}
+
+\begin{shaded}
+  \begin{nota}
+    Wir verwenden die folgenden Bezeichnungen:
+
+    \begin{tabular}{ r l l }
+      $\N$ & Menge der natürlichen Zahlen & $\{ 1, 2, 3, 4, ... \}$ \\
+      $\Z$ & Menge der ganzen Zahlen & $\{ ..., -2, -1, 0, 1, 2, ... \}$ \\
+      $\Q$ & Menge der rationalen Zahlen & $\tfrac{1}{3}, \tfrac{-17}{2}, 1 \in \Q$
+    \end{tabular}
+  \end{nota}
+\end{shaded}
+
+
+\datum{22. November 2013}
+
+\section{Unmöglichkeitsbeweise über Invarianten}
+
+Wird demnächst nachgetragen!
+
+\begin{aufg}
+  Auf einer Insel leben 345 gelbe, 346 grüne und 347 blaue Chamäleons. Wann immer sich zwei Chamäleons gleicher Farbe begegnen, passiert nichts. Wenn sich aber zwei Chamäleons unterschiedlicher Farbe begegnen, so nehmen beide die dritte Farbe an. Beispielsweise hätten wir nach einem Treffen eines gelben und einer grünen Chameleons nur noch 344 gelbe, 345 grüne, aber dafür 349 blaue Chameleons. Frage: Ist es möglich, dass zu einem Zeitpunkt genau gleich viele Chameleons jeder Farbe auf der Insel leben?
+\end{aufg}
+
+Grundsätzlich könnte diese Situation eintreten, da $345 + 346 + 347 = 1038$ durch $3$ teilbar ist. Wenn wir allerdings versuchen, eine Liste von Begegnungen zu erstellen, sodass nach diesen Begegnungen die Anzahl der Chamäleons jeder Farbe gleich ist, scheitern wir. Deshalb vermuten wir, dass dieses Problem nicht lösbar ist.
+
+\datum{6. Dezember 2013}
+
+\section{Rechnen mit Restklassen}
+
+\subsection{Teilbarkeit}
+
+\begin{defn}
+  Eine Zahl $b \in \Z$ ist durch $a \in \Z$ \emph{teilbar}, wenn es eine Zahl $c \in Z$ gibt mit
+  \[ a \cdot c = b. \]
+\end{defn}
+
+\begin{nota}
+  Wir verwenden dann die Kurzschreibweise $a \divides b$, gesprochen "`$a$ teilt $b$"'. Wir sagen auch, dass $a$ ein \emph{Teiler} von $b$ ist oder dass $b$ ein Vielfaches von $a$ ist. Im Fall, dass die Zahl $a$ die Zahl $b$ \emph{nicht} teilt, d.\,h. keine Zahl $c \in \Z$ existiert mit $a \cdot c = b$, schreiben wir $a \not\divides b$.
+\end{nota}
+
+\begin{bsp}
+  Folgende Aussagen stimmen:
+  \begin{multicols}{5}
+    \begin{itemize}
+      \item $3 \divides 6$
+      \item $5 \not\divides 13$
+      \item $8 \divides -8$
+      \item $3 \divides 12345$
+      \item $2 \not\divides 1001$
+    \end{itemize}
+  \end{multicols}
+\end{bsp}
+
+\begin{exkurs}
+  Der Ausdruck $a \divides b$ ist eine mathematische Aussage. Andere Beispiele für mathematische Aussagen sind:
+  \begin{itemize}
+    \begin{multicols}{4}
+      \item $\sqrt{2}$ ist irrational
+      \item $3 > 5$
+      \item $n$ ist gerade
+      \item $m$ ist eine Primzahl
+    \end{multicols}
+    \item Jeder Winkel lässt sich mit Zirkel und Lineal halbieren.
+    \item Für $n \in \N$ mit $n \geq 2$ gibt keine Zahlen $a, b, c \in \N$, sodass $a^n + b^n = c^n$ stimmt.
+    \item Es gibt unendlich viele Primzahlenzwillinge, das sind Primzahlen $p$ und $q$, mit $q = p + 2$.
+  \end{itemize}
+
+  Mathematische Aussagen sind entweder richtig oder falsch. Beispielsweise ist in den obigen Beispielen die erste wahr, die zweite falsch und über die nächsten beiden können wir nichts sagen, da sie Zahlen $n$ und $m$ beinhalten, die erst noch genauer definiert werden müssen. Die vorletzte Aussage trägt den Namen "`Fermats letzter Satz"' und ist richtig, doch hat es über 300 Jahre gedauert, bis sie bewiesen werden konnte. Von der letzten Aussage wird vermutet, dass sie stimmt, es existiert jedoch kein Beweis.
+\end{exkurs}
+
+\begin{frage}
+  Gibt es eine Zahl $a \in \Z$, die Teiler von $0$ ist, d.\,h. $a \divides 0$?
+\end{frage}
+
+\begin{antw}
+  Ja, wir können sogar jede beliebige Zahl $a \in Z$ nehmen: Setze $c \coloneqq 0$, dann ist $a \cdot c = a \cdot 0 = 0$ und somit ist die Definition erfüllt.
+\end{antw}
+
+\begin{frage}
+  Gibt es andersherum eine Zahl $b \in \Z$, die durch $0$ teilbar ist, also $0 \divides b$?
+\end{frage}
+
+\begin{antw}
+  Ja, aber nur die Zahl $0$ selber. Mit $a = 0$, ist für ein beliebiges $c$ nämlich $a \cdot c = 0 \cdot c = 0$, also muss $b = 0$ sein.
+\end{antw}
+
+\begin{exkurs}
+  Sei $z \in \Z$ eine ganze Zahl. Wenn $z$ ungerade ist, so ist $z$ nicht durch $8$ teilbar. Um nicht immer "`wenn ..., dann ..."' schreiben zu müssen, verwenden Mathematiker folgende Notation:
+
+  \[ z \text{ ist ungerade } \implies z \not\divides 8 \]
+
+  Dabei stehen auf der linken und rechten Seite des $\Rightarrow$-Zeichens mathematische Aussagen $P$ und $Q$. Die Zeile $(P \Rightarrow Q)$ ist wiederum selbst eine mathematische Aussage, nämlich die Aussage, dass wenn $P$ stimmt, dann auch $Q$ stimmt. Dabei ist es wichtig, dass links $P$ steht und rechts $Q$, denn in unserem Beispiel stimmt die Aussage andersrum nicht: Wenn $z$ nicht durch $8$ teilbar ist, dann muss $z$ noch nicht unbedingt ungerade sein. Z.\,B. ist $z = 4$ nicht durch $8$ teilbar, aber gerade.
+
+  Ein anderes Beispiel: Eine ganze Zahl $m$ ist ungerade, wenn die Zahl $(m+1)$ gerade ist. Andersrum ist $(m+1)$ gerade, wenn $m$ ungerade ist. Hier ist also die Umkehrung erfüllt, im Gegensatz zum vorherigen Beispiel. Also ist $m$ immer dann und nur dann ungerade, wenn $(m+1)$ ungerade ist. Mathematiker verwenden dafür eine besondere Notation:
+  \[ n \text{ ist ungerade } \quad \iff \quad (n + 1) \text{ ist gerade } \]
+  Auf beiden Seiten des $\Leftrightarrow$-Zeichens stehen dabei wieder mathematische Aussagen. Der Pfeil $\Leftrightarrow$ bedeutet, dass die linke Aussage nur dann stimmt, wenn die rechte Aussage stimmt.
+\end{exkurs}
+
+Wir wollen nun ein paar Tatsachen über die Teilbarkeit beweisen.
+
+\begin{satz}
+  Seien $n, p, q \in \Z$ ganze Zahlen. Dann gilt:
+  \begin{satzliste}
+    \item $n \divides p \text{ und } p \divides q \implies n \divides q$
+    \item $n \divides p \implies n \divides (p \cdot q)$
+    \item $n \divides p \text{ und } n \divides q \implies n \divides (p + q)$
+  \end{satzliste}
+\end{satz}
+
+\begin{proof}
+  \begin{beweisliste}
+    \item Aus der Definition von Teilbarkeit wissen wir, dass es $c, d \in \Z$ gibt mit
+    \[ n \cdot c = p \quad \text{und} \quad p \cdot d = q \]
+    Um zu zeigen, dass $n \divides q$ gilt, müssen wir nach derselben Definition eine Zahl für die Leerstelle finden, sodass die Gleichung
+    \[ n \cdot \leer = q \]
+    erfüllt ist. Wir behaupten, dass die Zahl $(c \cdot d)$ dies leistet. Wir rechnen nämlich nach:
+    \[ n \cdot (c \cdot d) = \underbrace{(n \cdot c)}_{= p} \cdot d = p \cdot d = q. \]
+    Dabei haben wir im ersten Schritt das Assoziativgesetz gebraucht.
+    \item Aus der Definition von Teilbarkeit erhalten wir ein $c \in \Z$ mit
+    \[ n \cdot c = p. \]
+    Wir müssen folgene Leerstelle sinnvoll ersetzen:
+    \[ n \cdot \leer = p \cdot q. \]
+    Wir nehmen dafür die Zahl $(c \cdot q)$ und rechnen
+    \[ n \cdot (c \cdot q) = \underbrace{(n \cdot c)}_{= p} \cdot q = p \cdot q \]
+    \item Aus der Definition erhalten wir $c, d \in \Z$ mit
+    \[ n \cdot c = p \quad \text{und} \quad n \cdot d = q. \]
+    Es soll folgende Gleichung gelten:
+    \[ n \cdot \leer = p + q \]
+    Wir setzen $(c+d)$ für $\leer$ und rechnen
+    \[ n \cdot (c+d) = \underbrace{n \cdot c}_{= p} + \underbrace{n \cdot d}_{= q} = p + q. \]
+    Im ersten Schritt haben wir dabei das Distributivgesetz angewendet.
+  \end{beweisliste}
+\end{proof}
+
+\begin{acht}
+  Folgendes Rechengesetz gilt \emph{nicht}:
+  \[ p \divides n \text{ und } q \divides n \implies (p \cdot q) \divides n \]
+  Ein Gegenbeispiel dafür ist $p = 4, q = 6, n = 12$.
+\end{acht}
+
+\begin{exkurs}
+  In den natürlichen Zahlen $\N$, den ganzen Zahlen $\Z$ und den rationalen Zahlen $\Q$ gelten folgende Rechenregeln:
+  \begin{itemize}
+    \item \emph{Kommutativgesetz}: $a + b = b + a$ und $a \cdot b = b \cdot a$
+    \item \emph{Assoziativgesetz}: $a + (b + c) = (a + b) + c$ und $a \cdot (b \cdot c) = (a \cdot b) \cdot c$
+    \item \emph{Distributivgesetz}: $a \cdot (b + c) = a \cdot b + a \cdot c$
+  \end{itemize}
+  Es ist eine gute Übung, sich zu überlegen, welche Plus- und Mal-Zeichen wir durch Minus- und Divisions-Zeichen ersetzen dürfen, sodass die Regeln immer noch stimmen.
+\end{exkurs}
+
+
+\subsection{Restklassen}
+
+Sei $n$ eine natürliche Zahl und $p, q$ natürliche Zahlen, die bei der Division durch $n$ den gleichen Rest $r$ haben, also
+\begin{align*}
+  p : n &= a \text{ Rest } r \\
+  q : n &= b \text{ Rest } r
+\end{align*}
+für zwei Zahlen $a, b \in \Z$. Wir können dabei außerdem annehmen, dass $r$ eine Zahl zwischen $0$ bis $n - 1$ ist (warum?). Wenn wir obige Gleichungen umschreiben, erhalten wir
+\begin{align*}
+  p &= n \cdot a + r, \\
+  q &= n \cdot b + r.
+\end{align*}
+Wir rechnen:
+\[ p - q = (n \cdot a + r) - (n \cdot b + r) = n \cdot a + r - n \cdot b - r = n \cdot a + n \cdot b = n \cdot (a + b). \]
+Wir haben also $n \cdot (a+b) = p - q$, folglich nach Definition von Teilbarkeit $n \divides (p - q)$. Dies ist unser erstes halbwegs interessantes Ergebnis: Zwei Zahlen $p$ und $q$, die bei Division durch $n$ den gleichen Rest haben, unterscheiden sich nur durch ein Vielfaches von $n$.
+
+\begin{defn}
+  Für zwei Zahlen $p$ und $q$, die sich nur durch ein Vielfaches von $n \in N$ unterscheiden (d.\,h. $n \divides (p-q)$) schreiben wir
+  \[ p \equiv q \pmod{n}. \]
+  Wir sprechen: "`$p$ ist gleich $q$ modulo $n$"'.
+\end{defn}
+
+\begin{nota}
+  Falls $p \equiv q \pmod{n}$ nicht stimmt, schreiben wir $p \not\equiv q \pmod{n}$.
+\end{nota}
+
+\begin{bsp}
+  Folgende Aussagen stimmen:
+  \begin{itemize}
+    \begin{multicols}{3}
+      \item $1 \equiv 4 \pmod{3}$
+      \item $0 \equiv 16 \pmod{8}$
+      \item $-4 \equiv 3 \pmod{7}$
+      \item $-1001 \equiv -1003 \pmod{2}$
+      \item $4 \not\equiv 2 \pmod{4}$
+      \item $0 \not\equiv -101 \pmod{3}$
+    \end{multicols}
+  \end{itemize}
+\end{bsp}
+
+\begin{acht}
+  Wir dürfen den Teil in Klammern auf keinen Fall weglassen! Es gilt nämlich
+  $4 \equiv 7 \pmod{3}$, aber nicht $4 \equiv 7 \pmod{6}$!
+\end{acht}
+
+\begin{satz}
+  Sei $n \in \N$ und die Zahlen $a, a_1, a_2, b, b_1, b_2, c \in \Z$. Dann gilt:
+  \begin{satzliste}
+    \item $a \equiv a \pmod{n}$
+    \item $a \equiv b \pmod{n} \text{ und } b \equiv c \pmod{n} \implies a \equiv c \pmod{n}$
+    \item $a_1 \equiv a_2 \pmod{n} \text{ und } b_1 \equiv b_2 \pmod{n} \implies a_1 + b_1 \equiv a_2 + b_2 \pmod{n}$
+    \item $a_1 \equiv a_2 \pmod{n} \text{ und } b_1 \equiv b_2 \pmod{n} \implies a_1 \cdot b_1 \equiv a_2 \cdot b_2 \pmod{n}$
+  \end{satzliste}
+\end{satz}
+
+\begin{proof}
+  \begin{beweisliste}
+    \item Es ist $a - a = 0$ und somit gilt $n \divides (a - a))$, da $0$ von jeder beliebigen Zahl geteilt wird.
+    \item Es gilt nach Vorraussetzung $n \divides (a-b)$ und $n \divides (b-c)$, also nach unserem Wissen über Teilbarkeit
+    \[ n \divides \underbrace{\left((a-b) + (b-c)\right)}_{= (a - c)}. \]
+    \item Nach Vorraussetzung gilt $n \divides (a_1 - a_2)$ und $n \divides (b_1 - b_2)$. Somit
+    \[ n \divides \underbrace{\left((a_1 - a_2) - (b_1 - b_2)\right)}_{= (a_1 + b_1) - (a_2 + b_2)}. \]
+    \item Nach Vorraussetzung gilt $n \divides (a_1 - a_2)$ und $n \divides (b_1 - b_2)$. Somit gilt auch
+    \[ n \divides (a_1 - a_2) \cdot b_1 \quad \text{und} \quad n \divides a_2 \cdot (b_1 - b_2), \]
+    also auch $n \divides ((a_1 - a_2) \cdot b_1 + a_2 \cdot (b_1 - b_2))$. Es gilt aber
+    \[ (a_1 - a_2) \cdot b_1 + a_2 \cdot (b_1 - b_2) = a_1 \cdot b_1 - a_2 \cdot b_1 + a_2 \cdot b_1 - a_2 \cdot b_2 = a_1 \cdot b_1 - a_2 \cdot b_2, \]
+    somit ist dies gleichbedeutend zu $n \divides (a_1 \cdot b_1 - a_2 \cdot b_2)$.
+  \end{beweisliste}
+\end{proof}
+
+% Definition Restklasse
+\iffalse
+\begin{defn}
+  Für $n \in \N$ und $r \in \{ 0, 1, ..., n-1 \}$
+\end{defn}
+
+\begin{bsp}
+  Du kennst Restklassen aus dem Alltag: $4$ Uhr nachmittags und $16$ Uhr sind Bezeichnungen für diesselbe Uhrzeit, da
+  \[ 16 \equiv 4 \pmod{12}. \]
+\end{bsp}
+\fi
+
+\end{document}
