@@ -15,6 +15,9 @@
 \usepackage{multicol}
 \usepackage{graphicx}
 
+\usepackage{hyperref}
+\usepackage{skak}
+
 \usepackage{geometry}
 \geometry{tmargin=2cm,bmargin=4cm,lmargin=2cm,rmargin=2cm}
 
@@ -71,13 +74,74 @@
 
 \section{Unmöglichkeitsbeweise über Invarianten}
 
-Wird demnächst nachgetragen!
+% Wird demnächst nachgetragen!
+
+Vor uns befindet sich ein leeres Schachbrett:
+
+\begin{center}
+  \newgame
+  \showallbut{p,P,q,Q,b,B,k,K,r,R,n,N}
+  \showboard
+\end{center}
+
+Vor uns liegt außerdem ein großer Haufen Dominosteine. Ein Dominostein ist genauso groß wie zwei Felder des Schachbretts. Wenn du magst, kannst du dir das Schachbrett, die Dominosteine und ein paar Tetris-Steine, die wir später noch brauchen werden, auf der Webseite \mbox{\url{http://timbaumann.info/mathezirkel-kurs/invarianten-spiele.html}} ausdrucken, ausschneiden und selbst mitknobeln.
+
+\begin{frage}
+  Ist es möglich, das Schachbrett mit Dominosteinen so zu belegen, dass jedes Feld bedeckts ist, keine zwei Dominosteine übereinander liegen und kein Stein über den Rand hinausragt? 
+\end{frage}
+
+\begin{antw}
+  Ja. Lege in jede Zeile des Feldes 4 Dominosteine horizontal nebeneinander.
+\end{antw}
+
+Wir sägen nun aus dem Schachbrett die rechte untere Ecke, das Feld \emph{h1}, heraus.
+
+\begin{frage}
+  Ist es immer noch möglich, das Schachbrett wie beschrieben mit Dominosteinen zu belegen?
+\end{frage}
+
+\begin{antw}
+  Nein. Das Schachbrett ohne rechte untere Ecke hat 63 Felder. Jeder Dominostein belegt genau zwei Felder. Wenn eine Überdeckung möglich wäre, so hätte das Schachbrett ohne rechte untere Ecke somit eine gerade Anzahl von Feldern. Also kann es keine Überdeckung geben.
+\end{antw}
+
+Während wir die erste Frage einfach positiv (bejahend) beantworten konnten, indem wir eine Überdeckung mit Dominosteinen angegeben haben, fällt uns die negative (verneinende) Antwort schwieriger: Wir mussten nämlich einen Grund finden, warum es eine solche Überdeckung nicht geben kann. Es reicht nicht aus, zu sagen, man habe keine Lösung gefunden. Es könnte ja immer noch sein, dass man sich nur ungeschickt angestellt hat und deshalb keine Lösung gefunden hat.
+
+Wir sägen nun aus dem Schachbrett auch die linke obere Ecke, das Feld \emph{h8}, heraus.
+
+\begin{frage}
+  Wie immer: Gibt es nun eine Überdeckung des Schachbretts mit Dominosteinen?
+\end{frage}
+
+Das Schachbrett ohne die beiden Ecken hat wieder eine gerade Anzahl von Feldern, nämlich 62. Prinzipiell könnte also eine Überdeckung möglich sein. Aber wenn du versuchst, eine zu finden, wirst du feststellen dass, egal wie du dich anstellst, zwei Felder übrig bleiben. Du vermutest daher, dass es keine Lösung geben kann.
+
+\begin{antw}
+  Nein. Wenn man einen Dominostein auf das Brett legt, so bedeckt er, egal wie er liegt, ein weißes und ein schwarzes Feld. Die beiden Felder, die wir abgesegt haben, waren beides weiße Felder. Damit ist das um zwei Ecken verkleinerte Brett noch 30 weiße und 32 schwarze Felder. Jedes Mal, wenn wir einen Stein setzen, nimmt die Zahl der noch offenen weißen und die Zahl der noch offenen schwarzen Felder um je 1 ab. Nach drei gelegten Dominosteinen haben wir beispielsweise noch $30-3=27$ offene weiße und $32-3=29$ offene schwarze Felder. Zu jedem Zeitpunkt gibt es genau zwei schwarze unbedeckte Felder mehr als weiße unbedeckte Felder. Wenn alle weißen Felder bedeckt sind, gibt es also noch zwei schwarze offene Felder. Diese können aber nicht nebeneinander liegen, deshalb können sie nicht mit einem Domino überdeckt werden.
+\end{antw}
+
+Wären nicht zwei diagonal gegenüberliegende, sondern zwei Ecken, die an einer Seite liegen, herausgesägt worden, so wäre die Aufgabe lösbar gewesen. Bevor wir die Antwort etwas tiefer analysieren, wollen wir uns noch eine weitere Aufgabe anschauen:
 
 \begin{aufg}
-  Auf einer Insel leben 345 gelbe, 346 grüne und 347 blaue Chamäleons. Wann immer sich zwei Chamäleons gleicher Farbe begegnen, passiert nichts. Wenn sich aber zwei Chamäleons unterschiedlicher Farbe begegnen, so nehmen beide die dritte Farbe an. Beispielsweise hätten wir nach einem Treffen eines gelben und einer grünen Chameleons nur noch 344 gelbe, 345 grüne, aber dafür 349 blaue Chameleons. Frage: Ist es möglich, dass zu einem Zeitpunkt genau gleich viele Chameleons jeder Farbe auf der Insel leben?
+  Auf einer Insel leben 345 gelbe, 346 grüne und 347 blaue Chamäleons. Wann immer sich zwei Chamäleons gleicher Farbe begegnen, passiert nichts. Wenn sich aber zwei Chamäleons unterschiedlicher Farbe begegnen, so nehmen beide die dritte Farbe an. Beispielsweise hätten wir nach einem Treffen eines gelben und einer grünen Chamäleons nur noch 344 gelbe, 345 grüne, aber dafür 349 blaue Chameleons. Frage: Ist es möglich, dass zu einem Zeitpunkt genau gleich viele Chameleons jeder Farbe auf der Insel leben?
 \end{aufg}
 
-Grundsätzlich könnte diese Situation eintreten, da $345 + 346 + 347 = 1038$ durch $3$ teilbar ist. Wenn wir allerdings versuchen, eine Liste von Begegnungen zu erstellen, sodass nach diesen Begegnungen die Anzahl der Chamäleons jeder Farbe gleich ist, scheitern wir. Deshalb vermuten wir, dass dieses Problem nicht lösbar ist.
+Grundsätzlich könnte diese Situation eintreten, da $345 + 346 + 347 = 1038$ durch $3$ teilbar ist. Wenn wir allerdings versuchen, eine Liste von Begegnungen zu erstellen, sodass nach diesen Begegnungen die Anzahl der Chamäleons jeder Farbe gleich ist, scheitern wir. Spoiler: Auch diese Aufgabe ist nicht lösbar.
+
+Was haben diese Aufgaben gemeinsam? Zunächst haben wir eine Anfangssituation, beispielsweise das leere (verkleinerte) Schachbrett oder die Anzahlen der Fische jeder Farbe im Aquarium. Dann verändert sich die Ausgangslage durch Züge (das Legen eines Dominosteins) oder Ereignisse (Treffen von zwei Fischen). Die Frage in beiden Aufgaben ist, ob eine bestimmte Situation (alle Felder bedeckt bzw. gleich viele Fische von jeder Farbe) eintreten kann.
+
+In beiden Aufgaben finden wir experimentell keine Lösung und suchen daher nach einem Grund, warum wir jedes solche Unterfangen von vornherein zum Scheitern verurteilt ist. In der Schachbrettaufgabe könnten wir dies begründen, indem wir alle Möglichkeiten ausprobieren. Davon gibt es allerdings ziemlich viele, sodass wir eine Antwort auf diesem Weg nur, wenn überhaupt, mit Hilfe eines Computers finden können. In der zweiten Aufgabe allerdings, gibt es (auf den ersten Blick) unendlich viele Möglichkeiten, wie sich Fische treffen können; wenn wir beispielsweise herausgefunden haben, dass wir mit 40 Treffen von Fischen die gewünschte Endsituation nicht erreichen können, so könnte uns das 41 Treffen zum Ziel führen.
+
+Wir haben uns daher in der Aufgabe mit dem Schachbrett eines anderen Tricks bedient: Wir haben bemerkt, dass am Anfang das verkleinerte Brett $32 - 30 = 2$ schwarze Felder mehr besitzt als weiße Felder. Jedes Mal, wenn wir einen Dominostein gelegt haben, wurde ein weißes und ein schwarzes Feld verdeckt, also blieb die Differenz zwischen der Anzahlen der schwarzen offenen und weißen offenen Felder immer gleich. Wir haben also eine Zahl entdeckt, die wir für jedes unbedeckte, teilweise oder vollständig mit Steinen bedeckte Spielbrett ausrechnen können und die mit jedem weiteren platzierten Stein, egal wo er gelegt wird, gleich bleibt. Man sagt auch, dass diese Zahl unverändert (mit Fremdwort invariant) bleibt und nennt sie eine \emph{Invariante}. In der gewünschten Endposition, dass das ganze Brett belegt ist, wäre die Differenz zwischen den offenen schwarzen und offenen weißen Feldern gleich $0 - 0 = 0$. Diese Situation kann also beginnend bei unserer Anfangsposition nicht erreicht werden.
+
+\begin{antw}
+  Es ist nicht möglich, dass es irgendwann gleich viele Chamäleons von jeder Farbe gibt. Wir betrachten die Zahl $C$, die wir als Differenz zwischen der Anzahl der blauen und grünen Chamäleons festlegen. Zu Beginn ist $C = 347 - 346 = 1$. Wenn sich ein blaues und ein grünes Chamäleon treffen, so bleibt diese Zahl gleich. Wenn sich allerdings ein grünes und ein gelbes Chamäleon treffen, so nimmt die Zahl der grünen Chamäleons um eins ab, während die Zahl der blauen um zwei steigt. Insgesamt erhöht sich $C$ um drei. Wenn sich ein blaues und ein gelbes Chamäleon treffen, so sinkt $C$ um drei (mit ähnlicher Begründung). Die Zahl $C$ ist also nicht invariant. Aber wir stellen fest: Zu Beginn ist $C$ gleich 1, also nicht durch 3 teilbar. Wir wissen aber: Wenn eine ganze Zahl $k \in \Z$ durch 3 teilbar ist, so sind auch die Zahlen $k + 3$ und $k - 3$ durch 3 teilbar. Umgekehrt ist, wenn $k \in \Z$ nicht durch 3 teilbar ist, auch die Zahlen $k + 3$ und $k - 3$ nicht durch 3 teilbar. Also können wir folgern, dass nach jedem Treffen von zwei Chamäleons unsere Zahl immer noch \emph{nicht} durch 3 teilbar ist. Unsere Invariante ist hier also nicht die Zahl $C$ selbst, sondern die Tatsache, dass $C$ nicht durch 3 teilbar ist. In der gewünschten Endsituation wäre $C = 0$, da wir verlangen, dass die Zahl der blauen und grünen Chamäleons dann gleich ist. Aber 0 ist durch 3 teilbar! Folglich kann diese Situation nicht erreicht werden.
+\end{antw}
+
+Invarianten sind ein nützliches Mittel für Aufgaben obiger Art, bei denen man zeigen soll, dass eine bestimmte Situation nicht erreicht werden kann. Ein Nachteil dieser Technik ist es, dass Invarianten oft nicht offensichtlich sind, sondern es einiger Kreativität und Erfahrung bedarf, um sie zu finden. Bei der Schachbrettaufgabe könnte man feststellen, dass am Ende jedes Versuches zwei schwarze Felder übrig bleiben. Generell bietet sich an, wenn man so eine Aufgabe angeht, erst einmal rumzuprobieren und dabei Zahlen, die einem wichtig erscheinen, nach jedem Schritt aufzuschreiben und danach nach Mustern zu suchen.
+
+Auch in der höheren Mathematik spielen Invarianten eine wichtige Rolle: Es gibt beispielsweise eine Teilgebiet, das sich mit Knoten befasst. Einen Knoten stellt man sich dabei als geschlossenes Seil im dreidimensionalen Raum vor. Wenn wir einen Knoten haben, so stellen sich Mathematiker die Frage, ob wir diesen Knoten nur durch Bewegen des Seiles (ohne Zerschneiden) diesen Knoten auflösen können, sodass er nur noch aus einer Seilschlinge besteht. Um zu beweisen, dass dies für manche Knoten nicht möglich ist, haben Mathematiker Invarianten gefunden, die etwas komplizierter als unsere bisher gesehene Invarianten sind und beim Umformen eines Knoten gleich bleiben.
+
+% TODO: Tetris-Aufgabe
+
 
 \datum{6. Dezember 2013}
 
@@ -286,5 +350,41 @@ Wir haben also $n \cdot (a+b) = p - q$, folglich nach Definition von Teilbarkeit
   \[ 16 \equiv 4 \pmod{12}. \]
 \end{bsp}
 \fi
+
+\begin{satz}
+  Für alle $n \in \N$ gilt
+  \[ 10^n \equiv 1\underbrace{00\cdots0}_{n \text{ Nullen}} \equiv 1 \pmod{3} \]
+\end{satz}
+
+\begin{proof}
+  Es gilt
+  \[ \underbrace{99 \cdots 9}_{n \text{ Neuner}} = 3 \cdot \underbrace{33 \cdots 3}_{n \text{ Dreier}}, \]
+  also $3 \divides 99 \cdots 9$ bzw. $99 \cdots 9 \equiv 0 \pmod{3}$. Wir rechnen:
+  \[ 10^n \equiv \underbrace{99 \cdots 9}_{n \text{ Neuner}} + 1 \equiv 0 + 1 \equiv 1 \pmod{3}. \]
+\end{proof}
+
+Du kennst wahrscheinlich folgenden Test auf Teilbarkeit durch $3$: Er besagt, dass eine Zahl genau dann durch $3$ teilbar ist, wenn ihre Quersumme durch $3$ teilbar ist. Vielleicht hast du dich auch schon einmal gefragt, warum dieser Test funktioniert. Mit der Vorarbeit, die wir bisher geleistet haben, fällt ein Beweis nicht schwer:
+
+\begin{satz}
+  Sei $a \in \Z$ eine ganze Zahl, wobei die Ziffern von $a$ im Zehnersystem $a_n, ..., a_0$ seien, also $a = a_n \cdot 10^n + a_{n-1} \cdot 10^{n-1} + ... + a_1 \cdot 10 + a_0$. Die Quersumme von $a$ ist dann gebeben durch $\mathrm{QS}(a) = a_n + a_{n-1} + ... + a_1 + a_0$. Es gilt dann
+  \[ a \equiv \mathrm{QS}(a) \pmod{3}. \]
+\end{satz}
+
+\begin{proof}
+  Es gilt für alle $i$ zwischen $0$ und $n$
+  \[ a_i \cdot 10^i \equiv a_i \cdot 1 \equiv a_i \pmod{3} \]
+  durch Anwenden der letzten Behauptung und den Modulo-Rechenregeln. Also haben wir
+  \[ a_n \cdot 10^n + ... + a_1 \cdot 10 + a_0 \equiv a_n + ... + a_1 + a_0 \equiv \mathrm{QS}(a) \pmod{3}. \qedhere \]
+\end{proof}
+
+Das ist nicht ganz die Behauptung des Quersummentests, allerdings ist $m \in \Z$ genau dann durch $3$ teilbar, wenn $m \equiv 0 \pmod{3}$. Falls aber $\mathrm{QS}(a)$ durch $3$ teilbar ist, so haben wir $\mathrm{QS}(a) \equiv 0$ und es folgt mit der ersten Modulo-Rechenregel schon
+\[ a \equiv \mathrm{QS}(a) \equiv 0 \pmod{3}. \]
+
+
+Es gibt auch einen ganz ähnlichen Test für Teilbarkeit durch $11$: Eine Zahl $a \in \Z$ ist genau dann durch $11$ teilbar, wenn die alternierende Quersumme durch $11$ teilbar ist. Sei $a = a_n \cdot 10^n + ... + a_1 \cdot 10 + a_0$, dann ist die alternierende Quersumme von $a$
+\[ \mathrm{AQS}(a) = a_0 - a_1 + a_2 - a_3 + ... \pm a_n. \]
+Das Wort alternierend deutet an, dass wir abwechselnd die Ziffern, beginnend bei der letzten, dazuzählen und abziehen.
+
+Zum Beispiel ist $\mathrm{AQS}(1234321) = 1 - 2 + 3 - 4 + 3 - 2 + 1 = 0$ und da $0$ durch $11$ teilbar ist, ist auch $1234321$ durch $11$ teilbar.
 
 \end{document}
