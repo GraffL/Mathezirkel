@@ -383,8 +383,102 @@ Das ist nicht ganz die Behauptung des Quersummentests, allerdings ist $m \in \Z$
 
 Es gibt auch einen ganz ähnlichen Test für Teilbarkeit durch $11$: Eine Zahl $a \in \Z$ ist genau dann durch $11$ teilbar, wenn die alternierende Quersumme durch $11$ teilbar ist. Sei $a = a_n \cdot 10^n + ... + a_1 \cdot 10 + a_0$, dann ist die alternierende Quersumme von $a$
 \[ \mathrm{AQS}(a) = a_0 - a_1 + a_2 - a_3 + ... \pm a_n. \]
-Das Wort alternierend deutet an, dass wir abwechselnd die Ziffern, beginnend bei der letzten, dazuzählen und abziehen.
+Wenn $n$ gerade ist, steht dabei ein Plus-Zeichen vor $a_n$, sonst ein Minuszeichen. Das Wort alternierend deutet an, dass wir abwechselnd die Ziffern, beginnend bei der letzten, dazuzählen und abziehen.
 
 Zum Beispiel ist $\mathrm{AQS}(1234321) = 1 - 2 + 3 - 4 + 3 - 2 + 1 = 0$ und da $0$ durch $11$ teilbar ist, ist auch $1234321$ durch $11$ teilbar.
+
+% TODO: Beweis des Quersummentests
+
+\section{Nim-Spiele}
+
+\datum{24. Januar 2014}
+
+% TODO
+
+\section{Vollständige Induktion}
+
+\datum{7. und 21. Februar 2014}
+
+Vollständige Induktion ist eines der grundlegenden mathematischen Beweisverfahren. Vollständige Induktion benutzt man immer dafür, um zu zeigen, dass eine bestimmte Aussage für alle natürlichen Zahlen gilt. Zum Beispiel:
+
+\begin{aufg}
+  Zeige, dass für alle natürlichen Zahlen $n \in \N$ die folgende Formel gilt:
+
+  \[ \frac{1}{2^1} + \frac{1}{2^2} + \frac{1}{2^3} + ... + \frac{1}{2^{n-1}} + \frac{1}{2^n} = 1 - 2^n. \]
+\end{aufg}
+
+Wir können nun hergehen und diese Formel für spezielle Werte von $n$ nachrechnen, z.\,B. für $n=1$ oder $n=5$ oder (mithilfe eines Computers) für alle natürlichen Zahlen $n$ kleiner als eine Million.
+
+Wir können uns auch intuitiv klarmachen, warum diese Formel gilt: Wir stellen uns einen Zahlenstrahl vor. Wir beginnen bei der Zahl $\frac{1}{2}$. Dann addieren wir $\frac{1}{4}$, also die Hälfte des Abstands von $\frac{1}{2}$ zu $1$. Wir befinden uns dann bei $\frac{3}{4}$. Dann addieren wir $\frac{1}{8}$, also die Hälfte des Abstandes von $\frac{3}{4}$ zu $1$. Wenn wir so weitermachen, halbiert sich der Abstand von unserer aktuellen Zahl zur Zahl $1$ in jedem Schritt. Und das ist ziemlich genau die Aussage der Aufgabe.
+
+Nun ist aber das Nachrechnen der Formel für konkrete natürliche Zahlen kein Beweis der Aufgabe. Wir können schließlich nicht die Formel für alle natürlichen Zahlen durch einzelnes Nachrechnen prüfen, denn es gibt ja unendlich viele natürliche Zahlen. Die zweite Überlegung ist schon deutlich näher an einem mathematischen Beweis (der nachfolgende Beweis folgt in gewisser Weise sogar den gleichen Überlegungen). Wir wollen nun die Aufgabe mathematisch ganz korrekt durch vollständige Induktion beweisen. Um uns das Leben einfacher zu machen, führen wir davor aber noch etwas Notation ein:
+
+\begin{shaded}
+  \begin{nota}
+    In obiger Aufgabe summieren wir
+    \[ \frac{1}{2^1} + \frac{1}{2^2} + \frac{1}{2^3} + ... + \frac{1}{2^{n-1}} + \frac{1}{2^n} = 1 - 2^n, \]
+    also alle Brüche $\frac{1}{2^k}$, wobei $k$ nacheinander die Werte $1$ bis $n$ annimmt. Für solche Summen verwendet man folgende abkürzende Schreibweise:
+    \[ \sum_{k=1}^n \frac{1}{2^k} = \frac{1}{2^1} + \frac{1}{2^2} + \frac{1}{2^3} + ... + \frac{1}{2^{n-1}} + \frac{1}{2^n} = 1 - 2^n. \]
+
+    Der griechische Buchstabe $\Sigma$ heißt Sigma, die Zeilen $k=1$ darunter und $n$ darüber bedeuten, dass $k=1$, dann $k=2$, usw. bis $k=n$ gilt. Die Variable $k$ wird auch Zählvariable genannt. Die Werte des Ausdrucks $\frac{1}{2^k}$ rechts neben $\Sigma$ werden für all diese Werte von $k$ aufaddiert.
+
+    Mit dieser Notation wird die Formel einfacher und damit überschaubarer. Außerdem spart man sich viele Auslassungspunkte.
+
+    Weitere Beispiele für die Verwendung dieser Summennotation sind:
+
+    \begin{align*}
+      \sum_{k=1}^5 k &= 1 + 2 + 3 + 4 + 5 = 15 \\
+      \sum_{k=0}^n 2^i &= 2^0 + 2^1 + 2^2 + ... + 2^n \\
+      \sum_{j=1}^k \frac{1}{j} &= \frac{1}{1} + \frac{1}{2} + \frac{1}{3} + ... + \frac{1}{k}
+    \end{align*}
+
+    Das letzte Beispiel zeigt, das wir für die Zählvariable auch andere Buchstaben außer $k$ benutzen können, und statt bis $n$ auch bis $k$ summieren können.
+  \end{nota}
+\end{shaded}
+
+Wir können damit die obige Aufgabe folgendermaßen umschreiben:
+
+\begin{aufg}
+  Zeige, dass für alle natürlichen Zahlen $n \in \N$ die folgende Formel gilt:
+  \[ \sum_{k=1}^n \frac{1}{2^k} = 1 - 2^n. \]
+\end{aufg}
+
+\begin{proof}
+  Wir führen Induktion über $n$ durch:
+
+  \emph{Induktionsanfang:} Die Formel stimmt für $n=1$, wie wir leicht nachrechnen:
+  \[ \sum_{k=1}^n \frac{1}{2^k} = \sum_{k=1}^1 \frac{1}{2^k} = \frac{1}{2^1} = 1 - \frac{1}{2^1} = 1 - \frac{1}{2^n} \]
+
+  \emph{Induktionsschritt:} Wir nehmen an, dass die Formel für eine bestimmte natürliche Zahl $n \in \N$ gilt und zeigen, dass die Formel dann auch für die nächstgrößere natürliche Zahl, also $n{+}1$, gilt. Dazu rechnen wir:
+  \[ \sum_{k=1}^{n+1} \frac{1}{2^k} = \left( \sum_{k=1}^{n} \frac{1}{2^k} \right) + \frac{1}{2^{n+1}} = \left( 1 - \frac{1}{2^n} \right) + \frac{1}{2^{n+1}} = 1 - \frac{2}{2^{n+1}} + \frac{1}{2^{n+1}} = 1 - \frac{1}{2^{n+1}} \]
+  Bei der ersten Gleichheit steht dabei auf beiden Seiten genau dasselbe, nur jeweils mit etwas anderer Notation. Links wurde die Summennotation für das Addieren von $n+1$ Zahlen verwendet, rechts nur für $n$ Zahlen. Dafür wurde rechts der letzte Summand extra hinzuaddiert. Die zweite Gleichheit folgt aus der Annahme (s.\,o.), dass die Formel für die Zahl $n$ stimmt. Wir konnten also die Formel direkt für den eingeklammerten Ausdruck anwenden. Die restlichen Gleichheiten sind Routine-Rechnungen.
+\end{proof}
+
+Warum nun ist dies ein korrekter Beweis für die Aufgabe? Nun, wir können dem Beweis direkt entnehmen, dass die Formel für die kleinste natürliche Zahl, also $n=1$ gilt. Das haben wir im Teil "`Induktionsanfang"' direkt nachgerechnet. Dann gilt aber auch die Formel für $n=2$, denn: Die Formel gilt für $n=1$ und das Argument im Teil "`Induktionsschritt"' sagt uns, dass deswegen auch die Formel für $1+1=2$ gilt. Dann gilt aber auch die Formel für $n=3$, denn: Die Formel gilt für $n=2$ und das Argument im Teil "`Induktionsschritt"' sagt uns, dass deswegen auch die Formel für $2+1=3$ gilt. Dann gilt aber auch die Formel für $n=4$, denn: Die Formel gilt für $n=3$ und das Argument im Teil "`Induktionsschritt"' sagt uns, dass deswegen auch die Formel für $3+1=4$ gilt. Und so weiter und so fort. Da wir so jede natürliche Zahl erreichen können, gilt die Formel für alle natürliche Zahlen.
+
+Wir wollen nochmal allgemein zusammenfassen, wie ein Beweis durch vollständige Induktion aufgebaut ist. Wenn wir eine mathematische Aussage für alle natürlichen Zahlen $n \in \N$ beweisen wollen, dann reicht es aus, zu zeigen:
+
+\begin{itemize}
+  \item Die Aussage gilt für die kleinste natürliche Zahl $n$, also $n=1$ (Induktionsanfang)
+  \item Wenn die Aussage für eine natürliche Zahl $n$ gilt, dann gilt sie auch für die nächstgrößere natürliche Zahl $n+1$ (Induktionsschritt).
+\end{itemize}
+
+\begin{exkurs}
+  Vollständige Induktion wird oft schlicht auch nur Induktion genannt. Das Adjektiv "`vollständig"' dient zur Abgrenzung der mathematischen Induktion von der philosophischen Induktion, einem Prinzip des Schlussfolgerns, dass die Ableitung von abstrakten Gesetzmäßigkeiten von konkreten Beobachtungen beschreibt.
+\end{exkurs}
+
+Am besten versteht man Induktion und wann man sie wirkungsvoll einsetzt, indem man Aufgaben rechnet. Darum:
+
+\begin{aufg}
+  Zeige: Für alle natürlichen Zahlen $n \in \N$ gilt:
+  \[ \sum\limits_{k=1}^n k = \frac{n \cdot (n+1)}{2}. \]
+\end{aufg}
+
+% Begriff einführen: Induktionshypothese/-annahme
+% TODO: Gauss-Summe
+% TODO: Ungleichungsaufgabe (verschobener Induktionsanfang)
+% TODO: Turnieraufgabe
+% TODO: Graphenaufgabe
+% TODO: Kleinigkeiten: Induktionsschritt von $n-1$ auf $n$, starke Induktion
 
 \end{document}
