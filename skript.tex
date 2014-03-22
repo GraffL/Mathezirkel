@@ -14,9 +14,13 @@
 \usepackage{enumerate}
 \usepackage{multicol}
 \usepackage{graphicx}
+\usepackage{array}
 
 \usepackage{hyperref}
 \usepackage{skak}
+
+\usepackage{tikz}
+\usepackage{wrapfig}
 
 \usepackage{geometry}
 \geometry{tmargin=2cm,bmargin=4cm,lmargin=2cm,rmargin=2cm}
@@ -40,6 +44,7 @@
 \newtheorem*{bsp}{Beispiel}
 \newtheorem*{exk}{Exkurs}
 \newtheorem*{acht}{Achtung}
+\newtheorem*{erinn}{Erinnerung}
 
 \newenvironment{exkurs}{\begin{shaded}\begin{exk}}{\end{exk}\end{shaded}}
 \newenvironment{satzliste}{\begin{enumerate}[(i)]}{\end{enumerate}}
@@ -138,7 +143,7 @@ Wir haben uns daher in der Aufgabe mit dem Schachbrett eines anderen Tricks bedi
 
 Invarianten sind ein nützliches Mittel für Aufgaben obiger Art, bei denen man zeigen soll, dass eine bestimmte Situation nicht erreicht werden kann. Ein Nachteil dieser Technik ist es, dass Invarianten oft nicht offensichtlich sind, sondern es einiger Kreativität und Erfahrung bedarf, um sie zu finden. Bei der Schachbrettaufgabe könnte man feststellen, dass am Ende jedes Versuches zwei schwarze Felder übrig bleiben. Generell bietet sich an, wenn man so eine Aufgabe angeht, erst einmal rumzuprobieren und dabei Zahlen, die einem wichtig erscheinen, nach jedem Schritt aufzuschreiben und danach nach Mustern zu suchen.
 
-Auch in der höheren Mathematik spielen Invarianten eine wichtige Rolle: Es gibt beispielsweise eine Teilgebiet, das sich mit Knoten befasst. Einen Knoten stellt man sich dabei als geschlossenes Seil im dreidimensionalen Raum vor. Wenn wir einen Knoten haben, so stellen sich Mathematiker die Frage, ob wir diesen Knoten nur durch Bewegen des Seiles (ohne Zerschneiden) diesen Knoten auflösen können, sodass er nur noch aus einer Seilschlinge besteht. Um zu beweisen, dass dies für manche Knoten nicht möglich ist, haben Mathematiker Invarianten gefunden, die etwas komplizierter als unsere bisher gesehene Invarianten sind und beim Umformen eines Knoten gleich bleiben.
+Auch in der höheren Mathematik spielen Invarianten eine wichtige Rolle: Es gibt beispielsweise eine Teilgebiet der Mathematik, das sich mit Knoten befasst. Einen Knoten stellt man sich dabei als Seil im dreidimensionalen Raum vor, wobei Anfang und Ende des Seils zusammengebunden sind. Wenn wir einen Knoten haben, so stellen sich Mathematiker die Frage, ob wir diesen Knoten nur durch Bewegen des Seiles (ohne Zerschneiden) diesen Knoten auflösen können, sodass er nur noch aus einer einfachen Seilschlinge besteht. Um zu beweisen, dass dies für manche Knoten nicht möglich ist, haben Mathematiker Invarianten gefunden, die etwas komplizierter als unsere bisher gesehene Invarianten sind und beim Umformen eines Knoten gleich bleiben.
 
 % TODO: Tetris-Aufgabe
 
@@ -185,7 +190,7 @@ Auch in der höheren Mathematik spielen Invarianten eine wichtige Rolle: Es gibt
     \item Es gibt unendlich viele Primzahlenzwillinge, das sind Primzahlen $p$ und $q$, mit $q = p + 2$.
   \end{itemize}
 
-  Mathematische Aussagen sind entweder richtig oder falsch. Beispielsweise ist in den obigen Beispielen die erste wahr, die zweite falsch und über die nächsten beiden können wir nichts sagen, da sie Zahlen $n$ und $m$ beinhalten, die erst noch genauer definiert werden müssen. Die vorletzte Aussage trägt den Namen "`Fermats letzter Satz"' und ist richtig, doch hat es über 300 Jahre gedauert, bis sie bewiesen werden konnte. Von der letzten Aussage wird vermutet, dass sie stimmt, es existiert jedoch kein Beweis.
+  Mathematische Aussagen können richtig oder falsch sein. Beispielsweise ist in den obigen Beispielen die erste wahr, die zweite falsch und über die nächsten beiden können wir nichts sagen, da sie Zahlen $n$ und $m$ beinhalten, die erst noch genauer definiert werden müssen. Die vorletzte Aussage trägt den Namen "`Fermats letzter Satz"' und ist richtig, doch hat es über 300 Jahre gedauert, bis sie bewiesen werden konnte. Von der letzten Aussage wird vermutet, dass sie stimmt, es existiert jedoch kein Beweis.
 \end{exkurs}
 
 \begin{frage}
@@ -420,7 +425,7 @@ Nun ist aber das Nachrechnen der Formel für konkrete natürliche Zahlen kein Be
     also alle Brüche $\frac{1}{2^k}$, wobei $k$ nacheinander die Werte $1$ bis $n$ annimmt. Für solche Summen verwendet man folgende abkürzende Schreibweise:
     \[ \sum_{k=1}^n \frac{1}{2^k} = \frac{1}{2^1} + \frac{1}{2^2} + \frac{1}{2^3} + ... + \frac{1}{2^{n-1}} + \frac{1}{2^n} = 1 - 2^n. \]
 
-    Der griechische Buchstabe $\Sigma$ heißt Sigma, die Zeilen $k=1$ darunter und $n$ darüber bedeuten, dass $k=1$, dann $k=2$, usw. bis $k=n$ gilt. Die Variable $k$ wird auch Zählvariable genannt. Die Werte des Ausdrucks $\frac{1}{2^k}$ rechts neben $\Sigma$ werden für all diese Werte von $k$ aufaddiert.
+    Der griechische Buchstabe $\Sigma$ heißt Sigma, die Zeilen $k=1$ darunter und $n$ darüber bedeuten, dass zuerst $k=1$, dann $k=2$, usw. bis $k=n$ gilt. Die Variable $k$ wird auch Zählvariable genannt. Die Werte des Ausdrucks $\frac{1}{2^k}$ rechts neben $\Sigma$ werden für all diese Werte von $k$ aufaddiert.
 
     Mit dieser Notation wird die Formel einfacher und damit überschaubarer. Außerdem spart man sich viele Auslassungspunkte.
 
@@ -451,7 +456,7 @@ Wir können damit die obige Aufgabe folgendermaßen umschreiben:
 
   \emph{Induktionsschritt:} Wir nehmen an, dass die Formel für eine bestimmte natürliche Zahl $n \in \N$ gilt und zeigen, dass die Formel dann auch für die nächstgrößere natürliche Zahl, also $n{+}1$, gilt. Dazu rechnen wir:
   \[ \sum_{k=1}^{n+1} \frac{1}{2^k} = \left( \sum_{k=1}^{n} \frac{1}{2^k} \right) + \frac{1}{2^{n+1}} = \left( 1 - \frac{1}{2^n} \right) + \frac{1}{2^{n+1}} = 1 - \frac{2}{2^{n+1}} + \frac{1}{2^{n+1}} = 1 - \frac{1}{2^{n+1}} \]
-  Bei der ersten Gleichheit steht dabei auf beiden Seiten genau dasselbe, nur jeweils mit etwas anderer Notation. Links wurde die Summennotation für das Addieren von $n+1$ Zahlen verwendet, rechts nur für $n$ Zahlen. Dafür wurde rechts der letzte Summand extra hinzuaddiert. Die zweite Gleichheit folgt aus der Annahme (s.\,o.), dass die Formel für die Zahl $n$ stimmt. Wir konnten also die Formel direkt für den eingeklammerten Ausdruck anwenden. Die restlichen Gleichheiten sind Routine-Rechnungen.
+  Bei der ersten Gleichheit steht dabei auf beiden Seiten genau dasselbe, nur jeweils mit etwas anderer Notation. Links wurde die Summennotation für das Addieren von $n+1$ Zahlen verwendet, rechts nur für $n$ Zahlen. Dafür wurde rechts der letzte Summand extra hinzuaddiert. Die zweite Gleichheit folgt aus der Annahme (s.\,o.), dass die Formel aus der Aufgabe für die Zahl $n$ stimmt. Wir konnten also die Formel direkt für den eingeklammerten Ausdruck anwenden. Die restlichen Gleichheiten sind Routine-Rechnungen.
 \end{proof}
 
 Warum nun ist dies ein korrekter Beweis für die Aufgabe? Nun, wir können dem Beweis direkt entnehmen, dass die Formel für die kleinste natürliche Zahl, also $n=1$ gilt. Das haben wir im Teil "`Induktionsanfang"' direkt nachgerechnet. Dann gilt aber auch die Formel für $n=2$, denn: Die Formel gilt für $n=1$ und das Argument im Teil "`Induktionsschritt"' sagt uns, dass deswegen auch die Formel für $1+1=2$ gilt. Dann gilt aber auch die Formel für $n=3$, denn: Die Formel gilt für $n=2$ und das Argument im Teil "`Induktionsschritt"' sagt uns, dass deswegen auch die Formel für $2+1=3$ gilt. Dann gilt aber auch die Formel für $n=4$, denn: Die Formel gilt für $n=3$ und das Argument im Teil "`Induktionsschritt"' sagt uns, dass deswegen auch die Formel für $3+1=4$ gilt. Und so weiter und so fort. Da wir so jede natürliche Zahl erreichen können, gilt die Formel für alle natürliche Zahlen.
@@ -459,9 +464,11 @@ Warum nun ist dies ein korrekter Beweis für die Aufgabe? Nun, wir können dem B
 Wir wollen nochmal allgemein zusammenfassen, wie ein Beweis durch vollständige Induktion aufgebaut ist. Wenn wir eine mathematische Aussage für alle natürlichen Zahlen $n \in \N$ beweisen wollen, dann reicht es aus, zu zeigen:
 
 \begin{itemize}
-  \item Die Aussage gilt für die kleinste natürliche Zahl $n$, also $n=1$ (Induktionsanfang)
-  \item Wenn die Aussage für eine natürliche Zahl $n$ gilt, dann gilt sie auch für die nächstgrößere natürliche Zahl $n+1$ (Induktionsschritt).
+  \item Die Aussage gilt für die kleinste natürliche Zahl $n$, also $n=1$ (\emph{Induktionsanfang})
+  \item Wenn die Aussage für eine natürliche Zahl $n$ gilt, dann gilt sie auch für die nächstgrößere natürliche Zahl $n+1$ (\emph{Induktionsschritt}).
 \end{itemize}
+
+Im Induktionsschritt dürfen wir also voraussetzen, dass die Aussage, die wir zeigen wollen, für die Zahl $n$ gilt. Diese Voraussetzung nennt man auch \emph{Induktionsannahme} oder \emph{Induktionshypothese}. Unsere Aufgabe ist es, zu zeigen, dass die Aussage dann auch für $n+1$ gilt.
 
 \begin{exkurs}
   Vollständige Induktion wird oft schlicht auch nur Induktion genannt. Das Adjektiv "`vollständig"' dient zur Abgrenzung der mathematischen Induktion von der philosophischen Induktion, einem Prinzip des Schlussfolgerns, dass die Ableitung von abstrakten Gesetzmäßigkeiten von konkreten Beobachtungen beschreibt.
@@ -474,11 +481,163 @@ Am besten versteht man Induktion und wann man sie wirkungsvoll einsetzt, indem m
   \[ \sum\limits_{k=1}^n k = \frac{n \cdot (n+1)}{2}. \]
 \end{aufg}
 
-% Begriff einführen: Induktionshypothese/-annahme
-% TODO: Gauss-Summe
-% TODO: Ungleichungsaufgabe (verschobener Induktionsanfang)
-% TODO: Turnieraufgabe
+Zu dieser Aufgabe gibt es eine Geschichte, die in vielen Mathematik-Büchern zu finden ist: Der später berühmte Mathematiker Carl Friedrich Gauß bekam als Schüler von seinem Lehrer die Aufgabe, alle Zahlen von $1$ bis $100$ zu addieren. Der Lehrer hatte damit gerechnet, dass seine Klasse mit dieser Aufgabe einige Zeit beschäftigt sein würde. Umso verblüffter war er, als der kleine Gauß schon nach kurzer Zeit die Lösung hatte: $\sum_{i=1}^{100} i = 5050$. Wie hatte Gauß diese Aufgabe so schnell gelöst? Seine Idee war, die Zahlen von $1$ bis $101$ in folgende Paare aufzuteilen:
+
+\[
+  \begin{matrix}
+    1 & 2 & 3 & \cdots & 49 & 50 \\
+    + & + & + & \cdots & + & + \\
+    100 & 99 & 98 & \cdots & 52 & 51 \\
+    = & = & = & \cdots & = & = \\
+    101 & 101 & 101 & \cdots & 101 & 101
+  \end{matrix}
+\]
+
+Die Summe jedes Paares ist dabei $101$. Wir man leicht sieht, gibt es genau $50$ solcher Paare. Also ist die Summe aller Zahlen von $1$ bis $100$ gleich $50 \cdot 101 = 5050$.
+
+Wir können auch in die Formel aus der Aufgabe $n = 100$ setzen und kommen so auf diesselbe Lösung. Der Term $\frac{n \cdot (n+1)}{2}$ lässt sich (für gerade Zahlen $n$) folgendermaßen interpretieren: Es gibt $\frac{n}{2}$ Paare von Zahlen, deren Summe jeweils $n+1$ ist.
+
+Die Begründung der Formel mittels Zahlenpaare wir oben funktioniert für gerade Zahlen. Man kann sich auch überlegen, dass die Formel auch für ungerade Zahlen gilt. Diese Überlegungen bilden zusammen schon einen Beweis der Formel. Einen alternativen Beweis kann man per Induktion führen:
+
+\begin{proof}
+  \emph{Induktionsanfang:} Die Formel stimmt für $n=1$, denn
+  \[ \sum\limits_{k=1}^n k = \sum\limits_{k=1}^1 = 1 = \frac{1 \cdot 2}{2} = \frac{n \cdot (n+1)}{2}. \]
+  \emph{Induktionsschritt:} Angenommen, die Formel gilt für die natürliche Zahl $n$, also $\sum_{k=1}^n k = \frac{n \cdot (n+1)}{2}$. Wir müssen zeigen, dass die Formel dann auch für $n+1$ stimmt, also dass gilt:
+  \[ \sum\limits_{k=1}^{n+1} k = \frac{(n+1) \cdot ((n+1)+1)}{2} \quad \left(= \frac{(n+1) \cdot (n+2)}{2} \right). \]
+  Dies können wir mithilfe der Induktionshypothese leicht nachrechnen:
+  \begin{align*}
+    \sum\limits_{k=1}^{n+1} k &= \sum\limits_{k=1}^{n} k + (n+1) \overset{\text{IH}}{=} \frac{n \cdot (n+1)}{2} + (n+1) = \frac{n \cdot (n+1)}{2} + \frac{2 \cdot (n+1)}{2} =\\
+    &= \frac{n \cdot (n+1) + 2 \cdot (n+1)}{2} = \frac{(n+2) \cdot (n+1)}{2} = \frac{(n+1) \cdot (n+2)}{2}.
+  \end{align*}
+  Bei der ersten Gleichheit steht auf beiden Seiten wieder genau dasselbe, nur mit anderer Notation. Bei der mit IH beschrifteten Gleichheit habe wir die Induktionshypothese (abgekürzt IH) gebraucht. Hinter der vorletzten Gleichheit steckt das Distributiv-, hinter der letzten Gleichheit das Kommutativgesetz.
+\end{proof}
+
+Bislang haben wir mit Induktion nur Aufgaben gelöst, in denen man eine Gleichheit zeigen sollte. Man Induktion aber auch für Ungleichungen anwenden:
+
+\begin{aufg}
+  Zeige: Für alle natürlichen Zahlen $n \geq 4$ gilt:
+  \[ n! \geq 2^n \geq n^2. \]
+\end{aufg}
+
+\begin{shaded}
+  \begin{erinn}
+    Der Ausdruck $n!$ (für eine natürliche Zahl $n$) wird "`$n$ Fakultät"' ausgesprochen und ist definiert als das Produkt aller Zahlen von $1$ bis $n$, also
+    \[ n! \coloneqq 1 \cdot 2 \cdot ... \cdot n. \]
+    Man setzt üblicherweise $0! \coloneqq 0$. Es gilt dann offensichtlich für alle $n \geq 1$: $n! = n \cdot (n-1)!$
+
+    Die Fakultät wird häufig für die Beantwortung von Aufgaben wie "`Wie viele Möglichkeiten gibt es, $n$ Personen auf $n$ Sitzplätze zu verteilen"' gebraucht (Antwort: $n!$).
+
+    Außerdem: Der Doppelpunkt vor dem Gleichheitszeichen weißt darauf hin, dass die Gleichheit nicht aufgrund einer Rechnung, sondern nach Definition gilt. Wir legen also den Ausdruck links des $\coloneqq$-Zeichens durch den Ausdruck rechts davon fest.
+  \end{erinn}
+\end{shaded}
+
+Abgesehen davon, dass wir es in dieser Aufgabe nicht mit einer Gleichheit zu tun haben, in der auf der linken Seite eine Summe vorkommt, hat diese Aufgabe noch einen anderen Unterschied zu den bisher gerechneten Aufgaben: Bis jetzt sollten wir zeigen, dass eine Formel für alle natürlichen Zahlen gilt. In dieser Aufgabe sollen wir die Ungleichung nicht für alle natürlichen Zahlen, sondern nur für alle natürlichen Zahlen, die größer oder gleich $4$ sind, zeigen. Für die Zahlen $1$, $2$ und $3$ ist die Behauptung nämlich schlicht falsch:
+
+\begin{center}
+  \begin{tabular}{| >{$}l<{$} | >{$}r<{$} | >{$}r<{$} | >{$}r<{$} |}
+    \hline
+    n & n! & 2^n & n^2\\
+    \hline
+    0 & 1 & 1 & 0\\
+    1 & 1 & 2 & 1\\
+    2 & 2 & 4 & 4\\
+    3 & 6 & 8 & 9\\
+    4 & 24 & 16 & 16\\
+    5 & 120 & 32 & 25\\
+    \hline
+  \end{tabular}
+\end{center}
+
+In der Aufgaben müssen wir genau genommen zwei Ungleichungen zeigen: Die erste Ungleichung $n! \geq 2^n$ und die zweite Ungleichung $2^n \geq n^2$ für je $n \geq 4$.
+Wir können beide Ungleichungen jeweils einzeln wie die vorherigen Aufgaben mit Induktion beweisen, mit dem Unterschied, dass wir die Induktion bei der Zahl $4$ starten:
+
+\begin{proof}
+  \begin{itemize}
+    \item Erste Ungleichung $(n! \geq 2^n)$:
+
+    \emph{Induktionsanfang} ($n=4$): Durch Rechnung:
+    \[ n! = 4! = 4 \cdot 3 \cdot 2 \cdot 1 = 24 \geq 16 = 2^4 = 2^n. \]
+
+    \emph{Induktionsschritt} ($n \to n{+}1$, wobei $n \geq 4$): Wir rechnen:
+    \[ (n+1)! = (n+1) \cdot n! \overset{\text{IH}}{\geq} (n+1) \cdot 2^n \geq 2 \cdot 2^n = 2^{n+1}. \]
+    In dieser Rechnung haben wir folgende Tatsache zweimal gebraucht: Für drei positive natürliche (oder auch rationale oder reelle Zahlen) $a, b, c$ gilt: Wenn $a \geq b$ ist, dann ist auch $a \cdot c \geq b \cdot c$. Hinter dieser der ersten Ungleichung steckt die Induktionshypothese, dass $n! \geq 2^n$, zusammen mit dieser Tatsache ($a = n!$, $b = 2^n$, $c = n+1$). Die zweite Annahme folgt mit $n+1 \geq n \geq 4 \geq 2$ und der Tatsache angewendet auf $a = n{+}1$, $b = 2$ und $c = n{+}1$.
+
+    \item Um die zweite Ungleichung zu beweisen, brauchen wir noch eine weitere Ungleichung, die wir per Induktion beweisen, nämlich: Für alle $n \geq 3$ gilt $2^n \geq 2n + 1$ (Hilfsbehauptung).
+
+    \emph{Induktionsanfang} ($n=3$): Durch Rechnung:
+    \[ 2^n = 2^3 = 8 \geq 7 = 2 \cdot 3 + 1 = 2 \cdot n + 1. \]
+
+    \emph{Induktionsschritt} ($n \to n{+}1$, wobei $n \geq 3$):
+    \begin{align*}
+      2^{n+1} = 2 \cdot 2^n &\overset{\text{IH}}{\geq} 2 \cdot (2n + 1) = 4n + 2 \geq 2n + 2 + n = 2 \cdot (n+1) + n \geq\\
+      &\geq 2 \cdot (n+1) + 3 \geq 2 \cdot (n+1) + 1.
+    \end{align*}
+
+    \item Zweite Ungleichung $(2^n \geq n^2)$:
+
+    \emph{Induktionsanfang} ($n=4$): Durch Rechnung:
+    \[ 2^n = 2^4 = 16 = 4^2 = n^2. \]
+    Da also $2^n = n^2$, gilt auch $2^n \geq n^2$ ($=$ ist ein Spezialfall von $\geq$).
+
+    \emph{Induktionsschritt} ($n \to n{+}1$, wobei $n \geq 4$): Hier ist es einfacher, von hinten nach vorne zu rechnen, also $(n+1)^2 \leq 2^{n+1}$ zu zeigen:
+    \[ (n+1)^2 = n^2 + 2n + 1 \overset{\text{IH}}{\leq} 2^n + 2n + 1 \leq 2^n + 2^n = 2 \cdot 2^n = 2^{n+1}. \]
+    Die Gültigkeit des ersten $\leq$-Zeichens folgt aus unserer Induktionshypothese ($2^n \geq n^2$), die des zweiten $\leq$-Zeichens durch unsere Hilfsbehauptung, die wir gerade eben in Punkt zwei bewiesen haben.\qedhere
+  \end{itemize}
+\end{proof}
+
+Folgende Aufgabe stammt (leicht abgewandelt) aus der 51. Mathematik-Olympiade. Obwohl sie eine Aufgabe für die 11. bis 13. Klasse ist, lässt sie sich sehr einfach durch Induktion lösen:
+
+% 51. Mathematik-Olympiade, 2. Stufe (Regionalrunde), Klasse 11-13, Aufgabe 511324
+\begin{aufg}[Turnier]
+  In einem Fechtturnier mit $2^n$ Teilnehmern kämpft jeder Fechter genau einmal gegen jeden anderen. Kein Kampf endet unentschieden. Eine Reporterin möchte nacheinander Einzelinterviews mit $n+1$ Fechtern führen. Diese sollen so ausgewählt werden, dass jeder interviewte Fechter gegen alle Fechter, die vor ihm interviewt wurden, gesiegt hat.
+
+  Zeige, dass für alle natürlichen Zahlen $n$ die Reporterin eine entsprechende Auswahl von Fechtern für die Interviews treffen kann.
+\end{aufg}
+
+\begin{proof}
+  \emph{Induktionsanfang} ($n=1$): Dann gibt es $2^n = 2^1 = 2$ Fechter, die Reporterin will $n+1 = 1+1 = 2$ Fechter, also alle beide interviewen. Es findet genau ein Fechtkampf statt. Die Reporterin erreicht ihr Ziel, wenn sie zuerst den Verlierer, dann den Gewinner interviewt.
+
+  \emph{Induktionsschritt} ($n \to n{+}1$): Es kämpfen insgesamt $2^{n+1}$ Fechter gegeneinander, also jeder Fechter gegen die anderen $2^{n+1} - 1$ Fechter. Durchschnittlich gewinnt jeder Fechter die Hälfte seiner Duelle, also $\frac{2^{n+1} - 1}{2} = \frac{2^{n+1}}{2} - \frac{1}{2} = 2^n - \frac{1}{2}$ viele. Da dieser Durchschnitt keine ganze Zahl ist, muss es mindestens einen Fechter geben, der mindestens $2^n$ (die nächstgrößere ganze Zahl über $2^n - \frac{1}{2}$) Duelle gewonnen hat. Unter den $2^n$ Verlierern dieser Duelle kann die Reporterin nach Induktionsannahme eine gewünschte Reihenfolge von $n$ Interviewpartnern finden. Wenn sie danach den Sieger dieser Duelle, also den Fechter, der gegen die $2^n$ zuvor interviewten Fechter gewonnen hat, interviewt, hat sie ihr Ziel erreicht.
+\end{proof}
+
+\begin{wrapfigure}{r}{0.22\textwidth}
+  \begin{center}
+    \begin{tikzpicture}[shorten >=1pt,->]
+      \tikzstyle{vertex}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+
+      \foreach \name/\angle/\text in {P-1/234/1, P-2/162/2, 
+                                      P-3/90/3, P-4/18/4, P-5/-54/5}
+        \node[vertex,xshift=6cm,yshift=.5cm] (\name) at (\angle:1cm) {$\text$};
+
+      \foreach \from/\to in {1/2,2/3,3/4,4/5,1/5,1/3,2/4,3/5,1/4,5/2}
+        { \draw (P-\from) -- (P-\to); }
+    \end{tikzpicture}
+  \end{center}
+\end{wrapfigure}
+
+Auf der rechten Seiten siehst du einen gesättigten gerichteten Graphen mit 5 Knoten (graue Kreise). Die Pfeile zwischen den Knoten werden auch {\em Kanten} genannt. Wir sagen, dass wir einen Knoten $B$ von einem anderen Knoten $A$ direkt erreichen können, wenn eine Kanten von A nach B verläuft (also die Pfeilspitze zu B zeigt). Ein Knoten $B$ kann von einem anderen Knoten $A$ in zwei Schritten erreicht werden, wenn es einen Knoten $C$ gibt, sodass $C$ von $A$ direkt erreichbar ist und $B$ von $C$ direkt erreichbar ist.
+
+Im Beispiel ist der Knoten $3$ vom Knoten $1$ in zwei Schritten erreichbar, aber andersrum der Knoten $1$ nicht vom Knoten $3$ in zwei Schritten erreichbar. Außerdem ist der Knoten $2$ von jedem anderen Knoten in höchstens zwei Schritten erreichbar.
+
+\begin{aufg}
+  Zeige, dass es in jedem gesättigten gerichteten Graphen mit $n$ Knoten einen Knoten gibt, der von jedem anderen Knoten in höchstens zwei Schritten erreicht werden kann.
+\end{aufg}
+
+\begin{proof}
+  \emph{Induktionsanfang} ($n=1$): Wir haben also nur einen Knoten im Graph. Dieser kann offensichtlich von jedem anderen Knoten erreicht werden, denn es gibt ja gar keinen anderen Knoten.
+
+  \emph{Induktionsschluss} ($n \to n{+}1$):
+  Wir greifen uns aus einem gesättigten Graphen mit $n+1$ Knoten einen Knoten $K$ wahllos heraus. Die restlichen $n$ Knoten und deren Knoten untereinander bilden einen gerichteten Graphen mit $n$ Knoten. Nach Induktionsannahme gibt es unter ihnen einen Knoten, der von den restlichen $n-1$ Knoten in höchstens zwei Schritten erreicht werden kann. Wir nennen diesen Knoten $A$. Die Knoten, die direkt mit $A$ verbunden sind, nennen wir D-Knoten ("`D"' für direkt). Nun fügen wir den am Anfang herausgenommenen Knoten $K$ und all seine Kanten wieder hinzu. Es tritt nun einer der folgenden zwei Fälle ein:
+  \begin{itemize}
+    \item Alle D-Knoten und auch $A$ sind direkt mit $K$ verbunden. Dann ist $K$ ein Knoten, wie er in der Aufgabenstellung gesucht wird.
+    \item Entweder ist $K$ direkt mit $A$ verbunden, oder es gibt einen D-Knoten, zu dem $K$ direkt verbunden ist (also existiert eine Kante von $K$ zu einem D-Knoten). In beiden Fällen ist der Knoten $A$ von $K$ in höchstens zwei Schritten erreichbar. Da $A$ auch von jedem anderen Knoten in höchstens $2$ Schritten erreichbar ist, ist $A$ der gesuchte Knoten.
+  \end{itemize}
+\end{proof}
+
 % TODO: Graphenaufgabe
+% TODO: Tetromino-Aufgabe
 % TODO: Kleinigkeiten: Induktionsschritt von $n-1$ auf $n$, starke Induktion
+
+% TODO: Stunde vom 14.3.2014 (Wahl)
 
 \end{document}
