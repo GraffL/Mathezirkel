@@ -3,3 +3,5 @@
 *.out
 handynummer.tex
 infozettel*.pdf
+/diagrams
+/.diagrams_cache
