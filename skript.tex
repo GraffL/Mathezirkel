@@ -10,6 +10,8 @@
 \usepackage{mathabx}
 \usepackage{mathtools}
 
+\usepackage{paralist}
+
 \usepackage[outputdir=diagrams,backend=cairo]{diagrams-latex} % `cabal install diagrams diagrams-latex`
 
 \usepackage{color}
@@ -562,8 +564,60 @@ Inbesondere folgt: Die Zahl $a$ ist genau dann durch $11$ teilbar (also $a \equi
 
 \section{Nim-Spiele}
 
+Folgendes Spiel könnte dir bekannt vorkommen:
+
+Auf einem Haufen liegt eine Anzahl von Steinen. Zwei Spieler sind abwechselnd an der Reihe und dürfen in jedem Zug einen, zwei oder drei Steine vom Haufen nehmen. Verloren hat derjenige Spieler, für den keine Steine mehr übrig sind (also hat der Spieler gewonnen, der den letzten Stein vom Haufen nimmt).
+
+Betrachten wir folgende Spielsituation: Auf dem Haufen liegen noch genau vier Steine und dein Gegner ist an der Reihe. Er kann in diesem Zug nicht gewinnen, da er maximal drei Steine vom Haufen nehmen darfst. Nach seinem Zug allerdings werden nur noch ein, zwei oder drei Steine auf dem Haufen sein, je nachdem, ob er in diesem Zug drei, zwei oder einen Stein nimmt. Diese restlichen Steine kannst du in deinem nächsten Zug nehmen und hast gewonnen.
+
+Also solltest du versuchen, dafür zu sorgen, dass nach einem deiner Züge genau vier Steine auf dem Haufen liegen. Dann hast du automatisch gewonnen. Wie können wir dieses Ziel erreichen? Dafür betrachten wir eine weitere Spielsituation:
+
+Auf dem Steinhaufen liegen genau acht Steine. Dein Gegner ist an der Reihe. Nach seinem Zug liegen entweder fünf, sechs oder sieben Steine auf dem Haufen. Du kannst dann einen, zwei bzw. drei Steine nehmen, sodass nach deinem Zug noch genau vier Steine auf dem Haufen liegen. Damit hast du gewonnen.
+
+Wenn nun auf dem Haufen zwölf Steine liegen und dein Gegner an der Reihe ist, dann kannst du dafür sorgen, dass nach seinem und deinem Zug acht Steine auf dem Haufen sind.
+
+Allgemeiner hast du eine Strategie zu gewinnen, wenn dein Gegner an der Reihe ist und die Anzahl der Steine ein Vielfaches von vier ist, bzw. du an der Reihe bist und die Anzahl an Steinen kein Vielfaches von vier ist. Du musst dabei einfach, wenn du an der Reihe bist, so viele Steine nehmen, sodass die Anzahl auf dem Haufen ein Vielfaches von vier ist.
+
+\begin{aufg}
+  Spiele dieses Spiel gegen deine Freunde/Eltern/Geschwister und schaue, wie lang sie brauchen, bis sie die Strategie verstanden haben.
+\end{aufg}
+
+Wir wollen nun ein ähnliches Spiel analysieren:
+
+Auf dem Tisch liegen mehrere Steinhaufen. Wir zuvor sind die beiden Spieler abwechselnd an der Reihe. Sie suchen sich in jedem Zug einen Steinhaufen aus. Dann dürfen sie von diesem (und nur von diesem Haufen) eine beliebige Anzahl von Steinen nehmen. Dabei müssen sie mindestens einen und können maximal alle Steine dieses Haufens nehmen. Wie im vorherigen Spiel hat derjenige Spieler verloren, der keinen Zug mehr machen kann.
+
+Für dieses Spiel gibt es ebenfalls eine Gewinnstrategie. Diese benötigt sogenannte Binärzahlen:
+
+\begin{exkurs}
+  Wenn wir Zahlen schreiben, verwenden wir normalerweise die üblichen zehn Ziffern. Der Trick, mit dem man auf einheitliche und elegante Weise mit diesen zehn Ziffern auch Zahlen schreiben kann, die viel größer sind als $neun$, stammt aus Indien: Eine Ziffer repräsentiert eine unterschiedliche Anzahl, je nachdem, wo sie in der Zahl steht. Die Ziffer ganz rechts repräsentiert Einer, die Ziffer weiter links davon Zehner, die nächste Ziffer Hunderter und so weiter. Allgemeiner gilt für eine $n$-stellige Zahl $a$ mit Ziffern $a_0, ..., a_n \in \{ 0, 1, 2, ..., 9 \}$, wobei $a_0$ die Ziffer ganz rechts sei:
+  \[ a = a_n \cdot 10^n + a_{n-1} \cdot 10^{n-1} + ... + a_1 \cdot 10 + a_0. \]
+  Aber warum gerade zehn Ziffern? Nun, das hat keinen besonderen Grund abgesehen davon, das dies eine Zahl ist, die gewissermaßen auf der Hand liegt: Der Mensch hat nunmal zehn Finger und zehn Zehen. Wir können genauso gut ein Zahlensystem entwickeln, das mit nur zwei Ziffern auskommt, sagen wir den Ziffern $0$ und $1$. Die Zahlen null bis zwölf in diesem System sind:
+  \[ 0, 1, 10, 11, 100, 101, 110, 111, 1000, 1001, 1010, 1011, 1100 \]
+  Für die Zahlen null und eins konnten wir direkt die Ziffern verwenden. Für die Zahl zwei benötigen wir bereits die "`Zweierstelle"' und ab der Zahl vier die "`Viererstelle"'. Dieses System, das nur mit $0$ und $1$ auskommt, wird \emph{Binärsystem} genannt. Im Gegensatz dazu heißt das übliche System mit $10$ Ziffern \emph{Dezimalsystem}. In diesem System gilt für eine $n$-stellige Zahl $a$ mit Ziffern $a_0, ..., a_n \in \{ 0, 1 \}$:
+  \[ a = a_n \cdot 2^n + a_{n-1} \cdot 2^{n-1} ... + a_1 \cdot 2 + a_0. \]
+\end{exkurs}
+
+\begin{aufg}
+  Rechne um!
+  \begin{itemize}
+    \item Vom Dezimal- ins Binärsystem:
+      \begin{inparaenum}[\itshape a\upshape)]
+        \item $13$
+        \item $-5$
+        \item $21$
+        \item $64$
+      \end{inparaenum}
+    \item Vom Binär- ins Dezimalsystem:
+      \begin{inparaenum}[\itshape a\upshape)]
+        \item $11111$
+        \item $1101$
+        \item $-11010$
+        \item $10101010$
+      \end{inparaenum}
+  \end{itemize}
+\end{aufg}
+
 % TODO
-Wird nachgetragen!
 
 \datum{7. und 21. Februar 2014}
 
@@ -832,39 +886,67 @@ Ein Tromino ist ein Stein, der zwei Schachbrettfelder breit und zwei Schachbrett
 \begin{proof}
   \emph{Induktionsanfang} ($n=1$): Dann ist das Brett je $2^n = 2^1 = 2$ Felder lang und breit, wobei eine Ecke herausgeschnitten ist. Kurz: Das Feld hat die Form eines Trominos.
 
-  \emph{Induktionsschritt} ($n{-}1 \to n$, wobei $n \geq 2$): Wir beschriften ein $2^n \times 2^n$-Feld, aus dem eine Ecke entfernt wurde, mit $F^n$. Nach Induktionsvoraussetzung ist also das Feld $F^n$ mit Trominos belegbar und wir müssen zeigen, dass auch das Feld $F^{n+1}$ mit Trominos belegt werden kann.
-  % TODO
-  \begin{tikzpicture}
-    \draw (0,0) -- ++ (2,0) -- ++ (0,2) -- ++ (-2,0) -- cycle;
-    \draw (0,0) -- ++ (2,0) -- ++ (0,2) -- ++ (-2,0) -- cycle;
-  \end{tikzpicture}
+  \emph{Induktionsschritt} ($n{-}1 \to n$, wobei $n \geq 2$): Wir beschriften ein $(2^k \times 2^k)$-Brett, aus dem eine Ecke entfernt wurde, mit $F^k$. Nach Induktionsvoraussetzung ist also das Brett $F^{n-1}$ mit Trominos belegbar und wir müssen zeigen, dass auch das Brett $F^n$ mit Trominos belegt werden kann. Dazu teilen wir das Brett $F^n$ in vier quadratische Stücke mit Seitenlänge $2^{n-1}$. Dabei entsteht ein $F^{n-1}$-Brett und drei vollständige $(n{-}1 \times n{-}1)$-Bretter (mit allen Ecken). Wir legen ein Tetromino in die Mitte des $F^n$-Bretts, sodass es je eine Ecke der drei vollständigen $(n{-}1 \times n{-}1)$-Bretter bedeckt. Damit bleiben uns noch vier $F^{n-1}$-Bretter übrig, die wir nach Induktionsannahme belegen können.
 \end{proof}
 
-% \begin{tikzpicture}
-% \end{tikzpicture}
+\begin{center}
+  \scalebox{0.80}{
+    \begin{tikzpicture}
+      \draw (0,0) -- ++ (4,0) -- ++ (0,3.5) -- ++ (-0.5,0) -- ++ (0,0.5) -- ++ (-3.5,0) -- cycle;
+      \node at (2,2) {$F^{n}$};
 
-\begin{diagram}[width=300,height=200]
-  {-# LANGUAGE FlexibleContexts #-}
-  trominoesColours :: [Colour Double] -> Diagram B R2
-  trominoesColours [] = mempty
-  trominoesColours (c:cs) = tromino # centerXY `atop` ((rotateBy (-1/4) recTrominoes ||| recTrominoes) === (recTrominoes ||| rotateBy (1/4) recTrominoes)) # centerXY
-    where recTrominoes = trominoesColours cs
-          tromino = fromOffsets [ unitX + unitX
-                                , unitY
-                                , unit_X
-                                , unitY
-                                , unit_X
-                                , unit_Y + unit_Y
-                                ] # glueLine # strokeLoop # fc c
+      \draw[thick,->] (4.5,2) -- ++ (1,0);
 
-  trominoes :: Int -> Diagram B R2
-  trominoes 0 = mempty
-  trominoes n = trominoesColours (map (\i -> blend (fromIntegral i * (1 / fromIntegral n)) yellow red) [1..n])
+      \draw (6,0) -- ++ (4,0) -- ++ (0,3.5) -- ++ (-0.5,0) -- ++ (0,0.5) -- ++ (-3.5,0) -- cycle;
+      \draw (6,0) ++ (2,0) -- ++ (0,4);
+      \draw (6,0) ++ (0,2) -- ++ (4,0);
+      \node at (9,3) {$F^{n-1}$};
+      %\draw (0,0) -- ++ (4,0) -- ++ (0,4) -- ++ (-4,0) -- cycle;
 
-  dia = pad 1.1 (trominoes 4)
-\end{diagram}
+      \draw[thick,->] (10.5,2) -- ++ (1,0);
 
-% TODO: Tromino-Aufgabe
+      \draw (12,0) -- ++ (4,0) -- ++ (0,3.5) -- ++ (-0.5,0) -- ++ (0,0.5) -- ++ (-3.5,0) -- cycle;
+      \draw (12,0) ++ (2,0) -- ++ (0,1.5) -- ++ (0.5,0) -- ++ (0,0.5) -- ++ (-0.5,0) -- ++ (0,0.5) -- ++ (-0.5,0) -- ++ (0,-1) -- ++ (0.5,0);
+      \draw (12,0) ++ (4,2) -- ++ (-1.5,0);
+      \draw (12,0) ++ (0,2) -- ++ (1.5,0);
+      \draw (12,0) ++ (2,4) -- ++ (0,-1.5);
+      \node at (15,3) {$F^{n-1}$};
+      \node at (13,3) {$F^{n-1}$};
+      \node at (15,1) {$F^{n-1}$};
+      \node at (13,1) {$F^{n-1}$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+Mit diesem Beweis als Anleitung können wir leicht $F^n$-Bretter für beliebiges $n$ selbst mit Trominos belegen. Oder wir können ein Computerprogramm schreiben, das uns die Belegung als Graphik ausgibt (hier $n = 1, ..., 4$):
+
+\begin{center}
+  \begin{diagram}[height=172]
+    {-# LANGUAGE FlexibleContexts #-}
+
+    trominoesColours :: [Colour Double] -> Diagram B R2
+    trominoesColours [] = mempty
+    trominoesColours (c:cs) = tromino # centerXY `atop` ((rotateBy (-1/4) recTrominoes ||| recTrominoes) === (recTrominoes ||| rotateBy (1/4) recTrominoes)) # centerXY
+      where recTrominoes = trominoesColours cs
+            tromino = fromOffsets [ unitX + unitX
+                                  , unitY
+                                  , unit_X
+                                  , unitY
+                                  , unit_X
+                                  , unit_Y + unit_Y
+                                  ] # glueLine # strokeLoop # fc c
+
+    trominoes :: Int -> Colour Double -> Colour Double -> Diagram B R2
+    trominoes 0 _ _ = mempty
+    trominoes n c1 c2 = extrudeLeft 4 (trominoesColours (map (\i -> blend (fromIntegral i * (1 / fromIntegral n)) c1 c2) [1..n]))
+
+    dia = trominoes 1 black black ||| trominoes 2 white red ||| trominoes 3 green red ||| trominoes 4 yellow red ||| trominoes 5 cyan red
+  \end{diagram}
+\end{center}
+
+\begin{exkurs}
+  Das Computerprogramm, das obiges Bild erzeugt hat, ist mit Rekursion geschrieben. Rekursion bedeutet, dass eine Funktion im Programm sich selbst aufruft, um ein Teilproblem zu lösen. In diesem Programm verwendet die Zeichenfunktion sich selbst um die vier $F^{n-1}$-Teilbretter zu füllen. Es ist dabei kein Zufall, dass wir zum Visualisieren eines induktiven Beweises Rekursion verwendet haben, denn: Rekursion ist sehr eng verwandt mit Induktion.
+\end{exkurs}
 
 \datum{14. März 2014}
 
