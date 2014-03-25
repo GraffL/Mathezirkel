@@ -165,6 +165,7 @@ Wären nicht zwei diagonal gegenüberliegende, sondern zwei Ecken, die an einer 
   Auf einer Insel leben 345 gelbe, 346 grüne und 347 blaue Chamäleons. Wann immer sich zwei Chamäleons gleicher Farbe begegnen, passiert nichts. Wenn sich aber zwei Chamäleons unterschiedlicher Farbe begegnen, so nehmen beide die dritte Farbe an. Beispielsweise hätten wir nach einem Treffen eines gelben und einer grünen Chamäleons nur noch 344 gelbe, 345 grüne, aber dafür 349 blaue Chamäleons. Frage: Ist es möglich, dass zu einem Zeitpunkt genau gleich viele Chamäleons jeder Farbe auf der Insel leben?
 \end{aufg}
 
+% Bildquelle: http://commons.wikimedia.org/wiki/File:Cham%C3%A4leon1.jpg
 \begin{center}
   \raisebox{-0.4\height}{\includegraphics{chamaeleongelb}} + \raisebox{-0.4\height}{\includegraphics{chamaeleongruen}} $\longrightarrow$ $2 \cdot$ \raisebox{-0.4\height}{\includegraphics{chamaeleonblau}}
   \qquad
@@ -1067,6 +1068,107 @@ Mit diesem Beweis als Anleitung können wir leicht $F^n$-Bretter für beliebiges
 
 \datum{14. März 2014}
 
-% TODO: Stunde vom 14.3.2014 (Wahl)
+\section{Gerechte Wahlen}
+
+Wir führen eine Wahl zwischen drei Kandidaten $A$, $B$ und $C$ durch. Dazu könnten wir jedem Wähler einen Zettel austeilen, auf dem er seinen favorisierten Kandidaten ankreuzt. Der Kandidat mit den meisten Stimmen soll gewinnen. Dieses Wahlverfahren hat aber ein Problem: Angenommen, zwei der Kandidaten, sagen wir $A$ und $B$ haben inhaltlich ähnliche politische Positionen. Dann kann es sein, dass diese beiden Kandidaten sich gegenseitig Stimmen wegnehmen und dadurch Kandidat $C$ am meisten Stimmen von allen Kandidaten erhält, obwohl seine Politik von weniger Wählern unterstützt wird als die Politik der Kandidaten $A$ und $B$ zusammen. Das wäre ein schlechtes Wahlergebnis. Wir wollen deshalb den Wählern die Möglichkeit geben, nicht nur ihren favorisierten Kandidaten anzukreuzen, sondern die Kandidaten nach Präferenz zu sortieren. Wenn jemand z.\,B. $A > C > B$ auf seinen Wahlzettel schreibt, dann bedeutet das, dass der Kandidat $A$ seine erste Wahl, Kandidat $C$ seine zweite Wahl und Kandidat $B$ seine dritte Wahl ist. Wähler von $A$ würden in obiger Situation vermutlich $A > B > C$ auf ihren Zettel schreiben und Wähler von $B$ schreiben wahrscheinlich $B > A > C$ auf ihre Zettel. Dadurch ist zu hoffen, dass einer der Kandidaten $A$ und $B$ auch im Gesamtergebnis vorne liegen wird.
+
+Bei unserer Abstimmung erhalten wir folgendes Wahlergebnis:
+
+% Beispiel aus "Die Mehrheit entscheidet. Wirklich?" von Wolfgang Leinlinger in Pi & Co.
+% auch verwendet auf: http://de.wikipedia.org/wiki/Sozialwahltheorie
+\begin{center}
+  \begin{tabular}{ >{$}r<{$} | l }
+    \text{Reihenfolge} & Stimmen\\
+    \hline
+    A > B > C & 6\\
+    A > C > B & 0\\
+    B > A > C & 5\\
+    B > C > A & 2\\
+    C > A > B & 5\\
+    C > B > A & 3\\
+  \end{tabular}
+\end{center}
+
+Wer hat diese Wahl gewonnen? Dafür können wir uns mehrere Auswertungsverfahren überlegen:
+
+\begin{enumerate}
+  \item Der Kandidat gewinnt, der am häufigsten als erste Wahl gelistet wurde.
+  \item Wir können Stichwahlen zwischen je zwei Kandidaten simulieren, da wir ja für je zwei Kandidaten und für jeden Wähler wissen, welchen Kandidaten er bei einer Stichwahl vorziehen würde. Gibt es einen Kandidaten, der gegen alle anderen Kandidaten gewinnt? Wenn ja, dann soll er der Wahlsieger sein.
+  \item Wir vergeben Punkte: Für jeden ersten Platz gibt es drei Punkte, für jeden zweiten Platz zwei Punkte und für jeden dritten Platz einen Punkt. Die Wahl gewinnt, wer die meisten Punkte hat.
+\end{enumerate}
+
+In diesem Fall sind die Gesamtergebnisse:
+
+\begin{enumerate}
+  \item Kandidat $C$ hat $8$ Erststimmen, Kandidat $B$ hat $7$ Erststimmen und Kandidat $A$ hat $6$ Erststimmen. Also gewinnt Kandidat $C$ und die Gesamtreihenfolge ist $C > B > A$.
+  \item Bei einer Stichwahl zwischen $A$ und $B$ stimmen $11$ Wähler für $A$ und $10$ Wähler für $B$. Wenn $A$ und $C$ in einer Stichwahl gegeneinander antreten, so erhält $a$ wieder $11$ stimmen und $C$ erhält $10$ stimmen. In einer Stichwahl zwischen $B$ und $C$ bekommt $b$ $13$ und $c$ $8$ Stimmen. Somit gewinnt Kandidat $A$ und die Gesamtreihenfolge ist $A > B > C$. 
+  \item Der Punktestand ist: Kandidat $A$ hat $43$ Punkte, Kandidat $B$ $44$ Punkte und Kandidat $C$ $39$ Punkte. Es gewinnt $B$ und die Gesamtreihenfolge ist $B > A > C$.
+\end{enumerate}
+
+Es fällt auf, dass bei den drei Auswertungsverfahren jeweils ein anderer Kandidat den Gesamtsieg davonträgt. Das Verfahren 1 sollten wir ausschließen, da es genau der Mehrheitswahl entspricht, dessen Nachteil wir ja beheben wollten. Die Verfahren $2$ und $3$ jedoch, erscheinen beide sinnvoll. Es gibt also keinen klaren Sieger bei dieser Wahl.
+
+\begin{frage}
+  Gibt es ein Auswertungsverfahren für solche Wahlen, dass aus den einzelnen Wählerstimmen eine Gesamtreihenfolge ermittelt, von der man behaupten kann, dass sie gerecht ist?
+\end{frage}
+
+Von solch einem Verfahren würden wir uns ein paar Eigenschaften erwarten:
+
+\begin{enumerate}[(I)]
+  \item Wenn jeder Wähler den Kandidaten $X$ dem Kandidaten $Y$ vorzieht, dann sollte auch in der Gesamtreihenfolge $X$ vor $Y$ stehen.
+  \item Ob in der Gesamtreihenfolge Kandidat $X$ vor Kandidat $Y$ steht, sollte nur von der Reihenfolge dieser Kandidaten untereinander in den einzelnen Stimmen ab. Wo ein dritter Kandidat $Z$ steht, sollte keine Auswirkung darauf haben. Anders formuliert: Wenn bei zwei Wahlen alle Wähler bei beiden Wahlen die Kandidaten $X$ und $Y$ untereinander gleich ordnen (d.\.h. jeder Wähler wählt in beiden Wahlen entweder $X > Y$ oder in beiden Wahlen $Y > X$), dann ist auch die Reihenfolge von $X$ und $Y$ untereinander in beiden Gesamtergebnissen gleich.
+  \item Es soll keinen "`Diktator"' geben, d.\,h. einen Wähler, der durch seine Stimme alleine das Wahlergebnis festlegt.
+\end{enumerate}
+
+\begin{antw}
+  Die vielleicht etwas überraschende Antwort ist: Nein! Jedes Verfahren, das die Eigenschaften (I) und (II) besitzt, verstößt gegen Eigenschaft (III). Es gibt also kein Verfahren, dass alle drei Eigenschaften in sich vereinigt. Dies hat der Nobelpreisträger und Ökonom Kenneth Arrow zuerst bewiesen. Wir führen den Beweis hier in mehreren Schritten:
+
+  Angenommen, es gibt $m \geq 2$ Wähler. Wir stellen uns vor, dass die Wähler in einer festen Reihenfolge aufgestellt und durchnummeriert sind. Zuerst nehmen wir an, dass Kandidat $B$ auf jedem Stimmzettel den letzten Platz belegt. Dann ist auf jedem Stimmzettel Kandidat $B$ schlechter als jeder andere Kandidat und muss daher auch in der Gesamtreihenfolge den letzten Platz belegen (wegen Forderung I). Wir betrachten nacheinander die Szenarien $1$ bis $m$, wobei in dem Szenario $k$ die Wahl folgendermaßen ausgeht:
+
+  \begin{center}
+    \begin{tabular}{ >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} }
+      \text{Wähler $1$} & \text{Wähler $2$} & ... & \text{Wähler $k$} & \text{Wähler $k{+}1$} & ... & \text{Wähler $m$}\\
+      \hline
+      B > A > C & B > A > C && B > A > C & A > C > B && A > C > B\\
+      \text{oder} & \text{oder} & ... & \text{oder} & \text{oder} & ... & \text{oder}\\
+      B > C > A & B > C > A && B > C > A & C > A > B && C > A > B\\
+    \end{tabular}
+  \end{center}
+
+  Kurz zusammengefasst: In Szenario $k$ stimmen die ersten $k$ Wähler mit ihrer ersten Stimme für den Kandidaten $B$, die restlichen $m{-}k$ haben Kandidat $B$ an Schluss ihrer Liste gesetzt.
+
+  Wir haben bereits begründet, dass in Szenario $0$ Kandidat $B$ in der Gesamtreihenfolge an letzter Stelle stehen muss. Mit ähnlicher Begründung gilt: In Szenario $m$ muss der Kandidat $B$ an erster Stelle stehen. In einem bestimmten Szenario muss es daher das erste Mal der Fall sein, dass im Gesamtergebnis Kandidat $B$ vor Kandidat $A$ steht. Wir bezeichnen mit $k_{B>A}$ die Nummer dieses Szenarios. Beachte dabei, dass die Positionierung der Kandidaten $A$ und $C$ untereinander auf den Wahlzetteln keine Rolle spielt wegen Bedingung (II). Da in Szenario $k_{B>A}-1$ noch im Gesamtergebnis noch $A$ vor $B$ stand, muss die Stimme des Wählers an Position $k_{B>A}$ den Ausschlag dazu gegeben haben, dass im Szenario $k_{B>A}$ der Kandidat $B$ vor $A$ im Gesamtergebnis steht. Wir nennen diesen Wähler daher auch den $B{>}A$-Schlüsselwähler.
+
+  Wir betrachten nun die folgenden Wahlen:
+
+  \begin{center}
+    \scalebox{0.92}{
+      \begin{tabular}{ r | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} }
+        & \text{Wähler $1$} & ... & \text{Wähler $k_{B>A}{-}1$} & \text{Wähler $k_{B>A}$} & \text{Wähler $k_{B>A}{+}1$} & ... & \text{Wähler $m$}\\
+        \hline
+        Wahl 1 & B > C > A & ... & B > C > A & A > B > C & A > B > C & ... & A > B > C\\
+        \hline
+        & B > C > A && B > C > A && A > B > C && A > B > C\\
+        Wahl 2 & \text{oder} & ... & \text{oder} & B > A > C & \text{oder} & ... & \text{oder}\\
+        & C > B > A && C > B > A && A > C > B && A > C > B\\
+      \end{tabular}
+    }
+  \end{center}
+
+  In der ersten Wahl wählen die ersten $k_{B>A}-1$ Wähler die Reihenfolge $B > C > A$ (insbesondere $B > A$), die restlichen Wähler stimmen für die Reihenfolge $A > B > C$ (insbesondere $A > B$). Da der $B>A$-Schlüsselwähler, also der Wähler an Position $k_{B>A}$, und die restlichen Wähler $A > B$ abstimmen, gilt auch im Gesamtergebnis dieser Wahl $A > B$. In der ersten Wahl stimmt außerdem jeder Wähler für $B > C$. Nach Eigenschaft (I) gilt damit in der Gesamtreihenfolge $B > C$. Zusammengefasst wissen wir also das Ergebnis dieser Wahl: $A > B > C$.
+
+  In der zweiten Wahl stimmen die ersten $k_{B>A}$ Wähler für $B > A$. Somit gilt auch im Gesamtergebnis dieser Wahl $B > A$. Außerdem gilt im Gesamtergebnis der zweiten Wahl $A > C$, da im Gesamtergebnis der ersten Wahl $A > C$ gilt und sich die Rangfolge der Kandidaten $A$ und $C$ in den einzelnen Stimmabgaben gegenüber der ersten Wahl nicht geändert hat und damit sich deren Reihenfolge im Gesamtergebnis damit auch nicht ändert (Bedingung II). Das Ergebnis der zweiten Wahl ist somit $B > A > C$.
+
+  Insbesondere gilt in der zweiten Wahl also $B > C$ im Gesamtergebnis. Da wir aufgrund von Bedingung (II) die Positionierung von Kandidat $A$ ignorieren dürfen, folgt: Wann immer der $B{>}A$-Schlüsselwähler für $B > C$ stimmt, dann ist auch im Gesamtergebnis $B > C$.
+
+  Wir haben bisher die Zahl $k_{B>A}$ eingeführt und den Wähler an dieser Position den $B{>}A$-Schlüsselwählers genannt. Genauso können wir für zwei Kandidaten $X, Y \in \{ A, B, C \}$ mit $X \not= Y$ die Zahl $k_{X>Y}$ und den Begriff des $X{>}Y$-Schlüsselwählers einführen.
+
+  Wir haben schon bewiesen: Wenn der $B{>}A$-Schlüsselwähler für $B>C$ stimmt, dann gilt auch $B>C$ im Gesamtergebnis. Somit kann der $B{>}C$-Schlüsselwähler nicht an späterer Position kommen als der $B{>}A$-Schlüsselwähler. Der $C{>}B$-Schlüsselwähler dagegen kann nicht an früherer Position kommen als der $B{>}A$-Schlüsselwähler. Denn sonst würde der $B{>}A$ Schlüsselwähler für $B{>}C$ stimmen, was dazu führen würde, dass auch im Gesamtergebnis $B{>}C$ gilt. Es gilt somit:
+
+  \[ k_{B>C} \leq k_{B>A} \leq k_{C>B} \]
+
+  Insbesondere gilt $k_{B>C} \leq k_{C>B}$. Da wir nichts spezielles über die Kandidaten $B$ und $C$ angenommen haben, folgt aus Symmetriegründen auch die umgekehrte Ungleichung, also $k_{C>B} \leq k_{B>C}$. Damit gilt aber $k_{C>B} = k_{B>C} = k_{B>A}$.
+
+  Aus ähnlichen Überlegungen folgt $k_{A{>}B} = k_{A{>}B} = k_{B{>}C} = k_{C{>}B} = k_{A{>}C} = k_{C{>}A}$. Alle Schlüsselwähler sind in Wahrheit also ein- und diesselbe Person! Wir haben schon gesehen, dass wenn diese Person $B > C$ wählt, dann auch im Gesamtergebnis $B > C$ gilt. Allgemeiner kann man sich überlegen: Wenn diese Person $X > Y$ wählt, dann gilt auch im Gesamtergebnis $X > Y$ für beliebige Kandidaten $X, Y \in \{ A, B, C \}$. Das Wahlergebnis spiegelt also allein die Wahlentscheidung dieser Person wieder. Damit ist diese Person ein "`Diktator"'.
+\end{antw}
 
 \end{document}
