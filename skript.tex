@@ -23,6 +23,8 @@
 \usepackage{graphicx}
 \usepackage{array}
 
+\usepackage{adjustbox}
+
 \usepackage{hyperref}
 \usepackage{skak}
 
@@ -46,6 +48,14 @@
 
 \newcommand{\datum}[1]{\hfill {#1}\\}
 
+\newcommand{\steinhaufen}[1]{
+  \tikz{
+    \foreach \x in {1,...,#1}{
+      \fill [color=orange] (\x*10pt,0) circle (4pt);
+    }
+  }
+}
+
 % http://tex.stackexchange.com/questions/48878/qed-symbol-in-a-custom-theorem-environment
 \declaretheoremstyle[
   spaceabove=\topsep, spacebelow=\topsep,
@@ -64,7 +74,6 @@
 \newtheorem{satz}{Behauptung}
 \newtheorem*{aufg}{Aufgabe}
 \newtheorem*{frage}{Frage}
-%\newtheorem*{antw}{Antwort}
 \newtheorem*{nota}{Notation}
 \newtheorem*{bsp}{Beispiel}
 \newtheorem*{exk}{Exkurs}
@@ -153,10 +162,8 @@ Das Schachbrett ohne die beiden Ecken hat wieder eine gerade Anzahl von Feldern,
 Wären nicht zwei diagonal gegenüberliegende, sondern zwei Ecken, die an einer Seite liegen, herausgesägt worden, so wäre die Aufgabe lösbar gewesen. Bevor wir die Antwort etwas tiefer analysieren, wollen wir uns noch eine weitere Aufgabe anschauen:
 
 \begin{aufg}
-  Auf einer Insel leben 345 gelbe, 346 grüne und 347 blaue Chamäleons. Wann immer sich zwei Chamäleons gleicher Farbe begegnen, passiert nichts. Wenn sich aber zwei Chamäleons unterschiedlicher Farbe begegnen, so nehmen beide die dritte Farbe an. Beispielsweise hätten wir nach einem Treffen eines gelben und einer grünen Chamäleons nur noch 344 gelbe, 345 grüne, aber dafür 349 blaue Chamäleons. Frage: Ist es möglich, dass zu einem Zeitpunkt genau gleich viele Chameleons jeder Farbe auf der Insel leben?
+  Auf einer Insel leben 345 gelbe, 346 grüne und 347 blaue Chamäleons. Wann immer sich zwei Chamäleons gleicher Farbe begegnen, passiert nichts. Wenn sich aber zwei Chamäleons unterschiedlicher Farbe begegnen, so nehmen beide die dritte Farbe an. Beispielsweise hätten wir nach einem Treffen eines gelben und einer grünen Chamäleons nur noch 344 gelbe, 345 grüne, aber dafür 349 blaue Chamäleons. Frage: Ist es möglich, dass zu einem Zeitpunkt genau gleich viele Chamäleons jeder Farbe auf der Insel leben?
 \end{aufg}
-
-% lalalala
 
 \begin{center}
   \raisebox{-0.4\height}{\includegraphics{chamaeleongelb}} + \raisebox{-0.4\height}{\includegraphics{chamaeleongruen}} $\longrightarrow$ $2 \cdot$ \raisebox{-0.4\height}{\includegraphics{chamaeleonblau}}
@@ -451,7 +458,7 @@ Wir haben also $n \cdot (a+b) = p - q$, folglich nach Definition von Teilbarkeit
 \end{acht}
 
 \begin{satz}
-  Sei $n \in \N$ und die Zahlen $a, a_1, a_2, b, b_1, b_2, c \in \Z$. Dann gilt:
+  Sei $n \in \N$ und $a, a_1, a_2, b, b_1, b_2, c \in \Z$ ganze Zahlen. Dann gilt:
   \begin{satzliste}
     \item $a \equiv a \pmod{n}$
     \item $a \equiv b \pmod{n} \text{ und } b \equiv c \pmod{n} \implies a \equiv c \pmod{n}$
@@ -475,8 +482,56 @@ Wir haben also $n \cdot (a+b) = p - q$, folglich nach Definition von Teilbarkeit
   \end{beweisliste}
 \end{proof}
 
-% TODO: Definition Restklasse, Bild Restklassen auf dem Zahlenstrahl
-% TODO: Bezug zur Chamäleons-Aufgabe
+\begin{defn}
+  Sei $n \in \N$ eine natürliche und $a \in \Z$ eine ganze Zahl.
+  Die \emph{Restklasse} von $a$ modulo $n$ ist nun die Menge aller Zahlen, die gleich $a$ modulo $n$ sind, also
+  \[ \overline{a} \coloneqq \{ z \in Z \mid z \equiv a \!\!\!\pmod{n} \}. \]
+\end{defn}
+
+\begin{shaded}
+  \begin{nota}
+    Obige Notation bedeutet: Die Menge aller Zahlen $z \in \Z$, die die Bedingung rechts neben dem Mittelstrich erfüllen, also $z \equiv a \pmod{n}$.
+  \end{nota}
+\end{shaded}
+
+\begin{aufg}
+  Überzeuge dich davon, dass gilt:
+  \[ \overline{a} = \{ ..., a + (-3) \cdot n, a + (-2) \cdot n, a + (-1) \cdot n, a, a + 1 \cdot n, a + 2 \cdot n, a + 3 \cdot n, ... \}. \]
+  Folgere, dass es genau $n$ verschiedene Restklassen modulo $n$ gibt und dass jede ganze Zahl in genau einer Restklasse enthalten ist.
+\end{aufg}
+
+\begin{bsp}
+  Auf dem Zahlenstrahl unten sind alle Zahlen in einer Restklasse modulo $3$ in der gleichen Farbe hinterlegt:
+  \begin{center}
+    \begin{tikzpicture}
+      \foreach \i in {-7,-4,-1,2,5}{
+        \fill [color=blue,opacity=0.4] (\i,0) circle (12pt);
+        \fill [color=orange,opacity=0.4] (\i+1,0) circle (12pt);
+        \fill [color=yellow,opacity=0.4] (\i+2,0) circle (12pt);
+      }
+      \foreach \i in {-7,-6,...,7}{
+        \node at (\i,0) {$\i$};
+        \draw [thick] (\i,-0.5) ++ (0,-0.125) -- ++ (0,0.25);
+      }
+      \draw [thick,<->] (-8,-0.5) -- (8,-0.5);
+    \end{tikzpicture}
+  \begin{minipage}{0.3\linewidth}
+    $\overline{0} = \{ ..., -6, -3, 0, 3, 6, ... \}$
+  \end{minipage}
+  \begin{minipage}{0.3\linewidth}
+    $\overline{1} = \{ ..., -5, -2, 1, 4, 7, ... \}$
+  \end{minipage}
+  \begin{minipage}{0.3\linewidth}
+    $\overline{2} = \{ ..., -7, -4, -1, 2, 5, ... \}$
+  \end{minipage}
+  \end{center}
+\end{bsp}
+
+\vspace{10pt}
+
+% Uhrenanalogie?
+
+Mit Restklassen können wir auch die Chamäleons-Aufgabe genauer analysieren: In der Lösung dieser Aufgabe haben wir $C$ als die Differenz zwischen der Anzahl der blauen und grünen Chamäleons festgelegt. Zu Beginn ist diese $C = 347 - 346 = 1$. Wir haben festgestellt, dass diese Zahl bei jeder Begegnung von Chamäleons gleichbleibt, um drei steigt oder um drei sinkt. Also verlässt diese Zahl die Restklasse der Zahl $1$ modulo $3$ nicht. Insbesondere wird $C$ niemals den Wert $0$ annehmen, da dieser nicht in der Restklasse der Zahl $1$ modulo $3$ enthalten ist.
 
 \iffalse
 \begin{defn}
@@ -552,7 +607,7 @@ Wir wollen nun beweisen, dass dieser Teilbarkeitstest immer richtig funktioniert
 
 \begin{proof}
   Es gilt für alle $i$ zwischen $0$ und $n$
-  \[ a_i \cdot 10^i \equiv \begin{cases} a_i \cdot (-1) \equiv -a_i, & \text{falls $i$ ungerade} \\ a_i \cdot 1 \equiv a_i, & \text{falls $i$ gerade} \pmod{3} \end{cases} \]
+  \[ a_i \cdot 10^i \equiv \begin{cases} a_i \cdot (-1) \equiv -a_i, & \text{falls $i$ ungerade} \\ a_i \cdot 1 \equiv a_i, & \text{falls $i$ gerade} \end{cases} \pmod{3} \]
   durch Anwenden der letzten Behauptung und den Modulo-Rechenregeln. Also haben wir
   \[ a \equiv a_0 + a_1 \cdot 10 + ... + a_n \cdot 10^n \equiv a_0 - a_1 + ... \mp a_{n-1} \pm a_n \equiv \mathrm{AQS}(a) \pmod{11}, \]
   wobei $a_n$ addiert wird, falls $n$ gerade ist, sonst subtrahiert.
@@ -579,7 +634,7 @@ Wenn nun auf dem Haufen zwölf Steine liegen und dein Gegner an der Reihe ist, d
 Allgemeiner hast du eine Strategie zu gewinnen, wenn dein Gegner an der Reihe ist und die Anzahl der Steine ein Vielfaches von vier ist, bzw. du an der Reihe bist und die Anzahl an Steinen kein Vielfaches von vier ist. Du musst dabei einfach, wenn du an der Reihe bist, so viele Steine nehmen, sodass die Anzahl auf dem Haufen ein Vielfaches von vier ist.
 
 \begin{aufg}
-  Spiele dieses Spiel gegen deine Freunde/Eltern/Geschwister und schaue, wie lang sie brauchen, bis sie die Strategie verstanden haben.
+  Spiele dieses Spiel gegen deine Freunde/Eltern/Geschwister und beobachte, wie lang sie brauchen, bis sie die Strategie verstanden haben.
 \end{aufg}
 
 Wir wollen nun ein ähnliches Spiel analysieren:
@@ -591,7 +646,7 @@ Für dieses Spiel gibt es ebenfalls eine Gewinnstrategie. Diese benötigt sogena
 \begin{exkurs}
   Wenn wir Zahlen schreiben, verwenden wir normalerweise die üblichen zehn Ziffern. Der Trick, mit dem man auf einheitliche und elegante Weise mit diesen zehn Ziffern auch Zahlen schreiben kann, die viel größer sind als $neun$, stammt aus Indien: Eine Ziffer repräsentiert eine unterschiedliche Anzahl, je nachdem, wo sie in der Zahl steht. Die Ziffer ganz rechts repräsentiert Einer, die Ziffer weiter links davon Zehner, die nächste Ziffer Hunderter und so weiter. Allgemeiner gilt für eine $n$-stellige Zahl $a$ mit Ziffern $a_0, ..., a_n \in \{ 0, 1, 2, ..., 9 \}$, wobei $a_0$ die Ziffer ganz rechts sei:
   \[ a = a_n \cdot 10^n + a_{n-1} \cdot 10^{n-1} + ... + a_1 \cdot 10 + a_0. \]
-  Aber warum gerade zehn Ziffern? Nun, das hat keinen besonderen Grund abgesehen davon, das dies eine Zahl ist, die gewissermaßen auf der Hand liegt: Der Mensch hat nunmal zehn Finger und zehn Zehen. Wir können genauso gut ein Zahlensystem entwickeln, das mit nur zwei Ziffern auskommt, sagen wir den Ziffern $0$ und $1$. Die Zahlen null bis zwölf in diesem System sind:
+  Aber warum gerade zehn Ziffern? Nun, das hat keinen besonderen Grund abgesehen davon, das dies eine Zahl ist, die gewissermaßen auf der Hand liegt: Der Mensch hat nunmal zehn Finger und zehn Zehen (nicht umsonst bedeutet das englische Wort ``digit'' sowohl Finger als auch Ziffer). Wir können genauso gut ein Zahlensystem entwickeln, das mit nur zwei Ziffern auskommt, sagen wir den Ziffern $0$ und $1$. Die Zahlen null bis zwölf in diesem System sind:
   \[ 0, 1, 10, 11, 100, 101, 110, 111, 1000, 1001, 1010, 1011, 1100 \]
   Für die Zahlen null und eins konnten wir direkt die Ziffern verwenden. Für die Zahl zwei benötigen wir bereits die "`Zweierstelle"' und ab der Zahl vier die "`Viererstelle"'. Dieses System, das nur mit $0$ und $1$ auskommt, wird \emph{Binärsystem} genannt. Im Gegensatz dazu heißt das übliche System mit $10$ Ziffern \emph{Dezimalsystem}. In diesem System gilt für eine $n$-stellige Zahl $a$ mit Ziffern $a_0, ..., a_n \in \{ 0, 1 \}$:
   \[ a = a_n \cdot 2^n + a_{n-1} \cdot 2^{n-1} ... + a_1 \cdot 2 + a_0. \]
@@ -617,7 +672,69 @@ Für dieses Spiel gibt es ebenfalls eine Gewinnstrategie. Diese benötigt sogena
   \end{itemize}
 \end{aufg}
 
-% TODO
+Nun wollen wir das Spiel mit Hilfe von Binärzahlen analysieren: Angenommen, du bist dran und auf dem Tisch liegen drei Haufen von Steinen. Wir schreiben neben jeden Haufen die Anzahl von Steinen als Zahl im Binärsystem:
+
+\begin{center}
+  \begin{tabular}{ >{$}r<{$} | l }
+    \text{Anzahl} & Haufen\\
+    \hline
+    110 & \steinhaufen{6}\\
+    11 & \steinhaufen{3}\\
+    1010 & \steinhaufen{10}
+  \end{tabular}
+\end{center}
+
+Achte darauf, dass dabei alle Binärzahlen rechts ausgerichtet sind und die Einerstelle, die Zweierstelle, die Viererstelle usw. der Binärzahlen in einer Spalte untereinander stehen. Nun betrachten wir jede Spalte für sich genommen und zählen in dieser Spalte die Anzahl der Einsen. Was für uns wichtig ist, ist ob diese Anzahl gerade oder ungerade ist. Oben haben wir vier Spalten (da die größte Zahl von Steinen in einem Haufen, die Zehn, vier Binärziffern lang ist): in der ersten steht nur eine Eins, ebenso in der zweiten und vierten Spalte. In der dritten Spalte stehen drei Einsen. Also steht in jeder Spalte eine ungerade Anzahl von Einsen. Unser Ziel ist es, zu erreichen, dass in jeder Spalte eine gerade Anzahl an Einsen steht. Warum wir das wollen wird gleich klarwerden. Wie können wir dieses Ziel erreichen? Wir könnten im obigen Beispiel die $1010$ durch eine eine $101$ ersetzen. Da $101$ im Binärsystem für die Fünf steht, müssten wir somit vom Haufen mit zehn Steinen fünf Steine wegnehmen, sodass fünf Steine übrig bleiben.
+
+Gibt es immer solch einen Zug, der dafür sorgt, dass in jeder Spalte eine gerade Anzahl von Einsen steht? Ja, immer dann, wenn dies vor unserem Zug nicht der Fall ist. Ermittele dazu die erste Spalte von links, in der eine ungerade Anzahl an Einsen steht, und wähle einen Haufen aus, dessen Zeile in dieser Spalte eine Eins stehen hat (warum gibt es einen solchen immer?). Im Beispiel oben ist das der letzte Haufen mit zehn Steinen, da dies die einzige Zeile in der Tabelle ist, in der die Binärzahl vier Ziffern lang ist. Wir können die Ziffern dieser Binärzahl so verändern, sodass danach in jeder Spalte eine gerade Anzahl an Einsen steht. Dabei wird die Zahl auch immer kleiner, denn die erste Ziffer (von links) die wir verändern, ist eine Eins. Sie wird zu einer Null. Egal, wie sich die Ziffern rechts davon ändern, die Zahl wird dadurch kleiner als die ursprüngliche Zahl. Eine ähnliche Situation ist die folgende: Wenn sich zwei Dezimalzahlen nur in der Einerstelle, Zehnerstelle und Hunderterstelle voneinander unterscheiden, aber die erste Zahl auf der Hunderterterstelle eine Vier und die zweite Zahl dort eine Drei stehen hat, dann ist die erste Zahl auf jeden Fall größer als die zweite. Um dies zu entscheiden mussten wir uns gar nicht erst die Zehner- und die Einerstelle ansehen.
+
+Bleibt noch zu erklären, warum wir überhaupt erreichen wollen, dass die Anzahl von Einsen nach unserem Zug in jeder Spalte gerade ist. Dazu überlegen wir, was nach dem Zug unseres Gegners der Fall sein wird: Der Gegner muss von genau einem Haufen Steine entfernen. Dadurch ändert er in der Binärdarstellung der Anzahl der Steine dieses Haufens mindestens eine Ziffer. Dadurch wird die Anzahl der Einsen in mindestens einer Spalte wieder ungerade. Dann können wir mit unserem Zug wieder erreichen, dass die Anzahl an Einsen in jeder Spalte gerade ist. Der darauffolgende Zug des Gegners wird wieder dafür sorgen, dass die Anzahl an Einsen in mindestens einer Spalte ungerade ist, usw. Also ist jedes Mal, wenn wir an der Reihe sind, die Anzahl an Einsen in mindestens einer Spalte ungerade. Aber dann können nicht alle Haufen leer sein! Das heißt, wir können mit dieser Strategie nicht verlieren. Also gewinnen wir damit.
+
+Wenn beide Spieler diese Strategie kennen, dann hängt der Ausgang des Spiels nur von der Anfangssituation ab: Wenn zu Beginn die Anzahl von Einsen in jeder Spalte gerade ist, dann verliert der Spieler, der anfängt, sonst gewinnt er.
+
+\begin{aufg}
+  Wer gewinnt in den folgenden Spielsituationen, wenn du und dein Gegner die Gewinnstrategie kennen und du an der Reihe bist?
+
+  \adjustbox{valign=t}{\begin{minipage}{0.28\linewidth}
+    \begin{tabular}{ >{$}r<{$} | l }
+      \text{Anzahl} & Haufen\\
+      \hline
+      1 & \steinhaufen{1}\\
+      10 & \steinhaufen{2}\\
+      11 & \steinhaufen{3}\\
+      100 & \steinhaufen{4}\\
+      101 & \steinhaufen{5}
+    \end{tabular}
+  \end{minipage}}
+  \adjustbox{valign=t}{\begin{minipage}[t]{0.4\linewidth}
+    \begin{tabular}{ >{$}r<{$} | l }
+      \text{Anzahl} & Haufen\\
+      \hline
+      1001 & \steinhaufen{9}\\
+      11 & \steinhaufen{3}\\
+      1 & \steinhaufen{1}\\
+      1011 & \steinhaufen{11}
+    \end{tabular}
+  \end{minipage}}
+  \adjustbox{valign=t}{\begin{minipage}[t]{0.4\linewidth}
+    \begin{tabular}{ >{$}r<{$} | l }
+      \text{Anzahl} & Haufen\\
+      \hline
+      1001 & \steinhaufen{9}\\
+      1001 & \steinhaufen{9}\\
+      111 & \steinhaufen{7}\\
+      111 & \steinhaufen{7}\\
+    \end{tabular}
+  \end{minipage}}
+
+  \vspace{8pt}
+
+  Zusatzfrage: Gibt es in der letzten Spielsituation auch noch eine einfachere Spielstrategie für deinen Gegenspieler?
+\end{aufg}
+
+\begin{aufg}
+  Spiele dieses Spiel gegen deine Freunde/Eltern/Geschwister. Erkläre ihnen nach einigen Runden die Gewinnstrategie.
+\end{aufg}
 
 \datum{7. und 21. Februar 2014}
 
@@ -630,12 +747,12 @@ Vollständige Induktion ist eines der grundlegenden mathematischen Beweisverfahr
 \begin{aufg}
   Zeige, dass für alle natürlichen Zahlen $n \in \N$ die folgende Formel gilt:
 
-  \[ \frac{1}{2^1} + \frac{1}{2^2} + \frac{1}{2^3} + ... + \frac{1}{2^{n-1}} + \frac{1}{2^n} = 1 - 2^n. \]
+  \[ \frac{1}{2^1} + \frac{1}{2^2} + \frac{1}{2^3} + ... + \frac{1}{2^{n-1}} + \frac{1}{2^n} = 1 - \frac{1}{2^n}. \]
 \end{aufg}
 
 Wir können nun hergehen und diese Formel für spezielle Werte von $n$ nachrechnen, z.\,B. für $n=1$ oder $n=5$ oder (mithilfe eines Computers) für alle natürlichen Zahlen $n$ kleiner als eine Million.
 
-Wir können uns auch intuitiv klarmachen, warum diese Formel gilt: Wir stellen uns einen Zahlenstrahl vor. Wir beginnen bei der Zahl $\frac{1}{2}$. Dann addieren wir $\frac{1}{4}$, also die Hälfte des Abstands von $\frac{1}{2}$ zu $1$. Wir befinden uns dann bei $\frac{3}{4}$. Dann addieren wir $\frac{1}{8}$, also die Hälfte des Abstandes von $\frac{3}{4}$ zu $1$. Wenn wir so weitermachen, halbiert sich der Abstand von unserer aktuellen Zahl zur Zahl $1$ in jedem Schritt. Und das ist ziemlich genau die Aussage der Aufgabe.
+Wir können uns auch intuitiv klar machen, warum diese Formel gilt: Wir stellen uns einen Zahlenstrahl vor. Wir beginnen bei der Zahl $\frac{1}{2}$. Dann addieren wir $\frac{1}{4}$, also die Hälfte des Abstands von $\frac{1}{2}$ zu $1$. Wir befinden uns dann bei $\frac{3}{4}$. Dann addieren wir $\frac{1}{8}$, also die Hälfte des Abstandes von $\frac{3}{4}$ zu $1$. Wenn wir so weitermachen, halbiert sich der Abstand von unserer aktuellen Zahl zur Zahl $1$ in jedem Schritt. Und das ist ziemlich genau die Aussage der Aufgabe.
 
 Nun ist aber das Nachrechnen der Formel für konkrete natürliche Zahlen kein Beweis der Aufgabe. Wir können schließlich nicht die Formel für alle natürlichen Zahlen durch einzelnes Nachrechnen prüfen, denn es gibt ja unendlich viele natürliche Zahlen. Die zweite Überlegung ist schon deutlich näher an einem mathematischen Beweis (der nachfolgende Beweis folgt in gewisser Weise sogar den gleichen Überlegungen). Wir wollen nun die Aufgabe mathematisch ganz korrekt durch vollständige Induktion beweisen. Um uns das Leben einfacher zu machen, führen wir davor aber noch etwas Notation ein:
 
