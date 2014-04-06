@@ -10,9 +10,13 @@
 \usepackage{mathabx}
 \usepackage{mathtools}
 
+\usepackage{pgfplots}
+
 \usepackage{paralist}
 
+% pandoc-frequency-analysis off
 \usepackage[outputdir=diagrams,backend=cairo]{diagrams-latex} % `cabal install diagrams diagrams-latex`
+% pandoc-frequency-analysis on
 
 \usepackage{color}
 \usepackage{framed}
@@ -45,6 +49,13 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\leer}{\underline{\;\;\;\;}}
+
+\newcommand{\hilight}[2]{%
+  \begingroup
+  \setlength{\fboxsep}{0pt}%
+  \colorbox{#1}{#2}%
+  \endgroup
+}
 
 \newcommand{\datum}[1]{\hfill {#1}\\}
 
@@ -1038,6 +1049,7 @@ Ein Tromino ist ein Stein, der zwei Schachbrettfelder breit und zwei Schachbrett
 
 Mit diesem Beweis als Anleitung können wir leicht $F^n$-Bretter für beliebiges $n$ selbst mit Trominos belegen. Oder wir können ein Computerprogramm schreiben, das uns die Belegung als Graphik ausgibt (hier $n = 1, ..., 4$):
 
+% pandoc-frequency-analysis off
 \begin{center}
   \begin{diagram}[height=172]
     {-# LANGUAGE FlexibleContexts #-}
@@ -1061,6 +1073,7 @@ Mit diesem Beweis als Anleitung können wir leicht $F^n$-Bretter für beliebiges
     dia = trominoes 1 black black ||| trominoes 2 white red ||| trominoes 3 green red ||| trominoes 4 yellow red ||| trominoes 5 cyan red
   \end{diagram}
 \end{center}
+% pandoc-frequency-analysis on
 
 \begin{exkurs}
   Das Computerprogramm, das obiges Bild erzeugt hat, ist mit Rekursion geschrieben. Rekursion bedeutet, dass eine Funktion im Programm sich selbst aufruft, um ein Teilproblem zu lösen. In diesem Programm verwendet die Zeichenfunktion sich selbst um die vier $F^{n-1}$-Teilbretter zu füllen. Es ist dabei kein Zufall, dass wir zum Visualisieren eines induktiven Beweises Rekursion verwendet haben, denn: Rekursion ist sehr eng verwandt mit Induktion.
@@ -1177,10 +1190,114 @@ Von solch einem Verfahren würden wir uns ein paar Eigenschaften erwarten:
 
 \subsection{Einfache Verschlüsselungsverfahren}
 
-% TODO: Vereinbarung der Verwendung von Buchstabenkombinationen für Umlaute
-% TODO: Erklären: Caesar-, Substitutions- und Viginère-Chiffre
-% TODO: Häufigkeitsanalyse dieses Skriptes
-% TODO: Erklären: Knacken durch Brute-Force (Caesar) und Häufigkeitsanalyse (Substitutionschiffre und Viginère-Chiffre)
+Schon seit Jahrtausenden haben Menschen das Bedürfnis, sich Nachrichten zu schreiben, die niemand außer der vorgesehene Empfänger lesen kann. Dazu müssen die Nachrichten verschlüsselt werden. Eine einfache Möglichkeit dazu bieten \emph{Substitutionschiffren}. Der Name kommt daher, dass beim Verschlüsseln jeder Buchstabe durch ein anderes Zeichen substituiert (d.\,h. ersetzt) wird. Eine Tabelle, die solch eine Übersetzung angibt, könnte beispielsweise so aussehen:
+
+\begin{center}
+  \scalebox{0.8}{
+    \begin{tabular}{l l l l l l l l l l l l l l l l l l l l l l l l l l l}
+      A & B & C & D & E & F & G & H & I & J & K & L & M & N & O & P & Q & R & S & T & U & V & W & X & Y & Z\\
+      \hline
+      $\triangle$ & $\top$ & $\otimes$ & $\odot$ & $\bigcirc$ & $\sqcup$ & $\nabla$ & $\Box$ & $\uparrow$ & $\cap$ & $\vee$ & $\#$ & $\times$ & $\rightarrow$ & $\downarrow$ & $\heartsuit$ & $\vdash$ & $\dagger$ & $\leftarrow$ & $\wedge$ & $\diamond$ & $\cup$ & $\bot$ & $\sqcap$ & $\oslash$ & $\dashv$
+    \end{tabular}
+  }
+\end{center}
+
+Wir müssen uns dabei keine neuen Zeichen ausdenken, sondern können auch die lateinischen Buchstaben selbst wiederverwenden:
+
+\begin{center}
+  \scalebox{0.8}{
+    \begin{tabular}{l l l l l l l l l l l l l l l l l l l l l l l l l l l}
+      A & B & C & D & E & F & G & H & I & J & K & L & M & N & O & P & Q & R & S & T & U & V & W & X & Y & Z\\
+      \hline
+      Q & H & B & D & V & T & S & F & M & N & R & K & X & A & J & W & Y & C & P & I & L & G & E & O & U & Z
+    \end{tabular}
+  }
+\end{center}
+
+Angenommen, wir wollen die Nachricht
+
+\begin{center}
+  Mathe macht Spaß!
+\end{center}
+
+verschlüsselt versenden. Dazu wollen wir obige Tabelle verwenden. Wir haben noch ein kleineres Problem: Die Nachricht enthält außer Buchstaben auch noch Leerzeichen und Satzzeichen. Diese wollen wir nicht unverschlüsselt in den Geheimtext übernehmen, da sie jemandem, der die Nachricht abfängt, Hinweise auf den Inhalt der Nachricht liefern können. Darum lassen wir sie einfach weg. Aus demselben Grund verwenden wir einheitlich Großbuchstaben. Statt den Umlauten "`Ü"', "`Ä"' und "`Ö"' schreiben wir "`UE"', "`AE"' und "`OE"' wie im Kreuzworträtsel. Ein scharfes $ß$ wird zu $SS$. Die zu verschlüsselnde Nachricht ist also
+
+\begin{center}
+  MATHEMACHTSPASS
+\end{center}
+
+Nun suchen wir für jeden Buchstaben dieser Nachricht in der Tabelle den zugehörigen Buchstaben in der Verschlüsselung und schreiben ihn auf:
+
+\begin{center}
+  XQIFVXQBFIPWQPP
+\end{center}
+
+Diesen Geheimtext können wir jetzt verschicken. Der Empfänger der Nachricht benötigt diesselbe Tabelle, um die Nachricht wieder zu dechiffrieren. Diese Tabelle ist der Schlüssel in diesem Verschlüsselungs-Verfahren. Wir müssen ihn in einem geheimen Treffen vor Versenden der Nachricht mit dem Empfänger vereinbaren. Dazu schlägt er die Buchstaben des Geheimtextes nacheinander in der zweiten Zeile der Tabelle nach und schreibt den zugehörigen Buchstaben in der ersten Zeile auf.
+
+\begin{exkurs}
+  Das Ziel der \emph{Kryptographie} ist es, Nachrichten für Personen außer dem bestimmten Empfänger unlesbar zu machen. Dagegen will die \emph{Steganographie} die Nachricht selbst verstecken. Personen, an die die Nachricht nicht gerichtet ist, sollen also gar nicht erst merken, dass eine Nachricht versandt wurde! Beispiele der Verwendung von Steganographie sind:
+  \begin{itemize}
+    \item Schreiben mit Geheimtinte, die unter UV-Licht sichtbar wird
+    \item Verstecken einer Referenz auf eine Bibelstelle in einer Adresse auf einer Postkarte
+    \item Einbetten einer geheimen Botschaft in eine Bilddatei durch geringfügiges Abändern der Farbwerte der einzelnen Pixel
+  \end{itemize}
+  Steganographie und Kryptographie können auch kombiniert werden: Dann erhält man Nachrichten, die vor unerwünschten Augen versteckt sind, und die, selbst wenn sie entdeckt werden, nicht gelesen werden können.
+\end{exkurs}
+
+Ein weithin bekanntes Verschlüsselungs-Verfahren wurde von Julius Caesar in einem Buch beschrieben. Es wird daher auch \emph{Caesar-Chiffre} genannt. Es handelt sich dabei um einen Spezialfall der Substitutionschiffren. Die Substitutionstabelle entsteht dabei durch Verschieben des Alphabets in der zweiten Zeile. Folgendes Beispiel zeigt eine Verschiebung um fünf Positionen im Alphabet:
+
+\begin{center}
+  \scalebox{0.8}{
+    \begin{tabular}{l l l l l l l l l l l l l l l l l l l l l l l l l l l}
+      A & B & C & D & E & F & G & H & I & J & K & L & M & N & O & P & Q & R & S & T & U & V & W & X & Y & Z\\
+      \hline
+      F & G & H & I & J & K & L & M & N & O & P & Q & R & S & T & U & V & W & X & Y & Z & A & B & C & D & E
+    \end{tabular}
+  }
+\end{center}
+
+Da bei obiger Verschiebung das "`A"' als "`F"' verschlüsselt wird, heißt die obige Verschlüsselung Caesar-Verschlüsselung mit dem Schlüssel "`F"'. Aus der Information, als welcher Buchstabe das "`A"' verschlüsselt wird, kann man leicht herleiten, wie die anderen Buchstaben verschlüsselt werden. Es gibt also 26 verschiedene Möglichkeiten, einen Text mit dem Caesar-Verfahren zu verschlüsseln (den Schlüssel "`A"' mit einbezogen, der überhaupt keine Verschlüsselung liefert). Das sind ziemlich wenige Möglichkeiten. Wenn man einen mit diesem Verfahren chiffrierten Text abfängt, so kann man in kurzer Zeit per Hand all diese Möglichkeiten durchgehen und so die Nachricht entschlüsseln. Diesen Ansatz, einfach alle Schlüssel durchzuprobieren, nennt man Brute-Force-Angriff.
+
+Wie viele Tabellen, also mögliche Schlüssel gibt es bei einem allgemeinen Substitutionschiffre? Nun, es gibt 26 verschiedene Möglichkeiten, wie das "`A"' verschlüsselt sein kann. Für das "`B"' bleiben dann noch 25 mögliche Buchstaben, für das "`C"' noch 24 Buchstaben und so weiter. Insgesamt haben wir daher
+\[ 26! = 26 \cdot 25 \cdot ... \cdot 3 \cdot 2 \cdot 1 \]
+Möglichkeiten, eine Tabelle zu erstellen. Das sind viel zu viele, um alle auszuprobieren. Darum müssen wir uns einen anderen Ansatz überlegen. Wir nehmen mal an, dass der verschlüsselte Text in Deutsch geschrieben ist. Nun kommen im Deutschen nicht alle Buchstaben gleich häufig vor. Der Vokal "`E"' und die Konsonanten "`S"' und "`N"' kommen beispielsweise sehr oft, die Buchstaben "`Q"' und "`Y"' sehr selten vor. Das ist auch der Grund, warum es beim Scrabble für den Buchstaben "`X"' viel mehr Punkte als für den Buchstaben "`E"' gibt. Im nächsten Diagramm siehst du eine Aufschlüsselung dieses Skriptes bis zum Ende dieses Satzes nach Buchstaben:
+
+% pandoc-frequency-analysis off
+
+% Generate data with `python3 frequency-analysis.py skript.tex > frequency-analysis.dat`
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[width=0.8 \linewidth,height=180pt,ybar,xtick=data,ymin=0,xticklabels from table={frequency-analysis.dat}{Letter}]
+      \addplot table [x=X-Position,y=Count] {frequency-analysis.dat};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+Bei einem längeren Text lässt dies Rückschlüsse auf die Chiffrierungs-Tabelle zu. Wenn beispielsweise der Buchstabe "`W"' in einem Geheimtext häufig vorkommt, so liegt es nahe, dass im Klartext dort überall ein "`E"' stand.
+
+Was ebenfalls helfen kann, sind Buchstabenpaare oder Buchstabentripel, die zusammen vorkommen. Falls in einem Geheimtext häufig "`ZWS"' steht, dann könnte es sich dabei um die Verschlüsselung des Artikels "`DER"' handeln. Wenn man ein paar Buchstaben auf diese Weise geraten hat, so kann man häufig schon ganze Wörter erkennen und auch die restlichen, weniger häufigen Buchstaben herausfinden. In der Regel schafft man es auf diese Weise, den Geheimtext zu knacken, wenn es sich dabei um einen längeren Text handelt. Bei einem kurzen Text hat man natürlich weniger Anhaltspunkte und muss noch viel mehr rumprobieren.
+
+Ein weiteres Verschlüsselungsverfahren ist der \emph{Vigenère-Chiffre}. Dabei gibt es als Schlüssel ein ganzes Wort, z.\,B. "`KATZE"'. Bei der Verschlüsselung gehen wir dann gleichzeitig das Schlüsselwort und den Klartext Buchstabe für Buchstabe durch und verschlüsseln dabei den Buchstaben des Klartextes mit dem Buchstaben des Schlüsselwortes mittels Caesar-Verschiebung. Wenn man am Ende des Schlüsselwortes angelangt ist, startet man einen neuen Durchlauf durch das Schlüsselwort. Durch dieses Verfahren wird das Problem gemindert, dass jedes "`E"' im Klartext zu demselben Buchstaben im Geheimtext wird, da die Verschlüsselung nicht nur vom Buchstaben, sondern auch von dessen Position im Text abhängig ist. Folgender Text wurde mit dem Vigenère-Verfahren verschlüsselt:
+
+\begin{center}
+    \begin{minipage}{0.9\linewidth}
+      {\scriptsize\ttfamily
+        \hilight{yellow}{NIX}QSDOKDRCIGCHBEAAEBUGCHBEADRCIVGEOHGKMMHPHILEB\hilight{green}{DMX}EFLIMHTMMCCADRUIENQOTXQDKEAKIBNTBLTEWDQDALSIXDKT\\
+        GUSHCECSLHGRDTRKOHXHQOSVGPCSXKEVPAZFOTGZGRJXCIWBNBLCTTAIXAXMHORMTRNMBSHORXMMQMT\hilight{green}{DMX}EINPIAEOLKBXSMCCA\\
+        DZORLBLVUXRWOLNMKQELBLKFYDRGIKCHKBXHHBEAS\hilight{orange}{WSCA}CIBEKRXORHSSBANBLKLLRGRNXKPORKNXYRUDDOIVGROTCDHOSFZPGA\\
+        XGVONWRMMHWDVWIMSPORXQSDOKDVCT\hilight{blue}{XHR}ONLBLBIMSAOIMDVLEPDKDWXMRNEKDVCTXQSDOK\hilight{green}{DMX}EONPVENLHBEATRQGXLEMHMGED\\
+        AGZPYGUDAOGMRMMHWDVVEMYXORHSSBANBLKLLHRXEKDVBOMNVLESDMMHGDXORLSISNXMWMHKHXDWXHXORPDRXDXQQSTMKIBEKNX\\
+        YR\hilight{blue}{XHR}OKHLTVEMSIEMWQIRUGFLSNMDVCIVGKOBKZGRTAZXNUKBL\hilight{yellow}{NIX}RICPKHRJIIDVQIUS\hilight{orange}{WSCA}\hilight{green}{DMX}EZQSOPXQMYDXCL\hilight{yellow}{NIX}LECCAH\\
+        ROBXEMXDXS\hilight{orange}{WSCA}DVCTGZGRSXGVVAGFIBZXHXGIXCIBIGHLBEFZYCGTMKCZNRXKNWCMOSMDPVUGFHOR\hilight{blue}{XHR}JEEMIXWTKDONBRXEEU\\
+        DVOIGRMMHMEIXSMDVYBXQLKLUCICLTLTONYDPNELDVCIVGXVIVGMXWXKGREF\hilight{green}{DMX}BNBLCTTAIYDXQISNXYMPFXQHSETTJNEKVEVZ\\
+        XZRQEUQEMHMRMXDNDFORWHIKKMTIVLXOSCIMHSXANROENYSKOBXMASELBLYNXQAKEAMXCIGCHSEPZPJEGCVOHUZVENWJSONGDRW\\
+        IMSIVS\hilight{blue}{XHR}OSLSIVLKZHOSPDPMHXRZYNZQSOEKDQKULLEOILSEVSWDVOIZDRDLBBLOWTKDONDNIBPXQYXDWTVMHLBLVIMYISMZDL\\
+        KENRIBAZSZORLSIVLMVIBDXM
+      }
+    \end{minipage}
+\end{center}
+
+Bei obigem Text stellen wir etwas fest: Bestimmte Kombinationen von Buchstaben kommen mehrfach im Text vor. Wir können die Abstände zwischen den Vorkommen der Kombinationen zählen. Beispielsweise liegen zwischen dem Anfang des ersten Vorkommen der Kombination "`NIX"' und dem Anfang des zweiten Vorkommen genau $545$ Buchstaben. Zwischen dem zweiten und dem dritten Vorkommen liegen $40$ Buchstaben. Für das Buchstabentripel "`DMX"' sind die Abstände von einem Auftreten zum nächsten: $130$, $190$, $200$ und $185$. Was auffällt, ist, dass all diese Zahlen durch $5$ teilbar sind (genauer gesagt ist $5$ der größte gemeinsame Teiler dieser Zahlen). Und das ist kein Zufall! Diese Buchstabenkombinationen sind höchstwahrscheinlich dadurch entstanden, dass das gleiche Wort verschlüsselt wurde und zufällig beim Verschlüsseln wir uns auch im Schlüsselwort jedes Mal an der gleichen Stelle befunden haben. Damit dies möglich ist, muss das Schlüsselwort genau $5$ Buchstaben lang sein. Diese Information hilft uns enorm weiter. Wir wissen nun, dass der $1$., der $6$., der $11$., der $16$. und der $21$. Buchstabe (usw.) mit derselben Verschiebung Caesar-verschlüsselt wurden. Die genaue Verschiebung können wir mit einer Häufigkeitsanalyse ermitteln. Dazu zählen wir einfach die Vorkommen der Buchstaben an den oben genannten Positionen, malen ein Balkendiagramm wie oben und vergleichen es mit dem Balkendiagramm, dass eine typische Buchstabenverteilung in einem deutschen Text zeigt. So können wir die Verschiebung und damit den ersten Buchstaben des Vigenère-Schlüssels ermitteln. Um die weiteren vier Buchstaben zu ermitteln, gehen wir genauso vor.
 
 \subsection{Die Entschlüsselung der Enigma}
 
@@ -1199,5 +1316,7 @@ Von solch einem Verfahren würden wir uns ein paar Eigenschaften erwarten:
 
 % TODO: Darstellen der Problematik
 % TODO: Beschreiben des Verfahrens
+
+% pandoc-frequency-analysis on
 
 \end{document}
