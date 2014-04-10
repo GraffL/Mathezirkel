@@ -1301,6 +1301,53 @@ Bei obigem Text stellen wir etwas fest: Bestimmte Kombinationen von Buchstaben k
 
 \subsection{Die Entschlüsselung der Enigma}
 
+\begin{center}
+  \scalebox{0.8}{
+    \begin{tikzpicture}
+      % Steckerbrett
+      \filldraw [fill=lightgray] (0,0) rectangle ++ (2,7);
+
+      \color{gray}
+
+      % Rahmen der Walzen
+      \pgfsetcornersarced{\pgfpoint{0.25cm}{0.25cm}}
+      \draw (3,0) rectangle ++ (2,7);
+      \draw (6,0) rectangle ++ (2,7);
+      \draw (9,0) rectangle ++ (2,7);
+
+      % Reflektor
+      \pgfsetcornersarced{\pgfpoint{0.25cm}{0.25cm}}
+      \pgfpathmoveto{\pgfpoint{12cm}{0cm}}
+      \pgfpathlineto{\pgfpoint{12cm}{7cm}}
+      \pgfsetcornersarced{\pgfpoint{1cm}{1cm}}
+      \pgfpathlineto{\pgfpoint{14cm}{7cm}}
+      \pgfpathlineto{\pgfpoint{14cm}{0cm}}
+      \pgfsetcornersarced{\pgfpoint{0.25cm}{0.25cm}}
+      \pgfpathclose
+      \pgfusepath{stroke}
+      \color{black}
+
+      % Verbindungsknoten
+      \foreach \x in {0.25,1.75,3,5,6,8,9,11,12}{
+        \foreach \y in {1,2,3,4,5,6}{
+          \node [shape=circle,draw,fill=black,scale=0.015cm] at (\x,\y) {};
+        }
+      }
+
+      % Verbindungen
+      \pgfsetcornersarced{\pgfpoint{0.15cm}{0.15cm}}
+      \draw (1.75,6) -- (3.8,6) -- (3.8,3) -- (7,3) -- (7,0);
+      \draw (7.1,7) -- (7.1,6) -- (13.2,6) -- (13.2,4) -- (10.2,4) -- (10.2,5) -- (7.25,5) -- (7.25,2) -- (4.2,2) -- (4.2,4) -- (1.75,4);
+      \draw (1.75,5) -- (4.2,5) -- (4.2,6) -- (6.5,6) -- (6.5,7);
+      \draw (6.5,0) -- (6.5,1) -- (9.65,1) -- (9.65,3) -- (12.5,3) -- (12.5,2) -- (7.5,2) -- (7.5,4) -- (4.7,4) -- (4.7,2.5) -- (3.9,2.5) -- (3.9,1) -- (1.75,1);
+      \draw (1.75,3) -- (3.75,3) -- (3.75,1.8) -- (4.2,1.8) -- (4.2,1) -- (6.2,1) -- (6.2,2.5) -- (7.8,2.5) -- (7.8,3) -- (9.4,3) -- (9.4,4.5) -- (10.7,4.5) -- (10.7,5) -- (12.5,5) -- (12.5,7);
+      \draw (12.5,0) -- (12.5,1) -- (9.9,1) -- (9.9,0);
+      \draw (9.9,7) -- (9.9,4) -- (7.85,4) -- (7.85,4.5) -- (6.7,4.5) -- (6.7,5) -- (4.5,5) -- (4.5,7);
+      \draw (4.5,0) -- (4.5,0.5) -- (3.3,0.5) -- (3.3,2) -- (1.75,2);
+    \end{tikzpicture}
+  }
+\end{center}
+
 % TODO: Schema der Enigma mit tikZ
 % TODO: Verschlüsseln = Entschlüsseln
 % TODO: Numberphile-Video verlinken
