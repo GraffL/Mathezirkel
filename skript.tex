@@ -1302,50 +1302,102 @@ Bei obigem Text stellen wir etwas fest: Bestimmte Kombinationen von Buchstaben k
 \subsection{Die Entschlüsselung der Enigma}
 
 \begin{center}
-  \scalebox{0.8}{
-    \begin{tikzpicture}
-      % Steckerbrett
-      \filldraw [fill=lightgray] (0,0) rectangle ++ (2,7);
+  \begin{tikzpicture}[scale=0.8]
+    % Tastatur
+    \draw (-2.5,0.5) rectangle ++ (1.5,6);
 
-      \color{gray}
+    % Steckerbrett
+    \filldraw [fill=lightgray] (0,0.5) rectangle ++ (2,6);
 
-      % Rahmen der Walzen
-      \pgfsetcornersarced{\pgfpoint{0.25cm}{0.25cm}}
-      \draw (3,0) rectangle ++ (2,7);
-      \draw (6,0) rectangle ++ (2,7);
-      \draw (9,0) rectangle ++ (2,7);
+    % Lampenfeld
+    \pgfsetcornersarced{\pgfpoint{0.4cm}{0.4cm}}
+    \draw (-4,0.5) rectangle ++ (1,6);
 
-      % Reflektor
-      \pgfsetcornersarced{\pgfpoint{0.25cm}{0.25cm}}
-      \pgfpathmoveto{\pgfpoint{12cm}{0cm}}
-      \pgfpathlineto{\pgfpoint{12cm}{7cm}}
-      \pgfsetcornersarced{\pgfpoint{1cm}{1cm}}
-      \pgfpathlineto{\pgfpoint{14cm}{7cm}}
-      \pgfpathlineto{\pgfpoint{14cm}{0cm}}
-      \pgfsetcornersarced{\pgfpoint{0.25cm}{0.25cm}}
-      \pgfpathclose
-      \pgfusepath{stroke}
-      \color{black}
+    \foreach \l/\y in {a/1,b/2,c/3,e/5}{
+      % Verbindung Lampenfeld -- Steckerbrett
+      \draw (-3.1,\y) -- (0.25,\y);
+    }
+    % Rote Verbindung Lampenfeld -- Steckbrett bei Buchstabe "`f"'
+    \draw [red,thick] (-3.1,6) -- (0.25,6);
+    % Verbindung Lampenfeld -- Tastatur bei Buchstabe "`d"'
+    \draw (-3.1,4) -- (-1.5,4);
+    % Rote Verbindung Tastatur -- Steckbrett bei Buchstabe "`d"'
+    \draw [red,thick] (-1.5,4) -- (0.25,4);
+    % Buchstaben auf Lampenfeld
+    \foreach \l/\y in {a/1,b/2,c/3,d/4,e/5}{
+      \path (-3.5,\y) node (l\l) {$\l$};
+      \draw (l\l) circle [radius=0.4];
+    }
+    % Rote Lampe bei Buchstabe "`f"'
+    \path [red] (-3.5,6) node (lf) {$f$};
+    \draw [red,thick] (lf) circle [radius=0.4];
+    \foreach \r in {30,60,90,120,150,180,210,240,270,300,330}{
+      \draw [red] (-3.5,6) ++ (\r:0.5) -- ++ (\r:0.2);
+    }
+    % Buchstaben auf Tastatur
+    \foreach \l/\y in {a/1,b/2,c/3,e/5,f/6}{
+      \fill [gray] (-1.75,\y) circle [radius=0.4];
+      \path [white] (-1.75,\y) node (t\l) {$\l$};
+    }
+    % Taste "`d"' ist gedrückt
+    \fill [black] (-1.75,4) circle [radius=0.4];
+    \path [white] (-1.75,4) node (ttd) {$d$};
 
-      % Verbindungsknoten
-      \foreach \x in {0.25,1.75,3,5,6,8,9,11,12}{
-        \foreach \y in {1,2,3,4,5,6}{
-          \node [shape=circle,draw,fill=black,scale=0.015cm] at (\x,\y) {};
-        }
+    \color{gray}
+
+    % Rahmen der Walzen
+    \pgfsetcornersarced{\pgfpoint{0.25cm}{0.25cm}}
+    \draw (3,0.5) rectangle ++ (2,6);
+    \draw (6,0.5) rectangle ++ (2,6);
+    \draw (9,0.5) rectangle ++ (2,6);
+
+    % Reflektor
+    \pgfsetcornersarced{\pgfpoint{0.25cm}{0.25cm}}
+    \pgfpathmoveto{\pgfpoint{12cm}{0.5cm}}
+    \pgfpathlineto{\pgfpoint{12cm}{6.5cm}}
+    \pgfsetcornersarced{\pgfpoint{0.7cm}{0.7cm}}
+    \pgfpathlineto{\pgfpoint{13.25cm}{6.5cm}}
+    \pgfpathlineto{\pgfpoint{13.25cm}{0.5cm}}
+    \pgfsetcornersarced{\pgfpoint{0.25cm}{0.25cm}}
+    \pgfpathclose
+    \pgfusepath{stroke}
+    \color{black}
+
+    % Verbindungen
+    \pgfsetcornersarced{\pgfpoint{0.15cm}{0.15cm}}
+    \draw (1.75,6) -- (3.8,6) -- (3.8,3) -- (7,3) -- (7,0.5);
+    \draw (7.1,6.5) -- (7.1,6) -- (12.8,6) -- (12.8,4) -- (10.2,4) -- (10.2,5) -- (7.25,5) -- (7.25,2) -- (4.2,2) -- (4.2,4) -- (1.75,4);
+    \draw [red,thick] (1.75,5) -- (4.2,5) -- (4.2,6) -- (6.5,6) -- (6.5,6.5);
+    \draw [red,thick] (6.5,0.5) -- (6.5,1) -- (9.65,1) -- (9.65,3) -- (12.5,3) -- (12.5,2) -- (7.5,2) -- (7.5,4) -- (4.7,4) -- (4.7,2.5) -- (3.9,2.5) -- (3.9,1) -- (1.75,1);
+    \draw (1.75,3) -- (3.75,3) -- (3.75,1.8) -- (4.2,1.8) -- (4.2,1) -- (6.2,1) -- (6.2,2.5) -- (7.8,2.5) -- (7.8,3) -- (9.4,3) -- (9.4,4.5) -- (10.7,4.5) -- (10.7,5) -- (12.5,5) -- (12.5,6.5);
+    \draw (12.5,0.5) -- (12.5,1) -- (9.9,1) -- (9.9,0.5);
+    \draw (9.9,6.5) -- (9.9,4) -- (7.85,4) -- (7.85,4.5) -- (6.7,4.5) -- (6.7,5) -- (4.5,5) -- (4.5,6.5);
+    \draw (4.5,0.5) -- (4.5,0.75) -- (3.3,0.75) -- (3.3,2) -- (1.75,2);
+
+    % Steckerbrettverbindungen
+    \draw [thick] (0.25,1) .. controls (1.75,0.5) and (1.25,3.5) .. (1.75,4);
+    \draw [thick,red] (0.25,4) .. controls (0.75,3.5) and (0.25,0.5) .. (1.75,1);
+    \draw [thick] (0.25,2) .. controls (0.75,1.5) and (1.25,1.5) .. (1.75,2);
+    \draw [thick] (0.25,3) .. controls (0.75,2.5) and (1.25,2.5) .. (1.75,3);
+    \draw [thick,red] (0.25,6) .. controls (0.75,5.5) and (1.25,4.5) .. (1.75,5);
+    \draw [thick] (0.25,5) .. controls (0.75,4.5) and (1.25,5.5) .. (1.75,6);
+
+    % Verbindungsknoten
+    \foreach \x in {0.25,1.75,3,5,6,8,9,11,12}{
+      \foreach \y in {1,2,3,4,5,6}{
+        \node [shape=circle,draw,fill=black,scale=0.015cm] at (\x,\y) {};
       }
+    }
 
-      % Verbindungen
-      \pgfsetcornersarced{\pgfpoint{0.15cm}{0.15cm}}
-      \draw (1.75,6) -- (3.8,6) -- (3.8,3) -- (7,3) -- (7,0);
-      \draw (7.1,7) -- (7.1,6) -- (13.2,6) -- (13.2,4) -- (10.2,4) -- (10.2,5) -- (7.25,5) -- (7.25,2) -- (4.2,2) -- (4.2,4) -- (1.75,4);
-      \draw (1.75,5) -- (4.2,5) -- (4.2,6) -- (6.5,6) -- (6.5,7);
-      \draw (6.5,0) -- (6.5,1) -- (9.65,1) -- (9.65,3) -- (12.5,3) -- (12.5,2) -- (7.5,2) -- (7.5,4) -- (4.7,4) -- (4.7,2.5) -- (3.9,2.5) -- (3.9,1) -- (1.75,1);
-      \draw (1.75,3) -- (3.75,3) -- (3.75,1.8) -- (4.2,1.8) -- (4.2,1) -- (6.2,1) -- (6.2,2.5) -- (7.8,2.5) -- (7.8,3) -- (9.4,3) -- (9.4,4.5) -- (10.7,4.5) -- (10.7,5) -- (12.5,5) -- (12.5,7);
-      \draw (12.5,0) -- (12.5,1) -- (9.9,1) -- (9.9,0);
-      \draw (9.9,7) -- (9.9,4) -- (7.85,4) -- (7.85,4.5) -- (6.7,4.5) -- (6.7,5) -- (4.5,5) -- (4.5,7);
-      \draw (4.5,0) -- (4.5,0.5) -- (3.3,0.5) -- (3.3,2) -- (1.75,2);
-    \end{tikzpicture}
-  }
+    % Beschriftungen
+    \draw (1,-0.25) node {Steckerbrett};
+    \draw (4,7.25) node {Walze 1};
+    \draw (7,7.25) node {Walze 2};
+    \draw (10,7.25) node {Walze 3};
+    \draw (12.625,-0.25) node {Reflektor};
+    \draw (-3.5,-0.25) node {Lampenfeld};
+    \draw (-1.75,7.25) node {Tastatur};
+  \end{tikzpicture}
 \end{center}
 
 % TODO: Schema der Enigma mit tikZ
