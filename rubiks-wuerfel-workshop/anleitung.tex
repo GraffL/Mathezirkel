@@ -1,0 +1,219 @@
+\documentclass[12pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{xcolor} % Farben
+\usepackage{mdframed} % Rahmen für die Algorithmen
+
+\usepackage{amsthm} % Theorem-Umgebungen
+\newcounter{fallCounter}
+\theoremstyle{definition}
+\newtheorem{fall}[fallCounter]{Fall}
+
+% Für die Verwendung von `diagrams` mit LaTeX
+\usepackage[backend=cairo, outputdir=diagrams]{diagrams-latex}
+\usepackage{graphicx}
+
+\usepackage[hscale=0.75,vscale=0.85,vmarginratio={2:3},heightrounded]{geometry}
+
+% Seitennummerierung ausschalten
+\thispagestyle{empty}
+\pagestyle{empty}
+
+% Überschriften-Größen
+\setkomafont{section}{\Huge}
+\setkomafont{subsection}{\LARGE}
+\setkomafont{subsubsection}{\Large}
+
+\newenvironment{algorithm}
+  {\setcounter{fallCounter}{0}\vspace{15pt}\begin{mdframed}[backgroundcolor=blue!15]}
+  {\end{mdframed}\vspace{15pt}}
+
+\setcounter{secnumdepth}{0} % Keine Abschnittsnummerierung
+
+\begin{document}
+
+\section{Station 1 -- Die obere Ebene}
+
+\subsection{Vorbemerkungen}
+
+Zunächst eine wichtige Beobachtung: Egal, welche Drehungen man ausführt, die mittleren Würfelchen auf allen Seiten ändern ihre Position zueinander nicht. Wir werden diese mittleren Würfel als fest betrachten und mit der "`grünen Seite"' (oder blauen, gelben) immer diejenige Seite bezeichnen, deren mittleres Würchelchen grün ist.
+
+Wir lösen den Würfel nun Ebene für Ebene. Bevor du anfängst, solltest du dir eine Seite aussuchen, mit der du anfangen möchtest.
+In dieser Anleitung haben wir die grüne Seite gewählt (also die mit dem grünen mittleren Würfelchen). Wenn du nicht unnötig umdenken möchtest, dann solltest du auch die grüne Seite nehmen. Halte den Würfel ab jetzt so, dass sie oben ist.
+
+Noch etwas: Während du einen der angegebenen Algorithmen ausführst, darfst du den Würfel insgesamt nicht drehen!
+Wenn am Anfang der Ausführung die grüne Seite oben ist und die orange Seite zu dir schaut, dann muss das während der gesamten Ausführung des Algorithmus auch so bleiben!
+
+Wenn du gerade keinen Algorithmus ausführst, darfst du den Würfel um die "`Nord-Süd-Achse"' drehen.
+
+\pagebreak
+
+\subsection{1.A \enspace Die Kanten der oberen Ebene}
+
+Unser erstes Ziel ist es, die Kanten der obersten Ebene richtig zu stellen. Der Würfel soll danach also folgendermaßen aussehen:
+
+\begin{center}
+  \begin{diagram}[width=300,height=100]
+    import Math.RubiksCube hiding (center)
+    import Control.Lens
+    c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id & cornerFields .~ (const lightgray)) <*> solvedCube3X3
+    off = Offsets 0.3 0.35
+    dia = pad 1.05 $ hcat' (with & sep .~ 1.5) $ map center
+            [ scale 0.7 (drawFoldMap3X3 (c ^. rotateDown))
+            , drawCube off c
+            ]
+  \end{diagram}
+\end{center}
+
+(Graue Flächen stehen hier für beliebige, unsortierte Würfelchen.)
+
+Dies können wir folgendermaßen bewerkstelligen: Wir suchen zunächst eine Kante, die momentan nicht an ihrem richtigen Platz in der oberen Ebene ist. Durch geschickte Drehungen kannst du erreichen, dass diese Kante in der untersten Ebene ist. Wenn das der Fall ist, dann kannst du die untere Ebene so lange drehen, bis die Kante unter dem Platz ist, wo sie eigentlich hin muss, sodass man sie nur noch "`hochheben"' muss. Genau das erledigt dann der folgende Algorithmus:
+
+\begin{algorithm}
+  \subsubsection{Der Kanten-Hebungs-Algorithmus}
+  \begin{fall}
+    Die grüne Fläche zeigt nach unten (d.\,h. die Kante ist richtig orientiert). Dann muss man nur die vordere Seite um 180 Grad drehen:
+    \begin{center}
+      \begin{diagram}[width=300,height=70]
+        import Math.RubiksCube
+        c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id & cornerFields .~ (const lightgray)) <*> solvedCube3X3
+        moves = [F, F]
+        dia = drawMovesBackward (with & showStart .~ True) c moves # pad 1.05
+      \end{diagram}
+    \end{center}
+  \end{fall}
+%\end{algorithm}
+%\begin{algorithm}
+  \begin{fall}
+    Die grüne Fläche zeigt nach vorne. Dann haben wir etwas mehr zu tun:
+    \iffalse
+    \begin{center}
+      \begin{diagram}[width=450,height=70]
+        import Math.RubiksCube
+        c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id & cornerFields .~ (const lightgray)) <*> solvedCube3X3
+        moves = [R, F', R', D', F, F]
+        dia = drawMovesBackward (with & showStart .~ True) c moves # pad 1.05
+      \end{diagram}
+    \end{center}
+    Mit den ersten vier Drehungen schaffen wir es dabei, den Würfel richtig zu orientieren und können Fall 1 anwenden.
+    Wir haben ein neues Problem auf ein bekanntes zurückgeführt.
+    \fi
+
+    \begin{center}
+      \begin{diagram}[width=450,height=70]
+        import Math.RubiksCube
+        c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id & cornerFields .~ (const lightgray)) <*> solvedCube3X3
+        moves = [R', D, R, F']
+        dia = drawMovesBackward (with & showStart .~ True) c moves # pad 1.05
+      \end{diagram}
+    \end{center}
+  \end{fall}
+\end{algorithm}
+
+Führe diese Schritte für alle vier Kanten der oberen Ebene aus. Passe auf, dass du dabei nicht die schon geleistete Arbeit durch unbedachte Drehungen zerstörst!
+
+\pagebreak
+
+\subsection{1.B \enspace Die Ecken der oberen Ebene}
+
+Nun wollen wir auch die Ecken der obersten Ebene richtigstellen. Nach diesem Schritt soll sich folgendes Bild ergeben:
+
+\begin{center}
+  \begin{diagram}[width=300,height=100]
+    import Math.RubiksCube hiding (center)
+    import Control.Lens
+    c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id) <*> solvedCube3X3
+    dia = pad 1.05 $ hcat' (with & sep .~ 1.5) $ map center
+            [ scale 0.7 (drawFoldMap3X3 (c ^. rotateDown))
+            , drawCube with c
+            ]
+  \end{diagram}
+\end{center}
+
+\begin{algorithm}
+  \subsubsection{Der Ecken-Hebungs-Algorithmus}
+  \begin{fall}
+    Die grüne Fläche "`schaut"' zur Seite. Richte dann den Würfel so aus, dass die grüne Fläche vorne ist.
+
+    Wenn die grüne Fläche jetzt rechts ist, führe folgende Schritte aus:
+
+    \begin{center}
+      \begin{diagram}[width=300,height=70]
+        import Math.RubiksCube
+        c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id) <*> solvedCube3X3
+        moves = [D', R', D, R]
+        dia = drawMovesBackward (with & showStart .~ True) c moves # pad 1.05
+      \end{diagram}
+    \end{center}
+
+    Wenn die grüne Fläche links ist, musst du genau die spiegelverkehrten Schritte durchführen:
+
+    \begin{center}
+      \begin{diagram}[width=300,height=70]
+        import Math.RubiksCube
+        c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id) <*> solvedCube3X3
+        moves = map mirrored [D', R', D, R]
+        dia = drawMovesBackward (with & showStart .~ True) c moves # pad 1.05
+      \end{diagram}
+    \end{center}
+  \end{fall}
+
+  \begin{fall}
+    Die grüne Fläche "`schaut"' nach unten. 
+  \end{fall}
+\end{algorithm}
+
+\pagebreak
+
+\section{Station 2 -- Die mittlere Ebene}
+
+Wir wollen die Kanten in der mittleren Ebene korrigieren:
+
+\begin{center}
+  \begin{diagram}[width=300,height=100]
+    import Math.RubiksCube hiding (center)
+    import Control.Lens hiding ((#))
+    c = (pure id & downLayer .~ (const lightgray) & centerFields .~ id) <*> solvedCube3X3
+    off = Offsets 0.3 0.35
+    dia = [ scale 0.7 (drawFoldMap3X3 (c ^. rotateDown))
+          , drawCube off c
+          ] # map center # hcat' (with & sep .~ 1.5) # pad 1.05
+  \end{diagram}
+\end{center}
+
+\begin{algorithm}
+  \subsubsection{Der Kanten-Einsetz-Algorithmus}
+  \begin{center}
+    \begin{diagram}[width=350,height=150]
+      import Math.RubiksCube
+      import Control.Lens hiding ((#))
+      c = (pure id & downLayer .~ (const lightgray) & centerFields .~ id) <*> solvedCube3X3
+      moves = [D', R', D, R, D, F, D', F']
+      moves1 = take 4 moves
+      moves2 = drop 4 moves
+      afterMoves1 = foldr (\m c -> c ^. from (move m)) c moves2
+      dia = [ drawMovesBackward (with & showStart .~ True & showEnd .~ False) afterMoves1 moves1
+            , drawMoves with afterMoves1 moves2
+            ] # vcat' (with & sep .~ 0.75) # pad 1.05
+    \end{diagram}
+  \end{center}
+\end{algorithm}
+
+\pagebreak
+
+\section{Station 3 -- Die verbleibende Ebene}
+
+Der letzte Schritt ist es, die verbleibende Ebene richtig zu drehen. Damit wir diese Ebene besser im Blick haben, drehen wir den Würfel als erstes um, sodass die \emph{unfertige Ebene oben} ist.
+
+\begin{algorithm}
+  \subsubsection{Der Kanten-Karussell-Algorithmus}
+\end{algorithm}
+
+\begin{algorithm}
+  \subsubsection{Der Ecken-Karussell-Algorithmus}
+      moves = [F,R,U,R',U',F']
+\end{algorithm}
+
+\end{document}
