@@ -10,12 +10,20 @@
 \newcounter{fallCounter}
 \theoremstyle{definition}
 \newtheorem{fall}[fallCounter]{Fall}
+\newcounter{trickCounter}
+\newtheorem{trickk}[trickCounter]{Trick}
+% Jeder Trick ist Trick 17 :-)
+\newenvironment{trick}
+  {\setcounter{trickCounter}{16}\begin{trickk}}
+  {\end{trickk}}
+
 
 % Für die Verwendung von `diagrams` mit LaTeX
 \usepackage[backend=cairo, outputdir=diagrams]{diagrams-latex}
 \usepackage{graphicx}
 
-\usepackage[hscale=0.75,vscale=0.85,vmarginratio={2:3},heightrounded]{geometry}
+% Weniger Abstand nach oben und unten
+\usepackage[hscale=0.75,vscale=0.92,vmarginratio={1:1},heightrounded]{geometry}
 
 % Seitennummerierung ausschalten
 \thispagestyle{empty}
@@ -59,10 +67,9 @@ Unser erstes Ziel ist es, die Kanten der obersten Ebene richtig zu stellen. Der 
     import Math.RubiksCube hiding (center)
     import Control.Lens
     c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id & cornerFields .~ (const lightgray)) <*> solvedCube3X3
-    off = Offsets 0.3 0.35
     dia = pad 1.05 $ hcat' (with & sep .~ 1.5) $ map center
             [ scale 0.7 (drawFoldMap3X3 (c ^. rotateDown))
-            , drawCube off c
+            , drawCube with c
             ]
   \end{diagram}
 \end{center}
@@ -112,7 +119,7 @@ Dies können wir folgendermaßen bewerkstelligen: Wir suchen zunächst eine Kant
   \end{fall}
 \end{algorithm}
 
-Führe diese Schritte für alle vier Kanten der oberen Ebene aus. Passe auf, dass du dabei nicht die schon geleistete Arbeit durch unbedachte Drehungen zerstörst!
+Führe diese Schritte für alle vier Kanten der oberen Ebene aus. Passe auf, dass du dabei nicht die schon geleistete Arbeit durch unbedachte Drehungen zerstörst! Es oft nötig, \emph{vorübergehend} richtige Kanten von ihrem Platz weg zu drehen. Wenn du das tust, dann solltest du dir immer deine Züge merken, damit du, wenn du nicht mehr weiterweist, deine Züge rückgängig machen kannst und so zumindest nichts zerstört hast.
 
 \pagebreak
 
@@ -121,7 +128,7 @@ Führe diese Schritte für alle vier Kanten der oberen Ebene aus. Passe auf, das
 Nun wollen wir auch die Ecken der obersten Ebene richtigstellen. Nach diesem Schritt soll sich folgendes Bild ergeben:
 
 \begin{center}
-  \begin{diagram}[width=300,height=100]
+  \begin{diagram}[width=300,height=80]
     import Math.RubiksCube hiding (center)
     import Control.Lens
     c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id) <*> solvedCube3X3
@@ -132,26 +139,25 @@ Nun wollen wir auch die Ecken der obersten Ebene richtigstellen. Nach diesem Sch
   \end{diagram}
 \end{center}
 
+Wir suchen nun eine Ecke mit einer grünen Seitenfläche, die noch nicht in der richtigen Position ist. Wir nehmen zunächst an, dass diese Ecke sich in der unteren Ebene befindet (falls das nicht der Fall ist: lies unter dem Algorithmus weiter). Durch Drehen der unteren Ebene können wir erreichen, dass die Ecke sich genau unter ihrer richtigen Position befindet. Um die Ecke hochzuheben, gibt es
+
 \begin{algorithm}
   \subsubsection{Der Ecken-Hebungs-Algorithmus}
   \begin{fall}
     Die grüne Fläche "`schaut"' zur Seite. Richte dann den Würfel so aus, dass die grüne Fläche vorne ist.
 
-    Wenn die grüne Fläche jetzt rechts ist, führe folgende Schritte aus:
-
+    a) Wenn die grüne Fläche jetzt rechts ist, führe folgende Schritte aus:
     \begin{center}
-      \begin{diagram}[width=300,height=70]
+      \begin{diagram}[width=300,height=50]
         import Math.RubiksCube
         c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id) <*> solvedCube3X3
         moves = [D', R', D, R]
         dia = drawMovesBackward (with & showStart .~ True) c moves # pad 1.05
       \end{diagram}
     \end{center}
-
-    Wenn die grüne Fläche links ist, musst du genau die spiegelverkehrten Schritte durchführen:
-
+    b) Wenn die grüne Fläche links ist, musst genau spiegelverkehrt arbeiten:
     \begin{center}
-      \begin{diagram}[width=300,height=70]
+      \begin{diagram}[width=300,height=50]
         import Math.RubiksCube
         c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id) <*> solvedCube3X3
         moves = map mirrored [D', R', D, R]
@@ -161,9 +167,35 @@ Nun wollen wir auch die Ecken der obersten Ebene richtigstellen. Nach diesem Sch
   \end{fall}
 
   \begin{fall}
-    Die grüne Fläche "`schaut"' nach unten. 
+    Die grüne Fläche "`schaut"' nach unten.
+    Drehe den gesamten Würfel um die Nord-Süd-Achse, sodass der Eck-Würfel mit der grünen Fläche vorne-unten-rechts ist. Dann:
+    \vspace{-10pt}
+    \begin{center}
+      \begin{diagram}[width=300,height=50]
+        import Math.RubiksCube
+        import Control.Lens hiding ((#))
+        goal = (pure (const lightgray) & upLayer .~ id & centerFields .~ id) <*> solvedCube3X3
+        movesCase1 = map mirrored [D', R', D, R]
+        beforeCase1 = goal ^. rotateLeft . undoMoves movesCase1 . rotateRight
+        moves = [R', D, R, D', D']
+        dia = drawMovesBackward (with & showStart .~ False) beforeCase1 moves # pad 1.05
+      \end{diagram}
+    \end{center}
+    Die grüne Fläche schaut jetzt zur Seite.
+    Wenn wir den gesamten Würfel jetzt nach links drehen, können wir also Fall 1 anwenden.
+    Wir haben ein neues Problem auf ein bekanntes zurückgeführt.
   \end{fall}
 \end{algorithm}
+
+Verwende diesen Algorithmus, um alle vier Ecken der ersten Ebene zu lösen.
+
+Was aber, wenn die Ecke mit der grünen Seitenfläche schon in der oberen Ebene ist, aber an falscher Stelle oder sogar an richtiger Stelle, aber falsch orientiert? Dann hilft
+
+\begin{trick}
+  Halte den Würfel so, dass die Ecke mit der grünen Seitenfläche vorne-oben-rechts ist. Führe dann Fall 1a) des Ecken-Hebungs-Algorithmus aus.
+\end{trick}
+
+Dadurch ersetzen wir den Würfel mit der grünen Seitenfläche mit dem Würfel, der sich zufälligerweise gerade vorne-unten-rechts befindet. Der Teil-Würfel mit der grünen Seitenfläche wandert dabei in die untere Ebene. Nach einer Drehung der unteren Ebene können wir den Ecken-Hebungs-Algorithmus auch auf ihn anwenden.
 
 \pagebreak
 
@@ -176,30 +208,64 @@ Wir wollen die Kanten in der mittleren Ebene korrigieren:
     import Math.RubiksCube hiding (center)
     import Control.Lens hiding ((#))
     c = (pure id & downLayer .~ (const lightgray) & centerFields .~ id) <*> solvedCube3X3
-    off = Offsets 0.3 0.35
     dia = [ scale 0.7 (drawFoldMap3X3 (c ^. rotateDown))
-          , drawCube off c
+          , drawCube with c
           ] # map center # hcat' (with & sep .~ 1.5) # pad 1.05
   \end{diagram}
 \end{center}
 
+Ähnlich zu den letzten beiden Schritten suchen wir in der untersten Ebene nach einer Kante, die eigentlich in die mittlere Ebene gehört.
+Hier wäre das zum Beispiel die gelb-orange Kante. Angenommen, die orange Fläche dieser Kante schaut zur Seite.
+Wir drehen die untere Ebene so, dass die orange Seitenfläche mit auf der orangen Seite liegt (wie im ersten Bild im Algorithmus). Dann verwenden wir:
+
 \begin{algorithm}
   \subsubsection{Der Kanten-Einsetz-Algorithmus}
-  \begin{center}
-    \begin{diagram}[width=350,height=150]
-      import Math.RubiksCube
-      import Control.Lens hiding ((#))
-      c = (pure id & downLayer .~ (const lightgray) & centerFields .~ id) <*> solvedCube3X3
-      moves = [D', R', D, R, D, F, D', F']
-      moves1 = take 4 moves
-      moves2 = drop 4 moves
-      afterMoves1 = foldr (\m c -> c ^. from (move m)) c moves2
-      dia = [ drawMovesBackward (with & showStart .~ True & showEnd .~ False) afterMoves1 moves1
-            , drawMoves with afterMoves1 moves2
-            ] # vcat' (with & sep .~ 0.75) # pad 1.05
-    \end{diagram}
-  \end{center}
+  \begin{fall}
+    Die Farbe der unteren Fläche (hier gelb) der Kante ist die Farbe der rechten Seite des Würfel (bei Sicht auf die vordere Fläche der Kante).
+    Dann:
+    \begin{center}
+      \begin{diagram}[width=320,height=120]
+        import Math.RubiksCube
+        import Control.Lens hiding ((#))
+        c = (pure id & downLayer .~ (const lightgray) & centerFields .~ id) <*> solvedCube3X3
+        moves = [D', R', D, R, D, F, D', F']
+        moves1 = take 4 moves
+        moves2 = drop 4 moves
+        afterMoves1 = c ^. undoMoves moves2
+        dia = [ drawMovesBackward (with & showStart .~ True & showEnd .~ False) afterMoves1 moves1
+              , drawMoves with afterMoves1 moves2
+              ] # vcat' (with & sep .~ 0.75) # pad 1.05
+      \end{diagram}
+    \end{center}
+  \end{fall}
+  \begin{fall}
+    Die Farbe der unteren Fläche (hier weiß) der Kante ist die Farbe der linken Seite des Würfel (bei Sicht auf die vordere Fläche der Kante).
+    Dann:
+    \begin{center}
+      \begin{diagram}[width=320,height=120]
+        import Math.RubiksCube
+        import Control.Lens hiding ((#))
+        c = (pure id & downLayer .~ (const lightgray) & centerFields .~ id) <*> solvedCube3X3
+        moves = map mirrored [D', R', D, R, D, F, D', F']
+        moves1 = take 4 moves
+        moves2 = drop 4 moves
+        afterMoves1 = c ^. undoMoves moves2
+        off = Offsets (-0.3) 0.35
+        dia = [ drawMovesBackward (with & showStart .~ True & showEnd .~ False & offsets .~ off) afterMoves1 moves1
+              , drawMoves (with & offsets .~ off) afterMoves1 moves2
+              ] # vcat' (with & sep .~ 0.75) # pad 1.05
+      \end{diagram}
+    \end{center}
+  \end{fall}
 \end{algorithm}
+
+Was aber, wenn eine Kante, die in die mittlere Ebene gehört, schon in der mittleren Ebene ist, aber an falscher Stelle oder sogar an richtiger Stelle, aber falsch orientiert? Dann hilft wieder einmal
+
+\begin{trick}
+  Halte den Würfel so, dass die falsche Kante mittelhoch-vorne-rechts ist. Führe dann Fall 1 des Kanten-Einsetz-Algorithmus aus.
+\end{trick}
+
+Die Idee hinter diesem Trick ist die gleiche wie beim letzten Trick.
 
 \pagebreak
 
