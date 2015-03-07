@@ -65,12 +65,11 @@ Unser erstes Ziel ist es, die Kanten der obersten Ebene richtig zu stellen. Der 
 \begin{center}
   \begin{diagram}[width=300,height=100]
     import Math.RubiksCube hiding (center)
-    import Control.Lens
+    import Control.Lens hiding ((#))
     c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id & cornerFields .~ (const lightgray)) <*> solvedCube3X3
-    dia = pad 1.05 $ hcat' (with & sep .~ 1.5) $ map center
-            [ scale 0.7 (drawFoldMap3X3 (c ^. rotateDown))
-            , drawCube with c
-            ]
+    dia = [ scale 0.7 (drawFoldMap3X3 (c ^. rotateDown))
+          , drawCube with c
+          ] # map center # hcat' (with & sep .~ 1.5) # pad 1.05
   \end{diagram}
 \end{center}
 
@@ -227,7 +226,7 @@ Wir drehen die untere Ebene so, dass die orange Seitenfläche mit auf der orange
       \begin{diagram}[width=320,height=120]
         import Math.RubiksCube
         import Control.Lens hiding ((#))
-        c = (pure id & downLayer .~ (const lightgray) & centerFields .~ id) <*> solvedCube3X3
+        c = (pure id & downLayer .~ (const gray) & centerFields .~ id) <*> solvedCube3X3
         moves = [D', R', D, R, D, F, D', F']
         moves1 = take 4 moves
         moves2 = drop 4 moves
@@ -245,7 +244,7 @@ Wir drehen die untere Ebene so, dass die orange Seitenfläche mit auf der orange
       \begin{diagram}[width=320,height=120]
         import Math.RubiksCube
         import Control.Lens hiding ((#))
-        c = (pure id & downLayer .~ (const lightgray) & centerFields .~ id) <*> solvedCube3X3
+        c = (pure id & downLayer .~ (const gray) & centerFields .~ id) <*> solvedCube3X3
         moves = map mirrored [D', R', D, R, D, F, D', F']
         moves1 = take 4 moves
         moves2 = drop 4 moves
@@ -269,17 +268,207 @@ Die Idee hinter diesem Trick ist die gleiche wie beim letzten Trick.
 
 \pagebreak
 
-\section{Station 3 -- Die verbleibende Ebene}
+\section{Station 3 -- Die letzte Ebene}
 
 Der letzte Schritt ist es, die verbleibende Ebene richtig zu drehen. Damit wir diese Ebene besser im Blick haben, drehen wir den Würfel als erstes um, sodass die \emph{unfertige Ebene oben} ist.
 
+\subsection{3.A \enspace Das Kantenkreuz}
+
+Unser erstes Ziel ist es, auf der noch ungelösten Seite ein Kantenkreuz herzustellen. Das soll in etwa so aussehen:
+
+\begin{center}
+  \begin{diagram}[width=320,height=120]
+    import Math.RubiksCube hiding (center)
+    import Control.Lens hiding ((#))
+    blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+    c = (pure id & cornerFields .~ (const lightgray) & downLayer .~ id) <*> blueUp
+    moves = [R, U, U, R', U', R, U', R']
+    beforeMoves = c ^. doMoves moves
+    dia = [ scale 0.7 (drawFoldMap3X3 (beforeMoves ^. rotateDown))
+          , drawCube with beforeMoves
+          ] # map center # hcat' (with & sep .~ 1.5) # pad 1.05
+  \end{diagram}
+\end{center}
+
+Das dabei die Kanten noch nicht an den richtigen Positionen sind, ist egal -- worauf es in diesem Schritt ankommt, ist das blaue Kreuz.
+
+\begin{algorithm}
+  \subsubsection{Der Kanten-Kipp-Algorithmus}
+  XXX: Besserer Name?
+  moves = [F,R,U,R',U',F']
+\end{algorithm}
+
+\pagebreak
+
+\subsection{3.B \enspace Die Position der Kanten}
+
+Das Ziel ist nun folgendes Muster:
+
+\begin{center}
+  \begin{diagram}[width=320,height=120]
+    import Math.RubiksCube hiding (center)
+    import Control.Lens hiding ((#))
+    blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+    c = (pure id & cornerFields .~ (const lightgray) & downLayer .~ id) <*> blueUp
+    dia = [ scale 0.7 (drawFoldMap3X3 (c ^. rotateDown))
+          , drawCube with c
+          ] # map center # hcat' (with & sep .~ 1.5) # pad 1.05
+  \end{diagram}
+\end{center}
+
 \begin{algorithm}
   \subsubsection{Der Kanten-Karussell-Algorithmus}
+  Dieser Algorithmus bewirkt eine zyklische Vertauschung von drei Kantenwürfeln:
+  \begin{center}
+    \begin{tabular}{ r c l }
+      rechts-oben & $\longrightarrow$ & links-oben \\
+      links-oben & $\longrightarrow$ & hinten-oben \\
+      hinten-oben & $\longrightarrow$ & rechts-oben
+    \end{tabular}
+  \end{center}
+  \begin{center}
+    \begin{diagram}[width=320,height=120]
+      import Math.RubiksCube hiding (center)
+      import Control.Lens hiding ((#))
+      blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+      c = (pure id & cornerFields .~ (const lightgray) & downLayer .~ id) <*> blueUp
+      moves = [R, U, U, R', U', R, U', R']
+      moves1 = take 4 moves
+      moves2 = drop 4 moves
+      afterMoves1 = c ^. undoMoves moves2
+      dia = [ drawMovesBackward (with & showStart .~ True & showEnd .~ False) afterMoves1 moves1
+            , drawMoves with afterMoves1 moves2
+            ] # vcat' (with & sep .~ 0.75) # pad 1.05
+    \end{diagram}
+  \end{center}
+  (Die Farben dienen nur zur Veranschaulichung des Algorithmus. Die Stellung der \\
+  Kantenwürfel muss vor Anwendung des Algorithmus \emph{nicht} unbedingt dem Bild \\
+  oben links entsprechen.)
 \end{algorithm}
+
+Zum Einsatz des Algorithmus:
+
+\setcounter{fallCounter}{0}
+
+\begin{fall}
+  Wenn es einen Kantenwürfel in der oberen Ebene gibt, der schon an der richtigen Position ist, dann halte den Würfel so, dass dieser Kantenwürfel oben-vorne ist. Führe dann den Kanten-Karussell-Algorithmus aus. Überprüfe, ob nun alle Kanten an der richtigen Position sind. Wenn nicht, dann führe den Algorithmus noch einmal aus.
+\end{fall}
+
+\begin{fall}
+  Wenn es keinen Kantenwürfel an der richtigen Position gibt, dann führe den Algorithmus zunächst einmal aus (wie du den Würfel hältst ist egal, Hauptsache blau ist oben). Danach gibt es einen Kantenwürfel an der richtigen Position. Gehe zu Fall 1.
+\end{fall}
+
+\pagebreak
+
+\subsection{3.C \enspace Die Position der Ecken}
+
+Ziel: Die Eckwürfel der letzten Ebene sind an der richtigen Position, aber möglicherweise nicht richtig orientiert (d.\,h. gedreht). Beispiel:
+
+\begin{center}
+  \begin{diagram}[width=320,height=120]
+    import Math.RubiksCube hiding (center)
+    import Control.Lens hiding ((#))
+    simpleMoves = [R, U, U, R', U', R, U', R']
+    moves = simpleMoves ++ map mirrored simpleMoves
+    blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+    c = blueUp ^. doMoves (moves ++ moves) ^. rotateLeft ^. doMoves moves ^. rotateRight
+    dia = [ scale 0.7 (drawFoldMap3X3 (c ^. rotateDown))
+          , drawCube with c
+          ] # map center # hcat' (with & sep .~ 1.5) # pad 1.05
+  \end{diagram}
+\end{center}
 
 \begin{algorithm}
   \subsubsection{Der Ecken-Karussell-Algorithmus}
-      moves = [F,R,U,R',U',F']
+  Dieser Algorithmus bewirkt eine zyklische Vertauschung von drei Eckwürfeln:
+  \begin{center}
+    \begin{tabular}{ r c l }
+      vorne-rechts-oben & $\longrightarrow$ & hinten-rechts-oben \\
+      hinten-rechts-oben & $\longrightarrow$ & hinten-links-oben \\
+      hinten-links-oben & $\longrightarrow$ & vorne-rechts-oben
+    \end{tabular}
+  \end{center}
+  \begin{center}
+    \begin{diagram}[width=320,height=100]
+      import Math.RubiksCube
+      import Control.Lens hiding ((#))
+      blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+      c = blueUp
+      moves = [R, U', L', U, R', U', L, U]
+      moves1 = take 4 moves
+      moves2 = drop 4 moves
+      afterMoves1 = c ^. undoMoves moves2
+      dia = [ drawMovesBackward (with & showStart .~ True & showEnd .~ False) afterMoves1 moves1
+            , drawMoves with afterMoves1 moves2
+            ] # vcat' (with & sep .~ 0.75) # pad 1.05
+    \end{diagram}
+  \end{center}
+  (Die Farben dienen nur zur Veranschaulichung des Algorithmus. Die Stellung der \\
+  Eckwürfel muss vor Anwendung des Algorithmus \emph{nicht} unbedingt dem Bild \\
+  oben links entsprechen.)
+\end{algorithm}
+
+Zum Einsatz des Algorithmus:
+
+\setcounter{fallCounter}{0}
+
+\begin{fall}
+  Wenn es einen Eckwürfel in der oberen Ebene gibt, der schon an der richtigen Position ist, dann halte den Würfel so, dass dieser Eckwürfel oben links ist. Führe dann den Ecken-Karussell-Algorithmus aus. Überprüfe, ob nun alle Ecken an der richtigen Position sind. Wenn nicht, dann führe den Algorithmus noch einmal aus.
+\end{fall}
+
+\begin{fall}
+  Wenn es keinen Eckwürfel an der richtigen Position gibt, dann führe den Algorithmus zunächst einmal aus (wie du den Würfel hältst ist egal, Hauptsache blau ist oben). Danach gibt es einen Eckwürfel an der richtigen Position.
+\end{fall}
+
+\pagebreak
+
+\subsection{3.D \enspace Die Orientierung der Ecken}
+
+Nur noch dieser Schritt, dann ist es geschafft! Das Kochrezept für diesen Schritt ist das (mehrmalige) Anwenden von
+
+\begin{algorithm}
+  \subsubsection{Der Ecken-Kreisel-Algorithmus}
+  Dieser Algorithmus bewirkt eine Drehung des Würfelchens oben-vorne-rechts um 120 Grad gegen den UZS
+  und gleichzeitig eine Drehung des Würfelchens oben-hinten-rechts um 120 Grad im UZS. Etwa so:
+
+  \begin{center}
+    \begin{diagram}[width=300,height=70]
+      import Math.RubiksCube
+      import Control.Lens hiding ((#))
+      blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+      simpleMoves = [R, U, U, R', U', R, U', R']
+      moves = simpleMoves ++ map mirrored simpleMoves
+      beforeMoves = blueUp ^. undoMoves moves
+      dia = [ drawCube with beforeMoves
+            , arrowBetween' (with & headLength .~ veryLarge) (p2 (0,2)) (p2 (3.5,2))
+                # dashingG [0.15, 0.15] 0
+            , drawCube with blueUp
+            ] # hcat' (with & sep .~ 0.75) # pad 1.05
+    \end{diagram}
+  \end{center}
+
+  \textbf{Schritte}: \\
+  1. Führe den Kanten-Karussell-Algorithmus aus \\
+  2. Führe den spiegelverkehrten Kanten-Karussell-Algorithmus aus (siehe unten)
+\end{algorithm}
+
+\begin{algorithm}
+  \subsubsection{Der spiegelverkehrte Kanten-Karussell-Algorithmus}
+  \begin{center}
+    \begin{diagram}[width=320,height=120]
+      import Math.RubiksCube hiding (center)
+      import Control.Lens hiding ((#))
+      blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+      c = (pure id & cornerFields .~ (const lightgray) & downLayer .~ id) <*> blueUp
+      moves = map mirrored [R, U, U, R', U', R, U', R']
+      moves1 = take 4 moves
+      moves2 = drop 4 moves
+      afterMoves1 = c ^. undoMoves moves2
+      dia = [ drawMovesBackward (with & showStart .~ True & showEnd .~ False) afterMoves1 moves1
+            , drawMoves with afterMoves1 moves2
+            ] # vcat' (with & sep .~ 0.75) # pad 1.05
+    \end{diagram}
+  \end{center}
 \end{algorithm}
 
 \end{document}
