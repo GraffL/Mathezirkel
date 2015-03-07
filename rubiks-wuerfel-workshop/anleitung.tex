@@ -181,7 +181,7 @@ Wir suchen nun eine Ecke mit einer grünen Seitenfläche, die noch nicht in der 
       \end{diagram}
     \end{center}
     Die grüne Fläche schaut jetzt zur Seite.
-    Wenn wir den gesamten Würfel jetzt nach links drehen, können wir also Fall 1 anwenden.
+    Wenn wir den gesamten Würfel jetzt nach links drehen, können wir also Fall 1b) anwenden.
     Wir haben ein neues Problem auf ein bekanntes zurückgeführt.
   \end{fall}
 \end{algorithm}
@@ -261,7 +261,7 @@ Wir drehen die untere Ebene so, dass die orange Seitenfläche mit auf der orange
 Was aber, wenn eine Kante, die in die mittlere Ebene gehört, schon in der mittleren Ebene ist, aber an falscher Stelle oder sogar an richtiger Stelle, aber falsch orientiert? Dann hilft wieder einmal
 
 \begin{trick}
-  Halte den Würfel so, dass die falsche Kante mittelhoch-vorne-rechts ist. Führe dann Fall 1 des Kanten-Einsetz-Algorithmus aus.
+  Halte den Würfel so, dass die falsche Kante vorne-rechts ist. Führe dann Fall 1 des Kanten-Einsetz-Algorithmus aus.
 \end{trick}
 
 Die Idee hinter diesem Trick ist die gleiche wie beim letzten Trick.
@@ -293,10 +293,50 @@ Unser erstes Ziel ist es, auf der noch ungelösten Seite ein Kantenkreuz herzust
 Das dabei die Kanten noch nicht an den richtigen Positionen sind, ist egal -- worauf es in diesem Schritt ankommt, ist das blaue Kreuz.
 
 \begin{algorithm}
-  \subsubsection{Der Kanten-Kipp-Algorithmus}
-  XXX: Besserer Name?
-  moves = [F,R,U,R',U',F']
+  \subsubsection{Der Kanten-Kipp-Karussell-Algorithmus}
+  % XXX: Besserer Name?
+  Dieser Algorithmus bewirkt eine zyklische Vertauschung von drei Kantenwürfeln:
+  \begin{center}
+    \begin{tabular}{ r c l }
+      vorne-oben & $\longrightarrow$ & rechts-oben (mit Kippung) \\
+      rechts-oben & $\longrightarrow$ & hinten-oben \\
+      hinten-oben & $\longrightarrow$ & vorne-oben (mit Kippung)
+    \end{tabular}
+  \end{center}
+  Dabei bedeutet "`mit Kippung"', dass wenn vorher beim Würfel oben-vorne die blaue Seitenfläche an der Seite war, nach Ausführung des Algorithmus diese Seitenfläche oben ist.
+  \begin{center}
+    \begin{diagram}[width=320,height=110]
+      import Math.RubiksCube hiding (center)
+      import Control.Lens hiding ((#))
+      blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+      c = (pure id & cornerFields .~ (const lightgray) & downLayer .~ id) <*> blueUp
+      moves = [F,R,U,R',U',F']
+      moves1 = take 3 moves
+      moves2 = drop 3 moves
+      afterMoves1 = c ^. undoMoves moves2
+      dia = [ drawMovesBackward (with & showStart .~ True & showEnd .~ False) afterMoves1 moves1
+            , drawMoves with afterMoves1 moves2
+            ] # vcat' (with & sep .~ 0.75) # pad 1.05
+    \end{diagram}
+  \end{center}
+  (Die Farben dienen nur zur Veranschaulichung des Algorithmus. Die Stellung der \\
+  Kantenwürfel muss vor Anwendung des Algorithmus \emph{nicht} unbedingt dem Bild \\
+  oben links entsprechen.)
 \end{algorithm}
+
+Drehe deinen Würfel so, dass er von oben betrachtet wie einer dieser Seiten aussieht:
+\begin{center}
+  \begin{diagram}[width=320,height=50]
+    import Math.RubiksCube hiding (center)
+    import Control.Lens hiding ((#))
+    s = pure lightgray & middleCenter .~ blue
+    dia = [ s
+          , s & middleLeft .~ blue & middleRight .~ blue
+          , s & middleLeft .~ blue & topCenter .~ blue
+          ] # map (drawSide3X3 (1,0) (0,1)) # hcat' (with & sep .~ 1.5) # pad 1.05
+  \end{diagram}
+\end{center}
+Führe den Algorithmus aus. Wenn du noch nicht fertig bist, wiederhole diese Schritte.
 
 \pagebreak
 
