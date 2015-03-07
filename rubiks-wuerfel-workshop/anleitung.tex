@@ -118,7 +118,7 @@ Dies können wir folgendermaßen bewerkstelligen: Wir suchen zunächst eine Kant
   \end{fall}
 \end{algorithm}
 
-Führe diese Schritte für alle vier Kanten der oberen Ebene aus. Passe auf, dass du dabei nicht die schon geleistete Arbeit durch unbedachte Drehungen zerstörst! Es oft nötig, \emph{vorübergehend} richtige Kanten von ihrem Platz weg zu drehen. Wenn du das tust, dann solltest du dir immer deine Züge merken, damit du, wenn du nicht mehr weiterweist, deine Züge rückgängig machen kannst und so zumindest nichts zerstört hast.
+Führe diese Schritte für alle vier Kanten der oberen Ebene aus. Passe auf, dass du dabei nicht die schon geleistete Arbeit durch unbedachte Drehungen zerstörst! Es oft nötig, \emph{vorübergehend} richtige Kanten von ihrem Platz weg zu drehen. Wenn du das tust, dann solltest du dir immer deine Züge merken, damit du, wenn du nicht mehr weiter weist, deine Züge rückgängig machen kannst und so zumindest nichts zerstört hast.
 
 \pagebreak
 
@@ -348,15 +348,10 @@ Das Ziel ist nun folgendes Muster:
 
 Zum Einsatz des Algorithmus:
 
-\setcounter{fallCounter}{0}
+Versuche, die oberste Ebene so zu drehen, dass \emph{genau eine} Kante an der richtigen Position ist.
+Wenn das nicht möglich ist, dann führe den Algorithmus einmal aus (in beliebiger Position) und versuche es erneut.
 
-\begin{fall}
-  Wenn es einen Kantenwürfel in der oberen Ebene gibt, der schon an der richtigen Position ist, dann halte den Würfel so, dass dieser Kantenwürfel oben-vorne ist. Führe dann den Kanten-Karussell-Algorithmus aus. Überprüfe, ob nun alle Kanten an der richtigen Position sind. Wenn nicht, dann führe den Algorithmus noch einmal aus.
-\end{fall}
-
-\begin{fall}
-  Wenn es keinen Kantenwürfel an der richtigen Position gibt, dann führe den Algorithmus zunächst einmal aus (wie du den Würfel hältst ist egal, Hauptsache blau ist oben). Danach gibt es einen Kantenwürfel an der richtigen Position. Gehe zu Fall 1.
-\end{fall}
+Halte den Würfel so, dass die richtige Kante oben-vorne ist. Führe den Algorithmus aus. Überprüfe, ob alle Kanten nun richtig sind. Wenn nicht, dann werden sie es durch ein weiteres Ausführen des Algorithmus.
 
 \pagebreak
 
