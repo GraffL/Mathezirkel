@@ -64,11 +64,11 @@ Unser erstes Ziel ist es, die Kanten der obersten Ebene richtig zu stellen. Der 
 
 \begin{center}
   \begin{diagram}[width=300,height=100]
-    import Math.RubiksCube hiding (center)
+    import Diagrams.RubiksCube
     import Control.Lens hiding ((#))
-    c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id & cornerFields .~ (const lightgray)) <*> solvedCube3X3
-    dia = [ scale 0.7 (drawFoldMap3X3 (c ^. rotateDown))
-          , drawCube with c
+    c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id & cornerFacets .~ (const lightgray)) <*> solvedRubiksCube
+    dia = [ scale 0.7 (drawFoldingPattern (c ^. rotateDown))
+          , drawRubiksCube with c
           ] # map center # hcat' (with & sep .~ 1.5) # pad 1.05
   \end{diagram}
 \end{center}
@@ -83,8 +83,8 @@ Dies können wir folgendermaßen bewerkstelligen: Wir suchen zunächst eine Kant
     Die grüne Fläche zeigt nach unten (d.\,h. die Kante ist richtig orientiert). Dann muss man nur die vordere Seite um 180 Grad drehen:
     \begin{center}
       \begin{diagram}[width=300,height=70]
-        import Math.RubiksCube
-        c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id & cornerFields .~ (const lightgray)) <*> solvedCube3X3
+        import Diagrams.RubiksCube
+        c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id & cornerFacets .~ (const lightgray)) <*> solvedRubiksCube
         moves = [F, F]
         dia = drawMovesBackward (with & showStart .~ True) c moves # pad 1.05
       \end{diagram}
@@ -97,8 +97,8 @@ Dies können wir folgendermaßen bewerkstelligen: Wir suchen zunächst eine Kant
     \iffalse
     \begin{center}
       \begin{diagram}[width=450,height=70]
-        import Math.RubiksCube
-        c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id & cornerFields .~ (const lightgray)) <*> solvedCube3X3
+        import Diagrams.RubiksCube
+        c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id & cornerFacets .~ (const lightgray)) <*> solvedRubiksCube
         moves = [R, F', R', D', F, F]
         dia = drawMovesBackward (with & showStart .~ True) c moves # pad 1.05
       \end{diagram}
@@ -109,8 +109,8 @@ Dies können wir folgendermaßen bewerkstelligen: Wir suchen zunächst eine Kant
 
     \begin{center}
       \begin{diagram}[width=450,height=70]
-        import Math.RubiksCube
-        c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id & cornerFields .~ (const lightgray)) <*> solvedCube3X3
+        import Diagrams.RubiksCube
+        c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id & cornerFacets .~ (const lightgray)) <*> solvedRubiksCube
         moves = [R', D, R, F']
         dia = drawMovesBackward (with & showStart .~ True) c moves # pad 1.05
       \end{diagram}
@@ -128,12 +128,12 @@ Nun wollen wir auch die Ecken der obersten Ebene richtigstellen. Nach diesem Sch
 
 \begin{center}
   \begin{diagram}[width=300,height=80]
-    import Math.RubiksCube hiding (center)
+    import Diagrams.RubiksCube
     import Control.Lens
-    c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id) <*> solvedCube3X3
+    c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id) <*> solvedRubiksCube
     dia = pad 1.05 $ hcat' (with & sep .~ 1.5) $ map center
-            [ scale 0.7 (drawFoldMap3X3 (c ^. rotateDown))
-            , drawCube with c
+            [ scale 0.7 (drawFoldingPattern (c ^. rotateDown))
+            , drawRubiksCube with c
             ]
   \end{diagram}
 \end{center}
@@ -148,8 +148,8 @@ Wir suchen nun eine Ecke mit einer grünen Seitenfläche, die noch nicht in der 
     a) Wenn die grüne Fläche jetzt rechts ist, führe folgende Schritte aus:
     \begin{center}
       \begin{diagram}[width=300,height=50]
-        import Math.RubiksCube
-        c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id) <*> solvedCube3X3
+        import Diagrams.RubiksCube
+        c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id) <*> solvedRubiksCube
         moves = [D', R', D, R]
         dia = drawMovesBackward (with & showStart .~ True) c moves # pad 1.05
       \end{diagram}
@@ -157,9 +157,9 @@ Wir suchen nun eine Ecke mit einer grünen Seitenfläche, die noch nicht in der 
     b) Wenn die grüne Fläche links ist, musst genau spiegelverkehrt arbeiten:
     \begin{center}
       \begin{diagram}[width=300,height=50]
-        import Math.RubiksCube
-        c = (pure (const lightgray) & upLayer .~ id & centerFields .~ id) <*> solvedCube3X3
-        moves = map mirrored [D', R', D, R]
+        import Diagrams.RubiksCube
+        c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id) <*> solvedRubiksCube
+        moves = map mirror [D', R', D, R]
         dia = drawMovesBackward (with & showStart .~ True) c moves # pad 1.05
       \end{diagram}
     \end{center}
@@ -171,10 +171,10 @@ Wir suchen nun eine Ecke mit einer grünen Seitenfläche, die noch nicht in der 
     \vspace{-10pt}
     \begin{center}
       \begin{diagram}[width=300,height=50]
-        import Math.RubiksCube
+        import Diagrams.RubiksCube
         import Control.Lens hiding ((#))
-        goal = (pure (const lightgray) & upLayer .~ id & centerFields .~ id) <*> solvedCube3X3
-        movesCase1 = map mirrored [D', R', D, R]
+        goal = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id) <*> solvedRubiksCube
+        movesCase1 = map mirror [D', R', D, R]
         beforeCase1 = goal ^. rotateLeft . undoMoves movesCase1 . rotateRight
         moves = [R', D, R, D', D']
         dia = drawMovesBackward (with & showStart .~ False) beforeCase1 moves # pad 1.05
@@ -204,11 +204,11 @@ Wir wollen die Kanten in der mittleren Ebene korrigieren:
 
 \begin{center}
   \begin{diagram}[width=300,height=100]
-    import Math.RubiksCube hiding (center)
+    import Diagrams.RubiksCube
     import Control.Lens hiding ((#))
-    c = (pure id & downLayer .~ (const lightgray) & centerFields .~ id) <*> solvedCube3X3
-    dia = [ scale 0.7 (drawFoldMap3X3 (c ^. rotateDown))
-          , drawCube with c
+    c = (pure id & bottomLayerFacets .~ (const lightgray) & centerFacets .~ id) <*> solvedRubiksCube
+    dia = [ scale 0.7 (drawFoldingPattern (c ^. rotateDown))
+          , drawRubiksCube with c
           ] # map center # hcat' (with & sep .~ 1.5) # pad 1.05
   \end{diagram}
 \end{center}
@@ -224,9 +224,9 @@ Wir drehen die untere Ebene so, dass die orange Seitenfläche mit auf der orange
     Dann:
     \begin{center}
       \begin{diagram}[width=320,height=120]
-        import Math.RubiksCube
+        import Diagrams.RubiksCube
         import Control.Lens hiding ((#))
-        c = (pure id & downLayer .~ (const gray) & centerFields .~ id) <*> solvedCube3X3
+        c = (pure id & bottomLayerFacets .~ (const gray) & centerFacets .~ id) <*> solvedRubiksCube
         moves = [D', R', D, R, D, F, D', F']
         moves1 = take 4 moves
         moves2 = drop 4 moves
@@ -242,10 +242,10 @@ Wir drehen die untere Ebene so, dass die orange Seitenfläche mit auf der orange
     Dann:
     \begin{center}
       \begin{diagram}[width=320,height=120]
-        import Math.RubiksCube
+        import Diagrams.RubiksCube
         import Control.Lens hiding ((#))
-        c = (pure id & downLayer .~ (const gray) & centerFields .~ id) <*> solvedCube3X3
-        moves = map mirrored [D', R', D, R, D, F, D', F']
+        c = (pure id & bottomLayerFacets .~ (const gray) & centerFacets .~ id) <*> solvedRubiksCube
+        moves = map mirror [D', R', D, R, D, F, D', F']
         moves1 = take 4 moves
         moves2 = drop 4 moves
         afterMoves1 = c ^. undoMoves moves2
@@ -278,14 +278,14 @@ Unser erstes Ziel ist es, auf der noch ungelösten Seite ein Kantenkreuz herzust
 
 \begin{center}
   \begin{diagram}[width=320,height=120]
-    import Math.RubiksCube hiding (center)
+    import Diagrams.RubiksCube
     import Control.Lens hiding ((#))
-    blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
-    c = (pure id & cornerFields .~ (const lightgray) & downLayer .~ id) <*> blueUp
+    blueUp = solvedRubiksCube ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+    c = (pure id & cornerFacets .~ (const lightgray) & bottomLayerFacets .~ id) <*> blueUp
     moves = [R, U, U, R', U', R, U', R']
     beforeMoves = c ^. doMoves moves
-    dia = [ scale 0.7 (drawFoldMap3X3 (beforeMoves ^. rotateDown))
-          , drawCube with beforeMoves
+    dia = [ scale 0.7 (drawFoldingPattern (beforeMoves ^. rotateDown))
+          , drawRubiksCube with beforeMoves
           ] # map center # hcat' (with & sep .~ 1.5) # pad 1.05
   \end{diagram}
 \end{center}
@@ -306,10 +306,10 @@ Das dabei die Kanten noch nicht an den richtigen Positionen sind, ist egal -- wo
   Dabei bedeutet "`mit Kippung"', dass wenn vorher beim Würfel oben-vorne die blaue Seitenfläche an der Seite war, nach Ausführung des Algorithmus diese Seitenfläche oben ist.
   \begin{center}
     \begin{diagram}[width=320,height=110]
-      import Math.RubiksCube hiding (center)
+      import Diagrams.RubiksCube
       import Control.Lens hiding ((#))
-      blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
-      c = (pure id & cornerFields .~ (const lightgray) & downLayer .~ id) <*> blueUp
+      blueUp = solvedRubiksCube ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+      c = (pure id & cornerFacets .~ (const lightgray) & bottomLayerFacets .~ id) <*> blueUp
       moves = [F,R,U,R',U',F']
       moves1 = take 3 moves
       moves2 = drop 3 moves
@@ -327,13 +327,15 @@ Das dabei die Kanten noch nicht an den richtigen Positionen sind, ist egal -- wo
 Drehe deinen Würfel so, dass er von oben betrachtet wie einer dieser Seiten aussieht:
 \begin{center}
   \begin{diagram}[width=320,height=50]
-    import Math.RubiksCube hiding (center)
+    import Diagrams.RubiksCube
     import Control.Lens hiding ((#))
     s = pure lightgray & middleCenter .~ blue
+    dx = r2 (1,0)
+    dy = r2 (0,1)
     dia = [ s
           , s & middleLeft .~ blue & middleRight .~ blue
           , s & middleLeft .~ blue & topCenter .~ blue
-          ] # map (drawSide3X3 (1,0) (0,1)) # hcat' (with & sep .~ 1.5) # pad 1.05
+          ] # map (drawSide dx dy) # hcat' (with & sep .~ 1.5) # pad 1.05
   \end{diagram}
 \end{center}
 Führe den Algorithmus aus. Wenn du noch nicht fertig bist, wiederhole diese Schritte.
@@ -346,12 +348,12 @@ Das Ziel ist nun folgendes Muster:
 
 \begin{center}
   \begin{diagram}[width=320,height=120]
-    import Math.RubiksCube hiding (center)
+    import Diagrams.RubiksCube
     import Control.Lens hiding ((#))
-    blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
-    c = (pure id & cornerFields .~ (const lightgray) & downLayer .~ id) <*> blueUp
-    dia = [ scale 0.7 (drawFoldMap3X3 (c ^. rotateDown))
-          , drawCube with c
+    blueUp = solvedRubiksCube ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+    c = (pure id & cornerFacets .~ (const lightgray) & bottomLayerFacets .~ id) <*> blueUp
+    dia = [ scale 0.7 (drawFoldingPattern (c ^. rotateDown))
+          , drawRubiksCube with c
           ] # map center # hcat' (with & sep .~ 1.5) # pad 1.05
   \end{diagram}
 \end{center}
@@ -368,10 +370,10 @@ Das Ziel ist nun folgendes Muster:
   \end{center}
   \begin{center}
     \begin{diagram}[width=320,height=120]
-      import Math.RubiksCube hiding (center)
+      import Diagrams.RubiksCube
       import Control.Lens hiding ((#))
-      blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
-      c = (pure id & cornerFields .~ (const lightgray) & downLayer .~ id) <*> blueUp
+      blueUp = solvedRubiksCube ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+      c = (pure id & cornerFacets .~ (const lightgray) & bottomLayerFacets .~ id) <*> blueUp
       moves = [R, U, U, R', U', R, U', R']
       moves1 = take 4 moves
       moves2 = drop 4 moves
@@ -401,14 +403,14 @@ Ziel: Die Eckwürfel der letzten Ebene sind an der richtigen Position, aber mög
 
 \begin{center}
   \begin{diagram}[width=320,height=120]
-    import Math.RubiksCube hiding (center)
+    import Diagrams.RubiksCube
     import Control.Lens hiding ((#))
     simpleMoves = [R, U, U, R', U', R, U', R']
-    moves = simpleMoves ++ map mirrored simpleMoves
-    blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+    moves = simpleMoves ++ map mirror simpleMoves
+    blueUp = solvedRubiksCube ^. rotateLeft . rotateLeft . rotateDown . rotateDown
     c = blueUp ^. doMoves (moves ++ moves) ^. rotateLeft ^. doMoves moves ^. rotateRight
-    dia = [ scale 0.7 (drawFoldMap3X3 (c ^. rotateDown))
-          , drawCube with c
+    dia = [ scale 0.7 (drawFoldingPattern (c ^. rotateDown))
+          , drawRubiksCube with c
           ] # map center # hcat' (with & sep .~ 1.5) # pad 1.05
   \end{diagram}
 \end{center}
@@ -425,9 +427,9 @@ Ziel: Die Eckwürfel der letzten Ebene sind an der richtigen Position, aber mög
   \end{center}
   \begin{center}
     \begin{diagram}[width=320,height=100]
-      import Math.RubiksCube
+      import Diagrams.RubiksCube
       import Control.Lens hiding ((#))
-      blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+      blueUp = solvedRubiksCube ^. rotateLeft . rotateLeft . rotateDown . rotateDown
       c = blueUp
       moves = [R, U', L', U, R', U', L, U]
       moves1 = take 4 moves
@@ -468,16 +470,16 @@ Nur noch dieser Schritt, dann ist es geschafft! Das Kochrezept für diesen Schri
 
   \begin{center}
     \begin{diagram}[width=300,height=70]
-      import Math.RubiksCube
+      import Diagrams.RubiksCube
       import Control.Lens hiding ((#))
-      blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+      blueUp = solvedRubiksCube ^. rotateLeft . rotateLeft . rotateDown . rotateDown
       simpleMoves = [R, U, U, R', U', R, U', R']
-      moves = simpleMoves ++ map mirrored simpleMoves
+      moves = simpleMoves ++ map mirror simpleMoves
       beforeMoves = blueUp ^. undoMoves moves
-      dia = [ drawCube with beforeMoves
+      dia = [ drawRubiksCube with beforeMoves
             , arrowBetween' (with & headLength .~ veryLarge) (p2 (0,2)) (p2 (3.5,2))
                 # dashingG [0.15, 0.15] 0
-            , drawCube with blueUp
+            , drawRubiksCube with blueUp
             ] # hcat' (with & sep .~ 0.75) # pad 1.05
     \end{diagram}
   \end{center}
@@ -491,11 +493,11 @@ Nur noch dieser Schritt, dann ist es geschafft! Das Kochrezept für diesen Schri
   \subsubsection{Der spiegelverkehrte Kanten-Karussell-Algorithmus}
   \begin{center}
     \begin{diagram}[width=320,height=120]
-      import Math.RubiksCube hiding (center)
+      import Diagrams.RubiksCube
       import Control.Lens hiding ((#))
-      blueUp = solvedCube3X3 ^. rotateLeft . rotateLeft . rotateDown . rotateDown
-      c = (pure id & cornerFields .~ (const lightgray) & downLayer .~ id) <*> blueUp
-      moves = map mirrored [R, U, U, R', U', R, U', R']
+      blueUp = solvedRubiksCube ^. rotateLeft . rotateLeft . rotateDown . rotateDown
+      c = (pure id & cornerFacets .~ (const lightgray) & bottomLayerFacets .~ id) <*> blueUp
+      moves = map mirror [R, U, U, R', U', R, U', R']
       moves1 = take 4 moves
       moves2 = drop 4 moves
       afterMoves1 = c ^. undoMoves moves2

@@ -1,17 +1,15 @@
 ## Dependencies
 
-Install [rubiks-cube][rubiks-cube]:
+Install [diagrams-rubiks-cube][diagrams-rubiks-cube]:
 
 ```bash
-$ git clone https://github.com/timjb/rubiks-cube.git
-$ cd rubiks-cube
-$ cabal install
+$ cabal update
+$ cabal install diagrams-rubiks-cube
 ```
 
 Install `diagrams-builder` with Cairo backend:
 
 ```bash
-$ cabal update
 $ cabal install -fcairo diagrams-builder
 ```
 
@@ -23,4 +21,4 @@ To compile, call LaTeX with
 $ pdflatex --enable-write18 anleitung.tex
 ```
 
-rubiks-cube: https://github.com/timjb/rubiks-cube
+diagrams-rubiks-cube: https://github.com/timjb/diagrams-rubiks-cube
