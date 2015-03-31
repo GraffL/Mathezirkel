@@ -118,7 +118,7 @@ Dies können wir folgendermaßen bewerkstelligen: Wir suchen zunächst eine Kant
   \end{fall}
 \end{algorithm}
 
-Führe diese Schritte für alle vier Kanten der oberen Ebene aus. Passe auf, dass du dabei nicht die schon geleistete Arbeit durch unbedachte Drehungen zerstörst! Es ist oft nötig, \emph{vorübergehend} richtige Kanten von ihrem Platz weg zu drehen. Wenn du das tust, dann solltest du dir immer deine Züge merken, damit du, wenn du nicht mehr weiter weist, deine Züge rückgängig machen kannst und so zumindest nichts zerstört hast.
+Führe diese Schritte für alle vier Kanten der oberen Ebene aus. Passe auf, dass du dabei nicht die schon geleistete Arbeit durch unbedachte Drehungen zerstörst! Es ist oft nötig, \emph{vorübergehend} richtige Kanten von ihrem Platz weg zu drehen. Wenn du das tust, dann solltest du dir immer deine Züge merken, damit du, wenn du nicht mehr weiter weißt, deine Züge rückgängig machen kannst und so zumindest nichts zerstört hast.
 
 \pagebreak
 
@@ -191,7 +191,7 @@ Verwende diesen Algorithmus, um alle vier Ecken der ersten Ebene zu lösen.
 Was aber, wenn die Ecke mit der grünen Seitenfläche schon in der oberen Ebene ist, aber an falscher Stelle oder sogar an richtiger Stelle, aber falsch orientiert? Dann hilft
 
 \begin{trick}
-  Halte den Würfel so, dass die Ecke mit der grünen Seitenfläche vorne-oben-rechts ist. Führe dann Fall 1a) des Ecken-Hebungs-Algorithmus aus.
+  Halte den Würfel so, dass die Ecke mit der grünen Seitenfläche vorne-oben-rechts ist. Führe dann Fall~1a) des Ecken-Hebungs-Algorithmus aus.
 \end{trick}
 
 Dadurch ersetzen wir den Würfel mit der grünen Seitenfläche mit dem Würfel, der sich zufälligerweise gerade vorne-unten-rechts befindet. Der Teil-Würfel mit der grünen Seitenfläche wandert dabei in die untere Ebene. Nach einer Drehung der unteren Ebene können wir den Ecken-Hebungs-Algorithmus auch auf ihn anwenden.
@@ -261,7 +261,7 @@ Wir drehen die untere Ebene so, dass die orange Seitenfläche mit auf der orange
 Was aber, wenn eine Kante, die in die mittlere Ebene gehört, schon in der mittleren Ebene ist, aber an falscher Stelle oder sogar an richtiger Stelle, aber falsch orientiert? Dann hilft wieder einmal
 
 \begin{trick}
-  Halte den Würfel so, dass die falsche Kante vorne-rechts ist. Führe dann Fall 1 des Kanten-Einsetz-Algorithmus aus.
+  Halte den Würfel so, dass die falsche Kante vorne-rechts ist. Führe dann Fall~1 des Kanten-Einsetz-Algorithmus aus.
 \end{trick}
 
 Die Idee hinter diesem Trick ist die gleiche wie beim letzten Trick.
@@ -324,7 +324,7 @@ Das dabei die Kanten noch nicht an den richtigen Positionen sind, ist egal -- wo
   oben links entsprechen.)
 \end{algorithm}
 
-Drehe deinen Würfel so, dass er von oben betrachtet wie einer dieser Seiten aussieht:
+Drehe deinen Würfel so, dass er von oben betrachtet wie eine dieser Seiten aussieht:
 \begin{center}
   \begin{diagram}[width=320,height=50]
     import Diagrams.RubiksCube
@@ -485,8 +485,8 @@ Nur noch dieser Schritt, dann ist es geschafft! Das Kochrezept für diesen Schri
   \end{center}
 
   \textbf{Schritte}: \\
-  1. Führe den Kanten-Karussell-Algorithmus aus \\
-  2. Führe den spiegelverkehrten Kanten-Karussell-Algorithmus aus (siehe unten)
+  1. Führe den Kanten-Karussell-Algorithmus aus. \\
+  2. Führe den spiegelverkehrten Kanten-Karussell-Algorithmus aus (siehe unten).
 \end{algorithm}
 
 \begin{algorithm}
