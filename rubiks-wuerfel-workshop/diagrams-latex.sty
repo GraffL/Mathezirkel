@@ -9,7 +9,7 @@
 
 %% diagrams-latex.sty
 %% Copyright (c) 2011-2012, Ryan Yates
-%% 
+%%
 %% Large portions copied from dot2texi.sty
 %%
 %% Copyright (c) 2007-2008, Kjell Magne Fauske
@@ -52,7 +52,7 @@
 %% MA  02111-1307, USA.
 %%
 
-%% Copyright (C) 2007 by Will Robertson & Johannes Große
+%% Copyright (C) 2007 by Will Robertson & Johannes Groï¿½e
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesPackage{diagrams-latex}[2012/04/07 v0.1 Generate diagrams embedded within LaTeX]
@@ -96,7 +96,7 @@
 
 %% The platform detection code is copied from the ifplatform package
 %% avaialable from: http://tug.ctan.org/tex-archive/macros/latex/contrib/ifplatform/
-%% Copyright (C) 2007 by Will Robertson & Johannes Große
+%% Copyright (C) 2007 by Will Robertson & Johannes Groï¿½e
 \newif\ifdtt@ShellEscapeEnabled
 \newif\ifwindows
 \edef\ip@file{\jobname.w18}
@@ -187,6 +187,34 @@
     \verbatim@start%
 }
 
+\begingroup
+\catcode`\#=12
+\gdef\hashchar{#}
+\endgroup
+
+\def\cubediagramslatexverbatimwrite#1{%
+    \def\BeforeStream{
+        \message{Opening diagrams-latex stream #1
+        }%
+    }%
+    \@bsphack
+    \immediate\openout \verbatim@out #1
+    \BeforeStream%
+    \let\do\@makeother\dospecials
+    \catcode`\^^M\active
+
+    \let\#\hashchar
+    \immediate\write\verbatim@out{{-\# LANGUAGE FlexibleContexts \#-}}
+    \immediate\write\verbatim@out{{-\# LANGUAGE TypeFamilies \#-}}
+    \immediate\write\verbatim@out{import Diagrams.RubiksCube}
+    \immediate\write\verbatim@out{import Control.Lens hiding ((\#))}
+
+    \def\verbatim@processline{%
+        \immediate\write\verbatim@out
+        {\the\verbatim@line}}%
+    \verbatim@start%
+}
+
 \def\enddiagramslatexverbatimwrite{%
     \immediate\closeout\verbatim@out
     \@esphack
@@ -211,6 +239,17 @@
     \immediate\write18{mkdir -p \dtt@outputdir}
     \xdef\diagramslatexCutFile{\dtt@figname.hs}
     \diagramslatexverbatimwrite{\diagramslatexCutFile}}
+    {\enddiagramslatexverbatimwrite%
+    \diagramslatexgraphicsinclude}
+
+\newenvironment{cube-diagram}[1][]{\stepcounter{dtt@fignum}%
+    \setkeys{dtt}{#1}
+    \ifdtt@ForceShellEscape
+        \dtt@ShellEscapetrue
+    \fi
+    \immediate\write18{mkdir -p \dtt@outputdir}
+    \xdef\diagramslatexCutFile{\dtt@figname.hs}
+    \cubediagramslatexverbatimwrite{\diagramslatexCutFile}}
     {\enddiagramslatexverbatimwrite%
     \diagramslatexgraphicsinclude}
 
