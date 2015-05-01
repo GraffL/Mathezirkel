@@ -47,7 +47,9 @@
 
 \subsection{Vorbemerkungen}
 
-Zunächst eine wichtige Beobachtung: Egal, welche Drehungen man ausführt, die mittleren Würfelchen auf allen Seiten ändern ihre Position zueinander nicht. Wir werden diese mittleren Würfel als fest betrachten und mit der "`grünen Seite"' (oder blauen, gelben) immer diejenige Seite bezeichnen, deren mittleres Würchelchen grün ist.
+Zunächst eine wichtige Beobachtung: Egal, welche Drehungen man ausführt, die mittleren Würfelchen auf allen Seiten ändern ihre
+Position zueinander nicht. Wir werden diese mittleren Würfel als fest betrachten und mit der "`grünen Seite"' (oder blauen,
+gelben) immer diejenige Seite bezeichnen, deren mittleres Würfelchen grün ist.
 
 Wir lösen den Würfel nun Ebene für Ebene. Bevor du anfängst, solltest du dir eine Seite aussuchen, mit der du beginnen möchtest.
 In dieser Anleitung haben wir die grüne Seite gewählt (also die mit dem grünen mittleren Würfelchen). Wenn du nicht unnötig umdenken möchtest, dann solltest du auch die grüne Seite nehmen. Halte den Würfel ab jetzt so, dass sie oben ist.
@@ -56,6 +58,40 @@ Noch etwas: Während du einen der angegebenen Algorithmen ausführst, darfst du 
 Wenn am Anfang der Ausführung die grüne Seite oben ist und die orange Seite zu dir schaut, dann muss das während der gesamten Ausführung des Algorithmus auch so bleiben!
 
 Wenn du gerade keinen Algorithmus ausführst, darfst du den Würfel um die "`Nord-Süd-Achse"' drehen.
+
+In dieser Anleitung tauchen einige Begriffe auf, die vorher geklärt werden sollten. Mit einer "`Ebene"' sind all die Steine
+gemeint, die auf derselben Höhe liegen. Das folgende Bild zeigt also die obere Ebene:
+
+\begin{center}
+  \begin{diagram}[width=300,height=100]
+    {-# LANGUAGE FlexibleContexts #-}
+    {-# LANGUAGE TypeFamilies #-}
+    import Diagrams.RubiksCube
+    import Control.Lens hiding ((#))
+    c = (pure (const lightgray) & topLayerFacets .~ id) <*> solvedRubiksCube
+    dia = [ scale 0.7 (drawFoldingPattern (c ^. rotateDown))
+          , drawRubiksCube with c
+          ] # map center # hcat' (with & sep .~ 1.5) # pad 1.05
+  \end{diagram}
+\end{center}
+
+"`Kanten"' sind diejenigen Steine, von denen genau zwei Seiten sichtbar sind. "`Ecken"' sind die Steine, von denen drei Seiten
+sichtbar sind. In der folgenden Abbildung sind links die Ecken, rechts die Kanten farbig markiert:
+
+\begin{center}
+  \begin{diagram}[width=300,height=70]
+    {-# LANGUAGE FlexibleContexts #-}
+    {-# LANGUAGE TypeFamilies #-}
+    import Diagrams.RubiksCube
+    import Control.Lens hiding ((#))
+    c = (pure (const lightgray) & cornerFacets .~ id) <*> solvedRubiksCube
+    e = (pure id & cornerFacets .~ (const lightgray) & centerFacets .~ (const lightgray) ) <*> solvedRubiksCube
+    dia = [ drawRubiksCube with c
+          , drawRubiksCube with e
+          ] # map center # hcat' (with & sep .~ 1.5) # pad 1.05
+  \end{diagram}
+\end{center}
+
 
 \vspace{5em}
 
@@ -70,6 +106,8 @@ Unser erstes Ziel ist es, die Kanten der obersten Ebene richtig zu stellen. Der 
 
 \begin{center}
   \begin{diagram}[width=300,height=100]
+    {-# LANGUAGE FlexibleContexts #-}
+    {-# LANGUAGE TypeFamilies #-}
     import Diagrams.RubiksCube
     import Control.Lens hiding ((#))
     c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id & cornerFacets .~ (const lightgray)) <*> solvedRubiksCube
@@ -89,6 +127,8 @@ Dies können wir folgendermaßen bewerkstelligen: Wir suchen zunächst eine Kant
     Die grüne Fläche zeigt nach unten (d.\,h. die Kante ist richtig orientiert). Dann muss man nur die vordere Seite um 180 Grad drehen:
     \begin{center}
       \begin{diagram}[width=300,height=70]
+        {-# LANGUAGE FlexibleContexts #-}
+        {-# LANGUAGE TypeFamilies #-}
         import Diagrams.RubiksCube
         c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id & cornerFacets .~ (const lightgray)) <*> solvedRubiksCube
         moves = [F, F]
@@ -103,6 +143,8 @@ Dies können wir folgendermaßen bewerkstelligen: Wir suchen zunächst eine Kant
     \iffalse
     \begin{center}
       \begin{diagram}[width=450,height=70]
+        {-# LANGUAGE FlexibleContexts #-}
+        {-# LANGUAGE TypeFamilies #-}
         import Diagrams.RubiksCube
         c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id & cornerFacets .~ (const lightgray)) <*> solvedRubiksCube
         moves = [R, F', R', D', F, F]
@@ -115,6 +157,8 @@ Dies können wir folgendermaßen bewerkstelligen: Wir suchen zunächst eine Kant
 
     \begin{center}
       \begin{diagram}[width=450,height=70]
+        {-# LANGUAGE FlexibleContexts #-}
+        {-# LANGUAGE TypeFamilies #-}
         import Diagrams.RubiksCube
         c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id & cornerFacets .~ (const lightgray)) <*> solvedRubiksCube
         moves = [R', D, R, F']
@@ -134,6 +178,8 @@ Nun wollen wir auch die Ecken der obersten Ebene richtigstellen. Nach diesem Sch
 
 \begin{center}
   \begin{diagram}[width=300,height=80]
+    {-# LANGUAGE FlexibleContexts #-}
+    {-# LANGUAGE TypeFamilies #-}
     import Diagrams.RubiksCube
     import Control.Lens
     c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id) <*> solvedRubiksCube
@@ -149,11 +195,13 @@ Wir suchen nun eine Ecke mit einer grünen Seitenfläche, die noch nicht in der 
 \begin{algorithm}
   \subsubsection{Der Ecken-Hebungs-Algorithmus}
   \begin{fall}
-    Die grüne Fläche "`schaut"' zur Seite. Richte dann den Würfel so aus, dass die grüne Fläche vorne ist.
+		Die grüne Fläche "`schaut"' zur Seite (also nicht nach unten). Richte dann den Würfel so aus, dass die grüne Fläche vorne ist.
 
     a) Wenn die grüne Fläche jetzt rechts ist, führe folgende Schritte aus:
     \begin{center}
       \begin{diagram}[width=300,height=50]
+        {-# LANGUAGE FlexibleContexts #-}
+        {-# LANGUAGE TypeFamilies #-}
         import Diagrams.RubiksCube
         c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id) <*> solvedRubiksCube
         moves = [D', R', D, R]
@@ -163,6 +211,8 @@ Wir suchen nun eine Ecke mit einer grünen Seitenfläche, die noch nicht in der 
     b) Wenn die grüne Fläche links ist, musst genau spiegelverkehrt arbeiten:
     \begin{center}
       \begin{diagram}[width=300,height=50]
+        {-# LANGUAGE FlexibleContexts #-}
+        {-# LANGUAGE TypeFamilies #-}
         import Diagrams.RubiksCube
         c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id) <*> solvedRubiksCube
         moves = map mirror [D', R', D, R]
@@ -177,6 +227,8 @@ Wir suchen nun eine Ecke mit einer grünen Seitenfläche, die noch nicht in der 
     \vspace{-10pt}
     \begin{center}
       \begin{diagram}[width=300,height=50]
+        {-# LANGUAGE FlexibleContexts #-}
+        {-# LANGUAGE TypeFamilies #-}
         import Diagrams.RubiksCube
         import Control.Lens hiding ((#))
         goal = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id) <*> solvedRubiksCube
@@ -210,6 +262,8 @@ Wir wollen die Kanten in der mittleren Ebene korrigieren:
 
 \begin{center}
   \begin{diagram}[width=300,height=100]
+    {-# LANGUAGE FlexibleContexts #-}
+    {-# LANGUAGE TypeFamilies #-}
     import Diagrams.RubiksCube
     import Control.Lens hiding ((#))
     c = (pure id & bottomLayerFacets .~ (const lightgray) & centerFacets .~ id) <*> solvedRubiksCube
@@ -230,6 +284,8 @@ Wir drehen die untere Ebene so, dass die orange Seitenfläche mit auf der orange
     Dann:
     \begin{center}
       \begin{diagram}[width=320,height=120]
+        {-# LANGUAGE FlexibleContexts #-}
+        {-# LANGUAGE TypeFamilies #-}
         import Diagrams.RubiksCube
         import Control.Lens hiding ((#))
         c = (pure id & bottomLayerFacets .~ (const gray) & centerFacets .~ id) <*> solvedRubiksCube
@@ -248,6 +304,8 @@ Wir drehen die untere Ebene so, dass die orange Seitenfläche mit auf der orange
     Dann:
     \begin{center}
       \begin{diagram}[width=320,height=120]
+        {-# LANGUAGE FlexibleContexts #-}
+        {-# LANGUAGE TypeFamilies #-}
         import Diagrams.RubiksCube
         import Control.Lens hiding ((#))
         c = (pure id & bottomLayerFacets .~ (const gray) & centerFacets .~ id) <*> solvedRubiksCube
@@ -283,7 +341,9 @@ Der letzte Schritt ist es, die verbleibende Ebene richtig zu drehen. Damit wir d
 Unser erstes Ziel ist es, auf der noch ungelösten Seite ein Kantenkreuz herzustellen. Das soll in etwa so aussehen:
 
 \begin{center}
-  \begin{diagram}[width=320,height=120]
+  \begin{diagram}[width=320,height=100]
+    {-# LANGUAGE FlexibleContexts #-}
+    {-# LANGUAGE TypeFamilies #-}
     import Diagrams.RubiksCube
     import Control.Lens hiding ((#))
     blueUp = solvedRubiksCube ^. rotateLeft . rotateLeft . rotateDown . rotateDown
@@ -312,6 +372,8 @@ Das dabei die Kanten noch nicht an den richtigen Positionen sind, ist egal -- wo
   Dabei bedeutet "`mit Kippung"', dass wenn vorher beim Würfel oben-vorne die blaue Seitenfläche an der Seite war, nach Ausführung des Algorithmus diese Seitenfläche oben ist.
   \begin{center}
     \begin{diagram}[width=320,height=110]
+      {-# LANGUAGE FlexibleContexts #-}
+      {-# LANGUAGE TypeFamilies #-}
       import Diagrams.RubiksCube
       import Control.Lens hiding ((#))
       blueUp = solvedRubiksCube ^. rotateLeft . rotateLeft . rotateDown . rotateDown
@@ -333,6 +395,8 @@ Das dabei die Kanten noch nicht an den richtigen Positionen sind, ist egal -- wo
 Drehe deinen Würfel so, dass er von oben betrachtet wie eine dieser Seiten aussieht:
 \begin{center}
   \begin{diagram}[width=320,height=50]
+    {-# LANGUAGE FlexibleContexts #-}
+    {-# LANGUAGE TypeFamilies #-}
     import Diagrams.RubiksCube
     import Control.Lens hiding ((#))
     s = pure lightgray & middleCenter .~ blue
@@ -354,6 +418,8 @@ Das Ziel ist nun folgendes Muster:
 
 \begin{center}
   \begin{diagram}[width=320,height=120]
+    {-# LANGUAGE FlexibleContexts #-}
+    {-# LANGUAGE TypeFamilies #-}
     import Diagrams.RubiksCube
     import Control.Lens hiding ((#))
     blueUp = solvedRubiksCube ^. rotateLeft . rotateLeft . rotateDown . rotateDown
@@ -363,6 +429,12 @@ Das Ziel ist nun folgendes Muster:
           ] # map center # hcat' (with & sep .~ 1.5) # pad 1.05
   \end{diagram}
 \end{center}
+
+Versuche, die oberste Ebene so zu drehen, dass \emph{genau eine} Kante an der richtigen Position ist.
+Wenn das nicht möglich ist, dann führe den Kanten-Karussell-Algorithmus einmal aus (in beliebiger Position) und versuche es erneut.
+
+Halte den Würfel so, dass die richtige Kante oben-vorne ist. Führe den Kanten-Karussell-Algorithmus aus. Überprüfe, ob alle Kanten nun richtig sind. Wenn nicht, dann werden sie es durch ein weiteres Ausführen des Algorithmus.
+
 
 \begin{algorithm}
   \subsubsection{Der Kanten-Karussell-Algorithmus}
@@ -376,6 +448,8 @@ Das Ziel ist nun folgendes Muster:
   \end{center}
   \begin{center}
     \begin{diagram}[width=320,height=120]
+      {-# LANGUAGE FlexibleContexts #-}
+      {-# LANGUAGE TypeFamilies #-}
       import Diagrams.RubiksCube
       import Control.Lens hiding ((#))
       blueUp = solvedRubiksCube ^. rotateLeft . rotateLeft . rotateDown . rotateDown
@@ -394,13 +468,6 @@ Das Ziel ist nun folgendes Muster:
   oben links entsprechen.)
 \end{algorithm}
 
-Zum Einsatz des Algorithmus:
-
-Versuche, die oberste Ebene so zu drehen, dass \emph{genau eine} Kante an der richtigen Position ist.
-Wenn das nicht möglich ist, dann führe den Algorithmus einmal aus (in beliebiger Position) und versuche es erneut.
-
-Halte den Würfel so, dass die richtige Kante oben-vorne ist. Führe den Algorithmus aus. Überprüfe, ob alle Kanten nun richtig sind. Wenn nicht, dann werden sie es durch ein weiteres Ausführen des Algorithmus.
-
 \pagebreak
 
 \subsection{3.C \enspace Die Position der Ecken}
@@ -409,6 +476,8 @@ Ziel: Die Eckwürfel der letzten Ebene sind an der richtigen Position, aber mög
 
 \begin{center}
   \begin{diagram}[width=320,height=120]
+    {-# LANGUAGE FlexibleContexts #-}
+    {-# LANGUAGE TypeFamilies #-}
     import Diagrams.RubiksCube
     import Control.Lens hiding ((#))
     simpleMoves = [R, U, U, R', U', R, U', R']
@@ -420,6 +489,18 @@ Ziel: Die Eckwürfel der letzten Ebene sind an der richtigen Position, aber mög
           ] # map center # hcat' (with & sep .~ 1.5) # pad 1.05
   \end{diagram}
 \end{center}
+
+Das erreichen wir mit Hilfe des Ecken-Karussell-Algorithmus. Er wird folgendermaßen eingesetzt:
+
+\setcounter{fallCounter}{0}
+
+\begin{fall}
+  Wenn es einen Eckwürfel in der oberen Ebene gibt, der schon an der richtigen Position ist, dann halte den Würfel so, dass dieser Eckwürfel oben links ist. Führe dann den Ecken-Karussell-Algorithmus aus. Überprüfe, ob nun alle Ecken an der richtigen Position sind. Wenn nicht, dann führe den Algorithmus noch einmal aus.
+\end{fall}
+
+\begin{fall}
+  Wenn es keinen Eckwürfel an der richtigen Position gibt, dann führe den Algorithmus zunächst einmal aus (wie du den Würfel hältst ist egal, Hauptsache blau ist oben). Danach gibt es einen Eckwürfel an der richtigen Position.
+\end{fall}
 
 \begin{algorithm}
   \subsubsection{Der Ecken-Karussell-Algorithmus}
@@ -433,6 +514,8 @@ Ziel: Die Eckwürfel der letzten Ebene sind an der richtigen Position, aber mög
   \end{center}
   \begin{center}
     \begin{diagram}[width=320,height=100]
+      {-# LANGUAGE FlexibleContexts #-}
+      {-# LANGUAGE TypeFamilies #-}
       import Diagrams.RubiksCube
       import Control.Lens hiding ((#))
       blueUp = solvedRubiksCube ^. rotateLeft . rotateLeft . rotateDown . rotateDown
@@ -451,17 +534,6 @@ Ziel: Die Eckwürfel der letzten Ebene sind an der richtigen Position, aber mög
   oben links entsprechen.)
 \end{algorithm}
 
-Zum Einsatz des Algorithmus:
-
-\setcounter{fallCounter}{0}
-
-\begin{fall}
-  Wenn es einen Eckwürfel in der oberen Ebene gibt, der schon an der richtigen Position ist, dann halte den Würfel so, dass dieser Eckwürfel oben links ist. Führe dann den Ecken-Karussell-Algorithmus aus. Überprüfe, ob nun alle Ecken an der richtigen Position sind. Wenn nicht, dann führe den Algorithmus noch einmal aus.
-\end{fall}
-
-\begin{fall}
-  Wenn es keinen Eckwürfel an der richtigen Position gibt, dann führe den Algorithmus zunächst einmal aus (wie du den Würfel hältst ist egal, Hauptsache blau ist oben). Danach gibt es einen Eckwürfel an der richtigen Position.
-\end{fall}
 
 \pagebreak
 
@@ -476,6 +548,8 @@ Nur noch dieser Schritt, dann ist es geschafft! Das Kochrezept für diesen Schri
 
   \begin{center}
     \begin{diagram}[width=300,height=70]
+      {-# LANGUAGE FlexibleContexts #-}
+      {-# LANGUAGE TypeFamilies #-}
       import Diagrams.RubiksCube
       import Control.Lens hiding ((#))
       blueUp = solvedRubiksCube ^. rotateLeft . rotateLeft . rotateDown . rotateDown
@@ -491,7 +565,7 @@ Nur noch dieser Schritt, dann ist es geschafft! Das Kochrezept für diesen Schri
   \end{center}
 
   \textbf{Schritte}: \\
-  1. Führe den Kanten-Karussell-Algorithmus aus. \\
+	1. Führe den Kanten-Karussell-Algorithmus aus. (Du findest den Kanten-Karussell-Algorithmus in Abschnitt 3.B) \\
   2. Führe den spiegelverkehrten Kanten-Karussell-Algorithmus aus (siehe unten).
 \end{algorithm}
 
@@ -499,6 +573,8 @@ Nur noch dieser Schritt, dann ist es geschafft! Das Kochrezept für diesen Schri
   \subsubsection{Der spiegelverkehrte Kanten-Karussell-Algorithmus}
   \begin{center}
     \begin{diagram}[width=320,height=120]
+      {-# LANGUAGE FlexibleContexts #-}
+      {-# LANGUAGE TypeFamilies #-}
       import Diagrams.RubiksCube
       import Control.Lens hiding ((#))
       blueUp = solvedRubiksCube ^. rotateLeft . rotateLeft . rotateDown . rotateDown
