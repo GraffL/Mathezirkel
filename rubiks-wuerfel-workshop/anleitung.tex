@@ -7,6 +7,8 @@
 \usepackage{xcolor} % Farben
 \usepackage{mdframed} % Rahmen für die Algorithmen
 
+\usepackage{wrapfig} % Bild neben Text
+
 \usepackage{amsthm} % Theorem-Umgebungen
 \newcounter{fallCounter}
 \theoremstyle{definition}
@@ -101,7 +103,7 @@ dia = drawRubiksCube with e # pad 1.1
 
 \vspace{5em}
 
-\noindent \textcolor{darkgray}{\small Diese Anleitung ist online abrufbar unter \href{http://timbaumann.info/rubiks-wuerfel-anleitung.html}{timbaumann.info/rubiks-wuerfel-anleitung.html}. \\
+\noindent \textcolor{darkgray}{\small Diese Anleitung ist online unter \url{http://timbaumann.info/zauberwuerfel} abrufbar. \\
 Anmerkungen, Verbesserungsvorschläge? Schreib mir! \href{mailto:tim@timbaumann.info}{tim@timbaumann.info}}
 
 \pagebreak
@@ -151,7 +153,7 @@ dia = drawMovesBackward (with & showStart .~ True) c moves # pad 1.05
 
     \begin{center}
       \begin{cube-diagram}[width=450,height=70]
-c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id & cornerFacets .~ (const lightgray)) <*> solvedRubiksCube
+c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id & cornerFacets .~ (const gray)) <*> solvedRubiksCube
 moves = [R', D, R, F']
 dia = drawMovesBackward (with & showStart .~ True) c moves # pad 1.05
       \end{cube-diagram}
@@ -165,18 +167,16 @@ Führe diese Schritte für alle vier Kanten der oberen Ebene aus. Passe auf, das
 
 \subsection{1.B \enspace Die Ecken der oberen Ebene}
 
-Nun wollen wir auch die Ecken der obersten Ebene richtigstellen. Nach diesem Schritt soll sich folgendes Bild ergeben:
-
-\begin{center}
-  \begin{cube-diagram}[width=300,height=80]
+\begin{wrapfigure}{l}{7cm}
+  \begin{cube-diagram}[width=200,height=80]
 c = (pure (const lightgray) & topLayerFacets .~ id & centerFacets .~ id) <*> solvedRubiksCube
 dia = pad 1.05 $ hcat' (with & sep .~ 1.5) $ map center
         [ scale 0.7 (drawFoldingPattern (c ^. rotateDown))
         , drawRubiksCube with c
         ]
   \end{cube-diagram}
-\end{center}
-
+\end{wrapfigure}
+Nun wollen wir auch die Ecken der obersten Ebene richtigstellen. Nach diesem Schritt soll der Würfel wie links abgebildet ausschauen.
 Wir suchen nun eine Ecke mit einer grünen Seitenfläche, die noch nicht in der richtigen Position ist. Wir nehmen zunächst an, dass diese Ecke sich in der unteren Ebene befindet (falls das nicht der Fall ist: lies unter dem Algorithmus weiter). Durch Drehen der unteren Ebene können wir erreichen, dass die Ecke sich genau unter ihrer richtigen Position befindet. Um die Ecke hochzuheben, gibt es
 
 \begin{algorithm}
