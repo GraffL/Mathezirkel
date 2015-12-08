@@ -1,0 +1,11 @@
+Kochsche Schneeflocke:
+Axiom:  F
+Regeln: F=F-F++F-F
+
+Drachenkurve: 
+Axiom:  A
+Regeln: A=-A++B-; B=+A--B+
+
+Sierpinski-Dreieck:
+Axiom:  FXF--FF--FF
+Regeln: X = --FXF++FXF++FXF--; F = FF
