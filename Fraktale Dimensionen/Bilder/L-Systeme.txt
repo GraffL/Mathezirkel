@@ -9,3 +9,7 @@ Regeln: A=-A++B-; B=+A--B+
 Sierpinski-Dreieck:
 Axiom:  FXF--FF--FF
 Regeln: X = --FXF++FXF++FXF--; F = FF
+
+Baum:
+Axiom:  F
+Regeln: F = F[+F]E; E=E[-E]F
