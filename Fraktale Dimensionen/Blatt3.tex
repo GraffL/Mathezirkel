@@ -202,7 +202,7 @@ Also suchen wir zum Vergleich mal nach anderen geometrischen Objekten, die beim 
 \end{center}
 Offenbar viermal in ein zweimal so großes Dreieck und gleich neunmal in ein nur dreimal so großes Dreieck. Der Flächeninhalt eines Dreiecks wird also tatsächlich schneller größer als die Länge einer Linie. Und er wird sogar schneller größer als die Kochsche Kurve. Auf eine gewisse Weise scheint die Kochsche Kurve also irgendetwas zwischen einer Linie und einem Dreieck zu sein.
 
-\begin{aufgabe}{Wie oft?}
+\begin{aufgabe}{Wie oft?}\label{aufgabe:Wie_oft}
 Um das näher zu untersuchen wollen wir uns einmal eine Tabelle mit verschiedenen geometrischen Objekten anlegen und jeweils untersuchen, wie oft das ursprüngliche Objekt in eine $2$-fach, $3$-fach, $4$-fach und $9$-fach gestreckte Version davon passt:
 \begin{center}
 	\renewcommand{\arraystretch}{2}
@@ -234,7 +234,7 @@ Und dann hätte ich da noch eine Tabelle, die es auszufüllen gilt:
 
 Wenn du beide Tabellen fertig ausgefüllt hast, vergleiche einmal die verschiedenen Einträge miteinander. Fällt dir etwas auf?
 
-\emph{Tipp:} Strecken sind eindimensionale Objekte, Flächen sind zweidimensionale Objekte und Volumen sind dreidimensional.
+\emph{Tipp:} Strecken sind eindimensionale Objekte, Flächen sind zweidimensionale Objekte und Volumen sind dreidimensional.\footnote{Punkt ist 0-dimensional - wie passt das in dieses Schema?}
 \end{aufgabe}
 
 \begin{defn}
@@ -250,24 +250,98 @@ Die Kochsche Kurve ist also unser erstes Beispiel für ein solches Fraktal. Sein
 \begin{bem}
 Angenommen wir untersuchen ein geometrisches Objekt und wollen dessen Dimension bestimmen. Wir haben es also um den Faktor $k$ gestreckt und festgestellt, dass das ursprüngliche Objekt nun $n$-mal in das neue hineinpasst. Wie können wir jetzt herausfinden, was die Dimension ist? Wie finden wir also ein $d$ mit $k^d = n$?
 
-Dazu gibt es die sogenannte \emph{Logarithmusfunktion} $\log_{\boxed{}}\boxed{\phantom{k}}$: Für zwei Zahlen $n$ und $k$ ist $\log_k n$ gerade die Zahl mit der wir $k$ potenzieren müssen um $n$ zu erhalten - d.h. $k^{\log_k n} = n$. Also gerade die Zahl, die auch unser $d$ sein soll. 
+Dazu gibt es die sogenannte \emph{Logarithmusfunktion} $\log_{\boxed{}}\boxed{\phantom{k}}$: Für zwei Zahlen $n$ und $k$ ist $\log_k n$ gerade die Zahl mit der wir $k$ potenzieren müssen um $n$ zu erhalten - d.h. $k^{\log_k n} = n$. Also ist $\log_k n$ gerade die Zahl, die auch unser $d$ sein soll. Wenn du einen Taschenrechner mit einer entsprechenden Funktion hast, kannst du das ja mal testen, indem du die fraktale Dimension der Kochschen Kurve nachrechnest.
+
+Wenn du gerade keinen solchen Taschenrechner zur Hand hast, genügt es für das weitere Blatt aber auch, eine grobe Schätzung für $d$ zu finden. Zum Beispiel haben wir ja bereits herausgefunden, dass bei der Kochschen Kurve gilt: $3^d=4$ (in eine um den Faktor $3$ gestreckte Kochsche Kruve passt die ursprüngliche $4$-mal hinein). Jetzt können wir abschätzen:
+\[3^1 = 3 < 4 = 3^d = 4 < 9 = 3^2\]
+Also muss die fraktale Dimension der Kochschen Kurve irgendwo zwischen $1$ und $2$ liegen.
 \end{bem}
 
 \section{Mehr Fraktale}
 
-Sierpinski-Dreieck (Erinnerung an Pascalsches Dreieck!)
+Nachdem du nun das notwendige Handwerkszeug besitzt um Fraktale zu untersuchen, hast du in diesem Kapitel nun die Gelegenheit dazu:
 
-\includegraphics{Bilder/pascal-triangle.png}
+\subsection{Ein Fraktal-Baum}
 
-evtl. Menger-Schwamm
+Unser erstes Fraktal entsteht durch folgende Konstruktionsregel:
+\begin{center}
+	\includegraphics[width=.7\textwidth]{Bilder/Baum-Konstruktion.pdf}
+\end{center}
 
-\includegraphics{Bilder/Pyramiden.pdf}
 
-evtl. Drachenkurve (Basteln!)
+\begin{aufgabe}{}
+	Wie du sehen kannst, kommen bei der Konstruktion dieses Fraktals Strecken in zwei verschiedenen Farben vor. Die beiden Farben haben jeweils leicht unterschiedliche Ersetzungsregeln. Kannst du diese aus den ersten beiden Schritten erkennen und den Baum im dritten Schritt fertig zeichnen? 
+	
+	Kannst du außerdem die fraktale Dimension dieses Baumes bestimmen? Dazu kannst du zum Beispiel versuchen wieder eine Tabelle wie in \Cref{aufgabe:Wie_oft} auszufüllen:
+	\begin{center}
+		\renewcommand{\arraystretch}{2}
+		\begin{tabular}{l||c|c|c|c}
+			Streckfaktor:& $2$-fach & $3$-fach & $4$-fach & $9$-fach \\\hline\hline
+			Fraktal-Baum & 	&   &          &			 \\	
+		\end{tabular}
+	\end{center}
+\end{aufgabe}
+
+
+\subsection{Das Sierpinski-Dreieck}
+
+Es gibt aber nicht nur Fraktale aus Linien - man kann genauso gut Fraktale aus zweidimensionalen Objekten bauen. Zum Beispiel so:
+\begin{center}
+	\includegraphics[width=.7\textwidth]{Bilder/Sierpinski-Konstruktion.pdf}
+\end{center}
+
+\begin{aufgabe}{}
+	Wir beginnen diesmal also mit einem grauen gleichseitigen Dreieck. Für den ersten Schritt schneiden wir daraus ein umgekehrtes gleichsetiges Dreieck aus und erhalten so eine neue Figur aus drei grauen und einem weißen Dreieck. Für den zweiten Schritt geht es mit den grauen Dreiecken so weiter wie im ersten Schritt. Kannst du die Figur nach dem dritten Schritt zeichnen?
+	
+	Die Figur, die man erhält, wenn man unendlich viele solche Schritte macht, heißt \emph{Sierpinski-Dreieck} und ist wieder ein Fraktal. Kannst du dessen Dimension bestimmen?
+\end{aufgabe}
+
+\begin{aufgabe}{Pascalsches Dreieck}
+	Erinnerst du dich noch an das Pascalsche Dreieck aus dem ersten Korrespondenzbrief? (falls nicht, schau einfach kurz nach - er kam in Aufgabe 4 vor)
+	
+	Kannst du die folgende Figur so mit Zahlen befüllen, dass das Pascalsche Dreieck entsteht? (in jedem der Sechsecke soll also eine Zahl stehen und in jeder Zeile steht im linken und im rechten Sechseck eine $1$):
+	\begin{center}
+			\includegraphics{Bilder/pascal-triangle.png}
+	\end{center}
+	Wenn du das gemacht hast, male alle Sechsecke aus, in denen eine ungerade Zahl steht. Fällt dir dabei etwas auf?
+\end{aufgabe}
+
+
+\subsection{Pyramiden-Fraktal}
+
+Kann man eigentlich auch aus dreidimensionalen Objekten Fraktale bauen? Aber selbstverständlich kann man das - man braucht nur etwas mehr Vorstellungskraft:
+
+\begin{center}
+	\includegraphics[width=.6\textwidth]{Bilder/Pyramiden.pdf}
+\end{center}
+
+\begin{aufgabe}{}
+	Wie du siehst, starten wir diesmal mit einer Pyramide und ersetzen diese dann im ersten Schritt durch fünf kleinere Pyramiden. Im zweiten Schritt müssten wir dann jede dieser Pyramiden wieder durch fünf noch kleinere ersetzen. Wie viele Pyramiden haben wir also nach dem zweiten Schritt? (wenn du möchtest, kannst auch mal versuchen zu zeichnen, wie das nach dem zweiten Schritt aussieht - ich fürchte allerdings, dass das ziemlich unübersichtlich wird).
+	
+	Kannst du die fraktale Dimension dieses Objektes bestimmen?
+\end{aufgabe}
+ 
+\subsection{Drachenkurve}
 
 \includegraphics{Bilder/Drachenkurve.pdf}
 
-\section{Fraktale im echten Leben}
+\begin{aufgabe}{Basteln!}
+	Inhalt...
+\end{aufgabe}
+
+\subsection{evtl. Nichtfraktal}
+
+\begin{center}
+	\includegraphics{Bilder/Nicht-Fraktal.pdf}
+\end{center}
+
+\begin{aufgabe}{}
+	Kannst du den nächsten Schritt in dieser Konstruktion zeichnen? Kannst du die Dimension von diesem Objekt bestimmen? Kannst du dir vorstellen, was es bedeutet, dass das Objekt diese Dimension hat?
+	
+	(es hat Dimension 2 - und ist flächenfüllend)
+\end{aufgabe}
+
+\subsection{evtl. Fraktale im echten Leben}
 
 Küstenlinie messen?
 

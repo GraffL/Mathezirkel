@@ -1,15 +1,29 @@
-Kochsche Schneeflocke:
+Kochsche Kurve:
 Axiom:  F
 Regeln: F=F-F++F-F
+60°
+
+Kochsche Schneeflocke:
+Axiom:  ---F++++F++++F
+Regeln: F=F++F----F++F
+30°
 
 Drachenkurve: 
 Axiom:  A
 Regeln: A=-A++B-; B=+A--B+
+45° 
 
 Sierpinski-Dreieck:
 Axiom:  FXF--FF--FF
 Regeln: X = --FXF++FXF++FXF--; F = FF
+60°
 
 Baum:
 Axiom:  F
 Regeln: F = F[+F]E; E=E[-E]F
+45°
+
+Nicht-Fraktal (flächenfüllend):
+Axiom:  F
+Regeln: F=F[+F][-F]F
+90°
