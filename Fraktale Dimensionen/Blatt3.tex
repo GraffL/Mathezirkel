@@ -143,34 +143,114 @@ Wenn du möchtest kannst du auch noch einen vierten Schritt zeichnen. Schaffst d
 	\includegraphics[width=.5\textwidth]{Bilder/Schneeflocke-Konstruktion3.pdf}
 \end{center}
 
-Tatsächlich wollen wir sogar \glqq unendlich viele\grqq{} Schritte machen und uns fragen, was für ein geometrisches Objekt wir dadurch erhalten. Dieses Objekt können wir natürlich nicht mehr zeichnen, aber wir können uns trotzdem überlegen, was für Eigenschaften dieses Objekt haben muss. Und genau das wollen wir in diesem Brief tun. 
+Tatsächlich wollen wir sogar \glqq unendlich viele\grqq{} Schritte machen und uns fragen, was für ein geometrisches Objekt wir dadurch erhalten. Dieses Objekt nennen wir dann \emph{die Kochsche Kurve}. Diese Kurve können wir natürlich nicht mehr zeichnen, aber wir können uns trotzdem überlegen, was für Eigenschaften sie haben muss. Und genau das wollen wir in diesem Brief tun. 
 
-Als erstes wollen wir uns einmal überlegen, wie lang die Linie wohl sein muss, aus der unser Objekt \glqq nach unendlich vielen Schritten\grqq{} besteht. Da wir es nicht zeichnen können, können wir natürlich nicht einfach nachmessen. Statt dessen wollen wir uns überlegen, was in einem einzelnen Schritt mit der Länge der Linie geschieht.
+Als erstes wollen wir uns einmal überlegen, wie lang die Linie wohl sein muss, aus der die Kochsche Kurve \glqq nach unendlich vielen Schritten\grqq{} besteht. Da wir sie nicht zeichnen können, können wir natürlich nicht einfach nachmessen. Statt dessen wollen wir uns überlegen, was in einem einzelnen Schritt mit der Länge der Linie geschieht.
 
 Dazu wollen wir annehmen, dass die Strecke ganz zu Beginn die Länge $l$ hat. Wie ist dann die Länge der Linie nach dem ersten Schritt? Nun, zuerst wir haben die Strecke in drei gleich lange Strecken geteilt und die mittlere davon entfernt - bleibt also noch eine Länge von $\frac{2}{3}l$. Dann haben wir in der Mitte zwei Seiten eines gleichseitigen Dreiecks gezeichnet, wobei jede der beiden Seiten so lang ist, wie die beiden Strecken. Also hat unsere gesamte Linie nach dem zweiten Schritt eine Länge von $\frac{2}{3}l + 2\cdot\frac{1}{3}l = \frac{4}{3}l$. Unsere neue Linie ist also $\frac{4}{3}$-mal so lang wie die ursprüngliche (miss in der Zeichnung doch einmal nach, ob das auch tatsächlich stimmt!).
 
-Was passiert nun im zweiten Schritt? ...
+Was passiert nun im zweiten Schritt? Unser Objekt besteht doch jetzt aus vier Strecken - und mit jeder von diesen machen wir das, was wir schon im ersten Schritt gemacht haben. Also wissen wir schon, dass jede dieser vier Strecken wieder $\frac{4}{3}$-mal so lang wird. Wenn wir nun aber jeden Teil der Linie $\frac{4}{3}$-mal so lang machen, dann machen wir damit auch das gesamte Objekt $\frac{4}{3}$-mal so lang. Folglich hat die Figur nach dem zweiten Schritt eine Länge von $\frac{4}{3}\cdot\frac{4}{3}l$. 
 
+\begin{aufgabe}{}
+	Wie lang ist die Figur dann nach dem dritten Schritt? Wie lang nach dem fünften? Nimm dir einen Moment Zeit darüber nachzudenken. Kannst du allgemein sagen, wie man ausrechnen kann, wie lang die Figur nach dem $n$-ten Schritt ist? 
+\end{aufgabe}
 
+Wie du sehen kannst, wird die Figur mit jedem Schritt länger - und das sogar mit jedem Schritt ein wenig schneller. Und damit können wir zu unserer Ausgangsfrage zurückkommen: Wie lang ist die Linie, aus der die Kochsche Kurve besteht? ...
 
-\begin{bem}Wo ist jetzt die Schneeflocke? Beginne mit einem Dreieck:
+Die Kochsche Kurve ist also eine \emph{unendlich lange Linie} - und das, obwohl sie einen Anfangs und einen Endpunkt hat (der linke und rechte Punkt der Figur wird ja in keinem Schritt verändert). Ein seltsames Objekt, nicht wahr? Und wie wir in diesem Brief sehen werden, ist sie nicht das einzige Objekt mit solch seltsamen Eigenschaften!
+
+\begin{aufgabe}{Wo ist der Schnee?}
+Vielleicht ist dir aufgefallen, dass die Überschrift dieses Kapitels \glqq Kochsche Schneeflocke\grqq{} lautet - bisher ist in diesem Kapitel aber keine Schneeflocke aufgetaucht. Wo hat sie sich also versteckt? Nun in gewisser Weise in folgendem Bild:
 	\begin{center}
 		\includegraphics[width=.6\textwidth]{Bilder/Eigene_Schneeflocke.pdf}
 	\end{center}	
-\end{bem}
+Na gut, eine richtige Schneeflocke ist das noch nicht. Aber du kannst ganz leicht eine daraus machen! Fasse einfach jede der drei Seiten des obigen Dreiecks als Anfangsstrecke für eine Kochsche Kurve auf und führe mit jeder der drei Seiten zwei, drei Schritte der obigen Konstruktion durch. Siehst du jetzt eine Schneeflocke?
 
+Das Objekt, dass man theoretisch \glqq nach unendlich vielen Schritten\grqq{} bekommen würde, nennt man auch \emph{Kochsche Schneeflocke}. Es besteht aus drei zusammengeklebten Kochschen Kurven. Damit können wir schon direkt sagen, wie lang der Umfang der Kochschen Schneeflocke ist - nämlich:
 
+Eine etwas schwerere Zusatzaufgabe besteht darin, sich zu überlegen wie groß die Fläche innerhalb dieser Schneeflocke ist. Den genauen Flächeninhalt zu berechnen, ist vielleicht ein wenig schwierig (aber vielleicht hast du ja trotzdem eine Idee?). Deutlich einfacher ist es den Flächeninhalt nur grob zu schätzen: Ist er unendlich groß (wie der Umfang)? Oder ist er endlich groß? Kannst du deine Antwort begründen? Kannst du den Flächeninhalt irgendwie abschätzen (also zum Beispiel ein einfaches geometrisches Objekt angeben, das einen größeren Flächeninhalt hat - oder eine Zahl, die sicher größer ist als der Flächeninhalt der Schneeflocke\footnote{Dabei kannst du der Einfachheit annehmen, dass das ursprüngliche Dreieck eine Seitenlänge von $1$ und damit eine Höhe von $\frac{\sqrt{3}}{2}$ hat.} ).
+\end{aufgabe}
 
 
 \section{Dimensionen}
 
+Wie wir im vorherigen Kapitel gesehen haben, sieht die Kochsche Kurve zwar aus wie eine Linie, sie verhält sich aber irgendwie nicht so wie wir das von einer normalen Linie erwarten würden. Dieses \glqq irgendwie\grqq{} wollen wir nun etwas genauer untersuchen:
+
+Betrachte dazu zunächst eine ganz normale Strecke. Diese Strecke hat eine bestimmte Länge $l$. Was passiert, wenn wir diese Strecke um den Faktor $2$ strecken? Wie lang ist dann die neue Strecke? Na, $2l$, natürlich, denkst du jetzt vermutlich. Und selbstverständlich hast du auch recht. Aber um ganz sicher zu gehen, wollen wir das noch kurz beweisen.
+
+\begin{center}
+	\includegraphics[width=.5\textwidth]{Bilder/Linie_vergroessern.pdf}
+\end{center}
+
+Und tatsächlich: Wie beginnen mit einer Strecke, strecken sie um den Faktor $2$ und erhalten eine neue Strecke, in die die alte genau zweimal hineinpasst. Die neue Strecke ist also tatsächlich zweimal so lang wie die alte.
+
+Was passiert, wenn wir die Strecke um den Faktor $3$ strecken?
+\begin{center}
+	\includegraphics[width=.7\textwidth]{Bilder/Linie_vergroessern2.pdf}
+\end{center}
+Genau, sie wird dreimal so lang - d.h. zu einer Strecke, in die die alte Strecke dreimal hineinpasst. Keine Überraschungen soweit!
+
+Also schauen wir doch mal, was mit unserer Kochschen Kurve passiert. Natürlich können wir hier nicht mehr wirklich über deren Länge reden (wir haben ja schon festgestellt, dass sie unendlich lang ist). Aber wir können uns trotzdem überlegen, wie oft eine Kochsche Kurve in eine andere, um den Faktor $3$ gestreckte Kurve passt:
+\begin{center}
+	\includegraphics[width=.7\textwidth]{Bilder/KochKurve_vergroessern.pdf}
+\end{center}
+Na sowas! Wir haben die Kochsche Kurve um den Faktor $3$ gestreckt und auf einmal passt die alte Koch-Kurve \emph{viermal} in die neue (anstatt nur \emph{dreimal} wie wir das von der Linie gewohnt waren). In einem gewissen Sinne wird die Kochsche Kurve beim Strecken also \glqq schneller groß\grqq{} als eine gewöhnliche Linie.
+
+Also suchen wir zum Vergleich mal nach anderen geometrischen Objekten, die beim Strecken schneller größer werden als eine Linie. Wie wäre es zum Beispiel mit dem Flächeninhalt eines Dreiecks? Wie oft passt ein Dreieck in ein um den Faktor $2$ gestrecktes Dreieck? Wie oft in ein um den Faktor $3$ gestrecktes Dreieck?
+\begin{center}
+	\includegraphics[width=.4\textwidth]{Bilder/Dreieck_vergroessern.pdf}
+\end{center}
+Offenbar viermal in ein zweimal so großes Dreieck und gleich neunmal in ein nur dreimal so großes Dreieck. Der Flächeninhalt eines Dreiecks wird also tatsächlich schneller größer als die Länge einer Linie. Und er wird sogar schneller größer als die Kochsche Kurve. Auf eine gewisse Weise scheint die Kochsche Kurve also irgendetwas zwischen einer Linie und einem Dreieck zu sein.
+
+\begin{aufgabe}{Wie oft?}
+Um das näher zu untersuchen wollen wir uns einmal eine Tabelle mit verschiedenen geometrischen Objekten anlegen und jeweils untersuchen, wie oft das ursprüngliche Objekt in eine $2$-fach, $3$-fach, $4$-fach und $9$-fach gestreckte Version davon passt:
+\begin{center}
+	\renewcommand{\arraystretch}{2}
+	\begin{tabular}{l||c|c|c|c}
+		Streckfaktor:& $2$-fach & $3$-fach & $4$-fach & $9$-fach \\\hline\hline
+		Strecke      & $2$-mal	& $3$-mal  &          &			 \\\hline
+		Dreieck      & $4$-mal  & $9$-mal  &          &          \\\hline
+		Quadrat      &          &          &          &          \\\hline
+		Würfel       &          &          &          &          \\\hline
+		Kochschee Kurve & ---   & $4$-mal  & ---      &          \\      	
+	\end{tabular}
+\end{center}
+Kannst du die noch fehlenden Einträge einfügen? Evtl. sind dabei Skizzen hilfreich (bzw. für den Würfel würfelförmige Bauklötze/Legosteine/o.ä.)
+\end{aufgabe}
+
+\begin{aufgabe}{Potenzen und Dimensionen}
+Und dann hätte ich da noch eine Tabelle, die es auszufüllen gilt:
+\begin{center}
+	\renewcommand{\arraystretch}{2}
+	\begin{tabular}{l||c|c|c|c}
+				      & $2$ & $3$ & $4$ & $9$ \\\hline\hline
+		$\boxed{\phantom{1}}^1$  & $2^1=2$	&   &  & \\\hline
+		$\boxed{\phantom{1}}^2$  & $2^2=4$	& $3^2=9$ & \phantom{$4^2=16$} & \phantom{$9^2=81$}\\\hline
+		$\boxed{\phantom{1}}^3$  & 	&   &  & \\\hline
+		$\boxed{\phantom{1}}^{1,262}$  & 	&   &  &     	
+	\end{tabular}
+\end{center}
+(für die letzte Zeile brauchst du vermutlich einen Taschenrechner - wenn du gerade keinen zur Hand hast, der soetwas berechnen kann, kannst du auch einfach grob schätzen, wie groß die entsprechende Zahl wohl sein müsste (z.B. größer als $3$ aber kleiner als $9$)).
+
+Wenn du beide Tabellen fertig ausgefüllt hast, vergleiche einmal die verschiedenen Einträge miteinander. Fällt dir etwas auf?
+
+\emph{Tipp:} Strecken sind eindimensionale Objekte, Flächen sind zweidimensionale Objekte und Volumen sind dreidimensional.
+\end{aufgabe}
 
 \begin{defn}
-Definition der Fraktalen Dimension\footnote{Tatsächlich gibt es mehrere Möglichkeiten fraktale Dimensionen zu definieren - wir betrachten hier die sogenannte \glqq Ähnlichkeits-Dimension\grqq{}}
+Streckt man ein geometrisches Objekt um den Streckungsfaktor $k$ und das ursprüngliche Objekt passt dann $k^d$-mal in das ursprüngliche Objekt, so sagen wir: Das Objekt hat die \emph{Dimension $d$}.\footnote{Tatsächlich gibt es mehrere Möglichkeiten fraktale Dimensionen zu definieren - wir betrachten hier die sogenannte \glqq Ähnlichkeits-Dimension\grqq{}}
+
+Ist dieses $d$ keine ganze Zahl, so nennen wir diese Dimension \emph{fraktale Dimension} und das geometrische Objekt nennen wir ein \emph{Fraktal}.
 \end{defn}
 
 \begin{bem}
-Logarithmus mit Taschenrechner berechnen
+Die Kochsche Kurve ist also unser erstes Beispiel für ein solches Fraktal. Seine fraktale Dimension ist ungefähr $1,262$ - was gut zu unserer eingangs aufgestellten Vermutung passt, dass die Kochsche Kurve \emph{irgendetwas} zwischen einem eindimensionalen Objekt (wie einer Strecke) und einem zweidimensionalen (wie einem Dreieck) ist.
+\end{bem}
+
+\begin{bem}
+Angenommen wir untersuchen ein geometrisches Objekt und wollen dessen Dimension bestimmen. Wir haben es also um den Faktor $k$ gestreckt und festgestellt, dass das ursprüngliche Objekt nun $n$-mal in das neue hineinpasst. Wie können wir jetzt herausfinden, was die Dimension ist? Wie finden wir also ein $d$ mit $k^d = n$?
+
+Dazu gibt es die sogenannte \emph{Logarithmusfunktion} $\log_{\boxed{}}\boxed{\phantom{k}}$: Für zwei Zahlen $n$ und $k$ ist $\log_k n$ gerade die Zahl mit der wir $k$ potenzieren müssen um $n$ zu erhalten - d.h. $k^{\log_k n} = n$. Also gerade die Zahl, die auch unser $d$ sein soll. 
 \end{bem}
 
 \section{Mehr Fraktale}

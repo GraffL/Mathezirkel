@@ -10,12 +10,12 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="69.946617mm"
-   height="60.815357mm"
-   viewBox="0 0 247.84234 215.48749"
+   height="78.872551mm"
+   viewBox="0 0 247.84234 279.46967"
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="Eigene_Schneeflocken.svg">
+   sodipodi:docname="Eigene_Schneeflocke.svg">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -24,7 +24,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="160.63437"
+     inkscape:cx="-11.596621"
      inkscape:cy="139.65386"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -66,7 +66,7 @@
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-286.0233,-274.10062)">
+     transform="translate(-286.02328,-210.11843)">
     <path
        id="path5588"
        d="m 531.66096,276.37227 -243,0 121.5,210.44418 121.5,-210.44418"
