@@ -13,6 +13,8 @@
 
 \usepackage{enumitem}
 
+\usepackage{units}
+
 \usepackage[protrusion=true,expansion=true]{microtype}
 
 \usepackage{lmodern}
@@ -63,40 +65,6 @@
 \setlength\unitlength{1cm}
 
 \usepackage{tikz}
-\def\mkPascal#1{
-  \begin{tikzpicture}
-    \def\dx{20pt}
-    \def\dy{30pt}
-    \newcounter{i}
-    \stepcounter{i}
-    \node (\arabic{i}) at (0,0) {1};
-    \foreach [count=\i] \x in {2,...,#1}{
-      \pgfmathsetmacro{\lox}{\x-1}%
-      \pgfmathsetmacro{\loxt}{\x-3}%
-      \foreach [count=\j] \xx in {-\lox,-\loxt,...,\lox}{
-        \pgfmathsetmacro{\jj}{\j-1}%
-        \stepcounter{i}
-        \pgfmathsetmacro{\lbl}{\lox!/(\jj!*(\lox-\jj)!)}
-        \node  (\arabic{i}) at (\xx*\dx, -\lox*\dy) {\pgfmathint{\lbl}\pgfmathresult};
-      }
-    }
-    \newcounter{z}
-    \newcounter{xn}
-    \newcounter{xnn}
-    \pgfmathsetmacro{\maxx}{#1 - 1}
-    \foreach \x in {1,...,\maxx}{
-      \foreach \xx in {1,...,\x}{
-        \stepcounter{z}
-        \setcounter{xn}{\arabic{z}}
-        \addtocounter{xn}{\x}
-        \setcounter{xnn}{\arabic{xn}}
-        \stepcounter{xnn}
-          \draw [->] (\arabic{z}) -- (\arabic{xn});
-          \draw [->] (\arabic{z}) -- (\arabic{xnn});
-      }
-    }
-  \end{tikzpicture}
-}
 
 \RequirePackage{geometry}
 \geometry{textwidth=16.0cm,textheight=24.5cm,footskip=1.5cm}
@@ -147,7 +115,7 @@ Tatsächlich wollen wir sogar \glqq unendlich viele\grqq{} Schritte machen und u
 
 Als erstes wollen wir uns einmal überlegen, wie lang die Linie wohl sein muss, aus der die Kochsche Kurve \glqq nach unendlich vielen Schritten\grqq{} besteht. Da wir sie nicht zeichnen können, können wir natürlich nicht einfach nachmessen. Statt dessen wollen wir uns überlegen, was in einem einzelnen Schritt mit der Länge der Linie geschieht.
 
-Dazu wollen wir annehmen, dass die Strecke ganz zu Beginn die Länge $l$ hat. Wie ist dann die Länge der Linie nach dem ersten Schritt? Nun, zuerst wir haben die Strecke in drei gleich lange Strecken geteilt und die mittlere davon entfernt - bleibt also noch eine Länge von $\frac{2}{3}l$. Dann haben wir in der Mitte zwei Seiten eines gleichseitigen Dreiecks gezeichnet, wobei jede der beiden Seiten so lang ist, wie die beiden Strecken. Also hat unsere gesamte Linie nach dem zweiten Schritt eine Länge von $\frac{2}{3}l + 2\cdot\frac{1}{3}l = \frac{4}{3}l$. Unsere neue Linie ist also $\frac{4}{3}$-mal so lang wie die ursprüngliche (miss in der Zeichnung doch einmal nach, ob das auch tatsächlich stimmt!).
+Dazu wollen wir annehmen, dass die Strecke ganz zu Beginn die Länge $l$ hat. Wie ist dann die Länge der Linie nach dem ersten Schritt? Nun, zuerst haben wir die Strecke in drei gleich lange Strecken geteilt und die mittlere davon entfernt - bleibt also noch eine Länge von $\frac{2}{3}l$. Dann haben wir in der Mitte zwei Seiten eines gleichseitigen Dreiecks gezeichnet, wobei jede der beiden Seiten so lang ist, wie die beiden Strecken. Also hat unsere gesamte Linie nach dem zweiten Schritt eine Länge von $\frac{2}{3}l + 2\cdot\frac{1}{3}l = \frac{4}{3}l$. Unsere neue Linie ist also $\frac{4}{3}$-mal so lang wie die ursprüngliche (miss in der Zeichnung doch einmal nach, ob das auch tatsächlich stimmt!).
 
 Was passiert nun im zweiten Schritt? Unser Objekt besteht doch jetzt aus vier Strecken - und mit jeder von diesen machen wir das, was wir schon im ersten Schritt gemacht haben. Also wissen wir schon, dass jede dieser vier Strecken wieder $\frac{4}{3}$-mal so lang wird. Wenn wir nun aber jeden Teil der Linie $\frac{4}{3}$-mal so lang machen, dann machen wir damit auch das gesamte Objekt $\frac{4}{3}$-mal so lang. Folglich hat die Figur nach dem zweiten Schritt eine Länge von $\frac{4}{3}\cdot\frac{4}{3}l$. 
 
@@ -155,7 +123,21 @@ Was passiert nun im zweiten Schritt? Unser Objekt besteht doch jetzt aus vier St
 	Wie lang ist die Figur dann nach dem dritten Schritt? Wie lang nach dem fünften? Nimm dir einen Moment Zeit darüber nachzudenken. Kannst du allgemein sagen, wie man ausrechnen kann, wie lang die Figur nach dem $n$-ten Schritt ist? 
 \end{aufgabe}
 
-Wie du sehen kannst, wird die Figur mit jedem Schritt länger - und das sogar mit jedem Schritt ein wenig schneller. Und damit können wir zu unserer Ausgangsfrage zurückkommen: Wie lang ist die Linie, aus der die Kochsche Kurve besteht? ...
+Wie du sehen kannst, wird die Figur mit jedem Schritt länger - und das sogar mit jedem Schritt ein wenig schneller. Damit können wir endlich zu unserer Ausgangsfrage zurückkommen: Wie lang ist die Linie, aus der die Kochsche Kurve besteht?
+
+\begin{satz}\label{satz:Kochkurve_laenge}
+Die Kochsche Kurve ist unendlich lang.
+\end{satz} 
+
+\begin{proof}
+Wir wollen zeigen, dass die Kurve unendlich lang ist - oder mit anderen Worten: Dass sie länger ist als jede endlich lange Kurve.
+
+Sagen wir die Strecke ganz zu Beginn war \unit[3]{cm} lang. Ist die Kochsche Kurve dann länger als \unit[4]{cm}? Ja, ist sie - denn schon nach dem ersten Schritt ist die Kurve $\frac{4}{3}\cdot\unit[3]{cm} = \unit[4]{cm}$ lang. Und mit jedem weiteren Schritt wird sie nur noch länger. 
+
+Ist sie auch länger als \unit[5]{cm}? Selbstverständlich, denn bereits nach dem zweiten Schritt ist die Kurve $\frac{4}{3}\cdot\unit[4]{cm} = \unit[\frac{16}{3}]{cm}\geq  \unit[5]{cm}$ lang. Ist sie auch länger als \unit[6]{cm}? Ja - und du siehst jetzt vermutlich schon selbst, warum das so ist. 
+
+Tatsächlich können wir auf diese Weise sehen, dass die Kochsche Kurve länger als \emph{jede} endlich lange Kurve ist. Also ist sie \emph{unendlich} lang!
+\end{proof}
 
 Die Kochsche Kurve ist also eine \emph{unendlich lange Linie} - und das, obwohl sie einen Anfangs und einen Endpunkt hat (der linke und rechte Punkt der Figur wird ja in keinem Schritt verändert). Ein seltsames Objekt, nicht wahr? Und wie wir in diesem Brief sehen werden, ist sie nicht das einzige Objekt mit solch seltsamen Eigenschaften!
 
@@ -234,7 +216,7 @@ Und dann hätte ich da noch eine Tabelle, die es auszufüllen gilt:
 
 Wenn du beide Tabellen fertig ausgefüllt hast, vergleiche einmal die verschiedenen Einträge miteinander. Fällt dir etwas auf?
 
-\emph{Tipp:} Strecken sind eindimensionale Objekte, Flächen sind zweidimensionale Objekte und Volumen sind dreidimensional.\footnote{Punkt ist 0-dimensional - wie passt das in dieses Schema?}
+\emph{Tipp:} Strecken sind eindimensionale Objekte, Flächen sind zweidimensionale Objekte und Volumen sind dreidimensional.\footnote{Zusatzfrage: Punkte bezeichnet man oft als 0-dimensionale Objekte - wie passt das in dieses Schema?}
 \end{aufgabe}
 
 \begin{defn}
@@ -272,7 +254,7 @@ Unser erstes Fraktal entsteht durch folgende Konstruktionsregel:
 \begin{aufgabe}{}
 	Wie du sehen kannst, kommen bei der Konstruktion dieses Fraktals Strecken in zwei verschiedenen Farben vor. Die beiden Farben haben jeweils leicht unterschiedliche Ersetzungsregeln. Kannst du diese aus den ersten beiden Schritten erkennen und den Baum im dritten Schritt fertig zeichnen? 
 	
-	Kannst du außerdem die fraktale Dimension dieses Baumes bestimmen? Dazu kannst du zum Beispiel versuchen wieder eine Tabelle wie in \Cref{aufgabe:Wie_oft} auszufüllen:
+	Kannst du außerdem die fraktale Dimension dieses Baumes bestimmen? Dazu kannst du zum Beispiel versuchen wieder eine Tabelle wie in \Cref{aufgabe:Wie_oft} auszufüllen\footnote{Beim Bestimmen der Ähnlichkeitsdimension kannst du die verschiedenen Farben der Äste ignorieren - diese dienen nur als Hilfe für die Konstruktion.}:
 	\begin{center}
 		\renewcommand{\arraystretch}{2}
 		\begin{tabular}{l||c|c|c|c}
@@ -290,20 +272,41 @@ Es gibt aber nicht nur Fraktale aus Linien - man kann genauso gut Fraktale aus z
 	\includegraphics[width=.7\textwidth]{Bilder/Sierpinski-Konstruktion.pdf}
 \end{center}
 
-\begin{aufgabe}{}
-	Wir beginnen diesmal also mit einem grauen gleichseitigen Dreieck. Für den ersten Schritt schneiden wir daraus ein umgekehrtes gleichsetiges Dreieck aus und erhalten so eine neue Figur aus drei grauen und einem weißen Dreieck. Für den zweiten Schritt geht es mit den grauen Dreiecken so weiter wie im ersten Schritt. Kannst du die Figur nach dem dritten Schritt zeichnen?
+\begin{aufgabe}{}\label{aufgabe:Sierpinski-Flaeche}
+	Wir beginnen diesmal also mit einem grauen gleichseitigen Dreieck. Für den ersten Schritt schneiden wir daraus ein umgekehrtes gleichsetiges Dreieck aus und erhalten so eine neue Figur aus drei grauen und einem weißen Dreieck. Für den zweiten Schritt geht es mit den drei grauen Dreiecken so weiter wie im ersten Schritt. Kannst du die Figur nach dem dritten Schritt zeichnen?
 	
 	Die Figur, die man erhält, wenn man unendlich viele solche Schritte macht, heißt \emph{Sierpinski-Dreieck} und ist wieder ein Fraktal. Kannst du dessen Dimension bestimmen?
+\end{aufgabe}
+
+\begin{aufgabe}{}
+	Kannst du die (graue) Fläche des Sierpinski-Dreiecks bestimmen? 
+	
+	Du kannst dazu analog zum Beweis von \Cref{satz:Kochkurve_laenge} vorgehen: Wenn das ursprüngliche Dreieck eine Fläche von $\unit[4]{cm^2}$ hat. Welche (graue) Fläche hat man dann nach dem ersten Schritt? Und nach dem zweiten? Nach $n$ Schritten? Gibt es irgendeine Zahl, von der du sicher sagen, kannst, dass das Sierpinksi Dreieck einen größeren Flächeninhalt hat, als diese Zahl?
 \end{aufgabe}
 
 \begin{aufgabe}{Pascalsches Dreieck}
 	Erinnerst du dich noch an das Pascalsche Dreieck aus dem ersten Korrespondenzbrief? (falls nicht, schau einfach kurz nach - er kam in Aufgabe 4 vor)
 	
-	Kannst du die folgende Figur so mit Zahlen befüllen, dass das Pascalsche Dreieck entsteht? (in jedem der Sechsecke soll also eine Zahl stehen und in jeder Zeile steht im linken und im rechten Sechseck eine $1$):
+	Befülle dann die folgende Figur so mit Zahlen, dass das Pascalsche Dreieck entsteht (in jedem der Sechsecke soll also eine Zahl stehen und in jeder Zeile steht im linken und im rechten Sechseck eine $1$):
 	\begin{center}
 			\includegraphics{Bilder/pascal-triangle.png}
 	\end{center}
 	Wenn du das gemacht hast, male alle Sechsecke aus, in denen eine ungerade Zahl steht. Fällt dir dabei etwas auf?
+\end{aufgabe}
+
+
+\subsection{Die Cantor-Menge}\label{aufgabe:Cantor-Menge}
+
+Ein eng zum Sierpinski-Dreieck verwandtes Fraktal ist die \emph{Cantor-Menge}. Dazu starten wir mit einer einfachen Strecke und entfernen das mittlere Drittel dieser Strecke. Dadurch erhalten wir zwei Strecken, von denen wir wiederum jeweils das mittlere Drittel entfernen usw.
+
+\begin{center}
+	\includegraphics[width=.7\textwidth]{Bilder/Cantor_Menge.pdf}
+\end{center}
+
+\begin{aufgabe}{}
+	Zeichne den nächsten und übernächsten Schritt in der Konstruktion der Cantor-Menge. Bestimme die fraktale Dimension der Cantor-Menge. 
+	
+	Kannst du auch die Gesamtlänge aller \glqq Streckenstücke\grqq bestimmen, aus der die Cantor-Menge besteht? (du kannst dazu wieder analog zu \Cref{satz:Kochkurve_laenge} und \Cref{aufgabe:Sierpinski-Flaeche} vorgehen).
 \end{aufgabe}
 
 
@@ -318,31 +321,57 @@ Kann man eigentlich auch aus dreidimensionalen Objekten Fraktale bauen? Aber sel
 \begin{aufgabe}{}
 	Wie du siehst, starten wir diesmal mit einer Pyramide und ersetzen diese dann im ersten Schritt durch fünf kleinere Pyramiden. Im zweiten Schritt müssten wir dann jede dieser Pyramiden wieder durch fünf noch kleinere ersetzen. Wie viele Pyramiden haben wir also nach dem zweiten Schritt? (wenn du möchtest, kannst auch mal versuchen zu zeichnen, wie das nach dem zweiten Schritt aussieht - ich fürchte allerdings, dass das ziemlich unübersichtlich wird).
 	
-	Kannst du die fraktale Dimension dieses Objektes bestimmen?
+	Kannst du die fraktale Dimension dieses Objektes bestimmen? 
+	
+	Kannst du mit Hilfe der fraktalen Dimension erraten,  wie groß wohl Volumen und Oberfläche dieses Fraktals sein werden? (vergleiche dazu deine entsprechenden Ergebnisse zur Kochschen Kurve, dem Sierpinski-Dreieck und der Cantor-Menge) 
+	
+	Wenn du bereits die Volumen- bzw. Oberflächenformel für Pyramiden kennst, kannst Volumen und Oberfläche des Pyramidenfraktals natürlich auch wieder direkt bestimmen (wie bei der Kochkurve, dem Sierpinski-Dreieck und der Cantor-Menge).
 \end{aufgabe}
  
-\subsection{Drachenkurve}
+%\subsection{Drachenkurve}
+%
+%\begin{center}
+%	\includegraphics[width=.7\textwidth]{Bilder/Drachenkurve_Konstruktion.pdf}
+%\end{center}
 
-\includegraphics{Bilder/Drachenkurve.pdf}
+%\begin{aufgabe}{Ein gebasteltes Fraktal}
+%	Inhalt...
+%\end{aufgabe}
 
-\begin{aufgabe}{Basteln!}
-	Inhalt...
-\end{aufgabe}
-
-\subsection{evtl. Nichtfraktal}
+\subsection{Noch ein Fraktal?}
 
 \begin{center}
 	\includegraphics{Bilder/Nicht-Fraktal.pdf}
 \end{center}
 
 \begin{aufgabe}{}
-	Kannst du den nächsten Schritt in dieser Konstruktion zeichnen? Kannst du die Dimension von diesem Objekt bestimmen? Kannst du dir vorstellen, was es bedeutet, dass das Objekt diese Dimension hat?
+	Zeichne den nächsten Schritt in dieser Konstruktion und bestimme dann die fraktale Dimension dieses Objekts.
 	
-	(es hat Dimension 2 - und ist flächenfüllend)
+	Kannst du dir vorstellen, was es bedeutet, dass das Objekt diese Dimension hat?
 \end{aufgabe}
 
-\subsection{evtl. Fraktale im echten Leben}
+\subsection{Wie lang ist Deutschland Küste?}
 
-Küstenlinie messen?
+Beim Recherchieren für diesen Korrespondenzbrief habe ich immer wieder gelesen, dass Fraktale nicht nur eine abstrakte mathematische Idee seinen. Vielmehr treten Frakale oder zumindest fraktalartige Dinge angeblich auch in der Natur auf. Und eines der häufigsten Beispiele dafür sind Meeresküsten - wie zum Beispiel die deutsche Nordsee-Küste - die du hier in drei verschiedenen Maßstäben abgebildet siehst:
+
+TODO: Bild einfügen!
+
+\begin{aufgabe}
+Zum Abschluss dieses Briefes wollen wir jetzt also nachprüfen, ob man wirklich sagen kann, dass die deutsche Küste \glqq frakalartige Eigenschaften\grqq hat. 
+
+Wenn du dir die obigen Bilder anschaust, kannst du vielleicht schon eine erste Ähnlichkeit zu unseren bisherigen Fraktalen erkennen: Je näher man an die Küstenlinie heranzoomt, desto mehr Zacken und Einbuchtungen kann man erkennen (so wie zum Beispiel auch bei der Kochschen Kurve). Gleichzeitig siehst du aber vermutlich auch, dass diese Küstenlinie nicht mit Hilfe einer so einfachen Konstruktionsvorschrift gezeichnet werden kann, wie das bei den bisherigen Fraktalen der Fall war.
+
+Daher können wir auch nicht so einfach die frakale Dimension bestimmen wie das bisher der Fall war.\footnote{Es geht trotzdem - dafür bräuchten wir aber eine etwas andere Definition von Dimension.} Zumindest aber können wir versuchen ungefähr abzuschätzen, was die fraktale Dimension der Küstenlinie sein sollte - insbesondere also, ob sie eine ganze Zahl ist oder nicht.
+
+Dafür werden wir gleich versuchen die Länge der Küstenlinie zu messen. Bevor du das machst, versuche folgende Fragen zu beantworten: Aufgrund deiner bisherigen Erfahrungen mit Fraktalen: Welche Länge sollte die Küste haben, wenn sie eine Dimension kleiner als $1$ hat? Welche Länge, wenn sie eine Dimension größer als $1$ hat? Und was wäre, wenn sie genau Dimension $1$ hätte (also überhaupt kein Fraktal wäre)?
+
+Um die Länge der Küste zu messen, wollen wir wie folgt vorgehen: Zunächst wollen wir nur ganz grob die Länge bestimmen - dazu messen wir die Länge im größten Maßstab. Dann die im nächstgrößeren Maßstab. Und schließlich die im größten Maßstab. Trage deine Ergebnisse in der folgenden Tabelle ein:
+
+TODO: Tabelle einfügen 
+
+\emph{Tipp:} Am leichtesten kannst du die Küstenlänge messen, indem du einen Faden entlang der Küste legst und dann dessen Länge misst.
+
+Kannst du in der Tabelle ein Muster erkennen? Angenommen dieses Muster setzt sich auch bei weiteren, immer genaueren Messungen so fort - was würde dann wohl die tatsächliche Länge der deutschen Küste sein? Was kannst du damit über deren fraktale Dimension aussagen?
+\end{aufgabe}
 
 \end{document}
