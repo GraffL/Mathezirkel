@@ -86,7 +86,7 @@
 
 \section*{Fraktale Dimensionen}
 
-In diesem Brief werden wir uns mit einer besonderen Art von geometrischen Objekten beschäftigen - den sogenannten Fraktalen. Auf den ersten Blick sehen diese einfach wie etwas ungewöhnliche Muster aus, du wirst aber bald sehen, dass sie einige recht ungewöhnliche Eigenschaften haben. 
+In diesem Brief werden wir uns mit einer besonderen Art von geometrischen Objekten beschäftigen - den sogenannten Fraktalen. Auf den ersten Blick sehen diese einfach wie etwas seltsame Muster aus, du wirst aber bald sehen, dass sie einige recht ungewöhnliche Eigenschaften haben. 
 
 \section{Die Kochsche Schneeflocke}
 
@@ -160,7 +160,7 @@ Wie wir im vorherigen Kapitel gesehen haben, sieht die Kochsche Kurve zwar aus w
 Betrachte dazu zunächst eine ganz normale Strecke. Diese Strecke hat eine bestimmte Länge $l$. Was passiert, wenn wir diese Strecke um den Faktor $2$ strecken? Wie lang ist also die neue Strecke? Na, $2l$, natürlich, denkst du jetzt vermutlich. Und selbstverständlich hast du auch recht. Aber um ganz sicher zu gehen, wollen wir das noch kurz beweisen.
 
 \begin{center}
-	\includegraphics[width=.5\textwidth]{Bilder/Linie_vergroessern.pdf}
+	\includegraphics[width=.6\textwidth]{Bilder/Linie_vergroessern.pdf}
 \end{center}
 
 Und tatsächlich: Wie beginnen mit einer Strecke, strecken sie um den Faktor $2$ und erhalten eine neue Strecke, in die die alte genau zweimal hineinpasst. Die neue Strecke ist also tatsächlich zweimal so lang wie die alte.
@@ -199,6 +199,8 @@ Um das näher zu untersuchen wollen wir uns einmal eine Tabelle mit verschiedene
 Kannst du die noch fehlenden Einträge einfügen? Evtl. sind dabei Skizzen hilfreich (bzw. für den Würfel würfelförmige Bauklötze/Legosteine/o.ä.)
 \end{aufgabe}
 
+\newpage
+
 \begin{aufgabe}{Potenzen und Dimensionen}
 Und dann hätte ich da noch eine Tabelle, die es auszufüllen gilt:
 \begin{center}
@@ -231,7 +233,7 @@ Die Kochsche Kurve ist also unser erstes Beispiel für ein solches Fraktal. Sein
 \begin{bem}
 Angenommen wir untersuchen ein geometrisches Objekt und wollen dessen Dimension bestimmen. Wir haben es also um den Faktor $k$ gestreckt und festgestellt, dass das ursprüngliche Objekt nun $n$-mal in das neue hineinpasst. Wie können wir jetzt herausfinden, was die Dimension ist? Wie finden wir also ein $d$ mit $k^d = n$?
 
-Dazu gibt es die sogenannte \emph{Logarithmusfunktion} $\log_{\boxed{}}\boxed{\phantom{k}}$: Für zwei Zahlen $n$ und $k$ ist $\log_k n$ gerade die Zahl mit der wir $k$ potenzieren müssen um $n$ zu erhalten - d.h. $k^{\log_k n} = n$. Also ist $\log_k n$ gerade die Zahl, die auch unser $d$ sein soll. Wenn du einen Taschenrechner mit einer entsprechenden Funktion hast, kannst du das ja mal testen, indem du die fraktale Dimension der Kochschen Kurve nachrechnest.
+Dazu gibt es die sogenannte \emph{Logarithmusfunktion} $\log_{\boxed{}}\boxed{\phantom{k}}$: Für zwei Zahlen $n$ und $k$ ist $\log_k n$ gerade die Zahl mit der wir $k$ potenzieren müssen um $n$ zu erhalten - d.h. $k^{\log_k n} = n$. Also ist $\log_k n$ gerade die Zahl, die auch unser $d$ sein soll. Wenn du einen Taschenrechner mit einer entsprechenden Funktion hast, kannst du das ja mal testen, indem du die fraktale Dimension der Kochschen Kurve nachrechnest.\footnote{Manche Taschenrechner haben keine allgemeine Logarithmus-Funktion, sondern nur eine, bei der du kein $k$ (sondern nur das $n$) angeben kannst. Dann kannst du dir mit folgender Rechenregel behelfen: $\log_k n = \frac{\log n}{\log k}$}
 
 Wenn du gerade keinen solchen Taschenrechner zur Hand hast, genügt es für das weitere Blatt aber auch, eine grobe Schätzung für $d$ zu finden. Zum Beispiel haben wir ja bereits herausgefunden, dass bei der Kochschen Kurve gilt: $3^d=4$ (in eine um den Faktor $3$ gestreckte Kochsche Kruve passt die ursprüngliche $4$-mal hinein). Jetzt können wir abschätzen:
 \[3^1 = 3 < 4 = 3^d = 4 < 9 = 3^2\]
@@ -286,10 +288,12 @@ Es gibt aber nicht nur Fraktale aus Linien - man kann genauso gut Fraktale aus z
 \begin{aufgabe}{Pascalsches Dreieck}
 	Erinnerst du dich noch an das Pascalsche Dreieck aus dem ersten Korrespondenzbrief? (falls nicht, schau einfach kurz nach - er kam in Aufgabe 4 vor)
 	
-	Befülle dann die folgende Figur so mit Zahlen, dass das Pascalsche Dreieck entsteht (in jedem der Sechsecke soll also eine Zahl stehen und in jeder Zeile steht im linken und im rechten Sechseck eine $1$):
+	Befülle dann die Figur auf der nächsten Seite so mit Zahlen, dass das Pascalsche Dreieck entsteht (in jedem der Sechsecke soll also eine Zahl stehen und in jeder Zeile steht im linken und im rechten Sechseck eine $1$):
+	
 	\begin{center}
-			\includegraphics{Bilder/pascal-triangle.png}
+		\includegraphics[width=.9\textwidth]{Bilder/pascal-triangle.png}
 	\end{center}
+
 	Wenn du das gemacht hast, male alle Sechsecke aus, in denen eine ungerade Zahl steht. Fällt dir dabei etwas auf?
 \end{aufgabe}
 
@@ -301,6 +305,8 @@ Ein eng zum Sierpinski-Dreieck verwandtes Fraktal ist die \emph{Cantor-Menge}. D
 \begin{center}
 	\includegraphics[width=.5\textwidth]{Bilder/Cantor_Menge.pdf}
 \end{center}
+
+\newpage
 
 \begin{aufgabe}{}
 	Zeichne den nächsten und übernächsten Schritt in der Konstruktion der Cantor-Menge. Bestimme die fraktale Dimension der Cantor-Menge. 
@@ -339,6 +345,8 @@ Kann man eigentlich auch aus dreidimensionalen Objekten Fraktale bauen? Aber sel
 %	Inhalt...
 %\end{aufgabe}
 
+\newpage
+
 \subsection{Noch ein Fraktal?}
 
 \begin{center}
@@ -355,13 +363,17 @@ Kann man eigentlich auch aus dreidimensionalen Objekten Fraktale bauen? Aber sel
 
 Beim Recherchieren für diesen Korrespondenzbrief habe ich immer wieder gelesen, dass Fraktale nicht nur eine abstrakte mathematische Idee seinen. Vielmehr treten Frakale oder zumindest fraktalartige Dinge angeblich auch in der Natur auf. Und eines der häufigsten Beispiele dafür sind Meeresküsten - wie zum Beispiel die deutsche Ostsee-Küste - die du hier in drei verschiedenen Maßstäben abgebildet siehst:
 
-\includegraphics[width=.1\textwidth]{Bilder/Ostsee1.png}
-\includegraphics[width=.5\textwidth]{Bilder/Ostsee2.pdf}
+\begin{center}
+\includegraphics[width=.25\textwidth]{Bilder/Ostsee1.png}
+\includegraphics[width=.65\textwidth]{Bilder/Ostsee2.png}
 
 \includegraphics[width=.9\textwidth]{Bilder/Ostsee3.png}
+\end{center}
+
+\newpage
 
 \begin{aufgabe}{}
-Zum Abschluss dieses Briefes wollen wir jetzt also nachprüfen, ob man wirklich sagen kann, dass die deutsche Küste \glqq frakalartige Eigenschaften\grqq{} hat. 
+Zum Abschluss dieses Briefes wollen wir jetzt also nachprüfen, ob man wirklich sagen kann, dass die deutsche Küste \glqq fraktalartige Eigenschaften\grqq{} hat. 
 
 Wenn du dir die obigen Bilder anschaust, kannst du vielleicht schon eine erste Ähnlichkeit zu unseren bisherigen Fraktalen erkennen: Je näher man an die Küstenlinie heranzoomt, desto mehr Zacken und Einbuchtungen kann man erkennen (so wie zum Beispiel auch bei der Kochschen Kurve). Gleichzeitig siehst du aber vermutlich auch, dass diese Küstenlinie nicht mit Hilfe einer so einfachen Konstruktionsvorschrift gezeichnet werden kann, wie das bei den bisherigen Fraktalen der Fall war.
 
@@ -375,9 +387,9 @@ Um die Länge der Küste zu messen, wollen wir wie folgt vorgehen: Zunächst wol
 	\renewcommand{\arraystretch}{2}
 	\begin{tabular}{l||c}
 		& Länge der Küste in \unit{km} \\\hline\hline
-		aus Karte 1 (Maßstab ...) & \\\hline
-		aus Karte 2 (Maßstab ...) & \\\hline
-		aus Karte 3 (Maßstab ...) &
+		aus Karte 1 & \\\hline
+		aus Karte 2 & \\\hline
+		aus Karte 3 &
 	\end{tabular}
 \end{center}
 
