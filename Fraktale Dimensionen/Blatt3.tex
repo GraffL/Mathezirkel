@@ -86,12 +86,11 @@
 
 \section*{Fraktale Dimensionen}
 
-Einleitung!
-
+In diesem Brief werden wir uns mit einer besonderen Art von geometrischen Objekten beschäftigen - den sogenannten Fraktalen. Auf den ersten Blick sehen diese einfach wie etwas ungewöhnliche Muster aus, du wirst aber bald sehen, dass sie einige recht ungewöhnliche Eigenschaften haben. 
 
 \section{Die Kochsche Schneeflocke}
 
-Ersten zwei Schritte einer Konstruktion eines Musters:
+Also fangen wir doch gleich mal mit so einem Muster an. Es entsteht nach folgendem System:
 
 \begin{center}
 	\includegraphics[width=.9\textwidth]{Bilder/Schneeflocke-Konstruktion1.pdf}
@@ -111,13 +110,13 @@ Wenn du möchtest kannst du auch noch einen vierten Schritt zeichnen. Schaffst d
 	\includegraphics[width=.5\textwidth]{Bilder/Schneeflocke-Konstruktion3.pdf}
 \end{center}
 
-Tatsächlich wollen wir sogar \glqq unendlich viele\grqq{} Schritte machen und uns fragen, was für ein geometrisches Objekt wir dadurch erhalten. Dieses Objekt nennen wir dann \emph{die Kochsche Kurve}. Diese Kurve können wir natürlich nicht mehr zeichnen, aber wir können uns trotzdem überlegen, was für Eigenschaften sie haben muss. Und genau das wollen wir in diesem Brief tun. 
+Tatsächlich wollen wir sogar \glqq unendlich viele\grqq{} Schritte machen und uns fragen, was für ein geometrisches Objekt wir dadurch erhalten. Dieses Objekt nennen wir dann \emph{die Kochsche Kurve}. Wir können diese Kurve natürlich nicht mehr zeichnen (schließlich müssten wir dazu ja unendlich viele Zacken zeichnen!), aber wir können trotzdem darüber nachdenken, was für Eigenschaften sie haben muss. Und genau das werden wir in diesem Brief tun. 
 
-Als erstes wollen wir uns einmal überlegen, wie lang die Linie wohl sein muss, aus der die Kochsche Kurve \glqq nach unendlich vielen Schritten\grqq{} besteht. Da wir sie nicht zeichnen können, können wir natürlich nicht einfach nachmessen. Statt dessen wollen wir uns überlegen, was in einem einzelnen Schritt mit der Länge der Linie geschieht.
+Als erstes können wir uns einmal überlegen, wie lang die Linie wohl sein muss, aus der die Kochsche Kurve \glqq nach unendlich vielen Schritten\grqq{} besteht. Da wir sie nicht zeichnen können, können wir natürlich nicht einfach nachmessen. Stattdessen können wir erst einmal darauf schauen, was auf dem Weg zur Kochschen Kurve in einem einzelnen Konstruktionsschritt mit der Länge der Linie geschieht.
 
-Dazu wollen wir annehmen, dass die Strecke ganz zu Beginn die Länge $l$ hat. Wie ist dann die Länge der Linie nach dem ersten Schritt? Nun, zuerst haben wir die Strecke in drei gleich lange Strecken geteilt und die mittlere davon entfernt - bleibt also noch eine Länge von $\frac{2}{3}l$. Dann haben wir in der Mitte zwei Seiten eines gleichseitigen Dreiecks gezeichnet, wobei jede der beiden Seiten so lang ist, wie die beiden Strecken. Also hat unsere gesamte Linie nach dem zweiten Schritt eine Länge von $\frac{2}{3}l + 2\cdot\frac{1}{3}l = \frac{4}{3}l$. Unsere neue Linie ist also $\frac{4}{3}$-mal so lang wie die ursprüngliche (miss in der Zeichnung doch einmal nach, ob das auch tatsächlich stimmt!).
+Dazu nehmen wir an, dass die Strecke ganz zu Beginn die Länge $l$ hat. Was ist dann die Länge der Linie nach dem ersten Schritt? Nun, zuerst haben wir die Strecke in drei gleich lange Strecken geteilt und die mittlere davon entfernt - bleibt also noch eine Länge von $\frac{2}{3}l$. Dann haben wir in der Mitte zwei Seiten eines gleichseitigen Dreiecks gezeichnet, wobei die beiden Seiten jeweils genauso lang sind, wie die anderen beiden Strecken. Also hat unsere gesamte Linie nach dem ersten Schritt eine Länge von $\frac{2}{3}l + 2\cdot\frac{1}{3}l = \frac{4}{3}l$. Unsere neue Linie ist also $\frac{4}{3}$-mal so lang wie die ursprüngliche (miss in der Zeichnung doch einmal nach, ob das auch tatsächlich stimmt!).
 
-Was passiert nun im zweiten Schritt? Unser Objekt besteht doch jetzt aus vier Strecken - und mit jeder von diesen machen wir das, was wir schon im ersten Schritt gemacht haben. Also wissen wir schon, dass jede dieser vier Strecken wieder $\frac{4}{3}$-mal so lang wird. Wenn wir nun aber jeden Teil der Linie $\frac{4}{3}$-mal so lang machen, dann machen wir damit auch das gesamte Objekt $\frac{4}{3}$-mal so lang. Folglich hat die Figur nach dem zweiten Schritt eine Länge von $\frac{4}{3}\cdot\frac{4}{3}l$. 
+Was passiert nun im zweiten Schritt? Unser Objekt besteht momentan aus vier Strecken - und mit jeder von diesen machen wir das, was wir schon im ersten Schritt gemacht haben. Also wissen wir schon, dass jede dieser vier Strecken wieder $\frac{4}{3}$-mal so lang wird. Wenn wir nun aber jeden Teil der Linie $\frac{4}{3}$-mal so lang machen, dann machen wir damit auch das gesamte Objekt $\frac{4}{3}$-mal so lang. Folglich hat die Figur nach dem zweiten Schritt eine Länge von $\frac{4}{3}\cdot\frac{4}{3}l$. 
 
 \begin{aufgabe}{}
 	Wie lang ist die Figur dann nach dem dritten Schritt? Wie lang nach dem fünften? Nimm dir einen Moment Zeit darüber nachzudenken. Kannst du allgemein sagen, wie man ausrechnen kann, wie lang die Figur nach dem $n$-ten Schritt ist? 
@@ -139,7 +138,7 @@ Ist sie auch länger als \unit[5]{cm}? Selbstverständlich, denn bereits nach de
 Tatsächlich können wir auf diese Weise sehen, dass die Kochsche Kurve länger als \emph{jede} endlich lange Kurve ist. Also ist sie \emph{unendlich} lang!
 \end{proof}
 
-Die Kochsche Kurve ist also eine \emph{unendlich lange Linie} - und das, obwohl sie einen Anfangs und einen Endpunkt hat (der linke und rechte Punkt der Figur wird ja in keinem Schritt verändert). Ein seltsames Objekt, nicht wahr? Und wie wir in diesem Brief sehen werden, ist sie nicht das einzige Objekt mit solch seltsamen Eigenschaften!
+Die Kochsche Kurve ist also eine \emph{unendlich lange Linie} - und das, obwohl sie einen festen Anfangs- und einen festen Endpunkt hat (der linke und rechte Punkt der Figur wird ja in keinem Schritt verändert). Ein seltsames Objekt, nicht wahr? Und wie wir in diesem Brief sehen werden, ist es nicht das einzige Objekt mit solch seltsamen Eigenschaften!
 
 \begin{aufgabe}{Wo ist der Schnee?}
 Vielleicht ist dir aufgefallen, dass die Überschrift dieses Kapitels \glqq Kochsche Schneeflocke\grqq{} lautet - bisher ist in diesem Kapitel aber keine Schneeflocke aufgetaucht. Wo hat sie sich also versteckt? Nun in gewisser Weise in folgendem Bild:
@@ -148,9 +147,9 @@ Vielleicht ist dir aufgefallen, dass die Überschrift dieses Kapitels \glqq Koch
 	\end{center}	
 Na gut, eine richtige Schneeflocke ist das noch nicht. Aber du kannst ganz leicht eine daraus machen! Fasse einfach jede der drei Seiten des obigen Dreiecks als Anfangsstrecke für eine Kochsche Kurve auf und führe mit jeder der drei Seiten zwei, drei Schritte der obigen Konstruktion durch. Siehst du jetzt eine Schneeflocke?
 
-Das Objekt, dass man theoretisch \glqq nach unendlich vielen Schritten\grqq{} bekommen würde, nennt man auch \emph{Kochsche Schneeflocke}. Es besteht aus drei zusammengeklebten Kochschen Kurven. Damit können wir schon direkt sagen, wie lang der Umfang der Kochschen Schneeflocke ist - nämlich:
+Das Objekt, dass man theoretisch \glqq nach unendlich vielen Schritten\grqq{} bekommen würde, nennt man auch \emph{Kochsche Schneeflocke}. Es besteht aus drei zusammengeklebten Kochschen Kurven. Somit kannst du jetzt vermutlich schon direkt sagen, wie lang der Umfang der Kochschen Schneeflocke ist - nämlich: \underline{\phantom{unendlich lange \hspace{10em}}}
 
-Eine etwas schwerere Zusatzaufgabe besteht darin, sich zu überlegen wie groß die Fläche innerhalb dieser Schneeflocke ist. Den genauen Flächeninhalt zu berechnen, ist vielleicht ein wenig schwierig (aber vielleicht hast du ja trotzdem eine Idee?). Deutlich einfacher ist es den Flächeninhalt nur grob zu schätzen: Ist er unendlich groß (wie der Umfang)? Oder ist er endlich groß? Kannst du deine Antwort begründen? Kannst du den Flächeninhalt irgendwie abschätzen (also zum Beispiel ein einfaches geometrisches Objekt angeben, das einen größeren Flächeninhalt hat - oder eine Zahl, die sicher größer ist als der Flächeninhalt der Schneeflocke\footnote{Dabei kannst du der Einfachheit annehmen, dass das ursprüngliche Dreieck eine Seitenlänge von $1$ und damit eine Höhe von $\frac{\sqrt{3}}{2}$ hat.} ).
+Eine etwas schwerere Zusatzaufgabe besteht darin, sich zu überlegen wie groß die Fläche innerhalb dieser Schneeflocke ist. Den genauen Flächeninhalt zu berechnen, ist ein wenig schwierig (aber vielleicht hast du ja trotzdem eine Idee?). Deutlich einfacher ist es den Flächeninhalt nur grob zu schätzen: Ist er unendlich groß (wie der Umfang)? Oder ist er endlich groß? Kannst du deine Antwort begründen? Kannst du den Flächeninhalt irgendwie abschätzen (also zum Beispiel ein einfaches geometrisches Objekt in die obige Zeichnung einfügen, das einen größeren Flächeninhalt hat - oder eine Zahl, die sicher größer ist als der Flächeninhalt der Schneeflocke\footnote{Dabei kannst du der Einfachheit annehmen, dass das ursprüngliche Dreieck eine Seitenlänge von $1$ und damit eine Höhe von $\frac{\sqrt{3}}{2}$ hat.} ).
 \end{aufgabe}
 
 
@@ -158,7 +157,7 @@ Eine etwas schwerere Zusatzaufgabe besteht darin, sich zu überlegen wie groß d
 
 Wie wir im vorherigen Kapitel gesehen haben, sieht die Kochsche Kurve zwar aus wie eine Linie, sie verhält sich aber irgendwie nicht so wie wir das von einer normalen Linie erwarten würden. Dieses \glqq irgendwie\grqq{} wollen wir nun etwas genauer untersuchen:
 
-Betrachte dazu zunächst eine ganz normale Strecke. Diese Strecke hat eine bestimmte Länge $l$. Was passiert, wenn wir diese Strecke um den Faktor $2$ strecken? Wie lang ist dann die neue Strecke? Na, $2l$, natürlich, denkst du jetzt vermutlich. Und selbstverständlich hast du auch recht. Aber um ganz sicher zu gehen, wollen wir das noch kurz beweisen.
+Betrachte dazu zunächst eine ganz normale Strecke. Diese Strecke hat eine bestimmte Länge $l$. Was passiert, wenn wir diese Strecke um den Faktor $2$ strecken? Wie lang ist also die neue Strecke? Na, $2l$, natürlich, denkst du jetzt vermutlich. Und selbstverständlich hast du auch recht. Aber um ganz sicher zu gehen, wollen wir das noch kurz beweisen.
 
 \begin{center}
 	\includegraphics[width=.5\textwidth]{Bilder/Linie_vergroessern.pdf}
@@ -220,13 +219,13 @@ Wenn du beide Tabellen fertig ausgefüllt hast, vergleiche einmal die verschiede
 \end{aufgabe}
 
 \begin{defn}
-Streckt man ein geometrisches Objekt um den Streckungsfaktor $k$ und das ursprüngliche Objekt passt dann $k^d$-mal in das ursprüngliche Objekt, so sagen wir: Das Objekt hat die \emph{Dimension $d$}.\footnote{Tatsächlich gibt es mehrere Möglichkeiten fraktale Dimensionen zu definieren - wir betrachten hier die sogenannte \glqq Ähnlichkeits-Dimension\grqq{}}
+Streckt man ein geometrisches Objekt um den Streckungsfaktor $k$ und das ursprüngliche Objekt passt dann $k^d$-mal in das ursprüngliche Objekt, so sagen wir: Das Objekt hat die \emph{Dimension $d$}.\footnote{Tatsächlich gibt es mehrere Möglichkeiten den Begriff der Dimension eines geometrischen Objekts zu definieren - wir betrachten hier die sogenannte \glqq Ähnlichkeits-Dimension\grqq{}}
 
-Ist dieses $d$ keine ganze Zahl, so nennen wir diese Dimension \emph{fraktale Dimension} und das geometrische Objekt nennen wir ein \emph{Fraktal}.
+Ist dieses $d$ keine ganze Zahl, so nennen wir die Dimension eine \emph{fraktale Dimension} und das geometrische Objekt nennen wir ein \emph{Fraktal}.
 \end{defn}
 
 \begin{bem}
-Die Kochsche Kurve ist also unser erstes Beispiel für ein solches Fraktal. Seine fraktale Dimension ist ungefähr $1,262$ - was gut zu unserer eingangs aufgestellten Vermutung passt, dass die Kochsche Kurve \emph{irgendetwas} zwischen einem eindimensionalen Objekt (wie einer Strecke) und einem zweidimensionalen (wie einem Dreieck) ist.
+Die Kochsche Kurve ist also unser erstes Beispiel für ein solches Fraktal. Seine fraktale Dimension ist ungefähr $1,262$ - was gut zu unserer eingangs aufgestellten Vermutung passt, dass die Kochsche Kurve \emph{irgendetwas} zwischen einem $1$-dimensionalen Objekt (wie einer Strecke) und einem 2-dimensionalen (wie einem Dreieck) ist.
 \end{bem}
 
 \begin{bem}
@@ -245,7 +244,7 @@ Nachdem du nun das notwendige Handwerkszeug besitzt um Fraktale zu untersuchen, 
 
 \subsection{Ein Fraktal-Baum}
 
-Unser erstes Fraktal entsteht durch folgende Konstruktionsregel:
+Unser zweites Fraktal entsteht durch folgende Konstruktionsregel:
 \begin{center}
 	\includegraphics[width=.7\textwidth]{Bilder/Baum-Konstruktion.pdf}
 \end{center}
@@ -300,13 +299,13 @@ Es gibt aber nicht nur Fraktale aus Linien - man kann genauso gut Fraktale aus z
 Ein eng zum Sierpinski-Dreieck verwandtes Fraktal ist die \emph{Cantor-Menge}. Dazu starten wir mit einer einfachen Strecke und entfernen das mittlere Drittel dieser Strecke. Dadurch erhalten wir zwei Strecken, von denen wir wiederum jeweils das mittlere Drittel entfernen usw.
 
 \begin{center}
-	\includegraphics[width=.7\textwidth]{Bilder/Cantor_Menge.pdf}
+	\includegraphics[width=.5\textwidth]{Bilder/Cantor_Menge.pdf}
 \end{center}
 
 \begin{aufgabe}{}
 	Zeichne den nächsten und übernächsten Schritt in der Konstruktion der Cantor-Menge. Bestimme die fraktale Dimension der Cantor-Menge. 
 	
-	Kannst du auch die Gesamtlänge aller \glqq Streckenstücke\grqq bestimmen, aus der die Cantor-Menge besteht? (du kannst dazu wieder analog zu \Cref{satz:Kochkurve_laenge} und \Cref{aufgabe:Sierpinski-Flaeche} vorgehen).
+	Kannst du auch die Gesamtlänge aller \glqq Streckenstücke\grqq{} bestimmen, aus der die Cantor-Menge besteht? (du kannst dazu wieder analog zu \Cref{satz:Kochkurve_laenge} und \Cref{aufgabe:Sierpinski-Flaeche} vorgehen).
 \end{aufgabe}
 
 
@@ -322,7 +321,9 @@ Kann man eigentlich auch aus dreidimensionalen Objekten Fraktale bauen? Aber sel
 	Wie du siehst, starten wir diesmal mit einer Pyramide und ersetzen diese dann im ersten Schritt durch fünf kleinere Pyramiden. Im zweiten Schritt müssten wir dann jede dieser Pyramiden wieder durch fünf noch kleinere ersetzen. Wie viele Pyramiden haben wir also nach dem zweiten Schritt? (wenn du möchtest, kannst auch mal versuchen zu zeichnen, wie das nach dem zweiten Schritt aussieht - ich fürchte allerdings, dass das ziemlich unübersichtlich wird).
 	
 	Kannst du die fraktale Dimension dieses Objektes bestimmen? 
+\end{aufgabe}
 	
+\begin{aufgabe}{}
 	Kannst du mit Hilfe der fraktalen Dimension erraten,  wie groß wohl Volumen und Oberfläche dieses Fraktals sein werden? (vergleiche dazu deine entsprechenden Ergebnisse zur Kochschen Kurve, dem Sierpinski-Dreieck und der Cantor-Menge) 
 	
 	Wenn du bereits die Volumen- bzw. Oberflächenformel für Pyramiden kennst, kannst Volumen und Oberfläche des Pyramidenfraktals natürlich auch wieder direkt bestimmen (wie bei der Kochkurve, dem Sierpinski-Dreieck und der Cantor-Menge).
@@ -354,20 +355,32 @@ Kann man eigentlich auch aus dreidimensionalen Objekten Fraktale bauen? Aber sel
 
 Beim Recherchieren für diesen Korrespondenzbrief habe ich immer wieder gelesen, dass Fraktale nicht nur eine abstrakte mathematische Idee seinen. Vielmehr treten Frakale oder zumindest fraktalartige Dinge angeblich auch in der Natur auf. Und eines der häufigsten Beispiele dafür sind Meeresküsten - wie zum Beispiel die deutsche Nordsee-Küste - die du hier in drei verschiedenen Maßstäben abgebildet siehst:
 
-TODO: Bild einfügen!
+\includegraphics[width=.1\textwidth]{Bilder/Ostsee1.png}
+\includegraphics[width=.5\textwidth]{Bilder/Ostsee2.pdf}
 
-\begin{aufgabe}
-Zum Abschluss dieses Briefes wollen wir jetzt also nachprüfen, ob man wirklich sagen kann, dass die deutsche Küste \glqq frakalartige Eigenschaften\grqq hat. 
+\includegraphics[width=.9\textwidth]{Bilder/Ostsee3.png}
+
+\begin{aufgabe}{}
+Zum Abschluss dieses Briefes wollen wir jetzt also nachprüfen, ob man wirklich sagen kann, dass die deutsche Küste \glqq frakalartige Eigenschaften\grqq{} hat. 
 
 Wenn du dir die obigen Bilder anschaust, kannst du vielleicht schon eine erste Ähnlichkeit zu unseren bisherigen Fraktalen erkennen: Je näher man an die Küstenlinie heranzoomt, desto mehr Zacken und Einbuchtungen kann man erkennen (so wie zum Beispiel auch bei der Kochschen Kurve). Gleichzeitig siehst du aber vermutlich auch, dass diese Küstenlinie nicht mit Hilfe einer so einfachen Konstruktionsvorschrift gezeichnet werden kann, wie das bei den bisherigen Fraktalen der Fall war.
 
-Daher können wir auch nicht so einfach die frakale Dimension bestimmen wie das bisher der Fall war.\footnote{Es geht trotzdem - dafür bräuchten wir aber eine etwas andere Definition von Dimension.} Zumindest aber können wir versuchen ungefähr abzuschätzen, was die fraktale Dimension der Küstenlinie sein sollte - insbesondere also, ob sie eine ganze Zahl ist oder nicht.
+Daher können wir auch nicht so leicht die fraktale Dimension bestimmen wie das bisher der Fall war.\footnote{Es geht trotzdem - dafür bräuchten wir aber eine etwas andere Definition von Dimension.} Zumindest aber können wir versuchen ungefähr abzuschätzen, was die fraktale Dimension der Küstenlinie sein sollte - insbesondere also, ob sie eine ganze Zahl ist oder nicht.
 
-Dafür werden wir gleich versuchen die Länge der Küstenlinie zu messen. Bevor du das machst, versuche folgende Fragen zu beantworten: Aufgrund deiner bisherigen Erfahrungen mit Fraktalen: Welche Länge sollte die Küste haben, wenn sie eine Dimension kleiner als $1$ hat? Welche Länge, wenn sie eine Dimension größer als $1$ hat? Und was wäre, wenn sie genau Dimension $1$ hätte (also überhaupt kein Fraktal wäre)?
+Dafür werden wir gleich versuchen die Länge der Küstenlinie zu messen. Bevor du das machst, versuche folgende Fragen zu beantworten: Aufgrund deiner bisherigen Erfahrungen mit Fraktalen: Welche Länge sollte die Küste haben, wenn sie eine Dimension kleiner als $1$ hat? Welche Länge, wenn sie eine Dimension größer als $1$ hat? Und was wäre, wenn sie genau Dimension $1$ hätte (also überhaupt kein echtes Fraktal wäre)?
 
-Um die Länge der Küste zu messen, wollen wir wie folgt vorgehen: Zunächst wollen wir nur ganz grob die Länge bestimmen - dazu messen wir die Länge im größten Maßstab. Dann die im nächstgrößeren Maßstab. Und schließlich die im größten Maßstab. Trage deine Ergebnisse in der folgenden Tabelle ein:
+Um die Länge der Küste zu messen, wollen wir wie folgt vorgehen: Zunächst wollen wir nur ganz grob die Länge bestimmen - dazu messen wir die Länge in der Karte mit dem größten Maßstab. Dann die im nächstgrößeren Maßstab. Und schließlich die im größten Maßstab. Trage deine Ergebnisse in der folgenden Tabelle ein (beachte, dass du die gemessenen Längen natürlich noch mit Hilfe des angegebenen Maßstabs in die tatsächlichen Längen umrechnen musst):
 
-TODO: Tabelle einfügen 
+\begin{center}
+	\renewcommand{\arraystretch}{2}
+	\begin{tabular}{l||c}
+		& Länge der Küste in \unit{km} \\\hline\hline
+		aus Karte 1 (Maßstab ...) & \\\hline
+		aus Karte 2 (Maßstab ...) & \\\hline
+		aus Karte 3 (Maßstab ...) &
+	\end{tabular}
+\end{center}
+
 
 \emph{Tipp:} Am leichtesten kannst du die Küstenlänge messen, indem du einen Faden entlang der Küste legst und dann dessen Länge misst.
 
