@@ -5,7 +5,7 @@ Regeln: F=F-F++F-F
 
 Kochsche Schneeflocke:
 Axiom:  ---F++++F++++F
-Regeln: F=F++F----F++F
+Regeln: F=F--F++++F--F
 30°
 
 Drachenkurve: 

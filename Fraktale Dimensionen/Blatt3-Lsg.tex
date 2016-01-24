@@ -21,6 +21,7 @@
 
 \usepackage{hyperref}
 \usepackage{cleveref}
+\usepackage{wrapfig}
 
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\CC}{\mathbb{C}}
@@ -82,24 +83,35 @@
 
 \vspace{6em}
 
-\begin{center}\Large{Dritter Korrespondenzbrief}\end{center}
 
-\section*{Lösungshinweise}
+\section*{Fraktale Dimensionen - Lösungshinweise}
+
+Dieses Skript enthält Lösungs\emph{hinweise} zum letzten Korrespondenzbrief. Manchmal sind dies schon die kompletten Lösungen der Aufgaben, meistens sind es aber nur einige Hinweise, die dir dabei helfen sollen, auch die Aufgaben lösen zu können, bei denen du bisher nicht weiter gekommen bist. Wenn du noch weitere Fragen zu den Aufgaben hast, kannst du uns diese weiterhin gerne per E-Mail stellen.
+
+Wenn du uns bereits deine eigenen Lösungsversuche geschickt hast (oder noch schicken wirst - das ist selbstverständlich immer noch möglich), dann versuchen wir natürlich auch dir mit unseren Korrekturen beim Verständnis der Aufgaben helfen. Es lohnt sich also uns deine Lösungen zu senden :-)
 
 \begin{aufgabe}{}
-	Nach $n$ Schritten: $\left(\frac{4}{3}\right)^n$
+	Mit der gleichen Überlegung wie für den zweiten Schritt erhält man:
+	\begin{itemize}
+		\item Nach $3$ Schritten eine Länge von $\left(\frac{4}{3}\right)^3\cdot l = \frac{4}{3}\cdot\frac{4}{3}\cdot\frac{4}{3}\cdot l = \frac{64}{27}l \approx 2,37 \cdot l$
+		\item Nach $5$ Schritten eine Länge von $\left(\frac{4}{3}\right)^5\cdot l = \frac{4}{3}\cdot\frac{4}{3}\cdot\frac{4}{3}\cdot\frac{4}{3}\cdot\frac{4}{3}\cdot l  \approx 4,21 \cdot l$
+		\item Nach $n$ Schritten eine Länge von $\left(\frac{4}{3}\right)^n\cdot l$
+	\end{itemize}
 \end{aufgabe}
 
 \begin{aufgabe}{Wo ist der Schnee?}
-	\begin{center}
-		\includegraphics[width=.6\textwidth]{Bilder/Schneeflocke.pdf}
-	\end{center}	
-Der Flächeninhalt ist z.B. kleiner als der des Umkreises des Dreiecks. 
+	\begin{wrapfigure}{r}{.4\textwidth}\vspace{-1cm}
+		\includegraphics[width=.4\textwidth]{Bilder/Schneeflocke-Umkreis.pdf}
+	\end{wrapfigure}
 
-Genauer ist der Flächeninhalt 
-\[1 + \frac{1}{3} + \left(\frac{1}{3}\right)^2 + \dots = ???\]
-TODO: Erklärung?
+Der Umfang der Kochschen Schneeflocke ist offenbar dreimal so lang wie die Länge einer der drei Kochschen Kurven, aus denen sie besteht. Da deren Länge aber schon unendlich ist, ist natürlich auch der Umfang der Kochschen Schneeflocke unendlich.
+
+Interessanterweise ist aber der Flächeninhalt der Kochschen Schneeflocke trotzdem endlich. Zum Beispiel kann man sich leicht überlegen, dass der Flächeninhalt kleiner sein muss als der des Umkreises des ursprünglichen Dreiecks - und der ist sicher endlich.
+
+% Wenn man den Flächeninhalt exakt bestimmen möchte...  \[1 + \frac{1}{3} + \left(\frac{1}{3}\right)^2 + \dots = ???\]
 \end{aufgabe}
+
+\newpage
 
 \begin{aufgabe}{Wie oft?}\label{aufgabe:Wie_oft}
 \begin{center}
@@ -109,7 +121,7 @@ TODO: Erklärung?
 		Strecke      & $2$-mal	& $3$-mal  & $4$-fach & $9$-fach \\\hline
 		Dreieck      & $4$-mal  & $9$-mal  & $16$-fach & $81$-fach \\\hline
 		Quadrat      & $4$-mal  & $9$-mal  & $16$-fach & $81$-fach  \\\hline
-		Würfel       & $8$-mal  & $227$-mal  & $64$-fach & $729$-fach  \\\hline
+		Würfel       & $8$-mal  & $27$-mal  & $64$-fach & $729$-fach  \\\hline
 		Kochschee Kurve & ---   & $4$-mal  & ---      & $16$-mal  \\      	
 	\end{tabular}
 \end{center}
@@ -127,24 +139,34 @@ TODO: Erklärung?
 	\end{tabular}
 \end{center}
 
-Es fällt auf: Streckt man ein $d$-dimensionales Objekt um den Faktor $k$, so passt das ursprüngliche genau $k^d$ in das neue.
+Es fällt auf (in den ersten drei Zeilen): Streckt man ein $d$-dimensionales Objekt um den Faktor $k$, so passt das ursprüngliche genau $k^d$ in das neue. Das passt also genau zu unserer Definition 2 aus dem Korrespondenzbrief.
+
+Damit diese Regel auch für die Kochsche Kurve gilt, müssen wir diese anscheinend als (ungefähr) $1,262$-dimensionales Objekt bezeichnen.
+
 \end{aufgabe}
 
 \begin{aufgabe}{}
+	\begin{minipage}[t]{0.5\textwidth}
+			\renewcommand{\arraystretch}{2}
+			\begin{tabular}{l||c|c}
+				Streckfaktor:& $2$-fach & $4$-fach \\\hline\hline
+				Fraktal-Baum & $3$-mal & $9$-mal \\	
+			\end{tabular}
+	\end{minipage}
+ 
 
-	\includegraphics[width=.3\textwidth]{Bilder/Baum.pdf}
-
-	\begin{center}
-		\renewcommand{\arraystretch}{2}
-		\begin{tabular}{l||c|c}
-			Streckfaktor:& $2$-fach & $4$-fach \\\hline\hline
-			Fraktal-Baum & $3$-mal & $9$-mal \\	
-		\end{tabular}
-	\end{center}
-	
+		
+	\includegraphics[width=.2\textwidth]{Bilder/Baum.pdf}
 	$d \approx 1,585$
 \end{aufgabe}
 
+	\begin{minipage}[h]{5cm}
+		Hello World
+	\end{minipage}
+	
+	\begin{minipage}[h]{5cm}
+		Hello World
+	\end{minipage}
 
 \subsection{Das Sierpinski-Dreieck}
 
