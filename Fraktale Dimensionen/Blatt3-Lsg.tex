@@ -167,16 +167,19 @@ Damit diese Regel auch für die Kochsche Kurve gilt, müssen wir diese anscheine
 
 \subsection{Das Sierpinski-Dreieck}
 
-\begin{center}
-	\includegraphics[width=.7\textwidth]{Bilder/Sierpinski-Konstruktion.pdf}
-\end{center}
-
 \begin{aufgabe}{}\label{aufgabe:Sierpinski-Flaeche}
-	Strecken um 2 - passt 3-mal hinein. Also erneut $d \approx 1,585$
+	\begin{center}
+		\includegraphics[width=.7\textwidth]{Bilder/Sierpinski-Dreieck-Vergroessern.pdf}
+	\end{center}
+	Streckst du das Sierpinski-Dreieck um den Faktor $2$, so passt das ursprüngliche Dreieck $3$-mal in das neue. Genau wie bei der letzten Aufgabe, liegt dessen Dimension also irgendwo zwischen $1$ und $2$. Genauer gesagt wiederum $d \approx 1,585$.
 \end{aufgabe}
 
 \begin{aufgabe}{}
-	In jedem Schritt verliert man $\frac{1}{4}$ der grauen Fläche. Es bleiben also noch $\frac{3}{4}$. Nach $n$ Schritten also noch $\left(\frac{3}{4}\right)^n$. Der Flächeninhalt wird dadurch kleiner als jede positive Zahl. Folglich ist er $0$.
+	In jedem Schritt verliert man $\frac{1}{4}$ der grauen Fläche. Es bleiben also nach jedem Schritt $\frac{3}{4}$ der Fläche vor dem jeweiligen Schritt.
+	
+	Ist die Fläche des grauen Dreiecks zu Beginn $1$, so hat man nach einem Schritt eine Fläche von $\frac{3}{4}\cdot 1 = \frac{3}{4}$, nach zwei Schritten eine Fläche von $\frac{3}{4} \cdot \frac{3}{4} = \left(\frac{3}{4}\right)^2$ usw.
+	
+	Nach $n$ Schritten bleibt also noch eine Fläche von $\left(\frac{3}{4}\right)^n$. Man kann sich überlegen, dass der Flächeninhalt dadurch kleiner als jede positive Zahl wird. Folglich ist der Flächeninhalt des Fraktals (\glqq nach unendlich vielen Schritten\grqq) $0$.
 \end{aufgabe}
 
 \begin{aufgabe}{Pascalsches Dreieck}
