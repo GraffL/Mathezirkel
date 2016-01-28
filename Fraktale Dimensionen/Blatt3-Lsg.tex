@@ -164,12 +164,10 @@ Damit diese Regel auch für die Kochsche Kurve gilt, müssen wir diese anscheine
 	Vergleichst du die obige Tabelle mit der aus Aufgabe 3, so siehst du dass die Dimension des Fraktalbaumes zwischen der einer Strecke und der eines Dreiecks liegt - also zwischen $1$ und $2$. Eine exakte Berechnung liefert: $d \approx 1,585$.
 \end{aufgabe}
 
-
-\subsection{Das Sierpinski-Dreieck}
-
+\newpage
 \begin{aufgabe}{}\label{aufgabe:Sierpinski-Flaeche}
 	\begin{center}
-		\includegraphics[width=.7\textwidth]{Bilder/Sierpinski-Dreieck-Vergroessern.pdf}
+		\includegraphics[width=.5\textwidth]{Bilder/Sierpinski-Dreieck-Vergroessern.pdf}
 	\end{center}
 	Streckst du das Sierpinski-Dreieck um den Faktor $2$, so passt das ursprüngliche Dreieck $3$-mal in das neue. Genau wie bei der letzten Aufgabe, liegt dessen Dimension also irgendwo zwischen $1$ und $2$. Genauer gesagt wiederum $d \approx 1,585$.
 \end{aufgabe}
@@ -199,25 +197,33 @@ Damit diese Regel auch für die Kochsche Kurve gilt, müssen wir diese anscheine
 \end{aufgabe}
 	
 \begin{aufgabe}{}
-	Fraktale Dimension größer als $2$. Daher Fläche (2-dimensional) unendlich. Kleiner als $3$, daher Volumen (3-dimensional) gleich 0.
+	Das Pyramiden-Fraktal hat also eine Dimension zwischen $2$ und $3$. Ein solches Fraktal hatten wir bisher noch nicht gesehen, dafür aber gleich zwei mit einer Dimension zwischen $1$ und $2$: Die Kochsche Kurve und das Sierpinski-Dreieck. Bei der Kochschen Kurve haben wir bereits festgestellt, dass sie eine \emph{unendliche Länge} hat (und Länge ist eine Eigenschaft von \emph{ein}dimensionalen Objekten). Beim Sierpinski-Dreieck haben wir gezeigt, dass es eine \emph{Fläche von $0$} hat (und Fläche ist eine Eigenschaft von \emph{zwei}dimensionalen Objekten).
 	
-	Fläche nach einem Schritt $\frac{5}{4}$-mal so groß und Volumen $\frac{5}{8}$-mal (5 Pyramiden, die jeweils halb so breit, halb so tief und halb so hoch sind.)
+	Jetzt machen wir - etwas ungenau formuliert - \glqq alles eine Dimension höher\grqq: Wir haben ein Fraktal mit Dimension zwischen $2$ und $3$ und wollen dessen Fläche (Eigenschaft von \emph{zwei}dimensionalen Objekten) und dessen Volumen (Eigenschaft von \emph{drei}dimensionalen Objekten) bestimmen. Eine naheliegende Vermutung wäre daher, dass das Pyramiden-Fraktal eine unendliche Fläche, aber ein Volumen von $0$ hat.
+	
+	Tatsächlich kommt man auch auf das gleiche Ergebnis, wenn man wie zuvor überprüft, wie sich Fläche und Volumen bei jedem einzelnen Schritt verändern:
+	Die Fläche ist nach einem Schritt $\frac{5}{4}$-mal so groß (wird also mehr) und das Volumen $\frac{5}{8}$-mal so groß (also kleiner). Auf diese Zahlen kommt man, wenn man sieht, dass aus einer einzelnen Pyramide in einem Schritt fünf Pyramiden werden, die halb so breit, halb so tief und halb so hoch sind.
 \end{aufgabe}
 
 \begin{aufgabe}{}
+	Strecken wir dieses Möchtegern-Fraktal um den Faktor $2$, erhalten wir ein Objekt, dass aus $4 = 2^2$ Kopien des ursprünglichen besteht. Vergleichen wir das mit der Tabelle aus Aufgabe 3, sehen wir, dass das gerade zum Verhalten eines \emph{zweidimensionalen} Objektes passt. Anscheinend ist das hier also gar kein \glqq echtes Fraktal\grqq!
+	
 	\begin{center}
 		\includegraphics[width=.6\textwidth]{Bilder/Nicht-Fraktal-mehr-Schritte.pdf}
 	\end{center}	
 	
-	2-mal so groß, dann passt es 4-mal hinein. Damit ist $d = 2$. 
-	
-	Dieses Objekt ist flächenfüllend (d.h. wie eine Fläche - 2-dimensional)
+	Tatsächlich handelt es sich hierbei um eine sogenannte \glqq flächenfüllende\grqq{} Figur.\footnote{Die Bezeichnung \glqq flächenfüllen\grqq{} ist ein wenig irreführend, denn unsere Figur füllt die Fläche nicht wirklich komplett auf. In dem obigen Bild sieht das nur deshalb so aus, weil mein Computer keine unendlich dünnen Linien zeichnen kann. Allerdings liegen die einzelnen Linien, aus denen unsere Figur besteht, \glqq beliebig nahe aneinander\grqq{} und kommen jedem Punkt der überdeckten Fläche \glqq beliebig nahe (was gerade die mathematische Definition von \glqq flächenfüllend\grqq{} ist). Die Figur ist also im Grunde ein unendlich feines Gitter.} 
 \end{aufgabe}
 
 \begin{aufgabe}{Ostseeküste}
-	2-mal so groß, dann passt es 4-mal hinein. Damit ist $d = 2$. 
+	Wie schon in Aufgabe 11 können wir folgende Vermutungen aufstellen:
+	\begin{itemize}
+		\item Eine fraktale Dimension $< 1$ führt zu einer Länge von $0$ (vgl. Cantor-Menge in Aufgabe 9).
+		\item Eine fraktale Dimension $> 1$ führt zu einer Länge von unendlich (vgl. Kochsce Kurve).
+		\item Eine (normale) Dimension $= 1$ sollte natürlich zu einer ganz normalen, endlichen Länge führen.
+	\end{itemize}
 	
-	Dieses Objekt ist flächenfüllend (d.h. wie eine Fläche - 2-dimensional)
+	Beim tatsächlichen Messen der Küstenlänge stellt man fest, dass die Küste umso länger zu werden scheint, je genauer man misst (sprich: Je detaillierter die Karte ist, die man verwendet). Es sieht also so aus als wäre die Ostseeküste tatsächlich ein Fraktal der Dimension $> 1$.
 \end{aufgabe}
 
 \end{document}
