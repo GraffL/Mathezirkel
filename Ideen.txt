@@ -1,0 +1,16 @@
+- Endliche Automaten (evtl. mit Ausgabe für einfache Additionsautomaten? (sind Binärzahlen bereits bekannt?))
+	- evtl. einfache Grammatiken?
+	
+- einfache Spieltheorie? z.B. Nim-Spiele ( http://timbaumann.info/mathezirkel-kurs/skript.pdf , https://www.youtube.com/watch?v=9KABcmczPdg ), Kuchenteilen (-> Sven), Nash-Gleichgewichte (Gefangenendilemma, Koordinationsspiel)
+
+- Beweise durch Invarianten ( http://timbaumann.info/mathezirkel-kurs/skript.pdf )
+
+-"Umschüttungsprobleme" (pouring problems): 7l Gefäß, 11 l Gefäß - brauche 2 l...
+	-> allgemeine Lösung mit Billiard-Diagramm (evtl. auch Billard-Geometrie?)
+
+- Fünf-Farbensatz?
+
+- p-adische Zahlen/Modulo-Rechnen ( http://timbaumann.info/mathezirkel-kurs/skript.pdf )
+
+- Kachelungen/Parkettierungen
+
