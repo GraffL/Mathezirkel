@@ -14,3 +14,4 @@
 
 - Kachelungen/Parkettierungen
 
+- Codierungstheorie: ISBN, Prüfziffern, Vertauschungserkennung, Strichcode, QR-Code
