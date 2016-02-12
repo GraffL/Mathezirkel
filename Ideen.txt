@@ -1,7 +1,7 @@
 - Endliche Automaten (evtl. mit Ausgabe für einfache Additionsautomaten? (sind Binärzahlen bereits bekannt?))
 	- evtl. einfache Grammatiken?
 	
-- einfache Spieltheorie? z.B. Nim-Spiele ( http://timbaumann.info/mathezirkel-kurs/skript.pdf , https://www.youtube.com/watch?v=9KABcmczPdg ), Kuchenteilen (-> Sven), Nash-Gleichgewichte (Gefangenendilemma, Koordinationsspiel)
+- einfache Spieltheorie? z.B. Nim-Spiele ( http://timbaumann.info/mathezirkel-kurs/skript.pdf , https://www.youtube.com/watch?v=9KABcmczPdg ), Kuchenteilen (-> Sven), Nash-Gleichgewichte (Gefangenendilemma, Koordinationsspiel), Sprouts ( https://de.wikipedia.org/wiki/Sprouts ), TicTacTo
 
 - Beweise durch Invarianten ( http://timbaumann.info/mathezirkel-kurs/skript.pdf )
 
