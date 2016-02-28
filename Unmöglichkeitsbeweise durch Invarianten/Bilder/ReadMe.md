@@ -1,0 +1,1 @@
+Dominosteine von <a href="https://commons.wikimedia.org/wiki/File:Dominomatrix.svg">Wikimedia Commons</a>
