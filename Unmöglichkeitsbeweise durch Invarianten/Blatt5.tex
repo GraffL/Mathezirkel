@@ -145,7 +145,12 @@ Als nächstes wollen wir statt den Dominos, die zwei Felder überdecken, Steine 
 \begin{aufgabe}{}
 	Als erstes betrachten wir den roten Tetrominostein (das 2x2-Quadrat). Welches der folgenden Schachbretter kannst du nur mit solchen Steinen überdecken? 
 	
-	\textbf{Bilder!}
+	\begin{center}
+		\includegraphics[width=.2\textwidth]{Bilder/Schachbrett.pdf}
+		\includegraphics[width=.2\textwidth]{Bilder/Schachbrett3.pdf}
+		\includegraphics[width=.2\textwidth]{Bilder/Schachbrett4.pdf}
+		\includegraphics[width=.2\textwidth]{Bilder/Schachbrett5.pdf}
+	\end{center}
 	
 	Wenn es möglich ist, beschreibe eine solche Überdeckung (oder zeichne sie). Wenn keine Überdeckung möglich ist, versuche einen Beweis dafür zu finden (wie bei den Fragen 2 und 3).
 	
@@ -153,9 +158,7 @@ Als nächstes wollen wir statt den Dominos, die zwei Felder überdecken, Steine 
 \end{aufgabe}
 
 \begin{aufgabe}{}
-	Nun verwenden wir den orangen Tetrominostein (das lange 4x1-Rechteck). Welches der folgenden Schachbretter kannst du nur mit solchen Steinen überdecken? 
-	
-	\textbf{Bilder!}
+	Nun verwenden wir den orangen Tetrominostein (das lange 4x1-Rechteck). Welches der Schachbretter aus Aufgabe 1 kannst du nur mit solchen Steinen überdecken? 
 	
 	Wenn es möglich ist, beschreibe eine solche Überdeckung (oder zeichne sie). Wenn keine Überdeckung möglich ist, versuche einen Beweis dafür zu finden (wie bei den Fragen 2 und 3).
 	
@@ -173,16 +176,28 @@ Bevor du weiter liest, probiere es doch selbst einmal aus! Überlege dir zunäch
 \begin{antwort}
 	Zunächst einmal stellen wir fest, dass die fünf Figuren insgesamt $5 \cdot 4 = 20$ Felder belegen. Also muss das Rechteck, falls es existiert, entweder $1$ Feld breit und $20$ Felder lang oder $2$ Felder breit und $10$ Felder lang oder $4$ Felder breit und $5$ Felder lang sein. Offensichtlich scheidet die erste Möglichkeit aus. Man kann sich auch recht schnell überlegen, dass auch die zweite Möglichkeit nicht in Frage kommt (Tipp: platziere das orange Teil zuerst). Somit bleibt nur das $5 \times 4$-Rechtecks als Möglichkeit übrig. Wenn wir aber versuchen, solch ein Rechteck mit obigen Figuren zu belegen, scheitern wir immer wieder. Das hat auch einen Grund:
 	
-	\emph{Es ist nicht möglich, aus den Tetris-Figuren ein Rechteck zu legen.}
+	\begin{center}
+		\emph{Es ist nicht möglich, aus den Tetris-Figuren ein Rechteck zu legen.}
+	\end{center}
 	
 	Um das zu beweisen legen wir die Figuren (irgendwie) auf ein Schachbrett:
 	
-	\textbf{Tetrissteine auf Schachbrett}	
+	\begin{center}
+		\includegraphics[width=.4\textwidth]{Bilder/Schachbrett-mit-Tetrominos.pdf}
+	\end{center}	
 	
 	Nun fällt etwas auf: Alle Figuren bis auf die blaue belegen je zwei weiße und zwei schwarze Felder (egal, wie man sie hinlegt). Die blaue Figur, jedoch, belegt drei weiße Felder und nur ein schwarzes Feld (oder umgekehrt). Damit belegen die Figuren zusammengenommen ungleich viele weiße wie schwarze Felder, egal wie man sie anordnet. Damit kann man insbesondere kein $4 \times 5$-Rechteck mit ihnen legen, denn jedes $4 \times 5$-Rechteck auf einem Schachfeld hat gleich viele weiße und schwarze Felder.
 \end{antwort}
 
-\textbf{Weitere Tetrisaufgaben}
+\begin{aufgabe}{Dreieckstetrominos}
+	Als kleine Abwandlung der obigen Aufgabe wollen wir nun aus Dreiecken zusammengesetzte \glqq Tetrominos\grqq{} betrachten:
+	\begin{center}
+		\includegraphics[width=.4\textwidth]{Bilder/Dreieckstetrominos.pdf}
+	\end{center}
+	Die Frage ist nun: Lassen sich diese vier Steine so zusammensetzen, dass sie ein (gleichseitiges) Dreieck ergeben? (Drehen und Spiegeln der Steine ist selbstverständlich wieder erlaubt)
+	
+	\emph{Hinweis:} Evtl. ist es wieder hilfreich, die Steine auf eine Art \glqq Schachbrett\grqq{} zu legen - nur benötigst du diesmal natürlich eines aus Dreiecken. Du findest ein solches auf der letzten Seite des Briefes.
+\end{aufgabe}
 
 
 \section{Teilbarkeitsinvarianten}
@@ -223,25 +238,27 @@ Also können wir folgern, dass nach jedem Treffen von zwei Chamäleons unsere Za
 
 In der gewünschten Endsituation wäre $C = 0$, da wir verlangen, dass die Zahl der blauen und grünen Chamäleons dann gleich ist, und $0$ durch $3$ teilbar ist! Folglich kann diese Situation nicht erreicht werden.
 
-\begin{aufg}{}
+\begin{aufgabe}{}
 	Mit den nun gesammelten Aufgaben: Kannst du eine Startsituation angeben, aus der heraus es möglich ist gleich viele gelbe, blaue und grüne Chamäleons zu erhalten (gib auch an, wie man das erreichen kann)?
 	
 	Kannst du außerdem noch eine andere Startsituation angeben, aus der heraus es nicht möglich ist gleich viele Chamäleons jeder Farbe zu erhalten?
-\end{aufg}
+\end{aufgabe}
 
-\begin{aufg}{Chamäleonmünzen}
+\begin{aufgabe}{Chamäleonmünzen}
 	Für dieses Spiel brauchst du sechs Münzen. Lege zwei davon mit der Zahl nach oben vor dich und die restlichen mit dem Bild nach oben. Dein Ziel ist es nun so lange Münzen umzudrehen, bis gleich viele Münzen mit Zahl oben wie Münzen mit Bild oben vor dir liegen. Damit diese Aufgabe nicht zu einfach wird, musst du dabei allerdings immer \emph{genau zwei Münzen auf einmal } umdrehen. Du kannst also pro Spielzug entweder zwei Kopfmünzen zu Bildmünzen machen, zwei Bildmünzen zu zwei Kopfmünzen oder eine Kopf- und eine Bildmünze zu einer Bild und einer Kopfmünze:
 	
-	\textbf{Bild der ersten Spielzüge}
+	\begin{center}
+		\includegraphics[width=.9\textwidth]{Bilder/Muenzen.pdf}
+	\end{center}
 	
 	Ist es möglich mit dieser Vorgabe das Ziel zu erreichen? Falls ja, gib den Weg dazu an (du kannst dazu zum Beispiel die einzelnen Spielsituationen wie oben gezeigt nacheinander aufmalen). Falls nein, kannst du beweisen, dass es nicht möglich ist das Ziel zu erreichen? 
 	
 	Wie ist es, wenn wir die Regel ein wenig abändern, sodass du nun immer \emph{genau drei Münzen auf einmal} umdrehen darfst? Ist es jetzt möglich das Ziel zu erreichen?
 	
 	\emph{Hinweis:} Wenn du beweisen möchtest, dass es nicht möglich ist das Ziel zu erreichen, bietet sich eine Invariante ähnlich zu der in der Chamäleonaufgabe an. Evtl. solltest du aber auf Teilbarkeit durch eine andere Zahl prüfen. Prüfe bei deiner Invariante wieder wie sich diese bei den verschiedenen Spielzügen verändert!
-\end{aufg}
+\end{aufgabe}
 
-\begin{aufg}
+\begin{aufgabe}{}
 	Wir wollen noch einmal das gleiche Spiel spielen, diesmal aber mit acht Münzen. Von diesen zeigen zu Beginn drei Stück eine Zahl und die übrigen fünf Stück ein Bild.
 	
 	Ist es hier möglich gleich viele Kopfmünzen wie Bildmünzen zu erhalten, wenn du
@@ -250,36 +267,53 @@ In der gewünschten Endsituation wäre $C = 0$, da wir verlangen, dass die Zahl 
 		\item pro Spielzug genau drei Münzen umdrehen musst?
 		\item pro Spielzug genau vier Münzen umdrehen musst?
 	\end{enumerate}
-\end{aufg}
+\end{aufgabe}
 
 
 \section{Mehr Invarianten}
 
-Invarianten sind ein nützliches Mittel für Aufgaben obiger Art, bei denen man zeigen soll, dass eine bestimmte Situation nicht erreicht werden kann. Ein Nachteil dieser Technik ist es, dass Invarianten oft nicht offensichtlich sind, sondern es einiger Kreativität und Erfahrung bedarf, um sie zu finden. Bei der Schachbrettaufgabe könnte man feststellen, dass am Ende jedes Versuches zwei schwarze Felder übrig bleiben. Generell bietet sich an, wenn man so eine Aufgabe angeht, erst einmal rumzuprobieren und dabei Zahlen, die einem wichtig erscheinen, nach jedem Schritt aufzuschreiben und danach nach Mustern zu suchen.
+Invarianten sind ein nützliches Mittel für Aufgaben obiger Art, bei denen man zeigen soll, dass eine bestimmte Situation nicht erreicht werden kann. Ein Nachteil dieser Technik ist es, dass Invarianten oft nicht offensichtlich sind, sondern es einiger Kreativität und Erfahrung bedarf, um sie zu finden. Bei der Schachbrettaufgabe könnte man feststellen, dass am Ende jedes Versuches zwei schwarze Felder übrig bleiben. Generell bietet sich an, wenn man so eine Aufgabe angeht, erst einmal herumzuprobieren und dabei Zahlen, die einem wichtig erscheinen, nach jedem Schritt aufzuschreiben und danach nach Mustern zu suchen.
 
-Auch in der höheren Mathematik spielen Invarianten eine wichtige Rolle: Es gibt beispielsweise eine Teilgebiet der Mathematik, das sich mit Knoten befasst. Einen Knoten stellt man sich dabei als Seil im dreidimensionalen Raum vor, wobei Anfang und Ende des Seils zusammengebunden sind. Wenn wir einen Knoten haben, so stellen sich Mathematiker die Frage, ob wir diesen Knoten nur durch Bewegen des Seiles (ohne Zerschneiden) diesen Knoten auflösen können, sodass er nur noch aus einer einfachen Seilschlinge besteht. Um zu beweisen, dass dies für manche Knoten nicht möglich ist, haben Mathematiker Invarianten gefunden, die etwas komplizierter als unsere bisher gesehene Invarianten sind und beim Umformen eines Knoten gleich bleiben.
+Auch in der höheren Mathematik spielen Invarianten eine wichtige Rolle: Es gibt beispielsweise eine Teilgebiet der Mathematik, das sich mit Knoten befasst. Einen Knoten stellt man sich dabei als Seil im dreidimensionalen Raum vor, wobei Anfang und Ende des Seils zusammengebunden sind. Wenn wir einen Knoten haben, so stellen sich Mathematiker die Frage, ob wir diesen Knoten nur durch Bewegen des Seiles (ohne Zerschneiden) auflösen können, sodass er nur noch aus einer einfachen Seilschlinge besteht. Um zu beweisen, dass dies für manche Knoten nicht möglich ist, haben Mathematiker Invarianten gefunden, die etwas komplizierter als unsere bisher gesehene Invarianten sind und beim Umformen eines Knoten gleich bleiben.
 
-\textbf{Quersummenaufgabe}
+Im folgenden findest du nochmal zwei weitere Aufgaben, in denen du selbst versuchen kannst eine passende Invariante zu finden:
 
-% 4. Landeswettbewerb Mathematik Bayern, Runde 1, Aufgabe 2
-\begin{aufgabe}{Produkte und Summen auf dem Schachbrett}
-	Die Felder eines Schachbretts sind in beliebiger Reihenfolge mit den Zahlen 1 bis 64 belegt. Man darf zwei Felder auswählen und bildet die Summe und das Produkt ihrer Zahlen. Danach wird die Zahl des einen Feldes durch die Einerziffer dieser Summe und die Zahl des anderen Feldes durch die Einerziffer dieses Produktes ersetzt. 
+\begin{aufgabe}{}
+	Wir beginnen mit den Zahlen von $1$ bis $8$, die nebeneinander aufgeschrieben sind:
+		\[1 \quad\vert\quad 2 \quad\vert\quad 3 \quad\vert\quad 4 \quad\vert\quad 5 \quad\vert\quad 6 \quad\vert\quad 7 \quad\vert\quad 8\]
+	In jedem Spielzug wählst du nun zwei Zahlen aus und bildest Summe und Differenz dieser beiden Zahlen. Dann ersetzt du eine der beiden Zahlen durch die Summe und die andere durch die Differenz. Wählst du zum Beispiel $3$ und $7$, so erhältst du im nächsten Schritt:
+		\[1 \quad\vert\quad 2 \quad\vert\quad \mathbf{10} \quad\vert\quad 4 \quad\vert\quad 5 \quad\vert\quad 6 \quad\vert\quad \mathbf{4} \quad\vert\quad 8\]
+	(denn $3+7=10$ und $7-3=4$). Wählst du dann $10$ und $4$, so erhältst du
+		\[1 \quad\vert\quad 2 \quad\vert\quad \mathbf{6} \quad\vert\quad 4 \quad\vert\quad 5 \quad\vert\quad \mathbf{14} \quad\vert\quad 4 \quad\vert\quad 8\]
+	usw.
 	
-	Kann man durch mehrfache Anwendung dieses Verfahren erreichen, dass auf allen Feldern die gleiche Zahl steht?
+	Dein Ziel ist es nun durch mehrere solche Spielzüge irgendwann in folgende Situation zu kommen:
+		\[2 \quad\vert\quad 2 \quad\vert\quad 2 \quad\vert\quad 2 \quad\vert\quad 2 \quad\vert\quad 2 \quad\vert\quad 2 \quad\vert\quad 2\]		
+	Ist das möglich? Falls ja, wie? Falls nein, kannst du das beweisen (etwa indem du eine Invariante angibst, die in jedem Spielzug erhalten bleibt)?
 	
-	\emph{Hinweis: } Was passiert, wenn du zwei gerade Zahlen auswählst? Was bei zwei ungeraden Zahlen? Bei einer ungeraden und einer geraden Zahl?
+	\emph{Zusatzaufgabe:} Ist es überhaupt möglich in eine Spielsituation zu kommen, in der nur noch lauter gleiche Zahlen da stehen?
+\end{aufgabe}
+
+\begin{aufgabe}{Produkte und Summen auf dem Schachbrett\footnote{Diese Aufgabe basiert auf einer Aufgabe aus dem 4. Landeswettbewerb Mathematik Bayern}}
+	Die Felder eines Schachbretts sind in beliebiger Reihenfolge mit den Zahlen $1$ bis $64$ belegt. Du darfst nun zwei Felder auswählen und bildest die Summe und das Produkt ihrer Zahlen. Danach wird die Zahl des einen Feldes durch diese Summe und die Zahl des anderen Feldes durch dieses Produktes ersetzt. 
+	
+	Kannst du durch mehrfache Anwendung dieses Verfahren erreichen, dass auf allen Feldern die gleiche Zahl steht?
+	
+	\emph{Hinweis:} Was passiert, wenn du zwei gerade Zahlen auswählst? Was bei zwei ungeraden Zahlen? Bei einer ungeraden und einer geraden Zahl?
 \end{aufgabe}
 
 \newpage
 
-\includegraphics[scale=.9]{Bilder/Schachbrett.pdf}
-\includegraphics[scale=.9]{Bilder/Dominosteine.pdf}
+\includegraphics[scale=.8]{Bilder/Schachbrett.pdf}
+\includegraphics[scale=.8]{Bilder/Dominosteine.pdf}
 
-\includegraphics[scale=.9]{Bilder/Tetrominos-kompakt.pdf}
-\textbf{Mehr Quadrat/lange Dominos}
+\includegraphics[scale=.8]{Bilder/Tetrominos-kompakt.pdf}
+\includegraphics[scale=.4]{Bilder/DreiecksTetrominos-kompakt.pdf}
 
-\includegraphics[scale=.9]{Bilder/ViererSchachbrett1.pdf}
-\includegraphics[scale=.9]{Bilder/ViererSchachbrett2.pdf}
+\includegraphics[scale=.8]{Bilder/ViererSchachbrett1.pdf}
+\includegraphics[scale=.8]{Bilder/ViererSchachbrett2.pdf}
 
+\includegraphics[scale=.4]{Bilder/Dreiecksschachbrett.pdf}
+\includegraphics[scale=.8]{Bilder/Tetrominos-extra.pdf}
 
 \end{document}
