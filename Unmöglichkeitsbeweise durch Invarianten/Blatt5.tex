@@ -185,9 +185,11 @@ Bevor du weiter liest, probiere es doch selbst einmal aus! Überlege dir zunäch
 \textbf{Weitere Tetrisaufgaben}
 
 
-\section{Überschrift?}
+\section{Teilbarkeitsinvarianten}
 
 Auf einer Insel leben 345 gelbe, 346 grüne und 347 blaue Chamäleons. Wann immer sich zwei Chamäleons gleicher Farbe begegnen, passiert nichts. Wenn sich aber zwei Chamäleons unterschiedlicher Farbe begegnen, so nehmen beide die dritte Farbe an. Beispielsweise hätten wir nach einem Treffen eines gelben und einer grünen Chamäleons nur noch 344 gelbe, 345 grüne, aber dafür 349 blaue Chamäleons. Frage: Ist es möglich, dass zu einem Zeitpunkt genau gleich viele Chamäleons jeder Farbe auf der Insel leben?
+
+\emph{Hinweis:} Um die Situation etwas übersichtlicher zu machen, kannst du das ganze erstmal auch nur mit 1 gelben, 2 grünen und 3 blauen Chamäleons durchspielen. Das Ergebnis wird das gleiche sein.
 
 % Bildquelle: http://commons.wikimedia.org/wiki/File:Cham%C3%A4leon1.jpg
 \begin{center}
@@ -206,7 +208,56 @@ In beiden Aufgabentypen finden wir experimentell keine Lösung und suchen daher 
 
 Wir haben uns daher in der Aufgabe mit dem Schachbrett eines anderen Tricks bedient: Wir haben bemerkt, dass am Anfang das verkleinerte Brett $32 - 30 = 2$ schwarze Felder mehr besitzt als weiße Felder. Jedes Mal, wenn wir einen Dominostein gelegt haben, wurde ein weißes und ein schwarzes Feld verdeckt, also blieb die Differenz zwischen der Anzahlen der schwarzen offenen und weißen offenen Felder immer gleich. Wir haben also eine Zahl entdeckt, die wir für jedes unbedeckte, teilweise oder vollständig mit Steinen bedeckte Spielbrett ausrechnen können und die mit jedem weiteren platzierten Stein, egal wo er gelegt wird, gleich bleibt. Man sagt auch, dass diese Zahl unverändert (mit Fremdwort invariant) bleibt und nennt sie eine \emph{Invariante}. In der gewünschten Endposition, dass das ganze Brett belegt ist, wäre die Differenz zwischen den offenen schwarzen und offenen weißen Feldern gleich $0 - 0 = 0$. Diese Situation kann also beginnend bei unserer Anfangsposition nicht erreicht werden.
 
-Es ist nicht möglich, dass es irgendwann gleich viele Chamäleons von jeder Farbe gibt. Wir betrachten die Zahl $C$, die wir als Differenz zwischen der Anzahl der blauen und grünen Chamäleons festlegen. Zu Beginn ist $C = 347 - 346 = 1$. Wenn sich ein blaues und ein grünes Chamäleon treffen, so bleibt diese Zahl gleich. Wenn sich allerdings ein grünes und ein gelbes Chamäleon treffen, so nimmt die Zahl der grünen Chamäleons um eins ab, während die Zahl der blauen um zwei steigt. Insgesamt erhöht sich $C$ um drei. Wenn sich ein blaues und ein gelbes Chamäleon treffen, so sinkt $C$ um drei (mit ähnlicher Begründung). Die Zahl $C$ ist also nicht invariant. Aber wir stellen fest: Zu Beginn ist $C$ gleich 1, also nicht durch 3 teilbar. Wir wissen aber: Wenn eine ganze Zahl $k \in \ZZ$ durch 3 teilbar ist, so sind auch die Zahlen $k + 3$ und $k - 3$ durch 3 teilbar. Umgekehrt ist, wenn $k \in \ZZ$ nicht durch 3 teilbar ist, auch die Zahlen $k + 3$ und $k - 3$ nicht durch 3 teilbar. Also können wir folgern, dass nach jedem Treffen von zwei Chamäleons unsere Zahl immer noch \emph{nicht} durch 3 teilbar ist. Unsere Invariante ist hier also nicht die Zahl $C$ selbst, sondern die Tatsache, dass $C$ nicht durch 3 teilbar ist. In der gewünschten Endsituation wäre $C = 0$, da wir verlangen, dass die Zahl der blauen und grünen Chamäleons dann gleich ist. Aber 0 ist durch 3 teilbar! Folglich kann diese Situation nicht erreicht werden.
+Es ist nicht möglich, dass es irgendwann gleich viele Chamäleons von jeder Farbe gibt. Wir betrachten die Zahl $C$, die wir als Differenz zwischen der Anzahl der blauen und grünen Chamäleons festlegen. Zu Beginn ist
+	\[C = \text{Zahl der blauen Chamäleons } - \text{Zahl der grünen Chamäleons } = 347 - 346 = 1.\]
+Nun schauen wir, was mit dieser Zahl passiert, wenn sich verschiedene Chamäleons treffen (und dabei ihre Farbe ändern):
+\begin{itemize}
+	\item Wenn sich ein blaues und ein grünes Chamäleon treffen, so bleibt die Zahl $C$ gleich (denn sowohl die der blauen als auch die der grünen Chamäleons nimmt um eins ab).
+	\item Wenn sich allerdings ein grünes und ein gelbes Chamäleon treffen, so nimmt die Zahl der grünen Chamäleons um eins ab, während die Zahl der blauen um zwei steigt. Insgesamt erhöht sich $C$ um drei (wenn dir nicht klar ist, warum, dann spiele diese Situation einfach mal mit konkreten Zahlen durch und beobachte wie sich $C$ dabei verändert).
+	\item Wenn sich ein blaues und ein gelbes Chamäleon treffen, so sinkt $C$ um drei (mit ähnlicher Begründung).
+\end{itemize}
+
+Die Zahl $C$ ist also nicht invariant. Aber wir stellen fest: Zu Beginn ist $C$ gleich 1, also nicht durch 3 teilbar. Wir wissen aber auch: Wenn eine ganze Zahl $k \in \ZZ$ durch 3 teilbar ist, so sind auch die Zahlen $k + 3$ und $k - 3$ durch 3 teilbar\footnote{Erinnerst du dich noch an den zweiten Korrespondenzbrief? Da haben wir das gezeigt!}. Umgekehrt ist, wenn $k \in \ZZ$ nicht durch 3 teilbar ist, auch die Zahlen $k + 3$ und $k - 3$ nicht durch 3 teilbar. 
+
+Also können wir folgern, dass nach jedem Treffen von zwei Chamäleons unsere Zahl immer noch \emph{nicht} durch 3 teilbar ist. Unsere Invariante ist hier also nicht die Zahl $C$ selbst, sondern die Tatsache, dass $C$ nicht durch 3 teilbar ist. 
+
+In der gewünschten Endsituation wäre $C = 0$, da wir verlangen, dass die Zahl der blauen und grünen Chamäleons dann gleich ist, und $0$ durch $3$ teilbar ist! Folglich kann diese Situation nicht erreicht werden.
+
+\begin{aufg}{}
+	Mit den nun gesammelten Aufgaben: Kannst du eine Startsituation angeben, aus der heraus es möglich ist gleich viele gelbe, blaue und grüne Chamäleons zu erhalten (gib auch an, wie man das erreichen kann)?
+	
+	Kannst du außerdem noch eine andere Startsituation angeben, aus der heraus es nicht möglich ist gleich viele Chamäleons jeder Farbe zu erhalten?
+\end{aufg}
+
+\begin{aufg}{Chamäleonmünzen}
+	Für dieses Spiel brauchst du sechs Münzen. Lege zwei davon mit der Zahl nach oben vor dich und die restlichen mit dem Bild nach oben. Dein Ziel ist es nun so lange Münzen umzudrehen, bis gleich viele Münzen mit Zahl oben wie Münzen mit Bild oben vor dir liegen. Damit diese Aufgabe nicht zu einfach wird, musst du dabei allerdings immer \emph{genau zwei Münzen auf einmal } umdrehen. Du kannst also pro Spielzug entweder zwei Kopfmünzen zu Bildmünzen machen, zwei Bildmünzen zu zwei Kopfmünzen oder eine Kopf- und eine Bildmünze zu einer Bild und einer Kopfmünze:
+	
+	\textbf{Bild der ersten Spielzüge}
+	
+	Ist es möglich mit dieser Vorgabe das Ziel zu erreichen? Falls ja, gib den Weg dazu an (du kannst dazu zum Beispiel die einzelnen Spielsituationen wie oben gezeigt nacheinander aufmalen). Falls nein, kannst du beweisen, dass es nicht möglich ist das Ziel zu erreichen? 
+	
+	Wie ist es, wenn wir die Regel ein wenig abändern, sodass du nun immer \emph{genau drei Münzen auf einmal} umdrehen darfst? Ist es jetzt möglich das Ziel zu erreichen?
+	
+	\emph{Hinweis:} Wenn du beweisen möchtest, dass es nicht möglich ist das Ziel zu erreichen, bietet sich eine Invariante ähnlich zu der in der Chamäleonaufgabe an. Evtl. solltest du aber auf Teilbarkeit durch eine andere Zahl prüfen. Prüfe bei deiner Invariante wieder wie sich diese bei den verschiedenen Spielzügen verändert!
+\end{aufg}
+
+\begin{aufg}
+	Wir wollen noch einmal das gleiche Spiel spielen, diesmal aber mit acht Münzen. Von diesen zeigen zu Beginn drei Stück eine Zahl und die übrigen fünf Stück ein Bild.
+	
+	Ist es hier möglich gleich viele Kopfmünzen wie Bildmünzen zu erhalten, wenn du
+	\begin{enumerate}
+		\item pro Spielzug genau zwei Münzen umdrehen musst?
+		\item pro Spielzug genau drei Münzen umdrehen musst?
+		\item pro Spielzug genau vier Münzen umdrehen musst?
+	\end{enumerate}
+\end{aufg}
+
+
+\section{Mehr Invarianten}
+
+Invarianten sind ein nützliches Mittel für Aufgaben obiger Art, bei denen man zeigen soll, dass eine bestimmte Situation nicht erreicht werden kann. Ein Nachteil dieser Technik ist es, dass Invarianten oft nicht offensichtlich sind, sondern es einiger Kreativität und Erfahrung bedarf, um sie zu finden. Bei der Schachbrettaufgabe könnte man feststellen, dass am Ende jedes Versuches zwei schwarze Felder übrig bleiben. Generell bietet sich an, wenn man so eine Aufgabe angeht, erst einmal rumzuprobieren und dabei Zahlen, die einem wichtig erscheinen, nach jedem Schritt aufzuschreiben und danach nach Mustern zu suchen.
+
+Auch in der höheren Mathematik spielen Invarianten eine wichtige Rolle: Es gibt beispielsweise eine Teilgebiet der Mathematik, das sich mit Knoten befasst. Einen Knoten stellt man sich dabei als Seil im dreidimensionalen Raum vor, wobei Anfang und Ende des Seils zusammengebunden sind. Wenn wir einen Knoten haben, so stellen sich Mathematiker die Frage, ob wir diesen Knoten nur durch Bewegen des Seiles (ohne Zerschneiden) diesen Knoten auflösen können, sodass er nur noch aus einer einfachen Seilschlinge besteht. Um zu beweisen, dass dies für manche Knoten nicht möglich ist, haben Mathematiker Invarianten gefunden, die etwas komplizierter als unsere bisher gesehene Invarianten sind und beim Umformen eines Knoten gleich bleiben.
 
 \textbf{Quersummenaufgabe}
 
@@ -219,17 +270,13 @@ Es ist nicht möglich, dass es irgendwann gleich viele Chamäleons von jeder Far
 	\emph{Hinweis: } Was passiert, wenn du zwei gerade Zahlen auswählst? Was bei zwei ungeraden Zahlen? Bei einer ungeraden und einer geraden Zahl?
 \end{aufgabe}
 
-
-Invarianten sind ein nützliches Mittel für Aufgaben obiger Art, bei denen man zeigen soll, dass eine bestimmte Situation nicht erreicht werden kann. Ein Nachteil dieser Technik ist es, dass Invarianten oft nicht offensichtlich sind, sondern es einiger Kreativität und Erfahrung bedarf, um sie zu finden. Bei der Schachbrettaufgabe könnte man feststellen, dass am Ende jedes Versuches zwei schwarze Felder übrig bleiben. Generell bietet sich an, wenn man so eine Aufgabe angeht, erst einmal rumzuprobieren und dabei Zahlen, die einem wichtig erscheinen, nach jedem Schritt aufzuschreiben und danach nach Mustern zu suchen.
-
-Auch in der höheren Mathematik spielen Invarianten eine wichtige Rolle: Es gibt beispielsweise eine Teilgebiet der Mathematik, das sich mit Knoten befasst. Einen Knoten stellt man sich dabei als Seil im dreidimensionalen Raum vor, wobei Anfang und Ende des Seils zusammengebunden sind. Wenn wir einen Knoten haben, so stellen sich Mathematiker die Frage, ob wir diesen Knoten nur durch Bewegen des Seiles (ohne Zerschneiden) diesen Knoten auflösen können, sodass er nur noch aus einer einfachen Seilschlinge besteht. Um zu beweisen, dass dies für manche Knoten nicht möglich ist, haben Mathematiker Invarianten gefunden, die etwas komplizierter als unsere bisher gesehene Invarianten sind und beim Umformen eines Knoten gleich bleiben.
-
 \newpage
 
 \includegraphics[scale=.9]{Bilder/Schachbrett.pdf}
 \includegraphics[scale=.9]{Bilder/Dominosteine.pdf}
 
 \includegraphics[scale=.9]{Bilder/Tetrominos-kompakt.pdf}
+\textbf{Mehr Quadrat/lange Dominos}
 
 \includegraphics[scale=.9]{Bilder/ViererSchachbrett1.pdf}
 \includegraphics[scale=.9]{Bilder/ViererSchachbrett2.pdf}
