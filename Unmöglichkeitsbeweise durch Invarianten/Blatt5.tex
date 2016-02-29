@@ -134,77 +134,75 @@ Das Schachbrett ohne die beiden Ecken hat nun wieder eine gerade Anzahl von Feld
 
 Wären nicht zwei diagonal gegenüberliegende, sondern zwei Ecken, die an einer Seite liegen, herausgesägt worden, so wäre die Aufgabe lösbar gewesen (findest du einen Weg wie?).
 
+\section{Tetrominoparkett}
 
-
-\textbf{weitere Schachbrett/Dominoaufgaben?}
-
+Als nächstes wollen wir statt den Dominos, die zwei Felder überdecken, Steine betrachten, die vier Felder groß sind - die Tetrominos:
 
 \begin{center}
-	\scalebox{0.75}{
-		\begin{tikzpicture}
-		% L
-		\fill [color=yellow,opacity=0.8] (0,0) -- ++ (2,0) -- ++ (0,1) -- ++ (-1,0) -- ++ (0,2) -- ++ (-1,0) -- cycle;
-		\draw (0,0) -- ++ (2,0) -- ++ (0,1) -- ++ (-1,0) -- ++ (0,2) -- ++ (-1,0) -- cycle;
-		\draw (0,0) ++ (0,2) -- ++ (1,0);
-		\draw (0,0) ++ (0,1) -- ++ (1,0) -- ++ (0,-1);
-		
-		% Quadrat
-		\fill [color=red,opacity=0.5] (3,0) -- (5,0) -- (5,2) -- (3,2) -- cycle;
-		\draw (3,0) -- (5,0) -- (5,2) -- (3,2) -- cycle;
-		\draw (3,0) ++ (1,0) -- ++ (0,2);
-		\draw (3,0) ++ (0,1) -- ++ (2,0);
-		
-		% T
-		\fill [color=blue,opacity=0.7] (7,0) -- ++ (1,0) -- ++ (0,3) -- ++ (-1,0) -- ++ (0,-1) -- ++ (-1,0) -- ++ (0,-1) -- ++ (1,0) -- cycle;
-		\draw (7,0) -- ++ (1,0) -- ++ (0,3) -- ++ (-1,0) -- ++ (0,-1) -- ++ (-1,0) -- ++ (0,-1) -- ++ (1,0) -- cycle;
-		\draw (7,0) ++ (1,1) -- ++ (-1,0) -- ++ (0,1) -- ++ (1,0);
-		
-		% I
-		\fill [color=orange,opacity=0.7] (9,0) -- ++ (1,0) -- ++ (0,4) -- ++ (-1,0) -- cycle;
-		\draw (9,0) -- ++ (1,0) -- ++ (0,4) -- ++ (-1,0) -- cycle;
-		\draw (9,0) ++ (0,1) -- ++ (1,0);
-		\draw (9,0) ++ (0,2) -- ++ (1,0);
-		\draw (9,0) ++ (0,3) -- ++ (1,0);
-		
-		% Z
-		\fill [color=green,opacity=0.7] (11,0) -- ++ (1,0) -- ++ (0,1) -- ++ (1,0) -- ++ (0,2) -- ++ (-1,0) -- ++ (0,-1) -- ++ (-1,0) -- cycle;
-		\draw (11,0) -- ++ (1,0) -- ++ (0,1) -- ++ (1,0) -- ++ (0,2) -- ++ (-1,0) -- ++ (0,-1) -- ++ (-1,0) -- cycle;
-		\draw (11,0) ++ (0,1) -- ++ (1,0) -- ++ (0,1) -- ++ (1,0);
-		\end{tikzpicture}
-	}
+	\includegraphics[width=.6\textwidth]{Bilder/Tetrominos.pdf}
 \end{center}
 
-Oben siehst du die fünf verschiedenen Formen, die beim Spiel Tetris auftreten.
+\begin{aufgabe}{}
+	Als erstes betrachten wir den roten Tetrominostein (das 2x2-Quadrat). Welches der folgenden Schachbretter kannst du nur mit solchen Steinen überdecken? 
+	
+	\textbf{Bilder!}
+	
+	Wenn es möglich ist, beschreibe eine solche Überdeckung (oder zeichne sie). Wenn keine Überdeckung möglich ist, versuche einen Beweis dafür zu finden (wie bei den Fragen 2 und 3).
+	
+	\emph{Hinweis:} Um einen Unmöglichkeitsbeweis der Form von Frage 3 zu führen, genügt diesmal ein normales zweifarbiges Schachbrett nicht. Stattdessen ist hier ein - in passender Weise - in vier Farben gefärbtes \glqq Schachbrett\grqq{} hilfreich (schließlich haben wir ja jetzt auch Steine, die vier Felder überdecken). Auf der letzten Seite dieses Briefes findest du zwei Vorschläge für eine entsprechende Färbung.
+\end{aufgabe}
 
-Ist es möglich, aus den obigen fünf Figuren ein Rechteck zu legen? Dabei dürfen sich die Figuren nicht überlappen, aber beliebig oft gedreht oder gespiegelt werden.
+\begin{aufgabe}{}
+	Nun verwenden wir den orangen Tetrominostein (das lange 4x1-Rechteck). Welches der folgenden Schachbretter kannst du nur mit solchen Steinen überdecken? 
+	
+	\textbf{Bilder!}
+	
+	Wenn es möglich ist, beschreibe eine solche Überdeckung (oder zeichne sie). Wenn keine Überdeckung möglich ist, versuche einen Beweis dafür zu finden (wie bei den Fragen 2 und 3).
+	
+	\emph{Hinweis:} Auch hier ist unter Umständen eines der vierfarbigen \glqq Schachbretter\grqq{} hilfreich.
+\end{aufgabe}
 
-Zunächst einmal stellen wir fest, dass die fünf Figuren insgesamt $5 \cdot 4 = 20$ Felder belegen. Also muss das Rechteck, falls es existiert, entweder $1$ Feld breit und $20$ Felder lang oder $2$ Felder breit und $10$ Felder lang oder $4$ Felder breit und $5$ Felder lang sein. Offensichtlich scheidet die erste Möglichkeit aus. Man kann sich auch recht schnell überlegen, dass auch die zweite Möglichkeit nicht in Frage kommt (Tipp: platziere das orange Teil zuerst). Somit bleibt nur das $5 \times 4$-Rechtecks als Möglichkeit übrig. Wenn wir aber versuchen, solch ein Rechteck mit obigen Figuren zu belegen, scheitern wir immer wieder. Das hat auch einen Grund:
+Um die Sache etwas bunter zu machen, wollen wir nun alle fünf Tetrominos auf einmal verwenden - jeden aber nur genau einmal. Offenbar ist es nicht möglich damit das gesamte Schachbrett zu überdecken (warum?). Daher werden wir uns damit begnügen einen Teil des Brettes zu überdecken:
 
-Es ist nicht möglich, aus den Tetris-Figuren ein Rechteck zu legen. Wir legen die Figuren auf ein Schachbrett:
+\begin{frage}
+	Ist es möglich, aus den obigen fünf Figuren ein Rechteck zu legen? Dabei dürfen sich die Figuren nicht überlappen, aber beliebig oft gedreht oder gespiegelt werden.
+\end{frage}
 
-% Tetrissteine auf Schachbrett
+Bevor du weiter liest, probiere es doch selbst einmal aus! Überlege dir zunächst welche Größe ein Rechteck überhaupt haben darf, damit es mit Hilfe der fünf Tetrominosteine überdeckt werden kann: Kann es ein 2x10-Rechteck sein, ein 3x5 Rechteck, ein 4x5-Rechteck, ...? Wenn du eine passende Größe gefunden hast, versuche eine entsprechende Überdeckung zu finden - d.h. die fünf Steine so zusammen zu legen, dass sie ein Rechteck ergeben. Was stellst du dabei fest?
 
-Nun fällt etwas auf: Alle Figuren bis auf die blaue belegen je zwei weiße und zwei schwarze Felder (egal, wie man sie hinlegt). Die blaue Figur, jedoch, belegt drei weiße Felder und nur ein schwarzes Feld (oder umgekehrt). Damit belegen die Figuren zusammengenommen ungleich viele weiße wie schwarze Felder, egal wie man sie anordnet. Damit kann man insbesondere kein $4 \times 5$-Rechteck mit ihnen legen, denn jedes $4 \times 5$-Rechteck auf einem Schachfeld hat gleich viele weiße und schwarze Felder.
+\begin{antwort}
+	Zunächst einmal stellen wir fest, dass die fünf Figuren insgesamt $5 \cdot 4 = 20$ Felder belegen. Also muss das Rechteck, falls es existiert, entweder $1$ Feld breit und $20$ Felder lang oder $2$ Felder breit und $10$ Felder lang oder $4$ Felder breit und $5$ Felder lang sein. Offensichtlich scheidet die erste Möglichkeit aus. Man kann sich auch recht schnell überlegen, dass auch die zweite Möglichkeit nicht in Frage kommt (Tipp: platziere das orange Teil zuerst). Somit bleibt nur das $5 \times 4$-Rechtecks als Möglichkeit übrig. Wenn wir aber versuchen, solch ein Rechteck mit obigen Figuren zu belegen, scheitern wir immer wieder. Das hat auch einen Grund:
+	
+	\emph{Es ist nicht möglich, aus den Tetris-Figuren ein Rechteck zu legen.}
+	
+	Um das zu beweisen legen wir die Figuren (irgendwie) auf ein Schachbrett:
+	
+	\textbf{Tetrissteine auf Schachbrett}	
+	
+	Nun fällt etwas auf: Alle Figuren bis auf die blaue belegen je zwei weiße und zwei schwarze Felder (egal, wie man sie hinlegt). Die blaue Figur, jedoch, belegt drei weiße Felder und nur ein schwarzes Feld (oder umgekehrt). Damit belegen die Figuren zusammengenommen ungleich viele weiße wie schwarze Felder, egal wie man sie anordnet. Damit kann man insbesondere kein $4 \times 5$-Rechteck mit ihnen legen, denn jedes $4 \times 5$-Rechteck auf einem Schachfeld hat gleich viele weiße und schwarze Felder.
+\end{antwort}
 
 \textbf{Weitere Tetrisaufgaben}
 
+
+\section{Überschrift?}
 
 Auf einer Insel leben 345 gelbe, 346 grüne und 347 blaue Chamäleons. Wann immer sich zwei Chamäleons gleicher Farbe begegnen, passiert nichts. Wenn sich aber zwei Chamäleons unterschiedlicher Farbe begegnen, so nehmen beide die dritte Farbe an. Beispielsweise hätten wir nach einem Treffen eines gelben und einer grünen Chamäleons nur noch 344 gelbe, 345 grüne, aber dafür 349 blaue Chamäleons. Frage: Ist es möglich, dass zu einem Zeitpunkt genau gleich viele Chamäleons jeder Farbe auf der Insel leben?
 
 % Bildquelle: http://commons.wikimedia.org/wiki/File:Cham%C3%A4leon1.jpg
 \begin{center}
   \raisebox{-0.4\height}{\includegraphics{chamaeleongelb}} + \raisebox{-0.4\height}{\includegraphics{chamaeleongruen}} $\longrightarrow$ $2 \cdot$ \raisebox{-0.4\height}{\includegraphics{chamaeleonblau}}
-  \qquad
+  \quad $\Big\vert$ \quad 
   \raisebox{-0.4\height}{\includegraphics{chamaeleonblau}} + \raisebox{-0.4\height}{\includegraphics{chamaeleongruen}} $\longrightarrow$ $2 \cdot$ \raisebox{-0.4\height}{\includegraphics{chamaeleongelb}}
-  \qquad
+  \quad $\Big\vert$ \quad
   \raisebox{-0.4\height}{\includegraphics{chamaeleongelb}} + \raisebox{-0.4\height}{\includegraphics{chamaeleonblau}} $\longrightarrow$ $2 \cdot$ \raisebox{-0.4\height}{\includegraphics{chamaeleongruen}}
 \end{center}
 
 Grundsätzlich könnte diese Situation eintreten, da $345 + 346 + 347 = 1038$ durch $3$ teilbar ist. Wenn wir allerdings versuchen, eine Liste von Begegnungen zu erstellen, sodass nach diesen Begegnungen die Anzahl der Chamäleons jeder Farbe gleich ist, scheitern wir. Spoiler: Auch diese Aufgabe ist nicht lösbar.
 
-Was haben diese Aufgaben gemeinsam? Zunächst haben wir eine Anfangssituation, beispielsweise das leere (verkleinerte) Schachbrett oder die Anzahlen der Fische jeder Farbe im Aquarium. Dann verändert sich die Ausgangslage durch Züge (das Legen eines Dominosteins) oder Ereignisse (Treffen von zwei Fischen). Die Frage in beiden Aufgaben ist, ob eine bestimmte Situation (alle Felder bedeckt bzw. gleich viele Fische von jeder Farbe) eintreten kann.
+Was hat diese Aufgabe nun mit den Schachbrettaufgaben gemeinsam? Zunächst haben wir eine Anfangssituation, beispielsweise das leere (verkleinerte) Schachbrett oder die Anzahlen der Chamäleons auf der Insel. Dann verändert sich die Ausgangslage durch Züge (das Legen eines Dominosteins) oder Ereignisse (Treffen von zwei Chamäleons). Die Frage in beiden Aufgaben ist, ob eine bestimmte Situation (alle Felder bedeckt bzw. gleich viele Chamäleons von jeder Farbe) eintreten kann.
 
-In beiden Aufgaben finden wir experimentell keine Lösung und suchen daher nach einem Grund, warum wir jedes solche Unterfangen von vornherein zum Scheitern verurteilt ist. In der Schachbrettaufgabe könnten wir dies begründen, indem wir alle Möglichkeiten ausprobieren. Davon gibt es allerdings ziemlich viele, sodass wir eine Antwort auf diesem Weg nur, wenn überhaupt, mit Hilfe eines Computers finden können. In der zweiten Aufgabe allerdings, gibt es (auf den ersten Blick) unendlich viele Möglichkeiten, wie sich Fische treffen können; wenn wir beispielsweise herausgefunden haben, dass wir mit 40 Treffen von Fischen die gewünschte Endsituation nicht erreichen können, so könnte uns das 41 Treffen zum Ziel führen.
+In beiden Aufgabentypen finden wir experimentell keine Lösung und suchen daher nach einem Grund, warum wir jedes solche Unterfangen von vornherein zum Scheitern verurteilt ist. In der Schachbrettaufgabe könnten wir dies begründen, indem wir alle Möglichkeiten ausprobieren. Davon gibt es allerdings ziemlich viele, sodass wir eine Antwort auf diesem Weg - wenn überhaupt - nur mit Hilfe eines Computers finden können. In der zweiten Aufgabe allerdings, gibt es (auf den ersten Blick) unendlich viele Möglichkeiten, wie sich Chamäleons treffen können; wenn wir beispielsweise herausgefunden haben, dass wir mit 40 Treffen von Chamäleons die gewünschte Endsituation nicht erreichen können, so könnte uns das 41 Treffen zum Ziel führen.
 
 Wir haben uns daher in der Aufgabe mit dem Schachbrett eines anderen Tricks bedient: Wir haben bemerkt, dass am Anfang das verkleinerte Brett $32 - 30 = 2$ schwarze Felder mehr besitzt als weiße Felder. Jedes Mal, wenn wir einen Dominostein gelegt haben, wurde ein weißes und ein schwarzes Feld verdeckt, also blieb die Differenz zwischen der Anzahlen der schwarzen offenen und weißen offenen Felder immer gleich. Wir haben also eine Zahl entdeckt, die wir für jedes unbedeckte, teilweise oder vollständig mit Steinen bedeckte Spielbrett ausrechnen können und die mit jedem weiteren platzierten Stein, egal wo er gelegt wird, gleich bleibt. Man sagt auch, dass diese Zahl unverändert (mit Fremdwort invariant) bleibt und nennt sie eine \emph{Invariante}. In der gewünschten Endposition, dass das ganze Brett belegt ist, wäre die Differenz zwischen den offenen schwarzen und offenen weißen Feldern gleich $0 - 0 = 0$. Diese Situation kann also beginnend bei unserer Anfangsposition nicht erreicht werden.
 
