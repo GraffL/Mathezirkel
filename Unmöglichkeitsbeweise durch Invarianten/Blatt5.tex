@@ -97,11 +97,11 @@
 Vor uns befindet sich ein leeres Schachbrett und ein großer Haufen Dominosteine. Ein Dominostein ist genauso groß wie zwei Felder des Schachbretts. Wenn du magst, kannst du dir das Schachbrett, die Dominosteine und ein paar Tetris-Steine (die übrigens auch Tetrominos genannt werden), die wir später noch brauchen werden, auf der letzten Seite dieses Briefes ausschneiden und selbst mitknobeln.
 
 \begin{frage}
-	Ist es möglich, das Schachbrett mit Dominosteinen so zu belegen, dass jedes Feld bedeckts ist, keine zwei Dominosteine übereinander liegen und kein Stein über den Rand hinausragt? 
+	Ist es möglich, das Schachbrett mit Dominosteinen so zu belegen, dass jedes Feld bedeckt ist, keine zwei Dominosteine übereinander liegen und kein Stein über den Rand hinausragt? 
 \end{frage}
 
 \begin{antwort}
-	Ja. Eine Möglichkeit (von vielen) in jede Zeile vier Dominosteine nebeneinander zu legen.
+	Ja. Eine Möglichkeit (von vielen) ist in jede Zeile vier Dominosteine nebeneinander zu legen.
 \end{antwort}
 
 Wir sägen nun aus dem Schachbrett die rechte untere Ecke, das Feld \emph{h1}, heraus.
@@ -118,7 +118,8 @@ Während wir die erste Frage einfach positiv (bejahend) beantworten konnten, ind
 
 \begin{wrapfigure}{r}{0.14\textwidth}\vspace{-20pt}
 	\includegraphics[width=.14\textwidth]{Bilder/Schachbrett2.pdf}
-	\vspace{-40pt}\end{wrapfigure}
+	\vspace{-40pt}
+\end{wrapfigure}
 
 Wir sägen nun aus dem Schachbrett auch die linke obere Ecke, das Feld \emph{h8}, heraus.
 
@@ -154,7 +155,7 @@ Als nächstes wollen wir statt den Dominos, die zwei Felder überdecken, Steine 
 	
 	Wenn es möglich ist, beschreibe eine solche Überdeckung (oder zeichne sie). Wenn keine Überdeckung möglich ist, versuche einen Beweis dafür zu finden (wie bei den Fragen 2 und 3).
 	
-	\emph{Hinweis:} Um einen Unmöglichkeitsbeweis der Form von Frage 3 zu führen, genügt diesmal ein normales zweifarbiges Schachbrett nicht. Stattdessen ist hier ein - in passender Weise - in vier Farben gefärbtes \glqq Schachbrett\grqq{} hilfreich (schließlich haben wir ja jetzt auch Steine, die vier Felder überdecken). Auf der letzten Seite dieses Briefes findest du zwei Vorschläge für eine entsprechende Färbung.
+	\emph{Hinweis:} Um einen Unmöglichkeitsbeweis in der Form von Frage 3 zu führen, genügt diesmal ein normales zweifarbiges Schachbrett nicht. Stattdessen ist hier ein - in passender Weise - mit vier Farben gefärbtes \glqq Schachbrett\grqq{} hilfreich (schließlich haben wir ja jetzt auch Steine, die vier Felder überdecken). Auf der letzten Seite dieses Briefes findest du zwei Vorschläge für eine entsprechende Färbung.
 \end{aufgabe}
 
 \begin{aufgabe}{}
@@ -174,19 +175,19 @@ Um die Sache etwas bunter zu machen, wollen wir nun alle fünf Tetrominos auf ei
 Bevor du weiter liest, probiere es doch selbst einmal aus! Überlege dir zunächst welche Größe ein Rechteck überhaupt haben darf, damit es mit Hilfe der fünf Tetrominosteine überdeckt werden kann: Kann es ein 2x10-Rechteck sein, ein 3x5 Rechteck, ein 4x5-Rechteck, ...? Wenn du eine passende Größe gefunden hast, versuche eine entsprechende Überdeckung zu finden - d.h. die fünf Steine so zusammen zu legen, dass sie ein Rechteck ergeben. Was stellst du dabei fest?
 
 \begin{antwort}
-	Zunächst einmal stellen wir fest, dass die fünf Figuren insgesamt $5 \cdot 4 = 20$ Felder belegen. Also muss das Rechteck, falls es existiert, entweder $1$ Feld breit und $20$ Felder lang oder $2$ Felder breit und $10$ Felder lang oder $4$ Felder breit und $5$ Felder lang sein. Offensichtlich scheidet die erste Möglichkeit aus. Man kann sich auch recht schnell überlegen, dass auch die zweite Möglichkeit nicht in Frage kommt (Tipp: platziere das orange Teil zuerst). Somit bleibt nur das $5 \times 4$-Rechtecks als Möglichkeit übrig. Wenn wir aber versuchen, solch ein Rechteck mit obigen Figuren zu belegen, scheitern wir immer wieder. Das hat auch einen Grund:
+	Zunächst einmal stellen wir fest, dass die fünf Figuren insgesamt $5\cdot 4 = 20$ Felder belegen. Also muss das Rechteck, falls es existiert, entweder $1$ Feld breit und $20$ Felder lang oder $2$ Felder breit und $10$ Felder lang oder $4$ Felder breit und $5$ Felder lang sein. Offensichtlich scheidet die erste Möglichkeit aus. Man kann sich auch recht schnell überlegen, dass auch die zweite Möglichkeit nicht in Frage kommt (Tipp: platziere das orange Teil zuerst). Somit bleibt nur das $5\times 4$-Rechteck als Möglichkeit übrig. Wenn wir aber versuchen, solch ein Rechteck mit obigen Figuren zu belegen, scheitern wir immer wieder. Das hat auch einen Grund:
 	
 	\begin{center}
 		\emph{Es ist nicht möglich, aus den Tetris-Figuren ein Rechteck zu legen.}
 	\end{center}
 	
-	Um das zu beweisen legen wir die Figuren (irgendwie) auf ein Schachbrett:
+	Um das zu beweisen, legen wir die Figuren (irgendwie) auf ein Schachbrett:
 	
 	\begin{center}
 		\includegraphics[width=.4\textwidth]{Bilder/Schachbrett-mit-Tetrominos.pdf}
 	\end{center}	
 	
-	Nun fällt etwas auf: Alle Figuren bis auf die blaue belegen je zwei weiße und zwei schwarze Felder (egal, wie man sie hinlegt). Die blaue Figur, jedoch, belegt drei weiße Felder und nur ein schwarzes Feld (oder umgekehrt). Damit belegen die Figuren zusammengenommen ungleich viele weiße wie schwarze Felder, egal wie man sie anordnet. Damit kann man insbesondere kein $4 \times 5$-Rechteck mit ihnen legen, denn jedes $4 \times 5$-Rechteck auf einem Schachfeld hat gleich viele weiße und schwarze Felder.
+	Nun fällt etwas auf: Alle Figuren bis auf die blaue belegen je zwei weiße und zwei schwarze Felder (egal, wie man sie hinlegt). Die blaue Figur jedoch, belegt drei weiße Felder und nur ein schwarzes Feld (oder umgekehrt). Damit belegen die Figuren zusammengenommen ungleich viele weiße wie schwarze Felder, egal wie man sie anordnet. Damit kann man insbesondere kein $5\times 4$-Rechteck mit ihnen legen, denn jedes $5\times 4$-Rechteck auf einem Schachfeld hat gleich viele weiße und schwarze Felder.
 \end{antwort}
 
 \begin{aufgabe}{Dreieckstetrominos}
@@ -202,29 +203,29 @@ Bevor du weiter liest, probiere es doch selbst einmal aus! Überlege dir zunäch
 
 \section{Teilbarkeitsinvarianten}
 
-Auf einer Insel leben 345 gelbe, 346 grüne und 347 blaue Chamäleons. Wann immer sich zwei Chamäleons gleicher Farbe begegnen, passiert nichts. Wenn sich aber zwei Chamäleons unterschiedlicher Farbe begegnen, so nehmen beide die dritte Farbe an. Beispielsweise hätten wir nach einem Treffen eines gelben und einer grünen Chamäleons nur noch 344 gelbe, 345 grüne, aber dafür 349 blaue Chamäleons. Frage: Ist es möglich, dass zu einem Zeitpunkt genau gleich viele Chamäleons jeder Farbe auf der Insel leben?
-
-\emph{Hinweis:} Um die Situation etwas übersichtlicher zu machen, kannst du das ganze erstmal auch nur mit 1 gelben, 2 grünen und 3 blauen Chamäleons durchspielen. Das Ergebnis wird das gleiche sein.
+Auf einer Insel leben 345 gelbe, 346 grüne und 347 blaue Chamäleons. Wann immer sich zwei Chamäleons gleicher Farbe begegnen, passiert nichts. Wenn sich aber zwei Chamäleons unterschiedlicher Farbe begegnen, so nehmen beide die dritte Farbe an. Beispielsweise hätten wir nach einem Treffen eines gelben und eines grünen Chamäleons nur noch 344 gelbe, 345 grüne, aber dafür 349 blaue Chamäleons. Frage: Ist es möglich, dass zu einem Zeitpunkt genau gleich viele Chamäleons jeder Farbe auf der Insel leben?
 
 % Bildquelle: http://commons.wikimedia.org/wiki/File:Cham%C3%A4leon1.jpg
 \begin{center}
-  \raisebox{-0.4\height}{\includegraphics{chamaeleongelb}} + \raisebox{-0.4\height}{\includegraphics{chamaeleongruen}} $\longrightarrow$ $2 \cdot$ \raisebox{-0.4\height}{\includegraphics{chamaeleonblau}}
-  \quad $\Big\vert$ \quad 
-  \raisebox{-0.4\height}{\includegraphics{chamaeleonblau}} + \raisebox{-0.4\height}{\includegraphics{chamaeleongruen}} $\longrightarrow$ $2 \cdot$ \raisebox{-0.4\height}{\includegraphics{chamaeleongelb}}
-  \quad $\Big\vert$ \quad
-  \raisebox{-0.4\height}{\includegraphics{chamaeleongelb}} + \raisebox{-0.4\height}{\includegraphics{chamaeleonblau}} $\longrightarrow$ $2 \cdot$ \raisebox{-0.4\height}{\includegraphics{chamaeleongruen}}
+	\raisebox{-0.4\height}{\includegraphics{chamaeleongelb}} + \raisebox{-0.4\height}{\includegraphics{chamaeleongruen}} $\longrightarrow$ $2 \cdot$ \raisebox{-0.4\height}{\includegraphics{chamaeleonblau}}
+	\quad $\Big\vert$ \quad 
+	\raisebox{-0.4\height}{\includegraphics{chamaeleonblau}} + \raisebox{-0.4\height}{\includegraphics{chamaeleongruen}} $\longrightarrow$ $2 \cdot$ \raisebox{-0.4\height}{\includegraphics{chamaeleongelb}}
+	\quad $\Big\vert$ \quad
+	\raisebox{-0.4\height}{\includegraphics{chamaeleongelb}} + \raisebox{-0.4\height}{\includegraphics{chamaeleonblau}} $\longrightarrow$ $2 \cdot$ \raisebox{-0.4\height}{\includegraphics{chamaeleongruen}}
 \end{center}
+
+\emph{Hinweis:} Um die Situation etwas übersichtlicher zu machen, kannst du das ganze erstmal auch nur mit 1 gelben, 2 grünen und 3 blauen Chamäleons durchspielen. Das Ergebnis wird das gleiche sein.
 
 Grundsätzlich könnte diese Situation eintreten, da $345 + 346 + 347 = 1038$ durch $3$ teilbar ist. Wenn wir allerdings versuchen, eine Liste von Begegnungen zu erstellen, sodass nach diesen Begegnungen die Anzahl der Chamäleons jeder Farbe gleich ist, scheitern wir. Spoiler: Auch diese Aufgabe ist nicht lösbar.
 
 Was hat diese Aufgabe nun mit den Schachbrettaufgaben gemeinsam? Zunächst haben wir eine Anfangssituation, beispielsweise das leere (verkleinerte) Schachbrett oder die Anzahlen der Chamäleons auf der Insel. Dann verändert sich die Ausgangslage durch Züge (das Legen eines Dominosteins) oder Ereignisse (Treffen von zwei Chamäleons). Die Frage in beiden Aufgaben ist, ob eine bestimmte Situation (alle Felder bedeckt bzw. gleich viele Chamäleons von jeder Farbe) eintreten kann.
 
-In beiden Aufgabentypen finden wir experimentell keine Lösung und suchen daher nach einem Grund, warum wir jedes solche Unterfangen von vornherein zum Scheitern verurteilt ist. In der Schachbrettaufgabe könnten wir dies begründen, indem wir alle Möglichkeiten ausprobieren. Davon gibt es allerdings ziemlich viele, sodass wir eine Antwort auf diesem Weg - wenn überhaupt - nur mit Hilfe eines Computers finden können. In der zweiten Aufgabe allerdings, gibt es (auf den ersten Blick) unendlich viele Möglichkeiten, wie sich Chamäleons treffen können; wenn wir beispielsweise herausgefunden haben, dass wir mit 40 Treffen von Chamäleons die gewünschte Endsituation nicht erreichen können, so könnte uns das 41 Treffen zum Ziel führen.
+In beiden Aufgabentypen finden wir experimentell keine Lösung und suchen daher nach einem Grund, warum jedes solche Unterfangen von vornherein zum Scheitern verurteilt ist. In der Schachbrettaufgabe könnten wir dies begründen, indem wir alle Möglichkeiten ausprobieren. Davon gibt es allerdings ziemlich viele, sodass wir eine Antwort auf diesem Weg - wenn überhaupt - nur mit Hilfe eines Computers finden können. In der zweiten Aufgabe allerdings, gibt es (auf den ersten Blick) unendlich viele Möglichkeiten, wie sich Chamäleons treffen können; wenn wir beispielsweise herausgefunden haben, dass wir mit 40 Treffen von Chamäleons die gewünschte Endsituation nicht erreichen können, so könnte uns das 41 Treffen zum Ziel führen.
 
-Wir haben uns daher in der Aufgabe mit dem Schachbrett eines anderen Tricks bedient: Wir haben bemerkt, dass am Anfang das verkleinerte Brett $32 - 30 = 2$ schwarze Felder mehr besitzt als weiße Felder. Jedes Mal, wenn wir einen Dominostein gelegt haben, wurde ein weißes und ein schwarzes Feld verdeckt, also blieb die Differenz zwischen der Anzahlen der schwarzen offenen und weißen offenen Felder immer gleich. Wir haben also eine Zahl entdeckt, die wir für jedes unbedeckte, teilweise oder vollständig mit Steinen bedeckte Spielbrett ausrechnen können und die mit jedem weiteren platzierten Stein, egal wo er gelegt wird, gleich bleibt. Man sagt auch, dass diese Zahl unverändert (mit Fremdwort invariant) bleibt und nennt sie eine \emph{Invariante}. In der gewünschten Endposition, dass das ganze Brett belegt ist, wäre die Differenz zwischen den offenen schwarzen und offenen weißen Feldern gleich $0 - 0 = 0$. Diese Situation kann also beginnend bei unserer Anfangsposition nicht erreicht werden.
+Wir haben uns daher in der Aufgabe mit dem Schachbrett eines anderen Tricks bedient: Wir haben bemerkt, dass am Anfang das verkleinerte Brett $32 - 30 = 2$ schwarze Felder mehr besitzt als weiße Felder. Jedes Mal, wenn wir einen Dominostein gelegt haben, wurde ein weißes und ein schwarzes Feld verdeckt, also blieb die Differenz zwischen den Anzahlen der schwarzen offenen und weißen offenen Felder immer gleich. Wir haben also eine Zahl entdeckt, die wir für jedes unbedeckte, teilweise oder vollständig mit Steinen bedeckte Spielbrett ausrechnen können und die mit jedem weiteren platzierten Stein, egal wo er gelegt wird, gleich bleibt. Man sagt auch, dass diese Zahl unverändert (mit Fremdwort invariant) bleibt und nennt sie eine \emph{Invariante}. In der gewünschten Endposition, dass das ganze Brett belegt ist, wäre die Differenz zwischen den offenen schwarzen und offenen weißen Feldern gleich $0 - 0 = 0$. Diese Situation kann also beginnend bei unserer Anfangsposition nicht erreicht werden.
 
 Es ist nicht möglich, dass es irgendwann gleich viele Chamäleons von jeder Farbe gibt. Wir betrachten die Zahl $C$, die wir als Differenz zwischen der Anzahl der blauen und grünen Chamäleons festlegen. Zu Beginn ist
-	\[C = \text{Zahl der blauen Chamäleons } - \text{Zahl der grünen Chamäleons } = 347 - 346 = 1.\]
+	\[C = \text{Zahl der blauen Chamäleons } - \text{ Zahl der grünen Chamäleons } = 347 - 346 = 1.\]
 Nun schauen wir, was mit dieser Zahl passiert, wenn sich verschiedene Chamäleons treffen (und dabei ihre Farbe ändern):
 \begin{itemize}
 	\item Wenn sich ein blaues und ein grünes Chamäleon treffen, so bleibt die Zahl $C$ gleich (denn sowohl die der blauen als auch die der grünen Chamäleons nimmt um eins ab).
@@ -232,11 +233,11 @@ Nun schauen wir, was mit dieser Zahl passiert, wenn sich verschiedene Chamäleon
 	\item Wenn sich ein blaues und ein gelbes Chamäleon treffen, so sinkt $C$ um drei (mit ähnlicher Begründung).
 \end{itemize}
 
-Die Zahl $C$ ist also nicht invariant. Aber wir stellen fest: Zu Beginn ist $C$ gleich 1, also nicht durch 3 teilbar. Wir wissen aber auch: Wenn eine ganze Zahl $k \in \ZZ$ durch 3 teilbar ist, so sind auch die Zahlen $k + 3$ und $k - 3$ durch 3 teilbar\footnote{Erinnerst du dich noch an den zweiten Korrespondenzbrief? Da haben wir das gezeigt!}. Umgekehrt ist, wenn $k \in \ZZ$ nicht durch 3 teilbar ist, auch die Zahlen $k + 3$ und $k - 3$ nicht durch 3 teilbar. 
+Die Zahl $C$ ist also nicht invariant. Aber wir stellen fest: Zu Beginn ist $C$ gleich 1, also nicht durch 3 teilbar. Wir wissen aber auch: Wenn eine ganze Zahl $k \in \ZZ$ durch 3 teilbar ist, so sind auch die Zahlen $k + 3$ und $k - 3$ durch 3 teilbar\footnote{Erinnerst du dich noch an den zweiten Korrespondenzbrief? Da haben wir das gezeigt!}. Umgekehrt sind, wenn $k \in \ZZ$ nicht durch 3 teilbar ist, auch die Zahlen $k + 3$ und $k - 3$ nicht durch 3 teilbar. 
 
 Also können wir folgern, dass nach jedem Treffen von zwei Chamäleons unsere Zahl immer noch \emph{nicht} durch 3 teilbar ist. Unsere Invariante ist hier also nicht die Zahl $C$ selbst, sondern die Tatsache, dass $C$ nicht durch 3 teilbar ist. 
 
-In der gewünschten Endsituation wäre $C = 0$, da wir verlangen, dass die Zahl der blauen und grünen Chamäleons dann gleich ist, und $0$ durch $3$ teilbar ist! Folglich kann diese Situation nicht erreicht werden.
+In der gewünschten Endsituation wäre $C = 0$, da wir verlangen, dass die Zahl der blauen und grünen Chamäleons dann gleich ist. Allerdings ist $0$ durch $3$ teilbar! Folglich kann diese Situation nicht erreicht werden.
 
 \begin{aufgabe}{}
 	Mit den nun gesammelten Aufgaben: Kannst du eine Startsituation angeben, aus der heraus es möglich ist gleich viele gelbe, blaue und grüne Chamäleons zu erhalten (gib auch an, wie man das erreichen kann)?
@@ -274,7 +275,7 @@ In der gewünschten Endsituation wäre $C = 0$, da wir verlangen, dass die Zahl 
 
 Invarianten sind ein nützliches Mittel für Aufgaben obiger Art, bei denen man zeigen soll, dass eine bestimmte Situation nicht erreicht werden kann. Ein Nachteil dieser Technik ist es, dass Invarianten oft nicht offensichtlich sind, sondern es einiger Kreativität und Erfahrung bedarf, um sie zu finden. Bei der Schachbrettaufgabe könnte man feststellen, dass am Ende jedes Versuches zwei schwarze Felder übrig bleiben. Generell bietet sich an, wenn man so eine Aufgabe angeht, erst einmal herumzuprobieren und dabei Zahlen, die einem wichtig erscheinen, nach jedem Schritt aufzuschreiben und danach nach Mustern zu suchen.
 
-Auch in der höheren Mathematik spielen Invarianten eine wichtige Rolle: Es gibt beispielsweise eine Teilgebiet der Mathematik, das sich mit Knoten befasst. Einen Knoten stellt man sich dabei als Seil im dreidimensionalen Raum vor, wobei Anfang und Ende des Seils zusammengebunden sind. Wenn wir einen Knoten haben, so stellen sich Mathematiker die Frage, ob wir diesen Knoten nur durch Bewegen des Seiles (ohne Zerschneiden) auflösen können, sodass er nur noch aus einer einfachen Seilschlinge besteht. Um zu beweisen, dass dies für manche Knoten nicht möglich ist, haben Mathematiker Invarianten gefunden, die etwas komplizierter als unsere bisher gesehene Invarianten sind und beim Umformen eines Knoten gleich bleiben.
+Auch in der höheren Mathematik spielen Invarianten eine wichtige Rolle: Es gibt beispielsweise ein Teilgebiet der Mathematik, das sich mit Knoten befasst. Einen Knoten stellt man sich dabei als Seil im dreidimensionalen Raum vor, wobei Anfang und Ende des Seils zusammengebunden sind. Wenn wir einen Knoten haben, so stellen sich Mathematiker die Frage, ob wir diesen Knoten nur durch Bewegen des Seiles (ohne Zerschneiden) auflösen können, sodass er nur noch aus einer einfachen Seilschlinge besteht. Um zu beweisen, dass dies für manche Knoten nicht möglich ist, haben Mathematiker Invarianten gefunden, die etwas komplizierter als unsere bisher gesehenen Invarianten sind und beim Umformen eines Knoten gleich bleiben.
 
 Im folgenden findest du nochmal zwei weitere Aufgaben, in denen du selbst versuchen kannst eine passende Invariante zu finden:
 
@@ -297,9 +298,11 @@ Im folgenden findest du nochmal zwei weitere Aufgaben, in denen du selbst versuc
 \begin{aufgabe}{Produkte und Summen auf dem Schachbrett\footnote{Diese Aufgabe basiert auf einer Aufgabe aus dem 4. Landeswettbewerb Mathematik Bayern}}
 	Die Felder eines Schachbretts sind in beliebiger Reihenfolge mit den Zahlen $1$ bis $64$ belegt. Du darfst nun zwei Felder auswählen und bildest die Summe und das Produkt ihrer Zahlen. Danach wird die Zahl des einen Feldes durch diese Summe und die Zahl des anderen Feldes durch dieses Produktes ersetzt. 
 	
-	Kannst du durch mehrfache Anwendung dieses Verfahren erreichen, dass auf allen Feldern die gleiche Zahl steht?
+	Kannst du durch mehrfache Anwendung dieses Verfahrens erreichen, dass auf allen Feldern die gleiche Zahl steht?
 	
-	\emph{Hinweis:} Was passiert, wenn du zwei gerade Zahlen auswählst? Was bei zwei ungeraden Zahlen? Bei einer ungeraden und einer geraden Zahl?
+	\emph{Hinweis:} Was passiert, wenn du zwei gerade Zahlen auswählst? Was bei zwei ungeraden Zahlen? Was bei einer ungeraden und einer geraden Zahl?
+	
+	Falls diese Aufgabe lösbar wäre, was müsste dann im letzten Schritt passieren?
 \end{aufgabe}
 
 \newpage

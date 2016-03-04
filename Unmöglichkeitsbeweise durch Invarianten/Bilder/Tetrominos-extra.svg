@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="342.85085"
-     inkscape:cy="118.82465"
+     inkscape:cx="359.09893"
+     inkscape:cy="135.3118"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -51,7 +51,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -72,7 +72,7 @@
            y="488.69708" /></flowRegion><flowPara
          id="flowPara4417" /></flowRoot>    <g
        id="g4521"
-       transform="matrix(0,-1.0000483,0.95746614,0,93.900817,777.2937)">
+       transform="matrix(0,-1.0000483,0.95746614,0,93.714156,777.57366)">
       <rect
          y="301.52118"
          x="471.7326"
@@ -136,7 +136,7 @@
     </g>
     <g
        id="g4521-1"
-       transform="matrix(0,-1.0000483,0.95746614,0,-111.43027,777.2937)">
+       transform="matrix(0,-1.0000483,0.95746614,0,-111.61693,777.57365)">
       <rect
          y="301.52118"
          x="471.7326"
@@ -982,7 +982,7 @@
     <g
        id="g4527-15-8-3"
        style="fill:#ff6600;fill-opacity:0.70588235"
-       transform="matrix(0,-1.0000484,0.9574662,0,-146.10528,767.19173)">
+       transform="matrix(0,-1.0000484,0.9574662,0,-146.29194,767.47168)">
       <rect
          y="444.96283"
          x="461.63107"
@@ -1015,7 +1015,7 @@
     <g
        id="g4527-15-8-16"
        style="fill:#ff6600;fill-opacity:0.70588235"
-       transform="matrix(0,-1.0000484,0.9574662,0,-146.10528,732.87654)">
+       transform="matrix(0,-1.0000484,0.9574662,0,-146.29194,733.15649)">
       <rect
          y="444.96283"
          x="461.63107"
