@@ -94,12 +94,12 @@ Wenn du uns bereits deine eigenen Lösungsversuche geschickt hast (oder noch sch
 
 \begin{aufgabe}{}
 	Das erste und das letzte Schachbrett lassen sich leicht nur mit roten 2x2-Tetrominos überdecken. Für das zweite und dritte Schachbrett ist das dagegen nicht möglich. Um dies zu beweisen kann man das folgende vierfarbige Schachbrett verwenden:
-	
-	Legt man einen 2x2-Tetrominostein auf dieses Brett, so bedeckt dieser immer genau ein Feld jeder der vier Farben. Möchte man das Brett nur mit solchen Steinen überdecken, muss es also von jeder Farbe gleich viele Felder haben. Sägt man wie bei den Schachbrettern 2 und 3 Felder heraus, ist dies jedoch nicht mehr der Fall (u.a. hat man in beiden Fällen mehr schwarze als grüne Felder übrig).
 
 	\begin{center}
-		\includegraphics[width=.7\textwidth]{Bilder/Lsg-Aufgabe1.pdf}
+		\includegraphics[width=.9\textwidth]{Bilder/Lsg-Aufgabe1.pdf}
 	\end{center}
+	
+	Legt man einen 2x2-Tetrominostein auf dieses Brett, so bedeckt dieser immer genau ein Feld jeder der vier Farben. Möchte man das Brett nur mit solchen Steinen überdecken, muss es also von jeder Farbe gleich viele Felder haben. Sägt man jedoch wie bei den Schachbrettern 2 und 3 Felder heraus, ist dies nicht mehr der Fall (u.a. hat man in beiden Fällen mehr schwarze als grüne Felder übrig).
 	
 	Für das zweite Schachbrett gibt es auch noch einen einfacheren Beweis, dass es nicht mit 2x2-Steinen überdeckt werden kann. Jeder solche Stein bedeckt nämlich genau $4$ Felder, das zweite Schachbrett hat jedoch $62$ Felder - eine Zahl, die nicht durch $4$ teilbar ist.
 \end{aufgabe}
@@ -110,18 +110,18 @@ Wenn du uns bereits deine eigenen Lösungsversuche geschickt hast (oder noch sch
 \end{aufgabe}
 
 \begin{aufgabe}{Dreieckstetrominos}
-	Die vier Dreieckstetrominos haben zusammen $16$ Felder und könnten daher theoretisch ein Dreieck der folgenden Form (links) bilden:
+	Die vier Dreieckstetrominos haben zusammen $16$ Felder und könnten daher theoretisch ein Dreieck aus $10$ schwarzen und $6$ weißen kleineren Dreiecken bilden (linkes Bild):
 	\begin{center}
 		\includegraphics[width=.2\textwidth]{Bilder/Lsg-Aufgabe3.pdf} \qquad\qquad
 		\includegraphics[width=.3\textwidth]{Bilder/Dreiecksschachbrett-Lsg.pdf}
 	\end{center}	 
-	Dieses Dreieck besteht aus $10$ schwarzen und $6$ weißen kleineren Dreiecken. Legt man nun die Dreiecksdominos auf ein solches Dreiecksmuster, so sieht man, dass drei der Steine (orange, gelb und grün) immer gleich viele schwarze wie weiße Felder überdecken. Sobald man diese drei Steine gelegt hat bleiben also noch $10-3\cdot2=4$ schwarze und $6-3\cdot2$ weiße Dreiecke übrig. Der verbleibende rote Stein müsste nun also vier schwarze Dreiecke überdecken, was offenkundig nicht möglich ist.
+	Legt man nun die Dreiecksdominos auf ein solches Dreiecksmuster (rechtes Bild), so sieht man, dass drei der Steine (orange, gelb und grün) immer gleich viele schwarze wie weiße Felder überdecken. Sobald man diese drei Steine gelegt hat bleiben also noch $10-3\cdot2=4$ schwarze und $6-3\cdot2$ weiße Dreiecke übrig. Der verbleibende rote Stein müsste nun also vier schwarze Dreiecke überdecken, was offenkundig nicht möglich ist.
 \end{aufgabe}
 
 \begin{aufgabe}{}
 	Hierfür gibt es natürlich sehr viele mögliche Antworten. Eine Startsituation, aus der heraus man eine Gleichverteilung erreichen kann, ist bspw.: 4 gelbe, 4 blaue und 1 grünes Chamäleon. Hier genügt schon eine einzige Begegnung, nämlich zwischen einem gelben und einem blauen Chamäleon.
 	
-	\textbf{beachte:} In der Startsituation ist $C = 4 - 1 = 3$ durch 3 teilbar (was ja auch so sein muss - sonst könnten wir wie im Brief beweisen, dass niemals gleich viele Chamäleons jeder Farbe da sein können).
+	\textbf{Beachte:} In der Startsituation ist $C = 4 - 1 = 3$ durch 3 teilbar (was ja auch so sein muss - sonst könnten wir wie im Brief beweisen, dass niemals gleich viele Chamäleons jeder Farbe da sein können).
 	
 	Startsituationen aus denen heraus nie eine Gleichverteilung der Farben erreicht werden kann, sind u.a. all diejenigen in denen die Differenz zwischen der Zahl der blauen und der der grünen Chamäleons nicht durch $3$ teilbar ist (das haben wir ja im Brief gezeigt). Ein mögliches Beispiel wäre $7$ blaue, $6$ grüne und $2$ gelbe Chamäleons.
 	
@@ -147,7 +147,7 @@ Wenn du uns bereits deine eigenen Lösungsversuche geschickt hast (oder noch sch
 \end{aufgabe}
 
 \begin{aufgabe}{}
-Nur $2$ zu erhalten ist unmöglich, wie man durch folgende Überlegung sehen kann. Als Invariante verwenden wir die folgende Aussage: \glqq Es gibt eine Zahl die größer oder gleich $8$ ist.\grqq
+Nur $2$er zu erhalten ist unmöglich, wie man durch folgende Überlegung sehen kann. Als Invariante verwenden wir dazu die Aussage: \glqq Es gibt eine Zahl die größer oder gleich $8$ ist.\grqq
 
 Zu Beginn ist diese Aussage offenbar wahr. Ist die Aussage nun vor einem Schritt wahr, wobei $m$ eine solche Zahl $\geq 8$ ist, so gibt es zwei Fälle zu unterscheiden:
 \begin{enumerate}
@@ -181,7 +181,7 @@ Mit diesem Beweis haben wir übrigens auch automatisch schon gezeigt, dass es ni
 	\end{enumerate}
 	Insgesamt sehen wir also, dass die Anzahl der ungeraden Zahlen im ersten und dritten Fall gleich bleibt und im zweiten Fall um $1$ abnimmt. Wenn wir nun lauter gleiche Zahlen haben möchten, so müssen diese insbesondere entweder alle gerade oder alle ungerade sein. Da wir zu Beginn sowohl gerade als auch ungerade Zahlen haben und wir gerade Zahlen nicht loswerden können, bleibt als einzige Möglichkeit zu versuchen lauter (gleiche) gerade Zahlen zu bekommen.
 	
-	Angenommen das wäre möglich - dann müsste es also die Anzahl der ungeraden Zahlen mit der Zeit immer weniger werden. Da wir pro Schritt höchstens eine ungerade Zahl loswerden können, muss es also insbesondere irgendwann einen Schritt geben, in dem wir nur noch eine einzige ungerade Zahl haben. Diese letzte ungerade Zahl können wir nun aber nicht mehr loswerden. Denn wenn wir in die Auflistung der verschiedenen Fälle oben schauen, sehen wir, dass wir nur dann eine ungerade Zahl los werden können, wenn wir in einem Schritt \emph{zwei} ungerade Zahlen auswählen. Da nun aber nur noch eine einzige ungerade Zahl übrig ist, ist das ab sofort nicht mehr möglich.
+	Angenommen das wäre möglich - dann müsste also die Anzahl der ungeraden Zahlen mit der Zeit immer weniger werden. Da wir pro Schritt höchstens eine ungerade Zahl loswerden können, muss es also insbesondere irgendwann einen Schritt geben, in dem wir nur noch eine einzige ungerade Zahl haben. Diese letzte ungerade Zahl können wir nun aber nicht mehr loswerden. Denn wenn wir in die Auflistung der verschiedenen Fälle oben schauen, sehen wir, dass wir nur dann eine ungerade Zahl los werden können, wenn wir in einem Schritt \emph{zwei} ungerade Zahlen auswählen. Da nun aber nur noch eine einzige ungerade Zahl übrig ist, ist das ab sofort nicht mehr möglich.
 	
 	Insgesamt können wir also niemals alle ungeraden Zahlen zu geraden Zahlen machen - und damit insbesondere niemals lauter gleiche Zahlen erhalten.
 \end{aufgabe}
