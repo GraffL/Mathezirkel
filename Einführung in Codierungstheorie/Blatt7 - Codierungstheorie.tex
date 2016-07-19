@@ -146,14 +146,14 @@ Bevor wir uns auf die Suche nach solchen Verfahren machen können, müssen wir e
 Für Verfahren der oben beschriebenen Form, können wir nun ganz einfach bestimmen, wie effizient sie sind:
 
 \begin{defn}
-	Als \emph{Informationsrate} eines bestimmten Codierungsverfahrens bezeichnet man das Verhältnis aus der Länge der Codewörter zur Länge der Nachrichtenwörter, also die Zahl
-		\[\frac{\text{Länge eines Codewortes}}{\text{Länge eines Nachrichtenwortes}}\]
-	Je kleiner diese Zahl ist, desto effizienter ist das Verfahren.
+	Als \emph{Informationsrate} eines bestimmten Codierungsverfahrens bezeichnet man das Verhältnis aus der Länge der Nachrichtenwörter zur Länge der Codewörter, also die Zahl
+		\[\frac{\text{Länge eines Nachrichtenwortes}}{\text{Länge eines Codewortes}}\]
+	Je größer diese Zahl ist, desto effizienter ist das Verfahren.
 \end{defn}
 
 \begin{bsp}
 	Für das Verdopplungscodierungsverfahren aus \Cref*{bsp:Verdopplungscodierung} ist die Informationsrate also:
-		\[\frac{\text{Länge eines Codewortes}}{\text{Länge eines Nachrichtenwortes}} = \frac{8}{4} = 2\]
+		\[\frac{\text{Länge eines Nachrichtenwortes}}{\text{Länge eines Codewortes}} = \frac{4}{8} = \frac{1}{2}\]
 	Eine mit diesem Verfahren codierte Nachricht benötigt also doppelt so viel Platz wie die ursprüngliche Nachricht.
 \end{bsp}
 
@@ -188,7 +188,7 @@ Im ersten Kapitel war dieses \glqq irgendetwas\grqq{} zum Beispiel einfach wiede
 
 Funktioniert dieses Verfahren auch? D.h. können wir damit wirklich jeden einzeln auftretenden Fehler erkennen? Ja, das können wir - denn wann immer eine einzelne Ziffer verändert wird, so ändert sich auch die Quersumme der ganzen Zahl. 
 
-Ist das Verfahren effizient? Nun, die Informationsrate ist $\frac{\text{Länge eines Codewortes}}{\text{Länge eines Nachrichtenwortes}} = \frac{6}{4} = 1,5$ - also auf jeden Fall schonmal besser als bei dem bisherigen Verfahren.
+Ist das Verfahren effizient? Nun, die Informationsrate ist $\frac{\text{Länge eines Nachrichtenwortes}}{\text{Länge eines Codewortes}} = \frac{4}{6} = \frac{2}{3}$ - also auf jeden Fall schonmal besser als bei dem bisherigen Verfahren.
 
 Tatsächlich geht es aber sogar noch besser: Denn wenn nur eine einzelne Ziffer in der Nachricht verfälscht wird, dann kann sich die Quersumme doch höchstens um $9$ verändern. Es genügt also völlig, wenn wir uns nur die Einerstelle der Quersumme merken (oder anders ausgedrückt: Den Rest der Quersumme bei Division durch $10$). Diese Ziffer am Ende der eigentlichen Nachricht wird oft als \emph{Prüfziffer} bezeichnet (da man mit ihr prüfen kann, ob die Nachricht korrekt übertragen wurde).
 
@@ -204,7 +204,7 @@ Tatsächlich geht es aber sogar noch besser: Denn wenn nur eine einzelne Ziffer 
 \begin{aufgabe}{}
 	Bestimme die Informationsrate dieses Codierungsverfahrens.
 
-	\emph{Zusatzaufgabe:} Kannst du das Verfahren irgendwie so verändern, dass die Informationsrate noch niedriger wird?
+	\emph{Zusatzaufgabe:} Kannst du das Verfahren irgendwie so verändern, dass die Informationsrate noch größer wird?
 \end{aufgabe}
 
 
