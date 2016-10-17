@@ -220,7 +220,7 @@ Grundsätzlich könnte diese Situation eintreten, da $345 + 346 + 347 = 1038$ du
 
 Was hat diese Aufgabe nun mit den Schachbrettaufgaben gemeinsam? Zunächst haben wir eine Anfangssituation, beispielsweise das leere (verkleinerte) Schachbrett oder die Anzahlen der Chamäleons auf der Insel. Dann verändert sich die Ausgangslage durch Züge (das Legen eines Dominosteins) oder Ereignisse (Treffen von zwei Chamäleons). Die Frage in beiden Aufgaben ist, ob eine bestimmte Situation (alle Felder bedeckt bzw. gleich viele Chamäleons von jeder Farbe) eintreten kann.
 
-In beiden Aufgabentypen finden wir experimentell keine Lösung und suchen daher nach einem Grund, warum jedes solche Unterfangen von vornherein zum Scheitern verurteilt ist. In der Schachbrettaufgabe könnten wir dies begründen, indem wir alle Möglichkeiten ausprobieren. Davon gibt es allerdings ziemlich viele, sodass wir eine Antwort auf diesem Weg - wenn überhaupt - nur mit Hilfe eines Computers finden können. In der zweiten Aufgabe allerdings, gibt es (auf den ersten Blick) unendlich viele Möglichkeiten, wie sich Chamäleons treffen können; wenn wir beispielsweise herausgefunden haben, dass wir mit 40 Treffen von Chamäleons die gewünschte Endsituation nicht erreichen können, so könnte uns das 41 Treffen zum Ziel führen.
+In beiden Aufgabentypen finden wir experimentell keine Lösung und suchen daher nach einem Grund, warum jedes solche Unterfangen von vornherein zum Scheitern verurteilt ist. In der Schachbrettaufgabe hätten wir dies begründen können, indem wir alle Möglichkeiten ausprobieren. Davon gibt es allerdings ziemlich viele, sodass wir eine Antwort auf diesem Weg - wenn überhaupt - nur mit Hilfe eines Computers finden könnten. In der zweiten Aufgabe allerdings, gibt es (auf den ersten Blick) unendlich viele Möglichkeiten, wie sich Chamäleons treffen können; wenn wir beispielsweise herausgefunden haben, dass wir mit 40 Treffen von Chamäleons die gewünschte Endsituation nicht erreichen können, so könnte uns das 41 Treffen immer noch zum Ziel führen.
 
 Wir haben uns daher in der Aufgabe mit dem Schachbrett eines anderen Tricks bedient: Wir haben bemerkt, dass am Anfang das verkleinerte Brett $32 - 30 = 2$ schwarze Felder mehr besitzt als weiße Felder. Jedes Mal, wenn wir einen Dominostein gelegt haben, wurde ein weißes und ein schwarzes Feld verdeckt, also blieb die Differenz zwischen den Anzahlen der schwarzen offenen und weißen offenen Felder immer gleich. Wir haben also eine Zahl entdeckt, die wir für jedes unbedeckte, teilweise oder vollständig mit Steinen bedeckte Spielbrett ausrechnen können und die mit jedem weiteren platzierten Stein, egal wo er gelegt wird, gleich bleibt. Man sagt auch, dass diese Zahl unverändert (mit Fremdwort invariant) bleibt und nennt sie eine \emph{Invariante}. In der gewünschten Endposition, dass das ganze Brett belegt ist, wäre die Differenz zwischen den offenen schwarzen und offenen weißen Feldern gleich $0 - 0 = 0$. Diese Situation kann also beginnend bei unserer Anfangsposition nicht erreicht werden.
 
@@ -233,7 +233,7 @@ Nun schauen wir, was mit dieser Zahl passiert, wenn sich verschiedene Chamäleon
 	\item Wenn sich ein blaues und ein gelbes Chamäleon treffen, so sinkt $C$ um drei (mit ähnlicher Begründung).
 \end{itemize}
 
-Die Zahl $C$ ist also nicht invariant. Aber wir stellen fest: Zu Beginn ist $C$ gleich 1, also nicht durch 3 teilbar. Wir wissen aber auch: Wenn eine ganze Zahl $k \in \ZZ$ durch 3 teilbar ist, so sind auch die Zahlen $k + 3$ und $k - 3$ durch 3 teilbar\footnote{Erinnerst du dich noch an den zweiten Korrespondenzbrief? Da haben wir das gezeigt!}. Umgekehrt sind, wenn $k \in \ZZ$ nicht durch 3 teilbar ist, auch die Zahlen $k + 3$ und $k - 3$ nicht durch 3 teilbar. 
+Die Zahl $C$ ist also nicht invariant. Aber wir stellen fest: Zu Beginn ist $C$ gleich 1, also nicht durch 3 teilbar. Wir wissen aber auch: Wenn eine ganze Zahl $k \in \ZZ$ durch 3 teilbar ist, so sind auch die Zahlen $k + 3$ und $k - 3$ durch 3 teilbar\footnote{Darauf werden wir auch in einem zukünftigen Korrespondenzbrief nochmal genauer eingehen.}. Umgekehrt sind, wenn $k \in \ZZ$ nicht durch 3 teilbar ist, auch die Zahlen $k + 3$ und $k - 3$ nicht durch 3 teilbar. 
 
 Also können wir folgern, dass nach jedem Treffen von zwei Chamäleons unsere Zahl immer noch \emph{nicht} durch 3 teilbar ist. Unsere Invariante ist hier also nicht die Zahl $C$ selbst, sondern die Tatsache, dass $C$ nicht durch 3 teilbar ist. 
 
@@ -246,7 +246,7 @@ In der gewünschten Endsituation wäre $C = 0$, da wir verlangen, dass die Zahl 
 \end{aufgabe}
 
 \begin{aufgabe}{Chamäleonmünzen}
-	Für dieses Spiel brauchst du sechs Münzen. Lege zwei davon mit der Zahl nach oben vor dich und die restlichen mit dem Bild nach oben. Dein Ziel ist es nun so lange Münzen umzudrehen, bis gleich viele Münzen mit Zahl oben wie Münzen mit Bild oben vor dir liegen. Damit diese Aufgabe nicht zu einfach wird, musst du dabei allerdings immer \emph{genau zwei Münzen auf einmal } umdrehen. Du kannst also pro Spielzug entweder zwei Zahlmünzen zu Bildmünzen machen, zwei Bildmünzen zu zwei Zahlmünzen oder eine Zahl- und eine Bildmünze zu einer Bild und einer Zahlmünze:
+	Für dieses Spiel brauchst du sechs Münzen. Lege zwei davon mit der Zahl nach oben vor dich und die restlichen mit dem Bild nach oben. Dein Ziel ist es nun so lange Münzen umzudrehen, bis gleich viele Münzen mit Zahl oben wie Münzen mit Bild oben vor dir liegen. Damit diese Aufgabe nicht zu einfach wird, musst du dabei allerdings immer \emph{genau zwei Münzen auf einmal } umdrehen. Du kannst also pro Spielzug entweder zwei Zahlmünzen zu Bildmünzen machen, zwei Bildmünzen zu zwei Zahlmünzen oder eine Zahl- und eine Bildmünze zu einer Bild- und einer Zahlmünze:
 	
 	\begin{center}
 		\includegraphics[width=.9\textwidth]{Bilder/Muenzen.pdf}
@@ -273,33 +273,43 @@ In der gewünschten Endsituation wäre $C = 0$, da wir verlangen, dass die Zahl 
 
 \section{Mehr Invarianten}
 
-Invarianten sind ein nützliches Mittel für Aufgaben obiger Art, bei denen man zeigen soll, dass eine bestimmte Situation nicht erreicht werden kann. Ein Nachteil dieser Technik ist es, dass Invarianten oft nicht offensichtlich sind, sondern es einiger Kreativität und Erfahrung bedarf, um sie zu finden. Bei der Schachbrettaufgabe könnte man feststellen, dass am Ende jedes Versuches zwei schwarze Felder übrig bleiben. Generell bietet sich an, wenn man so eine Aufgabe angeht, erst einmal herumzuprobieren und dabei Zahlen, die einem wichtig erscheinen, nach jedem Schritt aufzuschreiben und danach nach Mustern zu suchen.
+Invarianten sind ein nützliches Mittel für Aufgaben obiger Art, bei denen man zeigen soll, dass eine bestimmte Situation nicht erreicht werden kann. Ein Nachteil dieser Technik ist es, dass Invarianten oft nicht offensichtlich sind, sondern es einiger Kreativität und Erfahrung bedarf, um sie zu finden. Bei der Schachbrettaufgabe könnte man feststellen, dass am Ende jedes Versuches zwei schwarze Felder übrig bleiben. Generell bietet sich an, wenn man so eine Aufgabe angeht, erst einmal herumzuprobieren und dabei Zahlen, die einem wichtig erscheinen, nach jedem Schritt aufzuschreiben und dann nach Mustern zu suchen.
 
 Auch in der höheren Mathematik spielen Invarianten eine wichtige Rolle: Es gibt beispielsweise ein Teilgebiet der Mathematik, das sich mit Knoten befasst. Einen Knoten stellt man sich dabei als Seil im dreidimensionalen Raum vor, wobei Anfang und Ende des Seils zusammengebunden sind. Wenn wir einen Knoten haben, so stellen sich Mathematiker die Frage, ob wir diesen Knoten nur durch Bewegen des Seiles (ohne Zerschneiden) auflösen können, sodass er nur noch aus einer einfachen Seilschlinge besteht. Um zu beweisen, dass dies für manche Knoten nicht möglich ist, haben Mathematiker Invarianten gefunden, die etwas komplizierter als unsere bisher gesehenen Invarianten sind und beim Umformen eines Knoten gleich bleiben.
 
-Im folgenden findest du nochmal zwei weitere Aufgaben, in denen du selbst versuchen kannst eine passende Invariante zu finden:
+Im folgenden findest du nochmal drei weitere Aufgaben, in denen du selbst versuchen kannst eine passende Invariante zu finden. Insbesondere die letzten beiden sind dabei etwas trickreicher als die bisherigen Aufgaben.
+
+\newpage 
 
 \begin{aufgabe}{}
-% Eigentlich war diese Aufgabe so gedacht, dass man als Invariante die Summe aller 8 Zahlen verwenden kann. (was evtl. etwas leichter zu finden wäre)
-% In der momentanen Form des Spiels ist dies aber keine Invariante.	
-% Um dies zu reparieren könnte man das Spiel so abändern, dass statt a+b und a-b, 2a-b und 2b-a gebildet werden. 
-% Alternativ floor((a+b)/2) und ceiling((a+b)/2)
-	
 	Wir beginnen mit den Zahlen von $1$ bis $8$, die nebeneinander aufgeschrieben sind:
-		\[1 \quad\vert\quad 2 \quad\vert\quad 3 \quad\vert\quad 4 \quad\vert\quad 5 \quad\vert\quad 6 \quad\vert\quad 7 \quad\vert\quad 8\]
-	In jedem Spielzug wählst du nun zwei Zahlen aus und bildest Summe und Differenz dieser beiden Zahlen. Dann ersetzt du eine der beiden Zahlen durch die Summe und die andere durch die Differenz. Wählst du zum Beispiel $3$ und $7$, so erhältst du im nächsten Schritt:
-		\[1 \quad\vert\quad 2 \quad\vert\quad \mathbf{10} \quad\vert\quad 4 \quad\vert\quad 5 \quad\vert\quad 6 \quad\vert\quad \mathbf{4} \quad\vert\quad 8\]
-	(denn $3+7=10$ und $7-3=4$). Wählst du dann $10$ und $4$, so erhältst du
-		\[1 \quad\vert\quad 2 \quad\vert\quad \mathbf{6} \quad\vert\quad 4 \quad\vert\quad 5 \quad\vert\quad \mathbf{14} \quad\vert\quad 4 \quad\vert\quad 8\]
+	\[1 \quad\vert\quad 2 \quad\vert\quad 3 \quad\vert\quad 4 \quad\vert\quad 5 \quad\vert\quad 6 \quad\vert\quad 7 \quad\vert\quad 8\]
+	In jedem Spielzug wählst du nun zwei Zahlen $a$ und $b$ aus. Dann ersetzt du $a$ durch die Zahl $2a-b$ und $b$ durch die Zahl $2b-a$. Wählst du zum Beispiel $3$ und $7$, so erhältst du im nächsten Schritt:
+	\[1 \quad\vert\quad 2 \quad\vert\quad \mathbf{-1} \quad\vert\quad 4 \quad\vert\quad 5 \quad\vert\quad 6 \quad\vert\quad \mathbf{11} \quad\vert\quad 8\]
+	(denn $2\cdot 3-7=-1$ und $2\cdot 7-3=11$). Wählst du dann $-1$ und $5$, so erhältst du
+	\[1 \quad\vert\quad 2 \quad\vert\quad \mathbf{-7} \quad\vert\quad 4 \quad\vert\quad \mathbf{11} \quad\vert\quad 6 \quad\vert\quad 11 \quad\vert\quad 8\]
 	usw.
 	
 	Dein Ziel ist es nun durch mehrere solche Spielzüge irgendwann in folgende Situation zu kommen:
-		\[2 \quad\vert\quad 2 \quad\vert\quad 2 \quad\vert\quad 2 \quad\vert\quad 2 \quad\vert\quad 2 \quad\vert\quad 2 \quad\vert\quad 2\]		
+	\[2 \quad\vert\quad 2 \quad\vert\quad 2 \quad\vert\quad 2 \quad\vert\quad 2 \quad\vert\quad 2 \quad\vert\quad 2 \quad\vert\quad 2\]		
 	Ist das möglich? Falls ja, wie? Falls nein, kannst du das beweisen (etwa indem du eine Invariante angibst, die in jedem Spielzug erhalten bleibt)?
 	
 	\emph{Zusatzaufgabe:} Ist es überhaupt möglich in eine Spielsituation zu kommen, in der nur noch lauter gleiche Zahlen da stehen?
 \end{aufgabe}
 
+\begin{aufgabe}{}
+	Wie in der vorherigen Aufgabe beginnen wir mit den Zahlen von $1$ bis $8$, die nebeneinander aufgeschrieben sind. Diesmal wählst du in jedem Spielzug zwei Zahlen aus und bildest Summe und Differenz dieser beiden Zahlen. Dann ersetzt du eine der beiden Zahlen durch die Summe und die andere durch die Differenz. Wählst du zum Beispiel $3$ und $7$, so erhältst du im nächsten Schritt:
+		\[1 \quad\vert\quad 2 \quad\vert\quad \mathbf{10} \quad\vert\quad 4 \quad\vert\quad 5 \quad\vert\quad 6 \quad\vert\quad \mathbf{4} \quad\vert\quad 8\]
+	(denn $3+7=10$ und $7-3=4$). Wählst du dann $10$ und $4$, so erhältst du
+		\[1 \quad\vert\quad 2 \quad\vert\quad \mathbf{6} \quad\vert\quad 4 \quad\vert\quad 5 \quad\vert\quad \mathbf{14} \quad\vert\quad 4 \quad\vert\quad 8\]
+	usw.
+	
+	Wie zuvor ist nun dein Ziel irgendwann lauter $2$en zu erhalten. Ist das möglich? Falls ja, wie? Falls nein, kannst du das beweisen (etwa indem du eine Invariante angibst, die in jedem Spielzug erhalten bleibt)?
+	
+	\emph{Zusatzaufgabe:} Ist es überhaupt möglich in eine Spielsituation zu kommen, in der nur noch lauter gleiche Zahlen da stehen?
+\end{aufgabe}
+
+\newpage
 \begin{aufgabe}{Produkte und Summen auf dem Schachbrett\footnote{Diese Aufgabe basiert auf einer Aufgabe aus dem 4. Landeswettbewerb Mathematik Bayern}}
 	Die Felder eines Schachbretts sind in beliebiger Reihenfolge mit den Zahlen $1$ bis $64$ belegt. Du darfst nun zwei Felder auswählen und bildest die Summe und das Produkt ihrer Zahlen. Danach wird die Zahl des einen Feldes durch diese Summe und die Zahl des anderen Feldes durch dieses Produktes ersetzt. 
 	
