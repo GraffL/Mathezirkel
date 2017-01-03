@@ -73,6 +73,9 @@
 \RequirePackage{geometry}
 \geometry{textwidth=16.0cm,textheight=24.5cm,footskip=1.5cm}
 
+\usepackage{todonotes}
+
+
 \begin{document}
 	
 \begin{picture}(0,0)
@@ -91,6 +94,27 @@
 \section*{Erste Beweise mit Induktion}
 
 In diesem Brief werden wir eine besondere, in der Mathematik sehr oft genutzte Beweistechnik kennen lernen: Den \emph{Beweis durch Induktion}. Eine Besonderheit dieser Beweistechnik ist, dass man mit ihr nicht nur eine Aussage, sondern gleich unendlich viele Aussagen auf einmal zeigen kann! 
+
+Vor kurzem habe ich mal wieder mei  Sparschein geleert um es zur Bank zu bringen. Davor wollte ich aber natürlich wissen, wie viel Geld sich überhaupt darin befunden hatte. Und um mir das Zählen zu erleichtern (und vielleicht auch, weil mir gerade ein wenig langweilig war) habe ich die Münzen zu einem Muster zusammengelegt:
+
+\missingfigure{Die ersten vier(?) zentrierten Viereckszahlen}
+
+\begin{aufgabe}{}
+	Erkennst du das Schema, nach dem ich dieses Muster gebaut habe? Kannst du das nächste Viereck zeichnen?
+\end{aufgabe}
+
+Während ich also immer größere Vierecke gelegt habe, ist mir das folgende aufgefallen: Die Zahl an Münzen, die ich für ein Viereck benötige, scheint immer eine ungerade Zahl zu sein: Für das erste $1$, beim zweiten $5$, beim dritten $13$, beim vierten $25$, beim fünften \underline{\phantom{ 41 }}, \dots
+
+Ob das wohl für alle solchen Vierecke stimmt? Ich habe noch ein paar weitere solchen Vierecke gelegt, und für tatsächlich habe ich für jedes eine ungerade Anzahl an Münzen gebraucht. Aber irgendwann sind mir natürlich die Münzen ausgegangen. Wie kann ich nun also herausfinden, ob meine Vermutung wirklich für \emph{alle} solche Vierecke gilt?
+
+Wir haben nun also für ein paar kleine Beispiele gesehen, dass die Aussage \glqq Für ein (zentriertes) Viereck benötigt man eine ungerade Zahl an Münzen.\grqq{} für diese stimmt. Wir können nun aber nicht \emph{alle} möglichen Vierecke durchprobieren und für jedes einzelne prüfen, ob die Aussage auch für diese stimmt.
+
+Ein ähnliches Problem hatten wir zu Beginn dieses Schuljahres schon einmal in einem Zirkelbrief? Erinnerst du dich noch an den Brief mit den Unmöglichkeitsbeweisen? Den Tetrominos, den Schachbrettern und den Chamäleons? 
+
+\missingfigure{Kleines Bild von Tetrominos, Schachbrettern und Chamäleons?}
+
+Darin hatten wir doch ein ganz ähnliches Problem: Wir hatten zum Beispiel eine Menge verschiedenfarbiger Chamäleons, die ihre Farbe nach einem bestimmten Muster ändern, wenn sie sich treffen. Wir wollten nun zeigen, dass wir nie gleich viele Chamäleons jeder Farbe bekommen können.
+
 
 Erstes Beispiel: Alle zentrierten Viereckszahlen sind ungerade - entspricht unendlich vielen Aussagen: Die erste Viereckszahl ist ungerade, die zweite, die dritte, ...
 
@@ -111,6 +135,10 @@ Formalisierung: Induktionsanfang + Induktionsvoraussetzung + Induktionsschritt
 Beweise: Die Länge der Kochschen Schneeflocke ist unendlich bzw. besser: Nach $n$ Schritten hat sie Länge $> n$
 
 Analog: Die Fläche des Sierpinski-Dreiecks ist $0$
+
+\hrule
+
+Josephus-Problem
 
 \hrule
 
