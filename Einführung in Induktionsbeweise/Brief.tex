@@ -95,9 +95,9 @@
 
 In diesem Brief werden wir eine besondere, in der Mathematik sehr oft genutzte Beweistechnik kennen lernen: Den \emph{Beweis durch Induktion}. Eine Besonderheit dieser Beweistechnik ist, dass man mit ihr nicht nur eine Aussage, sondern gleich unendlich viele Aussagen auf einmal zeigen kann! 
 
-\subsection{Induktion mit Bildern}
+\section{Induktion mit Bildern}
 
-Vor kurzem habe ich mal wieder mei  Sparschein geleert um es zur Bank zu bringen. Davor wollte ich aber natürlich wissen, wie viel Geld sich überhaupt darin befunden hatte. Und um mir das Zählen zu erleichtern (und vielleicht auch, weil mir gerade ein wenig langweilig war) habe ich die Münzen zu einem Muster zusammengelegt:
+Vor kurzem habe ich mal wieder mein  Sparschein geleert um es zur Bank zu bringen. Davor wollte ich aber natürlich wissen, wie viel Geld sich überhaupt darin befunden hatte. Und um mir das Zählen zu erleichtern (und vielleicht auch, weil mir gerade ein wenig langweilig war) habe ich die Münzen zu einem Muster zusammengelegt:
 
 \missingfigure{Die ersten vier(?) zentrierten Viereckszahlen}
 
@@ -129,7 +129,7 @@ Ganz genauso wollen wir nun auch mit unseren Münzvierecken vorgehen, um zu zeig
 	Was müssen wir dazu also machen? Wir fügen auf jeder Seite zusätzlich eine Reihe Münzen hinzu $(\ast)$. Da wir nun auf jeder der vier Seiten gleich viele Münzen hinzufügen, ist die Zahl der neuen Münzen sicher durch $4$ teilbar, also eine gerade Zahl.
 	
 	Die Gesamtzahl der Münzen im $(n+1)$-Viereck ist also gleich der Zahl der Münzen im $n$-ten Viereck (ungerade!) plus der Zahl der neuen Münzen (gerade!). Da nun die Summe einer geraden und einer ungeraden Zahl wieder eine ungerade bildet
-	\footnote{Du bist skeptisch, ob diese Aussage wirklich für alle Zahlen gilt? Sehr gut! In der Mathematik sollte man nie irgendwelche Behauptungen einfach so glauben, sondern sie am besten selbst nachprüfen. Prüfe die Aussage am besten mal an ein paar Beispielen nach. Wenn du sie wirklich beweisen willst, dann schau dir noch einmal den zweiten Korrespondenzbrief (zu Teilbarkeit) an - darin findest du alle dafür notwendigen Werkzeuge.},
+	\footnote{Du bist skeptisch, ob diese Aussage wirklich für alle Zahlen gilt? Sehr gut! In der Mathematik sollte man nie irgendwelche Behauptungen einfach so glauben, sondern sie am besten selbst nachprüfen. Teste die Aussage am besten mal an ein paar Beispielen. Wenn du sie wirklich beweisen willst, dann schau dir noch einmal den zweiten Korrespondenzbrief (zu Teilbarkeit) an - darin findest du alle dafür notwendigen Werkzeuge.},
 	ist also auch die Zahl der Münzen in unserem größeren Viereck erneut eine ungerade Zahl.
 \end{description}
 
@@ -149,9 +149,11 @@ noch}
 	Zeige, dass die zentrierte Dreieckszahl nie durch $3$ teilbar ist (du kannst sogar noch genauer zeigen, dass sie immer um $1$ größer ist als eine durch $3$ teilbare Zahl).
 \end{aufgabe}
 
-\subsection{Induktion mit Zahlen}
+\section{Induktion mit Zahlen}
 
-\todo[inline]{Begriff Induktionsbeweis einführen, etwas formalere Beschreibung}
+\todo[inline]{Begriff Induktionsbeweis einführen, etwas formalere Beschreibung
+	
+	Formalisierung: Induktionsanfang + Induktionsvoraussetzung + Induktionsschritt}
 
 \todo[inline]{Formaler Induktionsbeweis für: Beweise für diese Formel: Zahl ist für alle $n$ ungerade}
 
@@ -163,29 +165,56 @@ noch}
 	Weiteres dazu: Beweise n-te Viereckszahl ist $2n^2-2n+1$.
 \end{aufgabe}
 
-\begin{aufgabe}{Titel}
+\begin{aufgabe}{Induktion oder Nicht-Induktion?}
 	Beweise: Jede Viereckszahl ist Summe zweier aufeinander folgender Quadratzahlen (evtl. auch durch Bild?)
 \end{aufgabe}
 
-\hrule
+\todo[inline]{Schrittweise Josephus-Problem}
 
-Formalisierung: Induktionsanfang + Induktionsvoraussetzung + Induktionsschritt
 
-\hrule
+\section{Anwendung der Induktion}
 
-Beweise: Die Länge der Kochschen Schneeflocke ist unendlich bzw. besser: Nach $n$ Schritten hat sie Länge $> n$
+\subsection{Geometrisches}
+
+Im letzten Korrespondenzbrief (zu Fraktalen) haben wir unter anderem die \emph{Kochsche Schneeflocke} betrachtet:
+\begin{center}
+	\includegraphics[width=.4\textwidth]{bilder/Schneeflocke-Konstruktion3.pdf}
+\end{center}
+Nur noch mal zur Erinnerung, wie man die Kochsche Schneeflocke (bzw. erstmal nur eine ihrer drei Seiten) erhält: Man beginnt mit einer einfachen Strecke. Diese Strecke teilt man in drei gleich lange Teile. Dann entfernt man das mittlere Stück und ersetzt es durch die zwei anderen Seiten eines gleichseitigen Dreiecks. Dadurch erhält man eine geometrische Figur, die aus vier Strecken besteht. Für den zweiten Schritt macht man nun mit jeder dieser vier Strecken das gleiche wie man es mit der ersten Strecke getan hat:
+\begin{center}
+	\includegraphics[width=.9\textwidth]{bilder/Schneeflocke-Konstruktion1.pdf}
+\end{center}
+Und das geometrische Objekt, das man \glqq nach unendlich vielen Schritten\grqq{} erhält, das nennt man dann Kochschee Schneeflocke.
+
+Im letzten Korrespondenzbrief habe ich behauptet, dass die Länge der Linie, aus der die Kochsche Schneeflocke besteht \emph{unendlich} lang ist. Der Beweis dazu war aber noch etwas ungenau: Wir haben nur gesehen, dass die Linie in den ersten beiden Schritten um jeweils mindestens \unit[1]{cm} wächst - und dann einfach behauptet, dass das \glqq offensichtlich\grqq{} auch für alle weiteren Schritte so sein wird.
+
+Jetzt aber haben wir die Technik des Induktionsbeweises kennen gelernt - und diese eignet sich perfekt um genau solche Argumente mathematisch präzise zu machen. 
+
+\begin{satz}
+	Beginnt man die Konstruktion einer Seite der Kochschen Schneeflocke mit einer Linie der Länge \unit[3]{cm}, so ist die Linie nach dem $n$-ten Schritt mindestens \unit[3+n]{cm} lang.
+\end{satz}
+
+Bevor du weiter liest: Kannst du dir so ungefähr vorstellen, wie der Induktionsbeweis für diese Aussage aussehen könnte? Was wird wohl der Induktionsanfang sein, was die Induktionsvoraussetzung und was der Induktionsschluss?
+
+\begin{proof}
+	Wir beweisen den Satz durch Induktion über $n$:
+	\begin{description}
+		\item[IA ($n=1$):] Nach dem ersten Schritt besteht die Linie aus $4$ Strecken, die jeweils einem Drittel der Anfangsstrecke entsprechen, also jeweils \unit[1]{cm} lang sind. Die Gesamtlänge der Linie beträgt daher $4 \cdot \unit[1]{cm} = \unit[4]{cm} = \unit[3+1]{cm}$.
+		\item[IV:] Wir wissen für festes $n$: Nach dem $n$-ten Schritt hat die Linie die Länge \unit[x]{cm}, wobei gilt $x \geq 3+n$.
+		\item[IS ($n\to n+1$):] Im $(n+1)$-ten Schritt machen wir mit jeder Teilstrecke das gleiche, was wir im ersten Schritt mit der Anfangsstrecke gemacht haben. Dadurch wird also jede Strecke durch ein Linienstück ersetzt, das $\frac{4}{3}$-mal so lang ist. Dadurch wird natürlich auch die Gesamtlinie um den Faktor $\frac{4}{3}$ gestreckt. Nach dem Schritt gilt also für die Gesamtlänge:
+			\begin{align*}
+			\text{Länge } 	&= \frac{4}{3}\cdot \unit[x]{cm} \overset{\text{\textbf{IV}}}{\geq} \frac{4}{3}\cdot \unit[(3+n)]{cm} = \unit[(4+\frac{4}{3}\cdot n)]{cm} > \unit[(4+ n)]{cm} \\
+							&= \unit[(3+ (n+1))]{cm}
+			\end{align*}
+		Und das ist genau das, was wir zeigen wollten!
+	\end{description}
+\end{proof}
 
 Analog: Die Fläche des Sierpinski-Dreiecks ist $0$
 
-\hrule
-
-Josephus-Problem
-
-\hrule
-
 Beweise über Bäume? Evtl. als "echte" Bäume beschreiben und nur kurzer Hinweis auf Graphentheorie?
 
-\hrule
+\subsection{Korrektheitsbeweise}
 
 Induktion verwendet man auch für Korrektheitsbeweise von Computerprogrammen:
 
