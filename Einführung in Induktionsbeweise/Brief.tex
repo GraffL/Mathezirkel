@@ -115,7 +115,9 @@ Wir haben nun also für ein paar kleine Beispiele gesehen, dass die Aussage \glq
 
 Ein ähnliches Problem hatten wir zu Beginn dieses Schuljahres schon einmal in einem Zirkelbrief? Erinnerst du dich noch an den Brief mit den Unmöglichkeitsbeweisen? Den Tetrominos, den Schachbrettern und den Chamäleons? 
 
-\missingfigure{Kleines Bild von Tetrominos, Schachbrettern und Chamäleons?}
+\begin{center}
+	\includegraphics[width=.25\textwidth]{bilder/Erinnerung.pdf}
+\end{center}
 
 Darin hatten wir doch ein ganz ähnliches Problem: Wir hatten zum Beispiel eine Menge verschiedenfarbiger Chamäleons, die ihre Farbe nach einem bestimmten Muster ändern, wenn sie sich treffen. Wir wollten nun zeigen, dass wir nie gleich viele Chamäleons jeder Farbe bekommen können.
 
@@ -127,7 +129,9 @@ Ganz genauso wollen wir nun auch mit unseren Münzvierecken vorgehen, um zu zeig
 	\item[Anfang:] Für das kleinstmögliche Viereck (mit Seitenlänge $1$) ist die Aussage klar: Es besteht aus genau einer Münze - und $1$ ist eine ungerade Zahl.
 	\item[Voraussetzung:] Wir haben ein Viereck mit Seitenlänge $n$, für das wir bereits wissen, dass wir für es ungerade viele Münzen benötigen.
 	\item[Schlussfolgerung:] Wir wollen nun zeigen, dass auch ein Viereck mit Seitenlänge $n+1$ ungerade viele Münzen benötigt. Dazu nehmen wir unser Viereck mit Seitenlänge $n$ und machen daraus ein Viereck der Seitenlänge $n+1$:
-	\missingfigure{Viereck $n$ zu Viereck $n+1$}
+	\begin{center}
+		\includegraphics[width=.6\textwidth]{bilder/ZentrierteViereckszahlenBeweis.pdf}
+	\end{center}
 	Was müssen wir dazu also machen? Wir fügen auf jeder Seite zusätzlich eine Reihe Münzen hinzu $(\ast)$. Da wir nun auf jeder der vier Seiten gleich viele Münzen hinzufügen, ist die Zahl der neuen Münzen sicher durch $4$ teilbar, also eine gerade Zahl.
 	
 	Die Gesamtzahl der Münzen im $(n+1)$-Viereck ist also gleich der Zahl der Münzen im $n$-ten Viereck (ungerade!) plus der Zahl der neuen Münzen (gerade!). Da nun die Summe einer geraden und einer ungeraden Zahl wieder eine ungerade bildet
@@ -205,7 +209,7 @@ Bevor du weiter liest: Kannst du dir so ungefähr vorstellen, wie der Induktions
 	\begin{description}
 		\item[IA ($n=1$):] Nach dem ersten Schritt besteht die Linie aus $4$ Strecken, die jeweils einem Drittel der Anfangsstrecke entsprechen, also jeweils \unit[1]{cm} lang sind. Die Gesamtlänge der Linie beträgt daher $4 \cdot \unit[1]{cm} = \unit[4]{cm} = \unit[3+1]{cm}$.
 		\item[IV:] Wir wissen für festes $n$: Nach dem $n$-ten Schritt hat die Linie die Länge \unit[x]{cm}, wobei gilt $x \geq 3+n$.
-		\item[IS ($n\to n+1$):] Im $(n+1)$-ten Schritt machen wir mit jeder Teilstrecke das gleiche, was wir im ersten Schritt mit der Anfangsstrecke gemacht haben. Dadurch wird also jede Strecke durch ein Linienstück ersetzt, das $\frac{4}{3}$-mal so lang ist. Dadurch wird natürlich auch die Gesamtlinie um den Faktor $\frac{4}{3}$ gestreckt. Nach dem Schritt gilt also für die Gesamtlänge:
+		\item[IS ($n\to n+1$):] Im $(n+1)$-ten Schritt machen wir mit jeder Teilstrecke das gleiche, was wir im ersten Schritt mit der Anfangsstrecke gemacht haben. Dadurch wird also jede Strecke durch ein Linienstück ersetzt, das $\frac{4}{3}$-mal so lang ist. Dabei wird natürlich auch die Gesamtlinie um den Faktor $\frac{4}{3}$ gestreckt. Nach dem Schritt gilt also für die Gesamtlänge:
 			\begin{align*}
 			\text{Länge } 	&= \frac{4}{3}\cdot \unit[x]{cm} \overset{\text{\textbf{IV}}}{\geq} \frac{4}{3}\cdot \unit[(3+n)]{cm} = \unit[(4+\frac{4}{3}\cdot n)]{cm} > \unit[(4+ n)]{cm} \\
 							&= \unit[(3+ (n+1))]{cm}
