@@ -107,7 +107,7 @@ Vor kurzem habe ich mal wieder mein  Sparschein geleert um es zur Bank zu bringe
 	Erkennst du das Schema, nach dem ich dieses Muster gebaut habe? Kannst du das nächste Viereck zeichnen?
 \end{aufgabe}
 
-Während ich also immer größere Vierecke gelegt habe, ist mir das folgende aufgefallen: Die Zahl an Münzen, die ich für ein Viereck benötige, scheint immer eine ungerade Zahl zu sein: Für das erste $1$, beim zweiten $5$, beim dritten $13$, beim vierten $25$, beim fünften \underline{\phantom{ 41 }}, \dots
+Während ich also immer größere Vierecke gelegt habe, ist mir das folgende aufgefallen: Die Zahl an Münzen, die ich für ein Viereck benötige, scheint immer eine ungerade Zahl zu sein: Für das erste $1$, beim zweiten $5$, beim dritten $13$, beim vierten $25$, beim fünften \underline{\phantom{ 41 }}(?), \dots
 
 Ob das wohl für alle solchen Vierecke stimmt? Ich habe noch ein paar weitere solchen Vierecke gelegt, und für tatsächlich habe ich für jedes eine ungerade Anzahl an Münzen gebraucht. Aber irgendwann sind mir natürlich die Münzen ausgegangen. Wie kann ich nun also herausfinden, ob meine Vermutung wirklich für \emph{alle} solche Vierecke gilt?
 
@@ -121,16 +121,16 @@ Ein ähnliches Problem hatten wir zu Beginn dieses Schuljahres schon einmal in e
 
 Darin hatten wir doch ein ganz ähnliches Problem: Wir hatten zum Beispiel eine Menge verschiedenfarbiger Chamäleons, die ihre Farbe nach einem bestimmten Muster ändern, wenn sie sich treffen. Wir wollten nun zeigen, dass wir nie gleich viele Chamäleons jeder Farbe bekommen können.
 
-\todo[inline]{Wie ging es weiter (Invariante!)}
+Dazu haben wir den Begriff einer \emph{Invariante} eingeführt: Eine Aussage, die ganz am Anfang wahr ist und die bei jedem Zwischenschritt (Treffen zweier Chamäleons) erhalten bleibt. Letzteres heißt: Vorausgesetzt die Invariante gilt vor dem Treffen zweier Chamäleons, dann gilt sie auch nach dem Treffen wieder. Dadurch wussten wir dann, dass diese Aussage zu jedem Zeitpunkt gilt - und wir konnten daraus folgern, dass es nie gleich viele Chamäleons jeder Farbe geben wird.
 
-Ganz genauso wollen wir nun auch mit unseren Münzvierecken vorgehen, um zu zeigen, dass wir immer eine ungerade Anzahl von Münzen benötigen:
+Ganz ähnlich wollen wir nun auch mit unseren Münzvierecken vorgehen, um zu zeigen, dass wir immer eine ungerade Anzahl von Münzen benötigen:
 
 \begin{description}
 	\item[Anfang:] Für das kleinstmögliche Viereck (mit Seitenlänge $1$) ist die Aussage klar: Es besteht aus genau einer Münze - und $1$ ist eine ungerade Zahl.
 	\item[Voraussetzung:] Wir haben ein Viereck mit Seitenlänge $n$, für das wir bereits wissen, dass wir für es ungerade viele Münzen benötigen.
 	\item[Schlussfolgerung:] Wir wollen nun zeigen, dass auch ein Viereck mit Seitenlänge $n+1$ ungerade viele Münzen benötigt. Dazu nehmen wir unser Viereck mit Seitenlänge $n$ und machen daraus ein Viereck der Seitenlänge $n+1$:
 	\begin{center}
-		\includegraphics[width=.6\textwidth]{bilder/ZentrierteViereckszahlenBeweis.pdf}
+		\includegraphics[width=.4\textwidth]{bilder/ZentrierteViereckszahlenBeweis.pdf}
 	\end{center}
 	Was müssen wir dazu also machen? Wir fügen auf jeder Seite zusätzlich eine Reihe Münzen hinzu $(\ast)$. Da wir nun auf jeder der vier Seiten gleich viele Münzen hinzufügen, ist die Zahl der neuen Münzen sicher durch $4$ teilbar, also eine gerade Zahl.
 	
@@ -140,8 +140,12 @@ Ganz genauso wollen wir nun auch mit unseren Münzvierecken vorgehen, um zu zeig
 \end{description}
 
 Damit haben wir nun bewiesen, dass alle nach dem beschriebenen Schema gelegten Vierecke eine ungerade Anzahl von Münzen benötigen. Warum?
-\todo[inline]{Erklärung: Viereck kann gebaut werden, indem wir mit einem kleinen anfagen (ungerade Zahl Münzen nach Anfang), dann das Viereck um einen Schritt größer machen (weiterhin ungerade Zahl nach Schlussfolgerung). Damit gilt die Voraussetzung und wir können beim erneuten Größermachen wieder die Schlussfolgerung anwenden. Immer so weiter bis wir das gewünschte Viereck erreicht haben. Während dem ganzen schrittweisen Bauen blieb die Aussage ungerade Münzen immer wahr. Also ist sie es auch am Ende 
-noch}
+
+Nun, wenn wir ein Viereck mit irgendeiner beliebigen Seitenlänge (z.B. $n$) bauen wollen, dann können wir zunächst mal mit dem kleinstmöglichen Viereck beginnen (dem mit Seitenlänge $1$). Dafür benötigen wir eine ungerade Zahl an Münzen (nämlich eine) - das haben wir im Abschnitt \glqq Anfang\grqq{} gezeigt.
+
+Dieses Viereck können wir nun schrittweise immer größer machen (erst zu einem mit Seitenlänge $2$, dann zu einem mit Seitenlänge $3$ usw.), bis wir bei der gewünschten Größe angekommen sind. Und wie wir oben gezeigt haben, kommt in jedem Schritt eine gerade Anzahl von Münzen hinzu. Hatten wir also vor einem Schritt eine ungerade Zahl Münzen verwendet (\glqq Voraussetzung\grqq ), so haben wir auch nach diesem Schritt insgesamt eine ungerade Anzahl Münzen benutzt (\glqq Schlussfolgerung\grqq ).
+
+Insbesondere wissen wir damit, dass wir auch am Ende - wenn wir die gewünschte Größe erreicht haben - insgesamt eine ungerade Zahl Münzen verbaut haben.
 
 \begin{aufgabe}{Wie viele neue Münzen?}
 	Im obigen Beweis wird an der Stelle $(\ast)$ nur gesagt, dass die Zahl der neuen Münzen durch $4$ teilbar ist. Kannst du sogar herausfinden, wie viele Münzen es genau sind (in Abhängigkeit von $n$)?
@@ -157,30 +161,64 @@ noch}
 	Zeige, dass die zentrierte Dreieckszahl nie durch $3$ teilbar ist (du kannst sogar noch genauer zeigen, dass sie immer um $1$ größer ist als eine durch $3$ teilbare Zahl).
 \end{aufgabe}
 
+
 \section{Induktion mit Zahlen}
 
-\todo[inline]{Begriff Induktionsbeweis einführen, etwas formalere Beschreibung
+Die Beweistechnik, die wir im vorangegangen Abschnitt kennengelernt haben, bezeichnet man als \emph{Beweis durch Induktion} oder \emph{Induktionsbeweis}. Bevor wir nun weitere Beispiele für solche Beweise kennenlernen, wann wir Induktion verwenden können und \todo{bessere Formulierung!}aus welchen Bausteinen sie besteht:
+
+Mittels Induktion kann man Aussagen über \glqq Objekte\grqq{} beweisen, die folgende Eigenschaft haben: Es gibt unter ihnen ein oder mehrere \glqq kleinste\grqq{} Objekte und alle anderen Objekte können wir aus diesen kleinsten durch einen oder mehrere Zwischenschritte erhalten.
+
+Ein Induktionsbeweis besteht dann aus folgenden drei Komponenten:
+
+\begin{description}
+	\item[Induktionsanfang (IA):] Wir beweisen die Aussage für das oder die kleinsten Objekte von Hand.
+	\item[Induktionsvoraussetzung (IV):] \todo{weiter}
+	\item[Induktionsschluss (IS):] Wir beweisen, dass die Aussage durch die Zwischenschritte erhalten bleibt: \todo{weiter}
+\end{description}
+
+
+Einen natürlichen Kandidaten für Induktionsbeweise bildet nun die Menge der natürlichen Zahlen ($\mathbb{N} = \{1,2,3, \dots\}$). Denn diese hat ein kleinstes Objekt ($1$) und alle anderen ihrer Elemente kann man aus diesem durch einen oder mehrere Zwischenschritte erhalten (nämlich ein- oder mehrmals $+1$ rechnen).
+\footnote{Tatsächlich werden die natürlichen Zahlen in der Mathematik oft genau durch diese Eigenschaft definiert - nämlich über die \emph{Peano-Axiome}.}
+
+Wann immer man also auf eine Aussage der Form \glqq Für alle natürlichen Zahlen $n \in \NN$ gilt \dots\grqq{} trifft, lohnt es sich auszuprobieren, ob man hier mit Induktion weiter kommt!
+
+\begin{satz}\label{satz:zentrierteViereckszahl}
+	Für alle natürlichen Zahlen $n$ gilt: $2n^2-2n+1$ ist eine ungerade Zahl.
+\end{satz}
+
+\begin{proof}
+	Wir werden diese Aussage mittels Induktion zeigen:
+	\begin{description}
+		\item[IA ($n=1$):] $2n^2-2n+1  = 2\cdot 1^2 -2 \cdot 1 + 1 = 2-2+1 = 1$ ist ungerade.
+		\item[IV (festes $n$):] Für festes $n$ sei $2n^2-2n+1$ eine ungerade Zahl.
+		\item[IS ($n \to n+1$):] Wir wollen die Aussage für die Zahl $n+1$ zeigen unter der Voraussetzung, dass die Aussage für die nächstkleinere Zahl (also $n$) bereits gezeigt wurde:
+		\[2(n+1)^2-2(n+1)+1  = 2n^2+4n+2-2n-2+1 = (2n^2-2n+1) + 4n\]
+		ist ungerade, da $2n^2-2n+1$ nach IV ungerade ist und $4n$ gerade ist. \qedhere
+	\end{description}
+\end{proof}
+
+\begin{aufgabe}{Durch $3$ teilbar?}\label{aufg:zentrierteDreieckszahl}
+	Zeige mittels Induktion die folgende Behauptung:
 	
-	Formalisierung: Induktionsanfang + Induktionsvoraussetzung + Induktionsschritt}
-
-\todo[inline]{Formaler Induktionsbeweis für: Beweise für diese Formel: Zahl ist für alle $n$ ungerade}
-
-\begin{aufgabe}{Durch $3$ teilbar?}
-	Dreieckszahl minus $1$
+	Für jede natürliche Zahl $n$ ist die Zahl \todo{welche Zahl?} durch $3$ teilbar.
 \end{aufgabe}
 
-\begin{aufgabe}{Eine alte Bekannte}
-	Weiteres dazu: Beweise n-te Viereckszahl ist $2n^2-2n+1$.
+\begin{aufgabe}{De-ja-vu\todo{Rechtschreibung prüfen!}}\label{aufg:dejavu}
+	Berechne $2n^2-2n+1$ für $n = 1,2,3,4,5$. Fällt dir etwas auf? (Schau am besten nochmal in den ersten Abschnitt!) 
+	
+	Kannst du deine Vermutung sogar beweisen? Evtl. geht das mit einem Induktionsbeweis, der einen Großteil der Struktur des Beweises von \Cref{satz:zentrierteViereckszahl} übernimmt.
+	
+	Zusatzfrage: Findest du einen ähnlichen Zusammenhang für die Zahl aus Aufgabe \ref{aufg:zentrierteDreieckszahl}?
 \end{aufgabe}
 
 \begin{aufgabe}{Induktion oder Nicht-Induktion?}
-	Beweise: Jede Viereckszahl ist Summe zweier aufeinander folgender Quadratzahlen (evtl. auch durch Bild?)
+	Beweise: Für jede natürliche Zahl $n$ ist $2n^2-2n+1$ die Summe zweier direkt aufeinander folgender Quadratzahlen.
+	
+	Diese Aufgabe kannst du mit Induktion, aber auch direkt (durch Termumformung) zeigen. Wenn du Aufgabe \ref{aufg:dejavu} gelöst hast, kannst du die Behauptung hier sogar durch ein Bild zeigen!
 \end{aufgabe}
 
-\todo[inline]{Schrittweise Josephus-Problem}
 
-
-\section{Anwendung der Induktion}
+\section{Anwendungen der Induktion}
 
 \subsection{Geometrisches}
 
@@ -222,22 +260,40 @@ Bevor du weiter liest: Kannst du dir so ungefähr vorstellen, wie der Induktions
 	\todo[inline]{Analog: Die Fläche des Sierpinski-Dreiecks ist $0$}
 \end{aufgabe}
 
-\todo[inline]{Beweise über Bäume? Evtl. als "echte" Bäume beschreiben und nur kurzer Hinweis auf Graphentheorie?}
+\todo[inline]{Beweise über Bäume? Evtl. als "echte" Bäume beschreiben und nur kurzer Hinweis auf Graphentheorie? Evtl. als Lückenbeweis}
 
-\subsection{Korrektheitsbeweise}
+\subsection{Ein Abzählspiel}
 
-Induktion verwendet man auch für Korrektheitsbeweise von Computerprogrammen:
+\todo[inline]{Einleitung: Stell dir vor du triffst dich mit einigen Freunden ...}
 
-Beispiel: Quadratzahl $x^2$ berechnen als $x+x-1 +x-1+x-2 + \dots +1$ - evtl. dargestellt als Flussdiagramm (rekursives Programm!)
+\todo[inline]{Ein Beispiel durchrechnen (mit Bildern!) Für $n$=8?}
 
-Aufgabe?
+\begin{frage}
+	Verwendet eine Gruppe von $n$ Personen das oben beschriebene Abzählverfahren, welche Person bleibt dann am Ende übrig.\todo{Recherchieren!}
+	\footnote{Diese Fragestellung ist auch als Josephus-Problem bekannt, da das ihr zugrunde liegende Abzählverfahren erstmals vom jüdischen Geschichtsschreiber Josephus beschrieben wird.}
+\end{frage}
 
-Euklidischer Algorithmus? Verweis auf zweiten Brief
+\begin{aufgabe}{Einige Beispiele}
+	Spiele das Verfahren einmal für verschiedene (kleine) Gruppengrößen durch und beobachte jeweils, welche Person am Ende übrig bleibt. Fülle dazu die folgende Tabelle:
+	\begin{center}
+		\renewcommand{\arraystretch}{2}
+		\begin{tabular}{l||c|c|c|c|c|c|c|c|c}
+			Gruppengröße:	& 2	& 3 & 4 & 5 & 6 & 7 & 8 & 11 & 16 \\\hline
+			Letzte Person:	&   &   &   &   &   &   & 0 &    &    
+		\end{tabular}
+	\end{center}
+	Kannst du irgendein Muster erkennen? 
+\end{aufgabe}
 
-\hrule
+\todo[inline]{Weiter}
 
-\begin{bem}
-Lauter Aussagen über natürliche Zahlen. Dies liegt daran, dass die natürlichen Zahlen selbst mit Hilfe von Induktion definiert sind. Verweis auf Peano-Axiome
-\end{bem}
+% Alternativer/Zusätzlich möglicher letzter Abschnitt: Korrektheitsbeweise
+%Induktion verwendet man auch für Korrektheitsbeweise von Computerprogrammen:
+%
+%Beispiel: Quadratzahl $x^2$ berechnen als $x+x-1 +x-1+x-2 + \dots +1$ - evtl. dargestellt als Flussdiagramm (rekursives Programm!)
+%
+%Aufgabe?
+%
+%Euklidischer Algorithmus? Verweis auf zweiten Brief
 
 \end{document}
