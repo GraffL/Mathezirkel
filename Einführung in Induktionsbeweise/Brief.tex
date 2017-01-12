@@ -183,24 +183,26 @@ Einen natürlichen Kandidaten für Induktionsbeweise bildet nun die Menge der na
 Wann immer man also auf eine Aussage der Form \glqq Für alle natürlichen Zahlen $n \in \NN$ gilt \dots\grqq{} trifft, lohnt es sich auszuprobieren, ob man hier mit Induktion weiter kommt!
 
 \begin{satz}\label{satz:zentrierteViereckszahl}
-	Für alle natürlichen Zahlen $n$ gilt: $2n^2-2n+1$ ist eine ungerade Zahl.
+	Für alle natürlichen Zahlen $n$ gilt: $2n^2-2n$ ist eine durch $4$ teilbare Zahl.
 \end{satz}
 
 \begin{proof}
 	Wir werden diese Aussage mittels Induktion zeigen:
 	\begin{description}
-		\item[IA ($n=1$):] $2n^2-2n+1  = 2\cdot 1^2 -2 \cdot 1 + 1 = 2-2+1 = 1$ ist ungerade.
-		\item[IV (festes $n$):] Für festes $n$ sei $2n^2-2n+1$ eine ungerade Zahl.
+		\item[IA ($n=1$):] $2n^2-2n  = 2\cdot 1^2 -2 \cdot 1 = 2-2 = 0$ ist durch $4$ teilbar.
+		\item[IV (festes $n$):] Für festes $n$ sei $2n^2-2n$ durch $4$ teilbar.
 		\item[IS ($n \to n+1$):] Wir wollen die Aussage für die Zahl $n+1$ zeigen unter der Voraussetzung, dass die Aussage für die nächstkleinere Zahl (also $n$) bereits gezeigt wurde:
-		\[2(n+1)^2-2(n+1)+1  = 2n^2+4n+2-2n-2+1 = (2n^2-2n+1) + 4n\]
-		ist ungerade, da $2n^2-2n+1$ nach IV ungerade ist und $4n$ gerade ist. \qedhere
+		\[2(n+1)^2-2(n+1)  = 2n^2+4n+2-2n-2 = (2n^2-2n) + 4n\]
+		ist durch $4$ teilbar, da es Summe der beiden durch $4$ teilbaren Zahlen $2n^2-2n$ (nach IV durch $4$ teilbar) und $4n$ ist. \qedhere
 	\end{description}
 \end{proof}
 
 \begin{aufgabe}{Durch $3$ teilbar?}\label{aufg:zentrierteDreieckszahl}
 	Zeige mittels Induktion die folgende Behauptung:
 	
-	Für jede natürliche Zahl $n$ ist die Zahl \todo{welche Zahl?} durch $3$ teilbar.
+	Für jede natürliche Zahl $n$ gilt:
+	
+	\[1 + 1\cdot3 + 2\cdot3 + \dots + (n-1)\cdot 3 = 1 + 3\frac{(n-1)\cdot n}{2}\] 
 \end{aufgabe}
 
 \begin{aufgabe}{De-ja-vu\todo{Rechtschreibung prüfen!}}\label{aufg:dejavu}
@@ -208,7 +210,7 @@ Wann immer man also auf eine Aussage der Form \glqq Für alle natürlichen Zahle
 	
 	Kannst du deine Vermutung sogar beweisen? Evtl. geht das mit einem Induktionsbeweis, der einen Großteil der Struktur des Beweises von \Cref{satz:zentrierteViereckszahl} übernimmt.
 	
-	Zusatzfrage: Findest du einen ähnlichen Zusammenhang für die Zahl aus Aufgabe \ref{aufg:zentrierteDreieckszahl}?
+	Zusatzfrage: Findest du einen ähnlichen Zusammenhang für die Zahl aus Aufgabe \ref{aufg:zentrierteDreieckszahl}\todo{ref für Aufgabenumgebung anpassen}?
 \end{aufgabe}
 
 \begin{aufgabe}{Induktion oder Nicht-Induktion?}
@@ -269,14 +271,14 @@ Bevor du weiter liest: Kannst du dir so ungefähr vorstellen, wie der Induktions
 \todo[inline]{Ein Beispiel durchrechnen (mit Bildern!) Für $n$=8?}
 
 \begin{frage}
-	Verwendet eine Gruppe von $n$ Personen das oben beschriebene Abzählverfahren, welche Person bleibt dann am Ende übrig.\todo{Recherchieren!}
-	\footnote{Diese Fragestellung ist auch als Josephus-Problem bekannt, da das ihr zugrunde liegende Abzählverfahren erstmals vom jüdischen Geschichtsschreiber Josephus beschrieben wird.}
+	Verwendet eine Gruppe von $n$ Personen das oben beschriebene Abzählverfahren, welche Person bleibt dann am Ende übrig?
+	\footnote{Diese Fragestellung ist auch als Josephus-Problem bekannt, benannt nach dem jüdischen Historiker Flavius Josephus (aus dem ersten Jahrhundert nach Christus).}
 \end{frage}
 
 \begin{aufgabe}{Einige Beispiele}
 	Spiele das Verfahren einmal für verschiedene (kleine) Gruppengrößen durch und beobachte jeweils, welche Person am Ende übrig bleibt. Fülle dazu die folgende Tabelle:
 	\begin{center}
-		\renewcommand{\arraystretch}{2}
+		\renewcommand{\arraystretch}{2}\setlength{\tabcolsep}{1em}
 		\begin{tabular}{l||c|c|c|c|c|c|c|c|c}
 			Gruppengröße:	& 2	& 3 & 4 & 5 & 6 & 7 & 8 & 11 & 16 \\\hline
 			Letzte Person:	&   &   &   &   &   &   & 0 &    &    
@@ -284,6 +286,10 @@ Bevor du weiter liest: Kannst du dir so ungefähr vorstellen, wie der Induktions
 	\end{center}
 	Kannst du irgendein Muster erkennen? 
 \end{aufgabe}
+
+Nun wollen wir also ganz allgemein für alle möglichen Gruppengrößen zeigen, welche Person am Ende übrig bleibt. Und dafür bietet sich wieder einmal Induktion an. Kannst du dir schon vorstellen wie das in etwa ablaufen wird? Was könnte sich als Induktionsanfang eignen? Was als Induktionsschritt?
+
+
 
 \todo[inline]{Weiter}
 
