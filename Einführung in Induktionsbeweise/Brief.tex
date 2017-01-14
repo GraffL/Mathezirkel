@@ -14,7 +14,7 @@
 
 \usepackage{enumitem}
 
-\usepackage{units}
+\usepackage{siunitx}
 
 \usepackage[protrusion=true,expansion=true]{microtype}
 
@@ -58,9 +58,11 @@
 \setlength{\aufgabenskip}{1.4em}
 \newcounter{aufgabennummer}
 \newenvironment{aufgabe}[1]{
-	\addtocounter{aufgabennummer}{1}
+	\refstepcounter{aufgabennummer}
 	\textbf{Aufgabe \theaufgabennummer.} \emph{#1} \par
 }{\vspace{\aufgabenskip}}
+\crefname{aufgabennummer}{Aufgabe}{Aufgaben}
+\Crefname{aufgabennummer}{Aufgabe}{Aufgaben}
 
 \clubpenalty=10000
 \widowpenalty=10000
@@ -205,18 +207,18 @@ Wann immer man also auf eine Aussage der Form \glqq Für alle natürlichen Zahle
 	\[1 + 1\cdot3 + 2\cdot3 + \dots + (n-1)\cdot 3 = 1 + 3\frac{(n-1)\cdot n}{2}\] 
 \end{aufgabe}
 
-\begin{aufgabe}{De-ja-vu\todo{Rechtschreibung prüfen!}}\label{aufg:dejavu}
+\begin{aufgabe}{Déjà-vu}\label{aufg:dejavu}
 	Berechne $2n^2-2n+1$ für $n = 1,2,3,4,5$. Fällt dir etwas auf? (Schau am besten nochmal in den ersten Abschnitt!) 
 	
 	Kannst du deine Vermutung sogar beweisen? Evtl. geht das mit einem Induktionsbeweis, der einen Großteil der Struktur des Beweises von \Cref{satz:zentrierteViereckszahl} übernimmt.
 	
-	Zusatzfrage: Findest du einen ähnlichen Zusammenhang für die Zahl aus Aufgabe \ref{aufg:zentrierteDreieckszahl}\todo{ref für Aufgabenumgebung anpassen}?
+	Zusatzfrage: Findest du einen ähnlichen Zusammenhang für die Zahl aus \cref{aufg:zentrierteDreieckszahl}?
 \end{aufgabe}
 
 \begin{aufgabe}{Induktion oder Nicht-Induktion?}
 	Beweise: Für jede natürliche Zahl $n$ ist $2n^2-2n+1$ die Summe zweier direkt aufeinander folgender Quadratzahlen.
 	
-	Diese Aufgabe kannst du mit Induktion, aber auch direkt (durch Termumformung) zeigen. Wenn du Aufgabe \ref{aufg:dejavu} gelöst hast, kannst du die Behauptung hier sogar durch ein Bild zeigen!
+	Diese Aufgabe kannst du mit Induktion, aber auch direkt (durch Termumformung) zeigen. Wenn du \cref{aufg:dejavu} gelöst hast, kannst du die Behauptung hier sogar durch ein Bild zeigen!
 \end{aufgabe}
 
 
@@ -234,12 +236,12 @@ Nur noch mal zur Erinnerung, wie man die Kochsche Schneeflocke (bzw. erstmal nur
 \end{center}
 Und das geometrische Objekt, das man \glqq nach unendlich vielen Schritten\grqq{} erhält, das nennt man dann Kochschee Schneeflocke.
 
-Im letzten Korrespondenzbrief habe ich behauptet, dass die Länge der Linie, aus der die Kochsche Schneeflocke besteht \emph{unendlich} lang ist. Der Beweis dazu war aber noch etwas ungenau: Wir haben nur gesehen, dass die Linie in den ersten beiden Schritten um jeweils mindestens \unit[1]{cm} wächst - und dann einfach behauptet, dass das \glqq offensichtlich\grqq{} auch für alle weiteren Schritte so sein wird.
+Im letzten Korrespondenzbrief habe ich behauptet, dass die Länge der Linie, aus der die Kochsche Schneeflocke besteht \emph{unendlich} lang ist. Der Beweis dazu war aber noch etwas ungenau: Wir haben nur gesehen, dass die Linie in den ersten beiden Schritten um jeweils mindestens \SI{1}{\cm} wächst - und dann einfach behauptet, dass das \glqq offensichtlich\grqq{} auch für alle weiteren Schritte so sein wird.
 
 Jetzt aber haben wir die Technik des Induktionsbeweises kennen gelernt - und diese eignet sich perfekt um genau solche Argumente mathematisch präzise zu machen. 
 
 \begin{satz}
-	Beginnt man die Konstruktion einer Seite der Kochschen Schneeflocke mit einer Linie der Länge \unit[3]{cm}, so ist die Linie nach dem $n$-ten Schritt mindestens \unit[3+n]{cm} lang.
+	Beginnt man die Konstruktion einer Seite der Kochschen Schneeflocke mit einer Linie der Länge \SI{3}{\cm}, so ist die Linie nach dem $n$-ten Schritt mindestens $3+n$ \si{\cm} lang.
 \end{satz}
 
 Bevor du weiter liest: Kannst du dir so ungefähr vorstellen, wie der Induktionsbeweis für diese Aussage aussehen könnte? Was wird wohl der Induktionsanfang sein, was die Induktionsvoraussetzung und was der Induktionsschluss?
@@ -247,19 +249,27 @@ Bevor du weiter liest: Kannst du dir so ungefähr vorstellen, wie der Induktions
 \begin{proof}
 	Wir beweisen den Satz durch Induktion über $n$:
 	\begin{description}
-		\item[IA ($n=1$):] Nach dem ersten Schritt besteht die Linie aus $4$ Strecken, die jeweils einem Drittel der Anfangsstrecke entsprechen, also jeweils \unit[1]{cm} lang sind. Die Gesamtlänge der Linie beträgt daher $4 \cdot \unit[1]{cm} = \unit[4]{cm} = \unit[3+1]{cm}$.
-		\item[IV:] Wir wissen für festes $n$: Nach dem $n$-ten Schritt hat die Linie die Länge \unit[x]{cm}, wobei gilt $x \geq 3+n$.
+		\item[IA ($n=1$):] Nach dem ersten Schritt besteht die Linie aus $4$ Strecken, die jeweils einem Drittel der Anfangsstrecke entsprechen, also jeweils \SI{1}{\cm} lang sind. Die Gesamtlänge der Linie beträgt daher $4 \cdot \SI{1}{\cm} = \SI{4}{\cm} = 3+1\si{\cm}$.
+		\item[IV:] Wir wissen für festes $n$: Nach dem $n$-ten Schritt hat die Linie die Länge $x$ \si{\cm}, wobei gilt $x \geq 3+n$.
 		\item[IS ($n\to n+1$):] Im $(n+1)$-ten Schritt machen wir mit jeder Teilstrecke das gleiche, was wir im ersten Schritt mit der Anfangsstrecke gemacht haben. Dadurch wird also jede Strecke durch ein Linienstück ersetzt, das $\frac{4}{3}$-mal so lang ist. Dabei wird natürlich auch die Gesamtlinie um den Faktor $\frac{4}{3}$ gestreckt. Nach dem Schritt gilt also für die Gesamtlänge:
 			\begin{align*}
-			\text{Länge } 	&= \frac{4}{3}\cdot \unit[x]{cm} \overset{\text{\textbf{IV}}}{\geq} \frac{4}{3}\cdot \unit[(3+n)]{cm} = \unit[(4+\frac{4}{3}\cdot n)]{cm} > \unit[(4+ n)]{cm} \\
-							&= \unit[(3+ (n+1))]{cm}
+			\text{Länge } 	&= \frac{4}{3}\cdot x\si{\cm} \overset{\text{\textbf{IV}}}{\geq} \frac{4}{3}\cdot (3+n)\si{\cm} = (4+\frac{4}{3}\cdot n)\si{\cm} > (4+ n)\si{\cm} \\
+							&= (3+ (n+1))\si{\cm}
 			\end{align*}
 		Und das ist genau das, was wir zeigen wollten!
 	\end{description}
 \end{proof}
 
 \begin{aufgabe}{Ein flächenloses Dreieck}
-	\todo[inline]{Analog: Die Fläche des Sierpinski-Dreiecks ist $0$}
+	Ein anderes Fraktal, welches wir im letzten Brief kennengelernt haben, war das Sierpinski-Dreieck: Es entsteht aus einem gleichseitigen Dreieck, indem man in jedem Schritt ein (oder spätere mehrere) kleinere Dreiecke aus ihm ausschneidet:
+	\begin{center}
+		\includegraphics[width=.6\textwidth]{bilder/Sierpinski-Konstruktion.pdf}
+	\end{center}
+	Im Fraktalbrief wurde behauptet, dass die Fläche dieses Fraktals beliebig klein wird - und jetzt kannst du das auch beweisen! Zeige genauer die folgende Behauptung:
+	\begin{center}
+		Hat das Dreieck zu Beginn eine Fläche von \SI{4}{\cm\squared}, so hat es nach $n$ Schritten eine Fläche von $\frac{27}{3(n+2)}$ \si{\cm\squared} oder weniger.
+	\end{center}
+	\todo[inline]{Tipps}
 \end{aufgabe}
 
 \todo[inline]{Beweise über Bäume? Evtl. als "echte" Bäume beschreiben und nur kurzer Hinweis auf Graphentheorie? Evtl. als Lückenbeweis}
@@ -275,7 +285,7 @@ Bevor du weiter liest: Kannst du dir so ungefähr vorstellen, wie der Induktions
 	\footnote{Diese Fragestellung ist auch als Josephus-Problem bekannt, benannt nach dem jüdischen Historiker Flavius Josephus (aus dem ersten Jahrhundert nach Christus).}
 \end{frage}
 
-\begin{aufgabe}{Einige Beispiele}
+\begin{aufgabe}{Einige Beispiele}\label{aufgabe:JosephusBspe}
 	Spiele das Verfahren einmal für verschiedene (kleine) Gruppengrößen durch und beobachte jeweils, welche Person am Ende übrig bleibt. Fülle dazu die folgende Tabelle:
 	\begin{center}
 		\renewcommand{\arraystretch}{2}\setlength{\tabcolsep}{1em}
@@ -289,9 +299,50 @@ Bevor du weiter liest: Kannst du dir so ungefähr vorstellen, wie der Induktions
 
 Nun wollen wir also ganz allgemein für alle möglichen Gruppengrößen zeigen, welche Person am Ende übrig bleibt. Und dafür bietet sich wieder einmal Induktion an. Kannst du dir schon vorstellen wie das in etwa ablaufen wird? Was könnte sich als Induktionsanfang eignen? Was als Induktionsschritt?
 
+Zunächst einmal werden wir nur Gruppengrößen betrachten, die irgendeine $2$er-Potenz sind - warum das sinnvoll ist, wirst du gleich im Beweis sehen:
 
+\begin{satz}\label{satz:Josephus1}
+	Für alle natürlichen Zahlen $n$ gilt: Bei einer Gruppengröße von $2^n$ bleibt der Spieler $0$ am Ende übrig (also der, der anfängt).
+\end{satz}
 
-\todo[inline]{Weiter}
+\begin{aufgabe}{Das Josephus-Problem für $2$er-Potenzen}
+	Kannst du die Lücken im folgenden Induktionsbeweis für \Cref{satz:Josephus1} füllen?
+\end{aufgabe}
+
+\begin{proof}
+	Wir beweisen den Satz durch Induktion über $n$:
+	\begin{description}
+		\item[IA ($n=1$):] \textcolor{white}{Bei einer Gruppengröße von $2^1=2$ Personen ist lediglich ein einziger Spielzug notwendig: Spieler $0$ beginnt, indem er Spieler $1$ antippt. Dieser scheidet aus, wodurch Spieler $0$ als letzter Spieler übrig bleibt.}
+		\item[IV:] Wir wissen für festes $n$: Bei einer Gruppe mit $2^n$ Personen bleibt am Ende der Spieler $0$ übrig.
+		\item[IS ($n\to n+1$):] Wir haben nun also eine Gruppe aus $2^{n+1} = 2\cdot 2^n$ Spielern und wollen erneut zeigen, dass am Ende der Spieler $0$ übrig bleibt. Dazu starten wir das Verfahren und stoppen es, sobald zum ersten Mal wieder der Spieler $0$ an der Reihe ist. Folgende Spieler sind jetzt noch übrig:
+			\[0, \underline{\phantom{2\quad}}, \underline{\phantom{4\quad}}, \underline{\phantom{6\quad}}, \underline{\phantom{8\quad}}, \dots , \underline{\phantom{ 2^{n+1}-2 }}\]
+		Also gerade alle Spieler mit einer \underline{\phantom{ geraden\quad }} Nummer. Teilen wir jetzt die Nummer jedes verbliebenen Spielers durch $2$, so sind wir in der Anfangssituation des Abzählverfahrens für eine Gruppe mit \underline{\phantom{$2^n$\quad}} Spielern. Und für eine solche Gruppe wissen wir wegen der Induktionsvoraussetzung bereits, welcher Spieler am Ende übrig bleibt - nämlich Spieler \underline{\phantom{$0$\quad}}. \qedhere
+	\end{description}
+\end{proof}
+
+Jetzt wissen wir also, was passiert, wenn die Gruppe zufällig aus $2^n$ Spielern für irgendeine natürliche Zahl $n$ besteht. Was ist aber in den anderen Fällen? Nun, diese Fälle können wir nun einfach auf einen Fall zurückführen, für den wir die Lösung bereits kennen:
+
+Angenommen unsere Gruppe besteht aus $2^n + k$ Personen (wobei $n$ und $k$ natürliche Zahlen sind und $k < 2^{n-1}$ gilt\footnote{\todo[inline]{Warum diese Einschränkung?}}). Dann lassen wir das Verfahren einfach so lange laufen, bis noch $2^n$ Spieler übrig sind. Und in diesem Moment wissen wir, welcher Spieler übrig bleiben wird - nämlich genau der, der jetzt gerade an der Reihe ist.
+
+\begin{aufgabe}{Wer bleibt übrig?}
+	Welcher Spieler bleibt nun übrig, wenn die Gruppe aus $2^n + k$ Personen besteht? Oder anders gefragt: Welcher Spieler ist an der Reihe, nachdem die ersten $k$ Spieler ausgeschieden sind?
+	
+	\emph{Hinweis:} Überlege dir die Antwort am besten erst einmal für ein paar kleine Beispiele: Welcher Spieler ist an der Reihe, nachdem der erste Spieler ausgeschieden ist? Wer ist dran, nachdem $2$ ausgeschieden sind? Wer, nachdem $3$ die Gruppe verlassen mussten? Kannst du jetzt ein Muster erkennen? Wenn du möchtest, kannst du deine Antwort wieder mit Hilfe einer einfachen Induktion beweisen.
+\end{aufgabe}
+
+\begin{aufgabe}{Zur Kontrolle}
+	Wenn wir keinen Fall vergessen haben, sollte es nun möglich sein, für jede denkbare Zahl an Spielern herauszufinden, wer bei dem Abzählverfahren am Ende übrig bleibt. Um das zu testen, versuche möglichst viele Felder der folgenden Tabelle auszufüllen (ohne das Verfahren, wie in \Cref{aufgabe:JosephusBspe} komplett durchzuspielen!):
+	\begin{center}
+	\renewcommand{\arraystretch}{2}\setlength{\tabcolsep}{1em}
+	\begin{tabular}{l||c|c|c|c|c|c|c|c}
+		Gruppengröße:	& 32 & 35 & 41 & 64 & 130 & 512 & 1025 & 2047 \\\hline
+		Letzte Person:	&   &   &   &   &   &   &    &    
+	\end{tabular}
+	\end{center}	
+	Möglicherweise ist es für diese Aufgabe hilfreich die ersten $2$er-Potenzen zu kennen: Diese sind:
+		\[2, 4, 8, 16, 32, 64, 128, 256, 512, 1014, 2048, 4096, \dots \]
+\end{aufgabe}
+
 
 % Alternativer/Zusätzlich möglicher letzter Abschnitt: Korrektheitsbeweise
 %Induktion verwendet man auch für Korrektheitsbeweise von Computerprogrammen:
