@@ -14,7 +14,7 @@
 
 \usepackage{enumitem}
 
-\usepackage{units}
+\usepackage{siunitx}
 
 \usepackage[protrusion=true,expansion=true]{microtype}
 
@@ -94,23 +94,119 @@ Dieses Skript enthält Lösungs\emph{hinweise} zum letzten Korrespondenzbrief. M
 
 Wenn du uns bereits deine eigenen Lösungsversuche geschickt hast (oder noch schicken wirst - das ist selbstverständlich immer noch möglich), dann versuchen wir natürlich auch dir mit unseren Korrekturen beim Verständnis der Aufgaben zu helfen. Es lohnt sich also uns deine Lösungen zu senden :-)
 
-\begin{aufgabe}{Der nächste Schritt}
-	\missingfigure{Bild des fünften Schrittes}
-\end{aufgabe}
+%\begin{aufgabe}{Der nächste Schritt}
+%	\missingfigure{Bild des fünften Schrittes}
+%\end{aufgabe}
+\addtocounter{aufgabennummer}{1}
 
 \begin{aufgabe}{Wie viele neue Münzen?}
-	$4\cdot (n+1)$ viele Münzen.
-	
-	Im obigen Beweis wird an der Stelle $(\ast)$ nur gesagt, dass die Zahl der neuen Münzen durch $4$ teilbar ist. Kannst du sogar herausfinden, wie viele Münzen es genau sind (in Abhängigkeit von $n$)?
-	
-	Anders gesagt: Wie viele zusätzliche Münzen benötigt man, um aus einen Viereck mit Seitenlänge $n$ eines mit Seitenlänge $n+1$ zu machen?
+	Man benötigt $4\cdot n$ zusätzliche Münzen - nämlich für jede der vier Seiten des Quadrates $n$ Stück.
 \end{aufgabe}
 
 \begin{aufgabe}{Zentrierte Dreieckszahl}
-	...
+	Wir zeigen: Die $n$-te zentrierte Dreieckszahl ist $1$ mehr als eine durch $3$ teilbare Zahl:
 	
-	Zeige, dass die zentrierte Dreieckszahl nie durch $3$ teilbar ist (du kannst sogar noch genauer zeigen, dass sie immer um $1$ größer ist als eine durch $3$ teilbare Zahl).
+	\begin{description}
+		\item[IA ($n=1$):] Das erste Dreieck besteht nur aus einer einzigen Münze. Und $1$ ist $1$ mehr als eine durch $3$ teilbare Zahl (nämlich $0$).
+		\item[IV (festes $n$):] Wir haben ein Dreieck mit Seitenlänge $n$, für das wir bereits wissen, dass die Zahl der dafür nötigen Münzen $x$ eins mehr ist als eine durch $3$ teilbare Zahl. Oder anders gesagt: $x-1$ \emph{ist} durch $3$ teilbar.
+		\item[IS ($n\to n+1$):] Wir nehmen das Dreieck mit Seitenlänge $n$ und machen daraus eines mit Seitenlänge $n+1$, indem wir an jeder Seite eine zusätzliche Reihe Münzen dazulegen. Dazu benötigen wir $3\cdot n$ Münzen. Also haben wir nun insgesamt $x + 3n$ Münzen verwendet und $(x+3n)-1 = (x-1)+3n$ ist durch $3$ teilbar.
+	\end{description}
 \end{aufgabe}
+
+
+\begin{aufgabe}{Eine Summenformel}
+	\begin{description}
+	\item[IA ($n=1$):] Es gilt:
+		\[1 = 1+3\cdot 0 = 1 + 3\cdot\frac{(1-1)\cdot 1}{2}\]
+	\item[IV (festes $n$):] Es gelte bereits:
+		\[1 + 1\cdot3 + 2\cdot3 + \dots + (n-1)\cdot 3 = 1 + 3\cdot\frac{(n-1)\cdot n}{2}\] 
+	\item[IS ($n\to n+1$):] Mit Hilfe der Induktionsvoraussetzung (IV) zeigen wir:
+		\begin{align*}
+			&1 + 1\cdot3 + 2\cdot3 + \dots + (n-1)\cdot 3 + (n+1-1)\cdot 3 = \\
+			=&  \left(1 + 1\cdot3 + 2\cdot3 + \dots + (n-1)\cdot 3\right) + n\cdot 3 = \\
+			\overset{\text{IV}}{=}& 1 + 3\cdot\frac{(n-1)\cdot n}{2} + n\cdot 3 = \\
+			=& 1 + 3\cdot \frac{(n-1)\cdot n + 2n}{2} = \\
+			=& 1 + 3\cdot \frac{n^2 - n + 2n}{2} = \\
+			=& 1 + 3\cdot \frac{n^2 + n}{2} = \\
+			=& 1 + 3\cdot\frac{n\cdot (n+1)}{2} = \\
+			=& 1 + 3\cdot\frac{((n+1)-1)\cdot (n+1)}{2}
+		\end{align*} 
+	\end{description}
+\end{aufgabe}
+
+\begin{aufgabe}{Déjà-vu}\label{aufg:dejavu}
+	$2n^2-2n+1$ ist die Zahl der Münzen im $n$-ten zentrierten Viereck.
+	
+	\todo[inline]{Beweis}
+	
+	$1 + 3\cdot\frac{(n-1)\cdot n}{2}$ ist die Zahl der Münzen im $n$-ten zentrierten Dreieck.
+	
+	\todo[inline]{Beweis}
+\end{aufgabe}
+
+\begin{aufgabe}{Induktion oder Nicht-Induktion?}
+	Durch Termumformung:
+		\[2n^2-2n+1 = n^2 + n^2-2n+1 = n^2 + (n-1)^2\]
+		
+	\todo[inline]{Induktionsbeweis/Bild}
+\end{aufgabe}
+
+
+\begin{aufgabe}{Ein flächenloses Dreieck}
+	\begin{description}
+		\item[IA:] Im ersten Schritt verliert das Dreieck ein Viertel seiner Fläche - übrig bleiben also noch $\frac{3}{4}\cdot \SI{4}{\cm\squared} = \SI{3}{\cm\squared} = \frac{9}{1+2}\,\si{\cm\squared}$.
+		\item[IV:] Nach dem $n$-ten Schritt habe das Dreieck noch eine Fläche von $\frac{9}{n+2}$ \si{\cm\squared} oder weniger.
+		\item[IS:] Nach einem weiteren Schritt (dem $(n+1)$-ten), beträgt die graue Fläche noch:
+			\begin{align*}
+			\frac{3}{4}\cdot\frac{9}{n+2}\,\si{\cm\squared} &= \frac{27}{4(n+2)}\,\si{\cm\squared} = \frac{27}{4n+8}\,\si{\cm\squared} = \frac{27}{3n+n+8}\,\si{\cm\squared} \leq \\
+			&\leq \frac{27}{3n+1+8}\,\si{\cm\squared} = \frac{27}{3n+9}\,\si{\cm\squared} = \frac{9}{(n+1)+2}\,\si{\cm\squared}
+			\end{align*}
+		\end{description}
+\end{aufgabe}
+
+\begin{aufgabe}{Einige Beispiele}\label{aufgabe:JosephusBspe}
+	\todo{Tabelle füllen}
+	\begin{center}
+		\renewcommand{\arraystretch}{2}\setlength{\tabcolsep}{1em}
+		\begin{tabular}{l||c|c|c|c|c|c|c|c|c}
+			Gruppengröße:	& 2	& 3 & 4 & 5 & 6 & 7 & 8 & 11 & 16 \\\hline
+			Letzte Person:	&   &   &   &   &   &   & 0 &    &    
+		\end{tabular}
+	\end{center}
+\end{aufgabe}
+
+\begin{aufgabe}{Das Josephus-Problem für $2$er-Potenzen}
+Der Beweis mit gefüllten Lücken:
+\begin{proof}
+	Wir beweisen den Satz durch Induktion über $n$:
+	\begin{description}
+		\item[IA ($n=1$):] Bei einer Gruppengröße von $2^1=2$ Personen ist lediglich ein einziger Spielzug notwendig: Spieler $0$ beginnt, indem er Spieler $1$ antippt. Dieser scheidet aus, wodurch Spieler $0$ als letzter Spieler übrig bleibt.
+		\item[IV:] Wir wissen für festes $n$: Bei einer Gruppe mit $2^n$ Personen bleibt am Ende der Spieler $0$ übrig.
+		\item[IS ($n\to n+1$):] Wir haben nun also eine Gruppe aus $2^{n+1} = 2\cdot 2^n$ Spielern und wollen erneut zeigen, dass am Ende der Spieler $0$ übrig bleibt. Dazu starten wir das Verfahren und stoppen es, sobald zum ersten Mal wieder der Spieler $0$ an der Reihe ist. Folgende Spieler sind jetzt noch übrig:
+		\[0, \underline{2}, \underline{4}, \underline{6}, \underline{8}, \dots , \underline{2^{n+1}-2}\]
+		Also gerade alle Spieler mit einer \underline{geraden} Nummer. Teilen wir jetzt die Nummer jedes verbliebenen Spielers durch $2$, so sind wir in der Anfangssituation des Abzählverfahrens für eine Gruppe mit \underline{$2^n$} Spielern. Und für eine solche Gruppe wissen wir wegen der Induktionsvoraussetzung bereits, welcher Spieler am Ende übrig bleibt - nämlich Spieler \underline{$0$}. \qedhere
+	\end{description}
+\end{proof}
+\end{aufgabe}
+
+\begin{aufgabe}{Wer bleibt übrig?}
+	\todo[inline]{Beweis einfügen für:}
+	Welcher Spieler bleibt nun übrig, wenn die Gruppe aus $2^n + k$ Personen besteht? Oder anders gefragt: Welcher Spieler ist an der Reihe, nachdem die ersten $k$ Spieler ausgeschieden sind?
+	
+	\emph{Hinweis:} Überlege dir die Antwort am besten erst einmal für ein paar kleine Beispiele: Welcher Spieler ist an der Reihe, nachdem der erste Spieler ausgeschieden ist? Wer ist dran, nachdem $2$ ausgeschieden sind? Wer, nachdem $3$ die Gruppe verlassen mussten? Kannst du jetzt ein Muster erkennen? Wenn du möchtest, kannst du deine Antwort wieder mit Hilfe einer einfachen Induktion beweisen.
+\end{aufgabe}
+
+\begin{aufgabe}{Zur Kontrolle}
+	\todo[inline]{Tabelle füllen}
+	\begin{center}
+		\renewcommand{\arraystretch}{2}\setlength{\tabcolsep}{1em}
+		\begin{tabular}{l||c|c|c|c|c|c|c|c}
+			Gruppengröße:	& 32 & 35 & 41 & 64 & 130 & 512 & 1025 & 2047 \\\hline
+			Letzte Person:	&   &   &   &   &   &   &    &    
+		\end{tabular}
+	\end{center}	
+\end{aufgabe}
+
 
 
 \end{document}

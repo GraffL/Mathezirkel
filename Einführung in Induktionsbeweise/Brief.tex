@@ -160,13 +160,13 @@ Insbesondere wissen wir damit, dass wir auch am Ende - wenn wir die gewünschte 
 	\begin{center}
 		\includegraphics[width=.4\textwidth]{bilder/ZentrierteDreieckszahlen.pdf}
 	\end{center}	
-	Zeige, dass die zentrierte Dreieckszahl nie durch $3$ teilbar ist (du kannst sogar noch genauer zeigen, dass sie immer um $1$ größer ist als eine durch $3$ teilbare Zahl).
+	Zeige, dass die \todo{Begriff zentrierte Dreieckszahl definieren oder anders umschreiben}zentrierte Dreieckszahl nie durch $3$ teilbar ist (du kannst sogar noch genauer zeigen, dass sie immer um $1$ größer ist als eine durch $3$ teilbare Zahl).
 \end{aufgabe}
 
 
 \section{Induktion mit Zahlen}
 
-Die Beweistechnik, die wir im vorangegangen Abschnitt kennengelernt haben, bezeichnet man als \emph{Beweis durch Induktion} oder \emph{Induktionsbeweis}. Bevor wir nun weitere Beispiele für solche Beweise kennenlernen, wann wir Induktion verwenden können und \todo{bessere Formulierung!}aus welchen Bausteinen sie besteht:
+Die Beweistechnik, die wir im vorangegangen Abschnitt kennengelernt haben, bezeichnet man als \emph{Beweis durch Induktion} oder \emph{Induktionsbeweis}. 
 
 Mittels Induktion kann man Aussagen über \glqq Objekte\grqq{} beweisen, die folgende Eigenschaft haben: Es gibt unter ihnen ein oder mehrere \glqq kleinste\grqq{} Objekte und alle anderen Objekte können wir aus diesen kleinsten durch einen oder mehrere Zwischenschritte erhalten.
 
@@ -174,8 +174,8 @@ Ein Induktionsbeweis besteht dann aus folgenden drei Komponenten:
 
 \begin{description}
 	\item[Induktionsanfang (IA):] Wir beweisen die Aussage für das oder die kleinsten Objekte von Hand.
-	\item[Induktionsvoraussetzung (IV):] \todo{weiter}
-	\item[Induktionsschluss (IS):] Wir beweisen, dass die Aussage durch die Zwischenschritte erhalten bleibt: \todo{weiter}
+	\item[Induktionsvoraussetzung (IV):] Wir nehmen an, dass die zu zeigende Aussage für Objekte einer bestimmten Größe bereits gilt. Zunächst sind das nur die kleinsten Objekte (für die haben wir es ja im Induktionsanfang gezeigt). Nach einmaligem Anwenden des Induktionsschrittes gilt es auch für alle Objekte, die wir durch \emph{einen} Schritt aus einem kleinsten Objekt erhalten können. Dann für alle Objekte, die wir durch \emph{zwei} Schritte erhalten können, usw.
+	\item[Induktionsschluss (IS):] Wir beweisen, dass die Aussage durch die Zwischenschritte, bei denen wir aus einem kleinen Objekt ein größeres machen, erhalten bleibt. Das heißt, wir zeigen die folgende Aussage: Wann immer wir ein (kleines) Objekt haben, für das die Aussage gilt (d.h. die Induktionsvoraussetzung), und daraus mit einem Schritt ein größeres Objekt machen - \emph{dann} gilt die Aussage auch für dieses neue Objekt.
 \end{description}
 
 
@@ -199,12 +199,12 @@ Wann immer man also auf eine Aussage der Form \glqq Für alle natürlichen Zahle
 	\end{description}
 \end{proof}
 
-\begin{aufgabe}{Durch $3$ teilbar?}\label{aufg:zentrierteDreieckszahl}
+\begin{aufgabe}{Eine Summenformel}\label{aufg:zentrierteDreieckszahl}
 	Zeige mittels Induktion die folgende Behauptung:
 	
 	Für jede natürliche Zahl $n$ gilt:
 	
-	\[1 + 1\cdot3 + 2\cdot3 + \dots + (n-1)\cdot 3 = 1 + 3\frac{(n-1)\cdot n}{2}\] 
+	\[1 + 1\cdot3 + 2\cdot3 + \dots + (n-1)\cdot 3 = 1 + 3\cdot\frac{(n-1)\cdot n}{2}\] 
 \end{aufgabe}
 
 \begin{aufgabe}{Déjà-vu}\label{aufg:dejavu}
@@ -219,8 +219,11 @@ Wann immer man also auf eine Aussage der Form \glqq Für alle natürlichen Zahle
 	Beweise: Für jede natürliche Zahl $n$ ist $2n^2-2n+1$ die Summe zweier direkt aufeinander folgender Quadratzahlen.
 	
 	Diese Aufgabe kannst du mit Induktion, aber auch direkt (durch Termumformung) zeigen. Wenn du \cref{aufg:dejavu} gelöst hast, kannst du die Behauptung hier sogar durch ein Bild zeigen!
+	
+	\emph{Hinweis:} Evtl. hilft es dir auch die Behauptung für ein paar kleine $n$ zu überprüfen - erkennst du dabei das allgemeine Muster?
 \end{aufgabe}
 
+\newpage
 
 \section{Anwendungen der Induktion}
 
@@ -249,12 +252,12 @@ Bevor du weiter liest: Kannst du dir so ungefähr vorstellen, wie der Induktions
 \begin{proof}
 	Wir beweisen den Satz durch Induktion über $n$:
 	\begin{description}
-		\item[IA ($n=1$):] Nach dem ersten Schritt besteht die Linie aus $4$ Strecken, die jeweils einem Drittel der Anfangsstrecke entsprechen, also jeweils \SI{1}{\cm} lang sind. Die Gesamtlänge der Linie beträgt daher $4 \cdot \SI{1}{\cm} = \SI{4}{\cm} = 3+1\si{\cm}$.
+		\item[IA ($n=1$):] Nach dem ersten Schritt besteht die Linie aus $4$ Strecken, die jeweils einem Drittel der Anfangsstrecke entsprechen, also jeweils \SI{1}{\cm} lang sind. Die Gesamtlänge der Linie beträgt daher $4 \cdot \SI{1}{\cm} = \SI{4}{\cm} = 3+1\,\si{\cm}$.
 		\item[IV:] Wir wissen für festes $n$: Nach dem $n$-ten Schritt hat die Linie die Länge $x$ \si{\cm}, wobei gilt $x \geq 3+n$.
 		\item[IS ($n\to n+1$):] Im $(n+1)$-ten Schritt machen wir mit jeder Teilstrecke das gleiche, was wir im ersten Schritt mit der Anfangsstrecke gemacht haben. Dadurch wird also jede Strecke durch ein Linienstück ersetzt, das $\frac{4}{3}$-mal so lang ist. Dabei wird natürlich auch die Gesamtlinie um den Faktor $\frac{4}{3}$ gestreckt. Nach dem Schritt gilt also für die Gesamtlänge:
 			\begin{align*}
-			\text{Länge } 	&= \frac{4}{3}\cdot x\si{\cm} \overset{\text{\textbf{IV}}}{\geq} \frac{4}{3}\cdot (3+n)\si{\cm} = (4+\frac{4}{3}\cdot n)\si{\cm} > (4+ n)\si{\cm} \\
-							&= (3+ (n+1))\si{\cm}
+			\text{Länge } 	&= \frac{4}{3}\cdot x\,\si{\cm} \overset{\text{\textbf{IV}}}{\geq} \frac{4}{3}\cdot (3+n)\,\si{\cm} = (4+\frac{4}{3}\cdot n)\,\si{\cm} > (4+ n)\,\si{\cm} \\
+							&= (3+ (n+1))\,\si{\cm}
 			\end{align*}
 		Und das ist genau das, was wir zeigen wollten!
 	\end{description}
@@ -267,22 +270,37 @@ Bevor du weiter liest: Kannst du dir so ungefähr vorstellen, wie der Induktions
 	\end{center}
 	Im Fraktalbrief wurde behauptet, dass die Fläche dieses Fraktals beliebig klein wird - und jetzt kannst du das auch beweisen! Zeige genauer die folgende Behauptung:
 	\begin{center}
-		Hat das Dreieck zu Beginn eine Fläche von \SI{4}{\cm\squared}, so hat es nach $n$ Schritten eine Fläche von $\frac{27}{3(n+2)}$ \si{\cm\squared} oder weniger.
+		Hat das Dreieck zu Beginn eine Fläche von \SI{4}{\cm\squared}, so hat es nach $n$ Schritten eine Fläche von $\frac{9}{n+2}$ \si{\cm\squared} oder weniger.
 	\end{center}
-	\todo[inline]{Tipps}
+	\emph{Erinnerung:} Im Fraktalbrief hatten wir bereits festgestellt, dass in jedem Schritt ein Vierte der grauen Fläche verloren geht. Hat man also vor dem Schritt eine Fläche von $x$ \si{\cm\squared}, so ist die Fläche danach noch $\frac{3}{4}\cdot x$ \si{\cm\squared}.
+	
+	\emph{Tipp:} Im Laufe des Beweises könnte eine Abschätzung der folgenden Form hilfreich sein: 
+		\[\frac{\boxed{\phantom{123}}}{\boxed{\phantom{123}} + n} \leq \frac{\boxed{\phantom{123}}}{\boxed{\phantom{123}} + 1} \]
+	wobei alles in den Boxed unverändert bleibt.
 \end{aufgabe}
 
-\todo[inline]{Beweise über Bäume? Evtl. als "echte" Bäume beschreiben und nur kurzer Hinweis auf Graphentheorie? Evtl. als Lückenbeweis}
 
 \subsection{Ein Abzählspiel}
 
-\todo[inline]{Einleitung: Stell dir vor du triffst dich mit einigen Freunden ...}
+Stell dir vor du bist im Mathe-Camp und möchtest mit einigen Freunden zusammen in einer kurzen Mathe-Pause Fußball spielen. Dazu müsst ihr nun festlegen, wer von euch der Team-Captain sein darf. Eine von euch schlägt nun das folgende Abzählverfahren vor um diese Person zu bestimmen:
 
-\todo[inline]{Ein Beispiel durchrechnen (mit Bildern!) Für $n$=8?}
+Zunächst setzt ihr euch alle in einen Kreis. Dann beginnt einer von euch und tippt seinen linken Nachbarn an, der daraufhin den Kreis verlässt. Dessen Nachbar tippt nun wiederum seinen linken Nachbarn an, der ebenfalls den Kreis verlässt, usw. Dieses Spiel spielt ihr, bis nur noch eine Person im Kreis übrig ist - diese ist dann der Team-Captain.
+
+Für den Fall von $8$ Spielern, habe ich dir das Beispiel in \Cref{Abb:JosephusBsp} als Bild dargestellt:
+
+\begin{figure}[h]\centering
+	\includegraphics[width=\textwidth]{bilder/Josephus.pdf}
+	\caption{Das Abzählverfahren für $8$ Personen. Die Person an der Reihe ist jeweils rot, der blaue Pfeil zeigt, wen sie antippt und graue Personen haben den Kreis bereits verlassen. Am Ende bleibt der Anfangsspieler ($0$) übrig.}
+	\label{Abb:JosephusBsp}
+\end{figure}
+
+Wie du siehst, bleibt in diesem Fall also der Spieler übrig, der auch angefangen hat. Ist das wohl immer so? Oder bleibt bei einer anderen Anfangszahl von Spielern auch manchmal jemand anders übrig? 
+
+Diese Frage wollen wir nun genauer untersuchen! Um leichter über die verschiedenen Spieler reden zu können, habe ich diese mit Zahlen $0, 1, 2, \dots$ durchnummeriert. Und zwar beginnend mit dem Spieler, der das Abzählfahren beginnt, und dann im Uhrzeigersinn den Kreis entlang.
 
 \begin{frage}
 	Verwendet eine Gruppe von $n$ Personen das oben beschriebene Abzählverfahren, welche Person bleibt dann am Ende übrig?
-	\footnote{Diese Fragestellung ist auch als Josephus-Problem bekannt, benannt nach dem jüdischen Historiker Flavius Josephus (aus dem ersten Jahrhundert nach Christus).}
+	\footnote{Diese Fragestellung ist auch als Josephus-Problem bekannt, benannt nach dem jüdischen Historiker Flavius Josephus (aus dem ersten Jahrhundert nach Christus).\footnote{Hilfe}}
 \end{frage}
 
 \begin{aufgabe}{Einige Beispiele}\label{aufgabe:JosephusBspe}
@@ -322,7 +340,7 @@ Zunächst einmal werden wir nur Gruppengrößen betrachten, die irgendeine $2$er
 
 Jetzt wissen wir also, was passiert, wenn die Gruppe zufällig aus $2^n$ Spielern für irgendeine natürliche Zahl $n$ besteht. Was ist aber in den anderen Fällen? Nun, diese Fälle können wir nun einfach auf einen Fall zurückführen, für den wir die Lösung bereits kennen:
 
-Angenommen unsere Gruppe besteht aus $2^n + k$ Personen (wobei $n$ und $k$ natürliche Zahlen sind und $k < 2^{n-1}$ gilt\footnote{\todo[inline]{Warum diese Einschränkung?}}). Dann lassen wir das Verfahren einfach so lange laufen, bis noch $2^n$ Spieler übrig sind. Und in diesem Moment wissen wir, welcher Spieler übrig bleiben wird - nämlich genau der, der jetzt gerade an der Reihe ist.
+Angenommen unsere Gruppe besteht aus $2^n + k$ Personen (wobei $n$ und $k$ natürliche Zahlen sind und $k < 2^{n-1}$ gilt\footnote{Warum diese Einschränkung? Nun, damit möchte ich sicherstellen, dass während der ersten $k$ Spielzüge keine Person doppelt vorkommt (warum sorgt diese Einschränkung dafür?) Dadurch können wir in unserer weiteren Analyse immer davon ausgehen, dass wir noch im ersten Durchlauf des Kreises sind}). Dann lassen wir das Verfahren einfach so lange laufen, bis noch $2^n$ Spieler übrig sind. Und in diesem Moment wissen wir, welcher Spieler übrig bleiben wird - nämlich genau der, der jetzt gerade an der Reihe ist.
 
 \begin{aufgabe}{Wer bleibt übrig?}
 	Welcher Spieler bleibt nun übrig, wenn die Gruppe aus $2^n + k$ Personen besteht? Oder anders gefragt: Welcher Spieler ist an der Reihe, nachdem die ersten $k$ Spieler ausgeschieden sind?
