@@ -92,11 +92,11 @@
 
 \section*{Codierungstheorie}
 
-Erinnerst du dich noch an den Korrespondenzbrief zum Thema \glqq Kryptographie\grqq{} (Brief~4)? In dem ging es darum eine Nachricht so zwischen zwei Personen auszutauschen, dass niemand anders diese Nachricht verstehen kann.
+Erinnerst du dich noch an den Korrespondenzbrief zum Thema \glqq Kryptographie\grqq{} (Brief~5)? In dem ging es darum eine Nachricht so zwischen zwei Personen auszutauschen, dass niemand anders diese Nachricht verstehen kann.
 
-In aktuellen Brief geht es nun ebenfalls darum, dass zwei Personen eine Nachricht austauschen wollen. Diesmal ist deren Sorge aber nicht, dass jemand anders die Nachricht lesen könnte, sondern dass die Nachricht beim Übertragen verfälscht wird. Das kann zum Beispiel passieren, wenn die Leitung, über die die Nachricht übertragen wird, kleinere Defekte aufweist. Oder wenn die Nachricht über eine weite Strecke übertragen werden muss.
+Im aktuellen Brief geht es nun ebenfalls darum, dass zwei Personen eine Nachricht austauschen wollen. Diesmal ist deren Sorge aber nicht, dass jemand anders die Nachricht lesen könnte, sondern dass die Nachricht beim Übertragen verfälscht wird. Das kann zum Beispiel passieren, wenn die Leitung, über die die Nachricht übertragen wird, kleinere Defekte aufweist. Oder wenn die Nachricht über eine weite Strecke übertragen werden muss.
 
-Der Sender der Nachricht möchte daher seine Nachricht auf eine solche Weise \emph{codieren}, dass der Empfänger es erkennen kann, wenn die Nachricht beim Übertragen verfälscht wurde. Dieses Ziel auf eine möglichst effiziente Weise zu erreichen ist das Thema der \glqq Codierungstheorie\grqq.
+Der Sender der Nachricht möchte daher seine Nachricht auf eine solche Weise \emph{codieren}, dass der Empfänger es erkennen kann, wenn die Nachricht beim Übertragen verfälscht wurde. Dieses Ziel auf eine möglichst effiziente Weise zu erreichen, ist das Thema der \glqq Codierungstheorie\grqq.
 
 
 \section{Einführung}
@@ -118,7 +118,7 @@ Wir können es also erkennen, wenn bei der Übertragung ein Fehler passiert - wi
 	Kannst du das oben beschriebene Verfahren so anpassen, dass ein einzelner Fehler vom Empfänger nicht nur erkannt, sondern auch korrigiert werden kann?
 \end{aufgabe}
 
-Diese einfachen Codierungsverfahren funktionieren zwar grundsätzlich, haben aber einen großen Nachteil. Die zu übertragenden Codes werden erheblich größer als die eigentliche Nachricht. Ein zentrales Ziel der Codierungstheorie ist es daher möglichst \emph{effiziente} Codierungsverfahren zu finden, die die Nachrichten nur ein wenig größer machen, aber es trotzdem erlauben Fehler zu erkennen (und evtl. sogar zu korrigieren).
+Diese einfachen Codierungsverfahren funktionieren zwar grundsätzlich, haben aber einen großen Nachteil. Die zu übertragenden Codes werden erheblich größer als die eigentliche Nachricht. Ein zentrales Ziel der Codierungstheorie ist es daher möglichst \emph{effiziente} Codierungsverfahren zu finden. Damit ist gemeint, dass wir die Nachrichten nur ein wenig größer machen, aber es trotzdem möglich ist Fehler zu erkennen (und evtl. sogar zu korrigieren).
 
 Bevor wir uns auf die Suche nach solchen Verfahren machen können, müssen wir erst noch genauer festlegen, wie wir die Effizienz eines Codierungsverfahrens bestimmen wollen. Dazu werden wir ab sofort nur noch Verfahren der folgenden Form betrachten: 
 \begin{enumerate}
@@ -140,10 +140,10 @@ Bevor wir uns auf die Suche nach solchen Verfahren machen können, müssen wir e
 \end{bsp}
 
 \begin{bem}
-	Tatsächlich werden wir uns für den Rest dieses Briefes nun nur noch damit beschäftigen, wie man ein einzelnes Nachrichtenwort codiert (und wieder decodiert). Möchte man längere Nachrichten übertragen, kann man die Nachricht dann schließlich immer wie oben beschrieben in kürzerer Wörter zerlegen und einzeln codieren.
+	Tatsächlich werden wir uns für den Rest dieses Briefes nun nur noch damit beschäftigen, wie man ein einzelnes Nachrichtenwort codiert (und wieder decodiert). Möchte man längere Nachrichten übertragen, kann man die Nachricht dann schließlich immer wie oben beschrieben in kürzere Wörter zerlegen und einzeln codieren.
 \end{bem}
 
-Für Verfahren der oben beschriebenen Form, können wir nun ganz einfach bestimmen, wie effizient sie sind:
+Für Verfahren der oben beschriebenen Form können wir nun ganz einfach bestimmen, wie effizient sie sind:
 
 \begin{defn}
 	Als \emph{Informationsrate} eines bestimmten Codierungsverfahrens bezeichnet man das Verhältnis aus der Länge der Nachrichtenwörter zur Länge der Codewörter, also die Zahl
@@ -154,7 +154,7 @@ Für Verfahren der oben beschriebenen Form, können wir nun ganz einfach bestimm
 \begin{bsp}
 	Für das Verdopplungscodierungsverfahren aus \Cref*{bsp:Verdopplungscodierung} ist die Informationsrate also:
 		\[\frac{\text{Länge eines Nachrichtenwortes}}{\text{Länge eines Codewortes}} = \frac{4}{8} = \frac{1}{2}\]
-	Eine mit diesem Verfahren codierte Nachricht benötigt also doppelt so viel Platz wie die ursprüngliche Nachricht.
+	Eine mit diesem Verfahren codierte Nachricht benötigt folglich doppelt so viel Platz wie die ursprüngliche Nachricht.
 \end{bsp}
 
 \begin{aufgabe}{}\label{aufgabe:verdreifachungsCodierungIR}
@@ -171,7 +171,7 @@ Als erstes wollen wir uns nun mit Verfahren beschäftigen, die es uns erlauben e
 		\texttt{1847} $\xrightarrow{\text{Codierung}}$ \texttt{1847\_\_\_}
 	\end{center}
 
-Im ersten Kapitel war dieses \glqq irgendetwas\grqq{} zum Beispiel einfach wieder das Wort selbst. Das ist aber ziemlich ineffizient, da das Wort dadurch gleich doppelt so lang wird. Besser wäre es da beispielsweise nur die Quersumme des Wortes (das ist die Summe der einzelnen Ziffern) anzuhängen. Sind die Wörter vier Ziffern lang, so kann die Quersumme höchstens $9+9+9+9=36$ sein - uns genügt also ein zweistelliges Anhängsel.
+Im ersten Kapitel zum Beispiel war dieses \glqq irgendetwas\grqq{} einfach wieder das Wort selbst. Das ist aber ziemlich ineffizient, da das Wort dadurch gleich doppelt so lang wird. Besser wäre es da beispielsweise nur die Quersumme des Wortes (das ist die Summe der einzelnen Ziffern) anzuhängen. Sind die Wörter vier Ziffern lang, so kann die Quersumme höchstens $9+9+9+9=36$ sein - uns genügt also ein zweistelliges Anhängsel.
 
 \begin{bsp}
 	Wollen wir die Nachricht $1701$ übertragen, so bilden wir die Quersumme $1+7+0+1=9$ und erhalten damit das Codewort $1701\textbf{09}$. Passiert beim Übertragen nun ein Fehler, so erhält der Empfänger beispielsweise die Nachricht $\red{8}70109$. Dieser kann nun leicht erkennen, ob ein Fehler aufgetreten ist, indem er einfach wieder die Quersumme der ersten vier Ziffern bildet ($8+7+0+1=16$) und mit den letzten beiden Ziffern vergleicht. Stimmen diese beiden Zahlen nicht überein, so weiß der Empfänger, dass beim Übertragen ein Fehler passiert sein muss.
@@ -182,13 +182,13 @@ Im ersten Kapitel war dieses \glqq irgendetwas\grqq{} zum Beispiel einfach wiede
 		\[172919 \quad-\quad 422416 \quad-\quad 939124  \quad-\quad 314109\]
 	Prüfe für jedes der Wörter, ob beim Übertragen ein Fehler aufgetreten ist. Falls nein, gib das ursprüngliche (uncodierte) Wort an. Falls ja, gib zwei Möglichkeiten an, wie das ursprüngliche Wort gelautet haben könnte (unter der Annahme, dass bei der Übertragung höchstens eine Ziffer verändert wurde). 
 	
-	Bei folgendem Codewort, ist bei der Übertragung etwas spezielles passiert - kannst du erklären was?
+	Bei folgendem Codewort ist bei der Übertragung etwas spezielles passiert - kannst du erklären was?
 		\[739150\]
 \end{aufgabe}
 
 Funktioniert dieses Verfahren auch? D.h. können wir damit wirklich jeden einzeln auftretenden Fehler erkennen? Ja, das können wir - denn wann immer eine einzelne Ziffer verändert wird, so ändert sich auch die Quersumme der ganzen Zahl. 
 
-Ist das Verfahren effizient? Nun, die Informationsrate ist $\frac{\text{Länge eines Nachrichtenwortes}}{\text{Länge eines Codewortes}} = \frac{4}{6} = \frac{2}{3}$ - also auf jeden Fall schonmal besser als bei dem bisherigen Verfahren.
+Ist das Verfahren effizient? Nun, die Informationsrate ist $\frac{\text{Länge eines Nachrichtenwortes}}{\text{Länge eines Codewortes}} = \frac{4}{6} = \frac{2}{3}$, also auf jeden Fall schonmal besser als bei dem bisherigen Verfahren.
 
 Tatsächlich geht es aber sogar noch besser: Denn wenn nur eine einzelne Ziffer in der Nachricht verfälscht wird, dann kann sich die Quersumme doch höchstens um $9$ verändern. Es genügt also völlig, wenn wir uns nur die Einerstelle der Quersumme merken (oder anders ausgedrückt: Den Rest der Quersumme bei Division durch $10$). Diese Ziffer am Ende der eigentlichen Nachricht wird oft als \emph{Prüfziffer} bezeichnet (da man mit ihr prüfen kann, ob die Nachricht korrekt übertragen wurde).
 
@@ -222,10 +222,10 @@ Die Nummer selbst besteht dabei aus den ersten $12$ Ziffern, die letzte Ziffer i
 
 Die eigentliche Prüfziffer erhalten wir dann, indem wir schauen wie viel von der berechneten Zahl noch bis zur nächsten vollen Zehnerzahl fehlt (im obigen Beispiel also $8$). Anders gesagt: Wir wählen die Prüfziffer gerade so, dass die abgewandelte Quersumme der vollständigen $13$-stelligen ISBN eine Zehnerzahl ist. 
 
-Wenn man eine angebliche ISBN genannt bekommt, muss man also nur prüfen, ob die abgewandelte Quersumme einer Zehnerzahl ist - wenn das nicht der Fall ist, muss die Nummer fehlerhaft sein.
+Wenn man eine angebliche ISBN genannt bekommt, muss man also nur prüfen, ob die abgewandelte Quersumme eine Zehnerzahl ist - wenn das nicht der Fall ist, muss die Nummer fehlerhaft sein.
 
 \begin{aufgabe}{}
-	Ich habe von drei Büchern in meinem Zimmer die ISBN abgetippt - bei welchen der Nummern ist mir dabei ein Fehler unterlaufen?
+	Ich habe von drei Büchern in meinem Zimmer die ISBN abgetippt. Bei welchen der Nummern ist mir dabei ein Fehler unterlaufen?
 	\begin{center}
 		978-349805241-6 \quad-\quad 978-357003412-9 \quad-\quad 978-184854956-2
 	\end{center}
@@ -235,7 +235,7 @@ Wenn man eine angebliche ISBN genannt bekommt, muss man also nur prüfen, ob die
 	Bestimme die Informationsrate von ISBN.
 \end{aufgabe}
 
-Nun wissen wir also wie das Codierungsverfahren der ISBN funktioniert. Aber welche Fehler kann man damit erkennen? 
+Nun wissen wir also, wie das Codierungsverfahren der ISBN funktioniert. Aber welche Fehler kann man damit erkennen? 
 
 Zunächst einmal kann man hier wieder alle Einzelfehler erkennen, d.h. wenn eine einzelne Ziffer der ganzen Zahl verfälscht wurde. Bei den Stellen, die unverändert in die Quersumme aufgenommen werden, ist das recht klar - denn hier gilt einfach das gleiche wie bei dem Verfahren vom Beginn dieses Kapitels. Was aber ist mit den Stellen, an denen die Ziffer zunächst mit $3$ multipliziert wird?
 
@@ -252,7 +252,7 @@ Nun, wie du an obiger Tabelle sehen kannst, führt das Multiplizieren mit $3$ da
 \begin{aufgabe}{Warum ausgerechnet 3?}
 	Statt jede zweite Ziffer mit $3$ zu multiplizieren, könnte man ja beispielsweise auch jede zweite Ziffer mit $2$ multiplizieren. Kannst du dir vorstellen, warum tatsächlich aber die $3$ statt der $2$ gewählt wurde? 
 	
-	\emph{Tipp:} Schreibe dir dazu eine Tabelle für Multiplikation mit $2$ wie die oben für Multiplikation mit $3$ auf. Überlege dir dann, ob das obige Argument für die Korrektheit des Verfahren immer noch richtig ist.
+	\emph{Tipp:} Schreibe dir dazu eine Tabelle für die Multiplikation mit $2$ auf. Orientiere dich dabei an der Tabelle für die Multiplikation mit $3$. Überlege dir dann, ob das obige Argument für die Korrektheit des Verfahren immer noch richtig ist.
 	
 	Kannst du eine andere Zahl finden, die man statt der $3$ verwenden könnte (und die eine genauso gute Fehlererkennung ermöglichen würde)?
 \end{aufgabe}
@@ -269,12 +269,12 @@ Das Codierungsverfahren der ISBN ist also zumindest schon mal so gut wie das vom
 	Das Vertauschen zweier benachbarter Ziffern führt also tatsächlich zu unterschiedlichen Prüfziffern.
 \end{bsp}
 
-Dieses Erkennen von Ziffernvertauschungen ist also der Grund, warum für die ISBN die abgewandelte Quersumme zur Berechnung der Prüfziffer verwendet wird. Leider ist dieses Verfahren aber nicht ganz perfekt. Es gibt nämlich einige wenige Paare von Ziffern, bei denen sich die Quersumme nicht ändert, wenn man diese beiden Ziffern vertauscht. 
+Dieses Erkennen von Ziffernvertauschungen ist der Grund, warum für die ISBN die abgewandelte Quersumme zur Berechnung der Prüfziffer verwendet wird. Leider ist dieses Verfahren aber nicht ganz perfekt. Es gibt nämlich einige wenige Paare von Ziffern, bei denen sich die Quersumme nicht ändert, wenn man diese beiden Ziffern vertauscht. 
 
 Ein Beispiel für ein solches Ziffernpaar sind $1$ und $6$. Beginnt eine ISBN mit der Folge $16$, so trägt dies $1+3\cdot 6=19$  zur abgewandelten Quersumme bei. Vertauscht man die beiden Ziffern, erhält man den Anfang $61$, welcher $6+3\cdot 1=9$ zur abgewandelten Quersumme beiträgt. Diese beiden Zahlen sind zwar nicht gleich, sie haben aber die gleiche Einerstelle und führen daher zur gleichen Prüfziffer. Also können wir es nicht erkennen, wenn wir beim Abtippen einer ISBN die zwei benachbarten Ziffern $1$ und $6$ vertauschen.
 
 \begin{aufgabe}{Andere Problempaare}
-	Kannst du noch weitere Ziffernpaar finden, deren Vertauschung wir ebenfalls nicht erkennen können?
+	Kannst du noch weitere Ziffernpaare finden, deren Vertauschung wir ebenfalls nicht erkennen können?
 	
 	\emph{Zusatzaufgabe:} Kannst du \emph{alle} solchen Paare finden und begründen, warum dies auch wirklich alle sind?
 \end{aufgabe}
@@ -294,7 +294,7 @@ Dazu benötigen wir nun mehr als nur eine einzelne Prüfziffer! Das Verfahren, d
 \begin{enumerate}
 	\item Nimm das Nachrichtenwort und schreibe es in ein Quadrat:
 		\[7185 \xrightarrow{\hspace{2em}} \begin{array}{cc}7 & 1 \\8 & 5\end{array}\]
-	\item Berechne für jede Zeile und jede Spalte eine eigene Prüfsumme (normale Quersumme, dann Rest bei Division durch $10$) und schreibe diese rechts neben die jeweilige Zeile bzw. unter die entsprechende Zeile:
+	\item Berechne für jede Zeile und jede Spalte eine eigene Prüfsumme (normale Quersumme, dann Rest bei Division durch $10$) und schreibe diese rechts neben die jeweilige Zeile bzw. unter die entsprechende Spalte:
 		\[\begin{array}{cc}7 & 1 \\8 & 5\end{array} \xrightarrow{\text{Berechnen der Prüfziffern}} \begin{array}{ccc}7 & 1 & 8\\8 & 5 & 3 \\ 5 & 6 &\end{array}\]
 	\item Passiert nun beim Übertragen ein Fehler, so werden dadurch gleich zwei Prüfsummen falsch (eine für die entsprechende Spalte und eine für die entsprechende Zeile). Dadurch kann der Empfänger erschließen, an welcher Stelle der Fehler passiert sein muss und kann diese Stelle so verbessern, dass die Prüfsummen wieder korrekt sind:
 		\[\begin{array}{ccc}7 & 1 & 8\\8 & 5 & 3 \\ 5 & 6 &\end{array} \xrightarrow{\text{Übertragung (Fehler bei 8)}} \begin{array}{ccc}7 & 1 & 8\\5 & 5 & {\color{red}3} \\ {\color{red}5} & 6 &\end{array}\]
@@ -312,9 +312,9 @@ Dazu benötigen wir nun mehr als nur eine einzelne Prüfziffer! Das Verfahren, d
 \end{aufgabe}
 
 \begin{aufgabe}{}
-	Genau genommen habe ich bei der Beschreibung des Codierungsverfahrens oben ein wenig geschummelt: Bei der Fehlererkennung habe ich nämlich so getan als könnten Fehler nur im ursprünglichen Nachrichtenwort auftreten. Tatsächlich kann aber natürlich genauso gut eine der Prüfziffern beim Übertragen verfälscht werden. 
+	Genau genommen habe ich bei der Beschreibung des Codierungsverfahrens oben ein wenig geschummelt: Bei der Fehlererkennung habe ich nämlich so getan, als könnten Fehler nur im ursprünglichen Nachrichtenwort auftreten. Tatsächlich kann aber natürlich genauso gut eine der Prüfziffern beim Übertragen verfälscht werden. 
 	
-	Kann der Empfänger auch solch einen Fehler erkennen und beheben (also einen Fehler, bei dem also eine einzelne Prüfsumme verfälscht wurde, der Rest der Nachricht aber korrekt geblieben ist)? Und wenn ja, wie?
+	Kann der Empfänger auch solch einen Fehler erkennen und beheben (also einen Fehler, bei dem eine einzelne Prüfsumme verfälscht wurde, der Rest der Nachricht aber korrekt geblieben ist)? Und wenn ja, wie?
 \end{aufgabe}
 
 \end{document}
