@@ -119,6 +119,7 @@ Wie würdest du laufen? Warum glaubst du, dass das der kürzeste Weg ist? Und wi
 Wie du vielleicht schon merkst, lassen sich diese Fragen so nicht wirklich mathematisch präzise beantworten. Wir müssen also erstmal noch das Problem etwas präziser formulieren. Als ersten Schritt wollen wir dazu den echten Stadtplan durch ein etwas übersichtlicheres Bild ersetzen:
 
 \begin{center}
+	\begin{adjustbox}{max width=.5\textwidth}
 	\begin{tikzpicture}[scale=.8]
 		\node[draw,circle](s) at (0,0) {Hbf};
 		\node[draw,circle](1) at (4,0) {$1$};
@@ -150,6 +151,7 @@ Wie du vielleicht schon merkst, lassen sich diese Fragen so nicht wirklich mathe
 		\edge{8}{t}{8}
 		\edge{9}{t}{1}
 	\end{tikzpicture}
+	\end{adjustbox}
 \end{center}
 
 In diesem Bild haben wir die Straßen durch gerade Linien und die Kreuzungen durch Kreise dargestellt.\footnote{Damit das Bild nicht zu unübersichtlich wird habe ich zudem auch noch einige Straßen weggelassen.} Außerdem haben wir auf jede Linie eine Zahl geschrieben -- diese soll aussagen wie lang diese Straße ist, das heißt wie lange man von einer Kreuzung zur nächsten braucht. 
