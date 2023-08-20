@@ -1,0 +1,265 @@
+\documentclass[a4paper,ngerman,12pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+%\usepackage[ansinew]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,mathtools,stmaryrd,color,graphicx}
+\usepackage{setspace}
+\usepackage{bussproofs}
+\usepackage{array}
+\usepackage{comment}
+\usepackage{wrapfig}
+
+\usepackage{enumitem}
+
+\usepackage{units}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\newcommand{\IR}{\mathbb{R}}
+\newcommand{\IC}{\mathbb{C}}
+\newcommand{\IZ}{\mathbb{Z}}
+\newcommand{\IN}{\mathbb{N}}
+\newcommand{\IQ}{\mathbb{Q}}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[]
+\newtheorem{axiom}[defn]{Axiom}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\RequirePackage{framed}
+\newtheorem{aufg}{Aufgabe}
+\definecolor{shadecolor}{rgb}{.96,.96,.96}
+\newenvironment{aufgabe}[1][]
+		{\begin{shaded}\vspace{-0.3cm}\begin{aufg}\emph{#1} \par\medskip}
+		{\end{aufg}\vspace{-0.3cm}\end{shaded}}
+\newtheorem{zaufg}{Zusatzaufgabe}
+	
+\newenvironment{spiel}[1][]{\begin{framed}\textbf{#1:}\\}{\end{framed}}
+
+
+\theoremstyle{plain}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{motto}[defn]{Motto}
+\newtheorem{wunder}[defn]{Wunder}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+\newtheorem{frage}[defn]{Frage}
+
+\theoremstyle{remark}
+\newtheorem{bem}[defn]{Bemerkung}
+\newtheorem{beob}[defn]{Beobachtung}
+
+	
+\newtheorem*{antwort}{Antwort}
+
+%\newlength{\aufgabenskip}
+%\setlength{\aufgabenskip}{1.4em}
+%\newcounter{aufgabennummer}
+%\newenvironment{aufgabe}[1]{
+%	\addtocounter{aufgabennummer}{1}
+%	\textbf{Aufgabe \theaufgabennummer.} \emph{#1} \par
+%}{\vspace{\aufgabenskip}}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\setlength\unitlength{1cm}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{tkz-euclide}
+\usepackage{adjustbox}
+\usepackage{algorithm2e}
+\usepackage{pgfplots}
+
+\RequirePackage{geometry}
+\geometry{textwidth=17.0cm,textheight=25cm,footskip=1.5cm}
+
+
+\newcommand{\kante}[2]{#1{-}#2}
+\newcommand{\edge}[3]{\draw[thick] (#1) --node[rectangle,fill=gray!10]{$#3$} (#2);}
+
+\begin{document}
+	\pagestyle{empty}
+	\begin{center}
+		\begin{tikzpicture}[scale=4.5]
+			\draw[->,thick](-1.2,0) -- (1.2,0) node[below]{$x$};
+			\draw[ultra thick](1,-.05) -- ++(0,.1) node[right]{$1$};
+			\draw[->,thick](0,-1.2) -- (0,1.2) node[right]{$y$};
+			\draw[ultra thick](.05,1) -- ++(-.1,0) node[above ]{$1$};
+			\draw[thick](0,0) circle (1);
+			\coordinate(A) at(0,0) {};
+			\node at($(A)+(-.1,-.1)$){$A$};
+			\coordinate(B) at(0.866,0) {};
+			\node at($(B)+(.05,-.1)$){$B$};
+			\coordinate(C) at(0.866,0.5) {};
+			\node at($(C)+(.1,.1)$){$C$};
+			\draw[thick](A) -- (B) -- (C) --cycle;
+			
+			\tkzMarkAngle[size=0.5cm, mark=none](B,A,C)
+			\tkzLabelAngle[pos = 0.4](B,A,C){$\alpha$} 
+			
+			\draw[ultra thick,blue](A) -- node[below]{$\cos(\alpha)$}(B);
+			\draw[ultra thick,red](B) -- node[right=.3]{$\sin(\alpha)$}(C);
+		\end{tikzpicture}
+	
+		\vspace{2em}
+	
+		\begin{tikzpicture}[scale=4.5]
+			\draw[->,thick](-1.2,0) -- (1.2,0) node[below]{$x$};
+			\draw[ultra thick](1,-.05) -- ++(0,.1) node[right]{$1$};
+			\draw[->,thick](0,-1.2) -- (0,1.2) node[right]{$y$};
+			\draw[ultra thick](.05,1) -- ++(-.1,0) node[above ]{$1$};
+			\draw[thick](0,0) circle (1);
+			\coordinate(A) at(0,0) {};
+			\node at($(A)+(-.1,-.1)$){$A$};
+			\coordinate(B) at(0.866,0) {};
+			\node at($(B)+(.05,-.1)$){$B$};
+			\coordinate(C) at(0.866,0.5) {};
+			\node at($(C)+(.1,.1)$){$C$};
+			\draw[thick](A) -- (B) -- (C) --cycle;
+			
+			\tkzMarkAngle[size=0.5cm, mark=none](B,A,C)
+			\tkzLabelAngle[pos = 0.4](B,A,C){$\alpha$} 
+			
+			\draw[ultra thick,blue](A) -- node[below]{$\cos(\alpha)$}(B);
+			\draw[ultra thick,red](B) -- node[right=.3]{$\sin(\alpha)$}(C);
+		\end{tikzpicture}
+	\end{center}
+
+\clearpage
+
+\begin{center}
+	\begin{tikzpicture}[scale=4.5]
+		\draw[->,thick](-1.2,0) -- (1.2,0) node[below]{$x$};
+		\draw[->,thick](0,-1.2) -- (0,1.2) node[right]{$y$};
+		\draw[thick](0,0) circle (1);
+		\coordinate(O) at(0,0);
+		\coordinate(A) at(0.866,0.5);
+		\coordinate(B) at(0.94,-0.342);
+		\coordinate(1) at (1,0);
+		
+		\tkzMarkAngle[size=0.45cm, mark=none](1,O,A)
+		\tkzLabelAngle[pos = 0.35](1,O,A){$\alpha$} 
+		\tkzMarkAngle[size=0.5cm, mark=none](B,O,1)
+		\tkzLabelAngle[pos = 0.35](B,O,1){$\beta$} 
+		
+		\draw[thick](O) -- (A);
+		\draw[thick](A) -- (A |- O) coordinate(A');
+		\tkzMarkRightAngle[german,size=.08](1,A',A);
+		
+		\draw[thick](O) -- (B);
+		\draw[thick](A') -- ($(O)!(A')!(B)$) coordinate(B');
+		\tkzMarkRightAngle[german,size=.08](B,B',A');
+		\draw[thick](A) -- ($(O)!(A)!(B)$) coordinate(B'');
+		\tkzMarkRightAngle[german,size=.08](A,B'',O);
+		
+		\draw[thick](A') -- ($(A)!(A')!(B'')$) coordinate(A'');
+		\tkzMarkRightAngle[german,size=.08](A',A'',A);
+	\end{tikzpicture}
+\end{center}
+
+\vspace{2em}
+
+\begin{center}
+	\begin{tikzpicture}[scale=4.5]
+		\draw[->,thick](-1.2,0) -- (1.2,0) node[below]{$x$};
+		\draw[->,thick](0,-1.2) -- (0,1.2) node[right]{$y$};
+		\draw[thick](0,0) circle (1);
+		\coordinate(O) at(0,0);
+		\coordinate(A) at(0.866,0.5);
+		\coordinate(B) at(0.94,-0.342);
+		\coordinate(1) at (1,0);
+		
+		\tkzMarkAngle[size=0.45cm, mark=none](1,O,A)
+		\tkzLabelAngle[pos = 0.35](1,O,A){$\alpha$} 
+		\tkzMarkAngle[size=0.5cm, mark=none](B,O,1)
+		\tkzLabelAngle[pos = 0.35](B,O,1){$\beta$} 
+		
+		\draw[thick](O) -- (A);
+		\draw[thick](A) -- (A |- O) coordinate(A');
+		\tkzMarkRightAngle[german,size=.08](1,A',A);
+		
+		\draw[thick](O) -- (B);
+		\draw[thick](A') -- ($(O)!(A')!(B)$) coordinate(B');
+		\tkzMarkRightAngle[german,size=.08](B,B',A');
+		\draw[thick](A) -- ($(O)!(A)!(B)$) coordinate(B'');
+		\tkzMarkRightAngle[german,size=.08](A,B'',O);
+		
+		\draw[thick](A') -- ($(A)!(A')!(B'')$) coordinate(A'');
+		\tkzMarkRightAngle[german,size=.08](A',A'',A);
+	\end{tikzpicture}
+\end{center}
+
+\clearpage
+
+	\null\vspace{2cm}
+
+	\begin{center}
+		\begin{tikzpicture}[scale=10]
+			\coordinate[label=below left:$A$](A) at (0,0);
+			\coordinate[label=below right:$B$](B) at (0.866,0);
+			\coordinate[label=right:$C$](C) at (0.866,.5);
+			\draw[thick] (A) -- (B) -- (C) --node[above]{$1$} cycle;
+			
+			\coordinate (E') at (.3,1);
+			\draw[thick](C) -- ($(E')!(C)!(A)$) coordinate[label=above:$E$](E);
+			\draw[thick](A) -- (E);
+			\coordinate[label=above right:$D$](D)at($(B)!(E)!(C)$);
+			\coordinate[label=above left:$F$](F)at($(A)!(E)!(0,1)$);
+			\draw[thick](C)--(D)--(F)--(A);
+			
+			\tkzMarkAngle[size=0.25cm, mark=none](B,A,E)
+			\tkzLabelAngle[pos = 0.2](B,A,E){$\alpha$} 
+			\tkzMarkAngle[size=0.35cm, mark=none](C,A,E)
+			\tkzLabelAngle[pos = 0.3](C,A,E){$\beta$} 
+			
+			\tkzMarkRightAngle[german,size=.08](C,B,A);
+			\tkzMarkRightAngle[german,size=.08](A,E,C);
+			\tkzMarkRightAngle[german,size=.08](F,D,B);
+			\tkzMarkRightAngle[german,size=.08](A,F,D);
+			\tkzMarkRightAngle[german,size=.08](B,A,F);
+		\end{tikzpicture}
+	\end{center}
+
+	\vspace{4cm}
+
+	\begin{center}
+		\begin{tikzpicture}[scale=8]
+			\coordinate(O) at (0,0);
+			\coordinate(A) at (1.2,.5);
+			\coordinate(B) at (1.2,-.5);
+			\coordinate(C) at (1.2,0);
+			
+			\draw[thick] (O) -- node[above]{$1$} (A) -- (B) --node[below]{$1$} cycle;
+			\draw[thick] (O) -- (C);
+			
+			\tkzMarkAngle[size=0.3cm, mark=none](C,O,A)
+			\tkzLabelAngle[pos = 0.25](C,O,A){$\alpha$} 
+			\tkzMarkAngle[size=0.3cm, mark=none](B,O,C)
+			\tkzLabelAngle[pos = 0.25](B,O,C){$\alpha$} 
+			
+			\draw[thick] (A) -- ($(O)!(A)!(B)$) coordinate(A');
+			\tkzMarkRightAngle[german,size=.08](A,A',O);
+			
+			\draw[thick] (C) -- ($(O)!(C)!(B)$) coordinate(C');
+			\tkzMarkRightAngle[german,size=.08](B,C',C);
+		\end{tikzpicture}
+	\end{center}
+
+\end{document}

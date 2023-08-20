@@ -1,5 +1,5 @@
 - Endliche Automaten (evtl. mit Ausgabe für einfache Additionsautomaten? (sind Binärzahlen bereits bekannt?))
-	- evtl. einfache Grammatiken?
+	* evtl. einfache Grammatiken?
 	
 - einfache Spieltheorie? z.B. Nim-Spiele ( http://timbaumann.info/mathezirkel-kurs/skript.pdf , https://www.youtube.com/watch?v=9KABcmczPdg ), Kuchenteilen (-> Sven), Nash-Gleichgewichte (Gefangenendilemma, Koordinationsspiel), Sprouts ( https://de.wikipedia.org/wiki/Sprouts ), TicTacTo
 
@@ -13,3 +13,22 @@
 - Kachelungen/Parkettierungen
 
 - Codierungstheorie: ISBN, Prüfziffern, Vertauschungserkennung, Strichcode, QR-Code
+
+- Zahlenthorie: 
+	* Satz von Euler /a,n teilerfremd => a^\phi(n) = 1 mod n (benötigtes Wissen: Teilerfremd, modulo, eulersche Phi-Funktion)
+	* Bezout-Darstellung: \exists r,s: ggT(a,b) = at+bs (benötigtes Wissen: ggT, ggT(a,b) = ggT(b,a mod b), ggT(a,0) = a)
+	* Aufgaben zu diesem Themenbereich: 
+		** Zeige: Es gibt unendlich viele Primzahlen (Tipps: 1: Seien p und q zwei Primzahlen, baue dann eine Zahl x, die weder von p noch von q geteilt wird, 2: Starte mit der Annahme es gäbe nur endlich viele Primzahlen...)
+		** Finde ein Gegenbeispiel zum Satz von Euler (wenn man teilerfremd weglässt)
+		** Zeige das Lemma von Euklid: Primzahl p teil a*b => p teilt a oder p teilt b (evtl. mit Rückrichtung?)
+		** Wie viele alternative Bezout-Darstellungen gibt es? Wie findet man die?
+		** Kleiner Satz von Fermat
+		** Eindeutigkeit der Primfaktorzerlegung
+		** Multiplikativität der eulerschien Phi-Funktion
+		** Erweiterter euklidischer Algorithmus
+		** geometrische Anschauung für den Euklidischen Algorithmus
+		** Modulo-Rechenregeln
+		** Was ist die letzte Ziffer von ..^...
+	
+	
+- Spaß mit dem Pascalschen Dreieck
