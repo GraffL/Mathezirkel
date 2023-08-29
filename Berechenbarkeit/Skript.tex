@@ -125,9 +125,9 @@
 	
 	\underline{Eingabe:} Ein Wort $w \in \Sigma^*$
 	
-	\underline{Ausgabe:} Ja, falls $w \in S$, und nein, sonst
+	\underline{Ausgabe:} Ja, falls $w \in S$, und Nein, sonst
 	
-	Wir sagen, dass eine Sprache $S$ \emph{entscheidbar} ist, wenn es einen Algorithmus (ein Computerprogramm) gibt, dass das Entscheidungsproblem zu dieser Sprache löst.
+	Wir sagen, dass eine Sprache $S$ \emph{entscheidbar} ist, wenn es einen Algorithmus (ein Computerprogramm) gibt, das das Entscheidungsproblem zu dieser Sprache löst.
 \end{defn}
 
 \begin{aufg}
@@ -147,6 +147,12 @@
 	
 	Was denkst du: Welche dieser Sprachen ist entscheidbar?
 \end{aufg}
+
+\begin{zaufg}
+	Zeige, dass es unentscheidbare Sprachen geben muss. 
+	
+	\textit{Hinweis 1:} Überlege dir wie viele Computerprogramme es gibt und wie viele Sprachen.	
+\end{zaufg}
 
 \begin{beob}
 	Wenn eine Sprache entscheidbar ist, ist klar wie wir das beweisen können: Wir müssen einfach nur ein entsprechendes Programm angeben (wobei es natürlich unter Umständen sehr schwer ist, so ein Programm zu finden).
@@ -180,10 +186,10 @@ Solche endlichen Automaten kann man gut als gerichtete Graphen darstellen, zum B
 	\end{tikzpicture}
 \end{center}
 
-Hierbei sind $q_0, q_1, q_2, q_3$ die \emph{Zustände} des Automaten, $q_0$ ist der Startzustand und $q_2$ und $q_3$ sind die (akzeptierenden) Endzustände. Der Automat funktioniert nun wie folgt: Er beginnt im Startzustand $q_0$ und liest den ersten Buchstaben des Eingabewortes. Dann läuft es entlang einer Kante, auf der dieser Buchstabe steht, zum nächsten Zustand und wiederholt den Vorgang hier mit dem zweiten Buchstaben des Wortes. Kommt der Automat in einen Zustand, von dem aus es keine ausgehende Kante mit dem aktuellen Buchstaben gibt, so verwirft er das Wort (antwortet also mit Nein). Schafft er es das Wort bis zum Ende zu lesen, so antwortet er mit Ja, falls er sich in diesem Moment in einem Endzustand befindet, und mit Nein sonst.
+Hierbei sind $q_0, q_1, q_2, q_3$ die \emph{Zustände} des Automaten, $q_0$ ist der Startzustand und $q_2$ und $q_3$ sind die (akzeptierenden) Endzustände. Der Automat funktioniert nun wie folgt: Er beginnt im Startzustand $q_0$ und liest den ersten Buchstaben des Eingabewortes. Dann läuft er entlang einer Kante, auf der dieser Buchstabe steht, zum nächsten Zustand und wiederholt den Vorgang hier mit dem zweiten Buchstaben des Wortes. Kommt der Automat in einen Zustand, von dem aus es keine ausgehende Kante mit dem aktuellen Buchstaben gibt, so verwirft er das Wort (antwortet also mit Nein). Schafft er es das Wort bis zum Ende zu lesen, so antwortet er mit Ja, falls er sich in diesem Moment in einem Endzustand befindet, und mit Nein sonst.
 
 \begin{bsp}
-	Wir legen unserem Automaten das Wort $aabc$ vor. Der Automat liest den ersten Buchstaben ($a$) und wechselt zum Zustand $q_1$. Der Automat liest den zweiten Buchstaben ($a$) und landet erneut im Zustand $a$. Danach liest es den dritten Buchstaben ($b$) und wechselt in den Zustand $q_2$ und schließlich den letzten Buchstaben ($c$) und wechselt in den Zustand $q_3$. Da dies ein Endzustand (und das Wort zu Ende) ist, antwortet der Automat mit Ja.
+	Wir legen unserem Automaten das Wort $aabc$ vor. Der Automat liest den ersten Buchstaben ($a$) und wechselt zum Zustand $q_1$. Der Automat liest den zweiten Buchstaben ($a$) und landet erneut im Zustand $a$. Danach liest er den dritten Buchstaben ($b$) und wechselt in den Zustand $q_2$ und schließlich den letzten Buchstaben ($c$) und wechselt in den Zustand $q_3$. Da dies ein Endzustand (und das Wort zu Ende) ist, antwortet der Automat mit Ja.
 \end{bsp}
 
 \begin{aufg}
@@ -192,7 +198,7 @@ Hierbei sind $q_0, q_1, q_2, q_3$ die \emph{Zustände} des Automaten, $q_0$ ist 
 \end{aufg}
 
 Mit etwas Überlegen erkennen wir, dass die Sprache aller Wörter, die dieser Automat akzeptiert wie folgt lautet:
-	\[\{a^nb^m, a^nb^mc, b^n, b^nc, cb^k, cb^kc \,|\, mn \geq 1, k \geq 0\}\]
+	\[\{a^nb^m, a^nb^mc, b^n, b^nc, cb^k, cb^kc \,|\, m,n \geq 1, k \geq 0\}\]
 Hierbei steht beispielsweise $a^nb^m$ für das Wort, das aus $n$ $a$s gefolgt von $m$ $b$s besteht. Also zum Beispiel $a^3b^5 = aaabbbbb$.
 
 \begin{aufg}
@@ -223,7 +229,7 @@ Wie können wir beweisen, dass eine Sprache von keinem endlichen Automaten entsc
 	Wähle als $n$ die Anzahl der Zustände von $M$. Lesen wir ein Wort $w$ der Länge $n$ oder mehr ein, so muss $M$ nach dem Einlesen der ersten $n$ Buchstaben mindestens einen Zustand doppelt besuchen (Schubfachprinzip!). Sei $q$ dieser Zustand. Dann definieren wir $u$ als den Teil von $w$, den $M$ gelesen hat als es $q$ zum ersten Mal besucht, $v$ als den Teil bis zum nächsten Besuch von $q$ und $z$ als den Rest. Man kann sich nun überlegen, dass diese Zerlegung alle gewünschten Eigenschaften erfüllt.
 \end{proof}
 
-Anschaulich gesprochen besagt, dass Pumping-Lemma, dass in jeder Sprache, die von einem endlichen Automaten entschieden wird, alle ausreichend langen Worte ein Mittelstück besitzen, dass man beliebig oft auf- oder abpumpen kann.
+Anschaulich gesprochen besagt das Pumping-Lemma, dass in jeder Sprache, die von einem endlichen Automaten entschieden wird, alle ausreichend langen Worte ein Mittelstück besitzen, das man beliebig oft auf- oder abpumpen kann.
 
 Für sich genommen ist das keine besonders interessante Eigenschaft. Wir können sie aber dazu nutzen, um zu zeigen, dass eine gegebene Sprache nicht von einem endlichen Automaten entschieden werden kann: Dazu müssen wir nur zeigen, dass diese Sprache die obige Pumping-Eigenschaft nicht hat.
 
@@ -273,7 +279,7 @@ Für sich genommen ist das keine besonders interessante Eigenschaft. Wir können
 		\[\{a^mb^kc^k | m,k \geq 1\} \cup \{b^mc^k | m,k \geq 0\}.\]
 	Diese Sprache kann von keinem endlichen Automaten entschieden werden.
 	\begin{enumerate}[label=\alph*)]
-		\item Warum können wir das nicht mit Hilfe des Pumping-Lemmas zeigen?
+		\item Warum können wir das nicht direkt mit Hilfe des Pumping-Lemmas zeigen?
 		\item Verwende eine geeignete Abschlusseigenschaft um diese Aussage zu zeigen.
 	\end{enumerate}
 \end{zaufg}
@@ -284,7 +290,7 @@ Für sich genommen ist das keine besonders interessante Eigenschaft. Wir können
 
 \section{Nichtdeterministische endliche Automaten}
 
-Bisher haben wir nur sogenannte \emph{deterministische} endliche Automaten betrachtet. Das heißt für jedes feste Eingabe Wort gibt es nur einen Weg wie der Automat dieses einlesen kann. Insbesondere bedeutet das, dass jeder Zustand nur höchstens eine ausgehende Kante zu jedem Buchstaben des Alphabets haben darf.
+Bisher haben wir nur sogenannte \emph{deterministische} endliche Automaten betrachtet. Das heißt, für jedes feste Eingabewort gibt es nur einen einzigen Weg wie der Automat dieses einlesen kann. Insbesondere bedeutet das, dass jeder Zustand nur höchstens eine ausgehende Kante zu jedem Buchstaben des Alphabets haben darf.
 
 \begin{defn}
 	Ein \emph{nichtdeterministischer endlicher Automat} ist ein endlicher Automat, bei dem Zustände mehrere ausgehende Kanten mit dem gleichen Buchstaben haben dürfen. Außerdem kann es $\epsilon$-Kanten geben. Das sind Kanten, über die der Automat den Zustand wechseln kann ohne dabei einen Buchstaben einzulesen.
@@ -357,7 +363,7 @@ Einen Kellerautomat können wir nun wie folgt darstellen:
 		\draw[thick,->](2) to[out=-110,in=-70,looseness=10] node[below]{$b,a,\epsilon$} (2);
 	\end{tikzpicture}
 \end{center}
-Auf den Kanten stehen nun immer drei Dinge: Der gelesene Buchstabe des Eingabewortes, der gelesene Buchstabe aus dem Keller und die Buchstaben die neu in den Keller gelegt werden (oder $\epsilon$, wenn nichts in den Keller gelegt wird).
+Auf den Kanten stehen nun immer drei Dinge: Der gelesene Buchstabe des Eingabewortes, der gelesene Buchstabe aus dem Keller und die Buchstaben, die neu in den Keller gelegt werden (oder $\epsilon$, wenn nichts in den Keller gelegt wird).
 
 \begin{aufg}
 	Welche Sprache entscheidet der obige Kellerautomat?
@@ -393,14 +399,14 @@ Auch für die von Kellerautomaten entschiedenen Sprachen gibt es ein Pumping-Lem
 
 Eine Turingmaschine funktioniert ebenfalls ähnlich wie ein endlicher Automat, hat aber zwei zusätzliche Fähigkeiten:
 \begin{itemize}
-	\item Sie kann die Eingabe nicht nur einmal von links nach rechts lesen, sondern beim Lesen beliebig nach rechts und links springen.
+	\item Sie kann die Eingabe nicht nur einmal von links nach rechts lesen, sondern beim Lesen sowohl vor als auch zurück springen.
 	\item Sie kann die Eingabe nicht nur lesen, sondern auch überschreiben.
 \end{itemize}
 
 \begin{defn}
-	Eine Turingmaschine startet mit einem unendlichen langen Band, auf dem zu Beginn das Eingabewort und sonst nur Leerzeichen (ein spezielles Symbol $\textvisiblespace$, welches nicht Teil des Eingabealphabets ist) stehen. Sie hat einen Schreib-/Lesekopf, der zu Beginn auf den ersten Buchstaben des Eingabewortes zeigt. Sie hat endlich viele Zustände, von denen einer ein Startzustand ist und einer oder mehrere ein akzeptierender Endzustand. Außerdem kann es auch verwerfende Endzustände geben. 
+	Eine Turingmaschine startet mit einem unendlichen langen Band, auf dem zu Beginn das Eingabewort und sonst nur Leerzeichen (ein spezielles Symbol $\textvisiblespace$, welches nicht Teil des Eingabealphabets ist) stehen. Sie hat einen Schreib-/Lesekopf, der zu Beginn auf den ersten Buchstaben des Eingabewortes zeigt. Sie hat endlich viele Zustände, von denen einer ein Startzustand ist und einer oder mehrere akzeptierende Endzustände. Außerdem kann es auch verwerfende Endzustände geben. 
 	
-	Ein Übergang zwischen zwei Zuständen besteht aus drei Dingen: Lese den aktuellen Buchstaben vom Band, überschreibe diesen mit einem neuen Zustand und bewege den Kopf dann nach links oder rechts.
+	Ein Übergang zwischen zwei Zuständen besteht aus drei Dingen: Lese den aktuellen Buchstaben vom Band, überschreibe diesen mit einem neuen Buchstaben und bewege den Kopf dann nach links oder rechts.
 	
 	Eine Turingmaschine akzeptiert ein Wort, wenn sie beim Einlesen des Wortes einen akzeptierenden Endzustand erreicht. Sie verwirft es, wenn sie einen verwerfenden Endzustand oder einen Zustand ohne geeignete ausgehende Kanten erreicht.
 \end{defn}
@@ -471,7 +477,7 @@ Die \emph{Churchsche These} besagt, dass eine Turingmaschine alles berechnen kan
 \begin{zaufg}
 	Eine Keller-Turingmaschine ist eine (Einband-)Turingmaschine, die zusätzlich einen Keller zur Verfügung hat (der genauso funktioniert wie bei einem Kellerautomaten).
 	
-	Zeige, dass eine Einband-Turingmaschinen alles können, was Keller-Turingmaschinen können.
+	Zeige, dass Einband-Turingmaschinen alles können, was Keller-Turingmaschinen können.
 \end{zaufg}
 
 \begin{defn}
@@ -488,12 +494,12 @@ Ein interessantes Problem in der Betrachtung von Turingmaschinen ist das sogenan
 
 Wir fragen uns nun, ob es eine Turingmaschine gibt, die dieses Problem entscheidet. Etwas formaler fragen wir uns, ob die folgende Sprache durch eine Turingmaschine entscheidbar ist:
 	\[\{\langle M, w\rangle \,|\, M \text{ ist eine Turingmaschine, die bei Eingabe von } w \text{ hält}\}\]
-Dabei $\langle M, w\rangle$ eine geeignete Kodierung eines Tupels aus Turingmaschine und Eingabewort als Wort.
+Dabei bezeichnet $\langle M, w\rangle$ eine geeignete Kodierung eines Tupels aus Turingmaschine und Eingabewort als Wort.
 
 \begin{aufg}
 	Es gibt eine Turingmaschine, die bei Eingabe von $\langle M, w\rangle$ die Turingmaschine $M$ auf dem Wort $w$ simuliert (also einfach genau das macht, was die Turingmaschine $M$ bei Eingabe von $w$ machen würde).
 	
-	Überlege dir, ob wir diese Turingmaschine verwenden können um das Halteproblem zu entscheiden.
+	Überlege dir, ob wir eine solche Turingmaschine verwenden können um das Halteproblem zu entscheiden.
 \end{aufg}
 
 \begin{satz}

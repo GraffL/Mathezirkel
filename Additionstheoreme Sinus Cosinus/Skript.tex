@@ -126,7 +126,7 @@ Wir wollen uns heute auf die Suche nach einem solchen Additionstheorem für die 
 
 \section{Grundlegende Eigenschaften von Sinus und Cosinus}
 
-Wir betrachten ein rechtwinkliges Dreieck~$ABC$ mit Hypotenuse $AC$ (also rechtem Winkel bei $B$). Sei $\alpha$ der Winkel bei $A$ und $1$ die Länge der Hypotenuse. Dann definieren wir Sinus und Cosinus von $\alpha$ als die Länge der Gegen- bzw. Ankathete von $\alpha$, also:
+Wir betrachten ein rechtwinkliges Dreieck~$ABC$ mit Hypotenuse $AC$ (also rechtem Winkel bei~$B$). Sei $\alpha$ der Winkel bei $A$ und $1$ die Länge der Hypotenuse. Dann definieren wir Sinus und Cosinus von $\alpha$ als die Länge der Gegen- bzw. Ankathete von $\alpha$, also:
 	\[\sin(\alpha) \coloneqq \overline{BC} \quad\text{ und }\quad \cos(\alpha) \coloneqq \overline{AB}.\]
 In dem folgenden Bild ist das veranschaulicht:
 	\begin{center}
@@ -356,11 +356,11 @@ Die folgenden Werte von Sinus und Cosinus kann man sich leicht merken:
 \end{bsp}
 
 \begin{lemma}\label{lemma:AlleSchoenenCosinusWinkel}
-	Die Winkel $0\pi$, $\tfrac{\pi}{3}$ und $\tfrac{\pi}{2}$ sowie ihre ganzzahligen Vielfachen sind alle schönen Cosinus-Winkel, die es gibt.
+	Die Winkel $0\pi$, $\tfrac{\pi}{3}$ und $\tfrac{\pi}{2}$ sowie ihre ganzzahligen Vielfachen sind bereits alle schönen Cosinus-Winkel, die es gibt.
 \end{lemma}
 
 \begin{aufg}
-	Beweise \Cref{lemma:AlleSchoenenCosinusWinkel}. Dafür bietet sich ein Beweis mit Widerspruch an: Nimm an es gäbe einen schönen Cosinus-Winkel $\alpha=\tfrac{p\cdot 2\pi}{q}$ mit $\frac{p}{q}$ vollständig gekürzt und $q > 6$ und zeige dann die folgenden Behauptungen:
+	Beweise \Cref{lemma:AlleSchoenenCosinusWinkel}. Dafür bietet sich ein Beweis mit Widerspruch an: Nimm an es gäbe einen schönen Cosinus-Winkel $\alpha=\tfrac{p\cdot 2\pi}{q}$ mit $\frac{p}{q}$ vollständig gekürzt und $q > 6$. Zeige dann die folgenden Behauptungen:
 	\begin{description}
 		\item[Beh. 1:] Betrachte ein reguläres $q$-gon (ein reguläres Polygon mit genau $q$ Ecken) mit einem Umkreisradius von $1$, Mittelpunkt im Koordinatenursprung und einer Ecke im Punkt $\begin{pmatrix}1\\0\end{pmatrix}$. Dann sind die $x$-Koordinaten aller Ecken dieses Polygons rationale Zahlen.
 		\item[Beh. 2:] Es gibt ein reguläres $q$-gon, sodass all dessen Ecken ganzzahlige $x$-Koordinaten haben.
@@ -387,11 +387,11 @@ Die folgenden Werte von Sinus und Cosinus kann man sich leicht merken:
 
 Für einen Winkel $\alpha$ definieren wir die Drehfunktion in der Ebene:
 	\[f_\alpha: \IR^2 \to \IR^2\]
-Die jeden Vektor (mit Fuß im Ursprung) in der Ebene um den Winkel $\alpha$ dreht. Mit Hilfe von etwas Geometrie zeigen wir leicht die folgenden Eigenschaften dieser Funktion, wobei $v$ und $w$ beliebige Vektoren und $\lambda$ eine reelle Zahl ist:
+Diese nimmt einen beliebigen Vektor (mit Fuß im Ursprung) in der Ebene und dreht ihn um den Winkel $\alpha$. Mit Hilfe von etwas Geometrie zeigen wir leicht die folgenden Eigenschaften dieser Funktion, wobei $v$ und $w$ beliebige Vektoren und $\lambda$ eine reelle Zahl ist:
 \begin{itemize}
 	\item $f_\alpha\left(\begin{pmatrix}1 \\ 0\end{pmatrix}\right) = \begin{pmatrix}\cos(\alpha) \\ \sin(\alpha)\end{pmatrix}$,
 	\item $f_\alpha\left(\begin{pmatrix}0 \\ 1\end{pmatrix}\right) = \begin{pmatrix}-\sin(\alpha) \\ \cos(\alpha)\end{pmatrix}$,
-	\item $f_\alpha(v+w) ) f_\alpha(v) + f_\alpha(w)$ (ein neues Additionstheorem!) und
+	\item $f_\alpha(v+w)  = f_\alpha(v) + f_\alpha(w)$ (ein neues Additionstheorem!) und
 	\item $f_\alpha(\lambda\cdot v) = \lambda\cdot f_\alpha(v)$.
 \end{itemize}
 

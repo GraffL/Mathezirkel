@@ -1,3 +1,5 @@
+## Zirkelideen ##
+
 - Endliche Automaten (evtl. mit Ausgabe für einfache Additionsautomaten? (sind Binärzahlen bereits bekannt?))
 	* evtl. einfache Grammatiken?
 	
@@ -11,8 +13,6 @@
 - p-adische Zahlen/Modulo-Rechnen ( http://timbaumann.info/mathezirkel-kurs/skript.pdf )
 
 - Kachelungen/Parkettierungen
-
-- Codierungstheorie: ISBN, Prüfziffern, Vertauschungserkennung, Strichcode, QR-Code
 
 - Zahlenthorie: 
 	* Satz von Euler /a,n teilerfremd => a^\phi(n) = 1 mod n (benötigtes Wissen: Teilerfremd, modulo, eulersche Phi-Funktion)
@@ -32,3 +32,10 @@
 	
 	
 - Spaß mit dem Pascalschen Dreieck
+
+- Game of Life
+
+
+## Fraktivitätenideen ##
+
+- Mathe-YouTuber (oder allgemeiner interessanter Mathe-Content?)
