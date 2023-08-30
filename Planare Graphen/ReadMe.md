@@ -31,6 +31,11 @@ Einmal gehalten, in ca. 1 1/4 Stunden, ohne Beweise; Abscnhitt zu Tori nur sehr 
 Bei auf Tori gezeichneten Graphen muss man aufpassen, dass die entstehenden Flächen keine Löcher haben -- sonst funktioniert die Euler-Charakteristik nicht. 
 
 
+## TODOs ##
+
+Skript um Abschnitt zu Tori erweitern
+
+
 ## Quellen ##
 
 * Inspiriert von Matt Parkers Video "All UK football road signs are wrong! Join the petition for geometric change!": https://www.youtube.com/watch?v=btPqKAGyajM
