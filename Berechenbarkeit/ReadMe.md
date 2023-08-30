@@ -17,6 +17,7 @@ Kapitel 2,3,4 und 5 sind im Wesentlichen unbhängig voneinander
 
 ## Ziele/Motivation ##
 
+Verstehen, dass es (interessante/relevante!) Probleme gibt, die kein Computerprogramm lösen kann. Um dies beweisen zu können muss man sich ein formales (abstraktes) Modell für einen Computer überlegen. Dafür gibt es verschiedene Möglichkeiten (Endliche Automaten, Kellerautomaten, Turingmaschinen)
 
 
 ## Erfahrungen ##

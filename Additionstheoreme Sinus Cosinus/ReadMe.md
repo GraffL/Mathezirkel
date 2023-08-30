@@ -40,5 +40,5 @@ Man kann es alternativ aber natürlich direkt aus der entsprechenden Aussage fü
 ## Quellen ##
 
 * Geom. Beweis für sin/cos-Additionstheoreme aus LA I-VL von Prof. Kai Cieliebak
-* weitere geometrische Beweise von Wikipedia bzw. allgemein bekannt
-* Beweis für schöne Cosinuswinkel via Mathologer: 
+* weitere geometrische Beweise von Wikipedia ( https://en.wikipedia.org/wiki/Proofs_of_trigonometric_identities ) bzw. allgemein bekannt
+* Beweis für schöne Cosinuswinkel via Mathologer: https://www.youtube.com/watch?v=sDfzCIWpS7Q
